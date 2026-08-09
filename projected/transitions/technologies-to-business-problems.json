@@ -1,0 +1,14 @@
+{
+  "transitionId": "technologies-to-business-problems",
+  "from": {
+    "scenarioId": "resolve-technologies",
+    "outcomeId": "technology-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "resolve-business-problems",
+    "inputId": "technology-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

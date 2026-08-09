@@ -1,0 +1,55 @@
+{
+  "authorityType": "sda-domain-ontology-relationships.v1",
+  "relationships": [
+    {
+      "subject": "organization",
+      "predicate": "POSTS",
+      "object": "job-opportunity"
+    },
+    {
+      "subject": "job-opportunity",
+      "predicate": "REQUIRES",
+      "object": "competency"
+    },
+    {
+      "subject": "job-opportunity",
+      "predicate": "USES",
+      "object": "technology"
+    },
+    {
+      "subject": "job-opportunity",
+      "predicate": "ADDRESSES",
+      "object": "business-problem"
+    },
+    {
+      "subject": "job-opportunity",
+      "predicate": "OFFERS",
+      "object": "compensation"
+    },
+    {
+      "subject": "job-opportunity",
+      "predicate": "EVIDENCES",
+      "object": "market-signal"
+    },
+    {
+      "subject": "observed-job-fact",
+      "predicate": "SUPPORTS",
+      "object": "market-signal"
+    },
+    {
+      "subject": "market-signal",
+      "predicate": "SUPPORTS",
+      "object": "market-inference"
+    },
+    {
+      "subject": "technology",
+      "predicate": "ENABLES",
+      "object": "capability"
+    },
+    {
+      "subject": "organization",
+      "predicate": "INVESTS_IN",
+      "object": "capability"
+    }
+  ]
+}

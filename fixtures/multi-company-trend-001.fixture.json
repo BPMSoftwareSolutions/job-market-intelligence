@@ -1,0 +1,25 @@
+{
+  "fixtureType": "scenario-conformance-vector.v1",
+  "fixtureId": "multi-company-trend-001",
+  "scenarioId": "detect-market-patterns",
+  "input": {
+    "observationWindows": [
+      "window-1",
+      "window-2"
+    ],
+    "organizations": [
+      "org-a",
+      "org-b"
+    ],
+    "signalFamilies": [
+      "technology-demand",
+      "competency-demand",
+      "hiring-volume"
+    ]
+  },
+  "expectations": [
+    "trend-output-preserves-source-signal-lineage",
+    "delta-compares-equivalent-dimensions",
+    "missing-window-data-does-not-become-zero-demand"
+  ]
+}

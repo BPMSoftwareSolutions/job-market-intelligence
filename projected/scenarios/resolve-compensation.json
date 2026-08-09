@@ -1,0 +1,37 @@
+{
+  "scenarioId": "resolve-compensation",
+  "input": {
+    "inputId": "canonical-opportunity-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "resolve-compensation",
+    "executionAuthorityId": "resolve-compensation.v1"
+  },
+  "outcome": {
+    "outcomeId": "compensation-fact-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "compensation facts retaining opportunity evidence are produced"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "resolve-compensation.given",
+      "text": "canonical job opportunities"
+    },
+    "when": {
+      "semanticRef": "resolve-compensation.when",
+      "text": "compensation evidence is resolved"
+    },
+    "then": {
+      "semanticRef": "resolve-compensation.then",
+      "text": "compensation facts retaining opportunity evidence are produced"
+    }
+  },
+  "name": "Resolve observed compensation facts"
+}

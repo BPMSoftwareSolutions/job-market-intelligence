@@ -1,0 +1,33 @@
+{
+  "contractType": "projection-family.v1",
+  "projectionFamilyId": "job-market-analysis.v1",
+  "projections": [
+    {
+      "projectionId": "company-investment-profile",
+      "consumes": "job-market-intelligence-profile.v1"
+    },
+    {
+      "projectionId": "market-demand-profile",
+      "consumes": "job-market-intelligence-profile.v1"
+    },
+    {
+      "projectionId": "career-opportunity-profile",
+      "consumes": [
+        "job-market-intelligence-profile.v1",
+        "candidate-evidence-profile.v1"
+      ]
+    },
+    {
+      "projectionId": "gtm-opportunity-profile",
+      "consumes": "job-market-intelligence-profile.v1"
+    },
+    {
+      "projectionId": "technology-demand-trend",
+      "consumes": "job-market-intelligence-profile.v1"
+    },
+    {
+      "projectionId": "capability-demand-trend",
+      "consumes": "job-market-intelligence-profile.v1"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "contractType": "domain-contract.v1",
+  "contractId": "job-market-observation-scope.v1",
+  "fields": [
+    "sourceIds",
+    "organizationIds",
+    "locationFilters",
+    "roleFilters",
+    "observedFrom",
+    "observedTo",
+    "maxResultsPerSource"
+  ]
+}

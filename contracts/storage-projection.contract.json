@@ -1,0 +1,54 @@
+{
+  "contractType": "storage-projection.v1",
+  "projectionId": "sql-market-intelligence-store.v1",
+  "target": "sql",
+  "entities": [
+    {
+      "entity": "Organization",
+      "key": "OrganizationId"
+    },
+    {
+      "entity": "JobOpportunityObservation",
+      "key": "ObservationId",
+      "appendOnly": true
+    },
+    {
+      "entity": "ObservedJobFact",
+      "key": "FactId",
+      "appendOnly": true
+    },
+    {
+      "entity": "MarketSignal",
+      "key": "SignalId",
+      "appendOnly": true
+    },
+    {
+      "entity": "MarketSignalEvidence",
+      "key": [
+        "SignalId",
+        "FactId"
+      ]
+    },
+    {
+      "entity": "MarketInference",
+      "key": "InferenceId",
+      "appendOnly": true
+    },
+    {
+      "entity": "MarketInferenceEvidence",
+      "key": [
+        "InferenceId",
+        "SignalId"
+      ]
+    },
+    {
+      "entity": "ObservationWindow",
+      "key": "WindowId"
+    }
+  ],
+  "invariants": [
+    "historical-observations-append-only",
+    "evidence-links-required",
+    "source-content-digest-retained"
+  ]
+}

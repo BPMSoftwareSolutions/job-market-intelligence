@@ -1,0 +1,35 @@
+{
+  "capabilityId": "resolve-job-market-intelligence",
+  "name": "Resolve evidence-backed job market intelligence",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a market analyst",
+    "intent": "transform public hiring activity into canonical market evidence",
+    "outcome": "inspect evidence-backed organizational investment and capability demand, including whether change over time is established"
+  },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "market-intelligence-is-inspectable",
+    "actor": "a market analyst",
+    "promise": "the analyst can inspect evidence-backed organizational investment and capability demand without a bounded observation being misrepresented as change over time",
+    "observableConditions": [
+      {
+        "conditionId": "organizational-investment-is-visible",
+        "statement": "organizational investment signals are visible to the analyst"
+      },
+      {
+        "conditionId": "capability-demand-is-visible",
+        "statement": "capability demand signals are visible to the analyst"
+      },
+      {
+        "conditionId": "supporting-lineage-is-inspectable",
+        "statement": "the analyst can inspect the facts supporting a market signal"
+      },
+      {
+        "conditionId": "change-claim-is-bounded",
+        "statement": "the profile explicitly states when change over time is not established"
+      }
+    ]
+  },
+  "rootScenarioId": "resolve-job-market-intelligence"
+}

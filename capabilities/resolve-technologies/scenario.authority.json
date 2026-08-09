@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "resolve-technologies",
+  "input": {
+    "contractId": "job-opportunity.v1"
+  },
+  "event": {
+    "eventId": "resolve-technologies",
+    "executionAuthorityId": "resolve-technologies.v1"
+  },
+  "outcome": {
+    "contractId": "technology-set.v1"
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "projectionManifestType": "consumer-capability-projection-manifest.v1",
+  "generator": "scenario-driven-architecture/tools/consumer-projection",
+  "authorityRefs": [
+    "features/job-market-intelligence.feature",
+    "capabilities/resolve-job-market-intelligence/capability.authority.json",
+    "semantic-authority/scenario-graph.authority.json",
+    "semantic-authority/execution-authorities.authority.json",
+    "semantic-authority/projection-authorities.authority.json",
+    "semantic-authority/interfaces.authority.json",
+    "fixtures/capability-fixtures.authority.json",
+    "../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+    "../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json"
+  ],
+  "admittedPlatformCapabilities": [
+    "sda-node-consumer-runtime.v1",
+    "sda-json-cli.v1",
+    "sda-declarative-value-port.v1",
+    "sda-declarative-state-projection.v1",
+    "sda-fixture-contract-validator.v1",
+    "sda-schema-contract-admission.v1",
+    "sda-authority-transformation-port.v1",
+    "sda-authority-state-projection.v1",
+    "sda-filesystem-artifact-store.v1",
+    "sda-fixture-contract-validator.v1",
+    "sda-declarative-value-port.v1",
+    "sda-declarative-state-projection.v1",
+    "sda-csharp-admitted-consumer-platform.v1",
+    "sda-json-cli.v1",
+    "sda-schema-contract-admission.v1",
+    "sda-authority-transformation-port.v1",
+    "sda-authority-state-projection.v1",
+    "sda-filesystem-artifact-store.v1",
+    "sda-csharp-json-representation.v1",
+    "sda-csharp-json-schema-contract-validator.v1",
+    "sda-csharp-in-memory-authority-resolver.v1",
+    "sda-csharp-in-memory-semantic-executor.v1",
+    "sda-csharp-in-memory-execution-observer.v1",
+    "sda-csharp-consumer-runtime.v1",
+    "sda-csharp-declarative-consumer-mechanics.v1",
+    "sda-csharp-semantic-transformation.v1",
+    "sda-csharp-filesystem-artifact-store.v1",
+    "sda-python-admitted-consumer-platform.v1",
+    "sda-json-cli.v1",
+    "sda-fixture-contract-validator.v1",
+    "sda-schema-contract-admission.v1",
+    "sda-declarative-value-port.v1",
+    "sda-authority-transformation-port.v1",
+    "sda-declarative-state-projection.v1",
+    "sda-authority-state-projection.v1",
+    "sda-python-consumer-runtime.v1",
+    "sda-python-predicate-contract-validator.v1",
+    "sda-python-json-document-mechanics.v1",
+    "sda-python-json-schema-contract-validator.v1",
+    "sda-python-declarative-consumer-mechanics.v1",
+    "sda-python-semantic-transformation.v1",
+    "sda-python-filesystem-artifact-store.v1",
+    "sda-python-in-memory-authority-resolver.v1",
+    "sda-python-in-memory-semantic-executor.v1",
+    "sda-python-in-memory-execution-observer.v1"
+  ],
+  "files": [
+    {
+      "path": "application-binding.csharp.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "5b6cb261822e2e10f8aefe9a47b72cf02c76942a18c405da69b4511ee43e7c49"
+    },
+    {
+      "path": "application-binding.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7a320ad1eae5c14cb39513b93faa34147e0414485170e0496851d167160a7558"
+    },
+    {
+      "path": "application-binding.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "6513ebd734f912c8e05032b0cf46cff6b87794c84060f4f34f61a6a727ecaffb"
+    },
+    {
+      "path": "application-binding.python.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "5aec68228edeeae86ce4304fcfb40c25210186350a17e3f58e50d9de89be68e5"
+    },
+    {
+      "path": "capability.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "3349651e6af0aa2d994975ccf3317f5acf34624dca8bfad2328ba5d79fe7672c"
+    },
+    {
+      "path": "csharp/Directory.Build.props",
+      "executableOrigin": "PROJECTED",
+      "sha256": "2ef64af184ec506a7d824d5603e9e7dd6b287c7a461765e6cf77903911852aa7"
+    },
+    {
+      "path": "csharp/Program.generated.cs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "f90f5c3813eee6ac4d18e0303e54196cd36c6ea5fa72e9d8701a50ff91f7db88"
+    },
+    {
+      "path": "csharp/ProjectedConsumer.generated.csproj",
+      "executableOrigin": "PROJECTED",
+      "sha256": "dc8678ec59b6fc441eb889acf6c1e13ffed63586a41e72986fdb47f242d1b95c"
+    },
+    {
+      "path": "fixtures/fixtures.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "8de1a3fd39163c700d866a6b01a17d90cf2c3167882f0ed51c8ec37512e7b7f1"
+    },
+    {
+      "path": "node/capability-runtime.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "0d6912b2be5c909f95effa5e8fa50743ec920fcc7353eed59fb31c332d5e7f1b"
+    },
+    {
+      "path": "node/capability.projected.test.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "976af53fc6042f886c52238e6cb8f55548ee1aa7945ac79475f043e972d1e37c"
+    },
+    {
+      "path": "node/conformance-query.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "5c71917d8a79c8c95c32b5cbd820ebdbcc463efde239ad49b166fa553ebdc95b"
+    },
+    {
+      "path": "node/job-market-intelligence-cli.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "f038c011fa2ebb50c2e3612e219c20a45a906610356b4bb7fd52eba027122297"
+    },
+    {
+      "path": "projection-conformance.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed"
+    },
+    {
+      "path": "python/consumer.generated.py",
+      "executableOrigin": "PROJECTED",
+      "sha256": "fa923fa52e33db166fe7293894dc7e3bfe3002fa405943661b3c68e452d9a4ea"
+    },
+    {
+      "path": "query/conformance-query.csharp.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "a6959ad1589f53eaa6bbadc5691a3869271be220facab4d1f754c5e5c39c653a"
+    },
+    {
+      "path": "query/conformance-query.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "61d4e853ac071341e376a6e101659d5707eb777cb84d79bf98a80c015e68e6c4"
+    },
+    {
+      "path": "query/conformance-query.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "61d4e853ac071341e376a6e101659d5707eb777cb84d79bf98a80c015e68e6c4"
+    },
+    {
+      "path": "query/conformance-query.python.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "a1b62b80922d28d5bde4391fe464382475cdcef0b1f0a1533ad6efff16dfded7"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.csharp.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "24597f94e734195d718f9d1eaab9321f5608a847bdfedbc4a9790cdf6eb64801"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "1d6d87534dc52e50665c1d6c69a8b1832b14ea145563959b9b14c56a11c2215b"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "1d6d87534dc52e50665c1d6c69a8b1832b14ea145563959b9b14c56a11c2215b"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.python.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "1e95f4256e830fd3a49c97cabae3fed7048d3242625a9ab9cdbda8b62213c4e2"
+    },
+    {
+      "path": "scenarios/acquire-job-posting.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "b88a41895ef5624b17f620fff7f3a411790b1bb75c8cbdb44692db1e49c14c48"
+    },
+    {
+      "path": "scenarios/admit-job-opportunity.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7961e160b95b8b69f1c92c8cc2cfb282c1b0505cbcdf676b6bcca7e629a13581"
+    },
+    {
+      "path": "scenarios/aggregate-market-observations.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "5678dd59088275056bcc85b5f1e23f0ee63faa5cb2b0c31f48c5fbe322c801f2"
+    },
+    {
+      "path": "scenarios/detect-market-patterns.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "3c7098779adc4041052f5403d20e7c7e3b650dc500bdbba030b057a7bb068e61"
+    },
+    {
+      "path": "scenarios/discover-job-opportunity-references.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "0a56209a09b51a6f860c7ae084c03de93a527d1c031d6c424f7efbfcb512827b"
+    },
+    {
+      "path": "scenarios/project-market-intelligence.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "597ffd2c456636e7576b2cb7f4f29bfe99c32dac9a22d14e489d6757293564b5"
+    },
+    {
+      "path": "scenarios/resolve-business-problems.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "771ff37ffc482ed892d3c8596dee00a08ef35cfcf5c2a36403ee585bd769eb2a"
+    },
+    {
+      "path": "scenarios/resolve-compensation.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "d4df960d4c8a5ccb8a6d6da3e855ec022b64150d7d9c3ffcdc93e9d96238007d"
+    },
+    {
+      "path": "scenarios/resolve-job-market-intelligence.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "855d0be7e52f64cd68783e85c851e67ee80d81f98a231f3ffbd413fb0c0e939a"
+    },
+    {
+      "path": "scenarios/resolve-market-signals.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "af20447c4ddbbfa67d26a6158cce85c7dbecb62211697bc0124caa9e930608f3"
+    },
+    {
+      "path": "scenarios/resolve-organizational-intent.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "d0f4405b3fae647aaa6cbdc824033172bc1cf239b596f83ec412b7b4f82bd692"
+    },
+    {
+      "path": "scenarios/resolve-required-competencies.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "b5529ab5b4943ab2c68c8b04c373bf9432e5ebe78256770c59321e4d71954187"
+    },
+    {
+      "path": "scenarios/resolve-technologies.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "6f8f9ec27494e97d0cd640eb96067c472f4170b00f2ea7491b1faa299b7978ac"
+    },
+    {
+      "path": "telemetry/expected-trace.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "43b5f7bb0230881cb44aa9a4804fca52b076015ab63a64a0a52794610907aa60"
+    },
+    {
+      "path": "transitions/aggregates-to-patterns.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "669c6ab41112763c212880a03874f6bbc2c54a50ffd3a2d2b99d34384d3581de"
+    },
+    {
+      "path": "transitions/business-problems-to-intent.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "2f167e486a91cd7b0afdf8045bb75e854b262939fc1216d963bffa03dcd18358"
+    },
+    {
+      "path": "transitions/compensation-to-competencies.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "81706a7ca5aad040990b4eca10134014dc72d54e6dd09054159a8549277f2f81"
+    },
+    {
+      "path": "transitions/competencies-to-technologies.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "0e9bbc64b3a87a0bf5ce9f1ca6c24d108c826509d457215ca7353097cf2a5f30"
+    },
+    {
+      "path": "transitions/intent-to-signals.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "e9be408d33eedd8decb7776f67983cabd2ab0f47eed6be10677009dc94c4d13d"
+    },
+    {
+      "path": "transitions/opportunities-to-compensation.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "06a520cb7d967b597c2fd9a439cd8dee5b60866f0d8eeb74924e1c39c93b1fbd"
+    },
+    {
+      "path": "transitions/patterns-to-intelligence.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "542cae8ea5d5b375382e814542958fec280cb7c84c7c7576f755c44167f435f9"
+    },
+    {
+      "path": "transitions/postings-to-admission.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "efc6d33c2c6bc173c21ef5ffe9403671b09840639fca0c017d382b764010594c"
+    },
+    {
+      "path": "transitions/references-to-acquisition.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "0c1d4559f4129aad7157815ef926de476b3005f8956ee9997d6edeeb01f9b664"
+    },
+    {
+      "path": "transitions/scope-to-discovery.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "917b3f3e80953e44c25d3f1b3eca94b3f0881fbd894e517facf7c2382321961e"
+    },
+    {
+      "path": "transitions/signals-to-aggregation.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "4287e33013e2160518bfff4f9536a1f32d0b9675586eff542a97784bd690b055"
+    },
+    {
+      "path": "transitions/technologies-to-business-problems.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "58cb82d737528327ffb4755b7ca0d35a98b7dc7f06ed0af3038dbc63dbbdec11"
+    }
+  ]
+}

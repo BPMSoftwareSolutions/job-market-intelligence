@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "project-market-intelligence",
+  "input": {
+    "contractId": "market-pattern-set.v1"
+  },
+  "event": {
+    "eventId": "project-market-intelligence",
+    "executionAuthorityId": "project-market-intelligence.v1"
+  },
+  "outcome": {
+    "contractId": "job-market-intelligence-profile.v1"
+  }
+}

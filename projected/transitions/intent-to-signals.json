@@ -1,0 +1,14 @@
+{
+  "transitionId": "intent-to-signals",
+  "from": {
+    "scenarioId": "resolve-organizational-intent",
+    "outcomeId": "organizational-intent-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "resolve-market-signals",
+    "inputId": "organizational-intent-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

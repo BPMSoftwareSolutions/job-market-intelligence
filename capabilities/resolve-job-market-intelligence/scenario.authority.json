@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "resolve-job-market-intelligence",
+  "input": {
+    "contractId": "job-market-observation-scope.v1"
+  },
+  "event": {
+    "eventId": "resolve-market-intelligence",
+    "executionAuthorityId": "resolve-market-intelligence.v1"
+  },
+  "outcome": {
+    "contractId": "job-market-intelligence-profile.v1"
+  }
+}

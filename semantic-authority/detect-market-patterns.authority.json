@@ -1,0 +1,57 @@
+{
+  "authorityType": "semantic-execution-authority.v1",
+  "authorityId": "detect-market-patterns.v1",
+  "operations": [
+    {
+      "primitive": "compare",
+      "dimensions": [
+        "subject",
+        "organization"
+      ],
+      "between": "adjacent-observation-windows",
+      "produce": "demand-momentum"
+    },
+    {
+      "primitive": "aggregate",
+      "groupBy": [
+        "technology",
+        "roleFamily",
+        "observationWindow"
+      ],
+      "produce": "technology-demand"
+    },
+    {
+      "primitive": "aggregate",
+      "groupBy": [
+        "competency",
+        "roleFamily",
+        "observationWindow"
+      ],
+      "produce": "competency-demand"
+    },
+    {
+      "primitive": "aggregate",
+      "groupBy": [
+        "businessProblem",
+        "organization",
+        "observationWindow"
+      ],
+      "produce": "business-problem-investment"
+    },
+    {
+      "primitive": "aggregate",
+      "groupBy": [
+        "aiTheme",
+        "organization",
+        "observationWindow"
+      ],
+      "produce": "ai-theme-investment"
+    },
+    {
+      "primitive": "bind",
+      "joinOn": "sharedOpportunityId",
+      "produce": "capability-co-occurrence"
+    }
+  ],
+  "inferencePolicy": "patterns-must-preserve-underlying-signal-identities"
+}

@@ -1,0 +1,37 @@
+{
+  "scenarioId": "discover-job-opportunity-references",
+  "input": {
+    "inputId": "bounded-observation-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "discover-job-opportunity-references",
+    "executionAuthorityId": "discover-job-opportunity-references.v1"
+  },
+  "outcome": {
+    "outcomeId": "discovered-reference-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "a bounded reference set with source lineage is produced"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "discover-job-opportunity-references.given",
+      "text": "one bounded observation state"
+    },
+    "when": {
+      "semanticRef": "discover-job-opportunity-references.when",
+      "text": "public job opportunity references are discovered"
+    },
+    "then": {
+      "semanticRef": "discover-job-opportunity-references.then",
+      "text": "a bounded reference set with source lineage is produced"
+    }
+  },
+  "name": "Discover public job opportunity references"
+}

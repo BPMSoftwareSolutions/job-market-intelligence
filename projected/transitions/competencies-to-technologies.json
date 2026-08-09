@@ -1,0 +1,14 @@
+{
+  "transitionId": "competencies-to-technologies",
+  "from": {
+    "scenarioId": "resolve-required-competencies",
+    "outcomeId": "competency-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "resolve-technologies",
+    "inputId": "competency-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

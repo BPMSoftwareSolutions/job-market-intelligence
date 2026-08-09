@@ -1,0 +1,14 @@
+{
+  "transitionId": "scope-to-discovery",
+  "from": {
+    "scenarioId": "resolve-job-market-intelligence",
+    "outcomeId": "bounded-observation-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "discover-job-opportunity-references",
+    "inputId": "bounded-observation-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

@@ -1,0 +1,37 @@
+{
+  "scenarioId": "resolve-market-signals",
+  "input": {
+    "inputId": "organizational-intent-fact-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "resolve-market-signals",
+    "executionAuthorityId": "resolve-market-signals.v1"
+  },
+  "outcome": {
+    "outcomeId": "evidence-backed-signal-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "evidence-backed market signals are produced"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "resolve-market-signals.given",
+      "text": "admitted observed job facts"
+    },
+    "when": {
+      "semanticRef": "resolve-market-signals.when",
+      "text": "market signals are resolved"
+    },
+    "then": {
+      "semanticRef": "resolve-market-signals.then",
+      "text": "evidence-backed market signals are produced"
+    }
+  },
+  "name": "Resolve market signals"
+}

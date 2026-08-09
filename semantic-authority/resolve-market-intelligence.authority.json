@@ -1,0 +1,45 @@
+{
+  "authorityType": "semantic-execution-authority.v1",
+  "authorityId": "resolve-market-intelligence.v1",
+  "operations": [
+    {
+      "primitive": "map",
+      "over": "scope.sources",
+      "invokeScenario": "discover-job-opportunity-references"
+    },
+    {
+      "primitive": "map",
+      "over": "discovered.references",
+      "invokeScenario": "acquire-job-posting"
+    },
+    {
+      "primitive": "map",
+      "over": "acquired.postings",
+      "invokeScenario": "admit-job-opportunity"
+    },
+    {
+      "primitive": "map",
+      "over": "admitted.opportunities",
+      "invokeScenario": "resolve-market-signals"
+    },
+    {
+      "primitive": "aggregate",
+      "input": "signals",
+      "invokeScenario": "aggregate-market-observations"
+    },
+    {
+      "primitive": "classify",
+      "input": "aggregates",
+      "invokeScenario": "detect-market-patterns"
+    },
+    {
+      "primitive": "format",
+      "input": "patterns",
+      "invokeScenario": "project-market-intelligence"
+    }
+  ],
+  "lineage": {
+    "rootExecutionRequired": true,
+    "nestedLineageRequired": true
+  }
+}

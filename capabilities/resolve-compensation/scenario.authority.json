@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "resolve-compensation",
+  "input": {
+    "contractId": "job-opportunity.v1"
+  },
+  "event": {
+    "eventId": "resolve-compensation",
+    "executionAuthorityId": "resolve-compensation.v1"
+  },
+  "outcome": {
+    "contractId": "compensation-profile.v1"
+  }
+}

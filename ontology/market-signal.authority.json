@@ -1,0 +1,14 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "market-signal",
+  "semanticPurpose": "market signal",
+  "canonicalMembers": [
+    "signalId",
+    "signalType",
+    "subject",
+    "evidenceFactIds",
+    "dimensions",
+    "observedWindow"
+  ],
+  "lineageRequired": true
+}

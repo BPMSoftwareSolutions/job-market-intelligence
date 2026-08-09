@@ -1,0 +1,20 @@
+{
+  "workspaceType": "sda-consumer-workspace.v1",
+  "workspaceId": "job-market-intelligence",
+  "consumerWorkspaceAuthority": "consumer-workspace.authority.json",
+  "rootCapabilityId": "resolve-job-market-intelligence",
+  "kernelSpecification": "scenario-kernel.v1",
+  "governancePolicies": [
+    "zero-handwritten-consumer-code.v1",
+    "public-source-acquisition.v1",
+    "evidence-lineage.v1"
+  ],
+  "projectionProfiles": [
+    "job-market-intelligence-csharp.v1",
+    "job-market-intelligence-node.v1",
+    "job-market-intelligence-python.v1",
+    "job-market-intelligence-java.v1"
+  ],
+  "activeProjectionTargets": ["node"],
+  "executionOriginPolicy": "PROJECTED_ONLY"
+}

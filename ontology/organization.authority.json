@@ -1,0 +1,12 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "organization",
+  "semanticPurpose": "organization",
+  "canonicalMembers": [
+    "organizationId",
+    "name",
+    "industryTags",
+    "sourceEvidence"
+  ],
+  "lineageRequired": true
+}

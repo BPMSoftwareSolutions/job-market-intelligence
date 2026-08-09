@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <BaseOutputPath>..\..\..\scenario-driven-architecture\artifacts\consumer-projection\csharp-build\resolve-job-market-intelligence\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>..\..\..\scenario-driven-architecture\artifacts\consumer-projection\csharp-build\resolve-job-market-intelligence\obj\</BaseIntermediateOutputPath>
+    <MSBuildProjectExtensionsPath>..\..\..\scenario-driven-architecture\artifacts\consumer-projection\csharp-build\resolve-job-market-intelligence\obj\</MSBuildProjectExtensionsPath>
+  </PropertyGroup>
+</Project>

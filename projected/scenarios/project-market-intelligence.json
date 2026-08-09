@@ -1,0 +1,38 @@
+{
+  "scenarioId": "project-market-intelligence",
+  "input": {
+    "inputId": "evidence-backed-pattern-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "project-market-intelligence",
+    "executionAuthorityId": "project-market-intelligence.v1"
+  },
+  "outcome": {
+    "outcomeId": "job-market-intelligence-profile",
+    "contract": {
+      "contractId": "job-market-intelligence-profile.v1"
+    },
+    "experience": {
+      "statement": "the analyst can inspect evidence-backed organizational investment and capability demand, including whether change over time is established"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "project-market-intelligence.given",
+      "text": "evidence-backed market patterns"
+    },
+    "when": {
+      "semanticRef": "project-market-intelligence.when",
+      "text": "canonical market intelligence is projected"
+    },
+    "then": {
+      "semanticRef": "project-market-intelligence.then",
+      "text": "the analyst can inspect evidence-backed organizational investment and capability demand, including whether change over time is established"
+    }
+  },
+  "name": "Project market intelligence"
+}

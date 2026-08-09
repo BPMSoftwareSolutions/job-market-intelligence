@@ -1,0 +1,29 @@
+{
+  "workspaceType": "consumer-workspace-authority.v1",
+  "consumerId": "job-market-intelligence",
+  "kernel": {
+    "specificationId": "scenario-kernel.v1",
+    "version": "1.0.0",
+    "executionVector": "../scenario-driven-architecture/kernel/contracts/execution/scenario-kernel-execution-vector.json"
+  },
+  "governance": {
+    "authority": "governance/consumer-zero-code-policy.authority.json",
+    "conformancePolicy": "all-closures-must-conform"
+  },
+  "conformanceQuery": "../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+  "telemetryAuthority": "../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json",
+  "platformCapabilityCatalog": "../scenario-driven-architecture/kernel/semantic-authority/consumer/sda-platform-capabilities.semantic-authority.json",
+  "projectionTargets": ["node"],
+  "capabilities": [
+    {
+      "featureId": "job-market-intelligence.feature",
+      "feature": "features/job-market-intelligence.feature",
+      "capability": "capabilities/resolve-job-market-intelligence/capability.authority.json",
+      "semanticGraph": "semantic-authority/scenario-graph.authority.json",
+      "executionAuthorities": "semantic-authority/execution-authorities.authority.json",
+      "projectionAuthorities": "semantic-authority/projection-authorities.authority.json",
+      "interfaces": "semantic-authority/interfaces.authority.json",
+      "fixtures": "fixtures/capability-fixtures.authority.json"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "job-market-observation-scope.v1": "job-market-observation-scope.schema.json",
+  "job-market-intelligence-state.v1": "job-market-intelligence-state.schema.json",
+  "job-market-intelligence-profile.v1": "../schemas/job-market-intelligence-profile.schema.json",
+  "market-signal.v1": "../schemas/market-signal.schema.json"
+}

@@ -1,0 +1,46 @@
+{
+  "contractType": "inspectable-query-catalog.v1",
+  "catalogId": "job-market-intelligence-queries.v1",
+  "queries": [
+    {
+      "queryId": "company-investment-by-capability",
+      "question": "What capabilities is an organization funding through hiring?"
+    },
+    {
+      "queryId": "highest-compensation-by-capability",
+      "question": "Which capabilities are associated with the highest compensation bands?"
+    },
+    {
+      "queryId": "technology-demand-over-time",
+      "question": "Which technologies are increasing or decreasing in observed demand?"
+    },
+    {
+      "queryId": "competency-co-occurrence",
+      "question": "Which competencies commonly appear together?"
+    },
+    {
+      "queryId": "ai-theme-by-business-problem",
+      "question": "Which AI themes are tied to which business problems?"
+    },
+    {
+      "queryId": "role-family-demand-momentum",
+      "question": "Which role families have increasing hiring activity?"
+    },
+    {
+      "queryId": "market-signal-evidence",
+      "question": "Which observed facts prove a selected market signal?"
+    },
+    {
+      "queryId": "market-inference-evidence",
+      "question": "Which signals prove a selected market inference?"
+    },
+    {
+      "queryId": "career-adjacency",
+      "question": "Which high-demand opportunities are closest to a candidate evidence profile?"
+    },
+    {
+      "queryId": "gtm-whitespace",
+      "question": "Which recurring funded business problems indicate potential go-to-market whitespace?"
+    }
+  ]
+}

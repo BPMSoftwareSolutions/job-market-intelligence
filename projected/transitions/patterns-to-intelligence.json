@@ -1,0 +1,14 @@
+{
+  "transitionId": "patterns-to-intelligence",
+  "from": {
+    "scenarioId": "detect-market-patterns",
+    "outcomeId": "evidence-backed-pattern-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "project-market-intelligence",
+    "inputId": "evidence-backed-pattern-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "termination"
+}

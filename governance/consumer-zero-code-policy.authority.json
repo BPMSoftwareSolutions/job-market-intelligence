@@ -1,0 +1,17 @@
+{
+  "policyType": "sda-consumer-workspace-policy.v1",
+  "policyId": "zero-handwritten-consumer-code.v1",
+  "forbiddenConsumerArtifacts": [
+    "handwritten-executable-domain-code",
+    "domain-specific-kernel-forks",
+    "copied-kernel-mechanics"
+  ],
+  "permittedAuthoringSurfaces": [
+    "gherkin",
+    "json-authority",
+    "json-schema",
+    "fixtures",
+    "projection-profiles",
+    "documentation"
+  ]
+}

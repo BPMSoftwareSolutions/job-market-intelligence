@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "resolve-market-signals",
+  "input": {
+    "contractId": "job-opportunity-set.v1"
+  },
+  "event": {
+    "eventId": "resolve-market-signals",
+    "executionAuthorityId": "resolve-market-signals.v1"
+  },
+  "outcome": {
+    "contractId": "market-signal-set.v1"
+  }
+}

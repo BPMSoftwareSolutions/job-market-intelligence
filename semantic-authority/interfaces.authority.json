@@ -1,0 +1,25 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "contractCatalog": "contracts/contract-catalog.json",
+  "requiredPlatformObligations": ["dynamic-semantic-execution", "domain-contract-admission"],
+  "interfaces": [
+    { "interfaceId": "job-market-intelligence-cli", "kind": "cli", "rootScenarioId": "resolve-job-market-intelligence", "platformCapabilityId": "sda-json-cli.v1" }
+  ],
+  "portBindings": [
+    { "portId": "begin-market-observation", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "begin-market-observation.v1" } },
+    { "portId": "public-reference-discovery", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "discover-public-references.v1" } },
+    { "portId": "public-posting-acquisition", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "acquire-public-postings.v1" } },
+    { "portId": "canonical-opportunity-admission", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "admit-canonical-opportunities.v1" } },
+    { "portId": "compensation-fact-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-compensation-facts.v1" } },
+    { "portId": "competency-fact-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-competency-facts.v1" } },
+    { "portId": "technology-fact-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-technology-facts.v1" } },
+    { "portId": "business-problem-fact-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-business-problem-facts.v1" } },
+    { "portId": "organizational-intent-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-organizational-intent-facts.v1" } },
+    { "portId": "evidence-backed-signal-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "resolve-evidence-backed-signals.v1" } },
+    { "portId": "longitudinal-observation-aggregation", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "aggregate-longitudinal-observations.v1" } },
+    { "portId": "bounded-pattern-detection", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "detect-bounded-patterns.v1" } },
+    { "portId": "market-intelligence-projection", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/transformations.authority.json", "transformationId": "project-market-intelligence-profile.v1" } }
+  ],
+  "projectionBindings": []
+}

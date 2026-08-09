@@ -1,0 +1,14 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "observed-job-fact",
+  "semanticPurpose": "observed job fact",
+  "canonicalMembers": [
+    "factId",
+    "opportunityId",
+    "factType",
+    "value",
+    "sourceEvidence",
+    "observedAt"
+  ],
+  "lineageRequired": true
+}

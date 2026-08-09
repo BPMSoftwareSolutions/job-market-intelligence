@@ -1,0 +1,37 @@
+{
+  "scenarioId": "aggregate-market-observations",
+  "input": {
+    "inputId": "evidence-backed-signal-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "aggregate-market-observations",
+    "executionAuthorityId": "aggregate-market-observations.v1"
+  },
+  "outcome": {
+    "outcomeId": "longitudinal-aggregate-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "longitudinal aggregates preserving signal identities are produced"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "aggregate-market-observations.given",
+      "text": "evidence-backed market signals"
+    },
+    "when": {
+      "semanticRef": "aggregate-market-observations.when",
+      "text": "equivalent observation dimensions are aggregated"
+    },
+    "then": {
+      "semanticRef": "aggregate-market-observations.then",
+      "text": "longitudinal aggregates preserving signal identities are produced"
+    }
+  },
+  "name": "Aggregate market observations"
+}

@@ -1,0 +1,12 @@
+{
+  "policyType": "job-source-acquisition-policy.v1",
+  "policyId": "public-source-acquisition.v1",
+  "rules": [
+    "acquire-only-publicly-accessible-content",
+    "honor-configured-rate-limits",
+    "honor-robots-directives-where-applicable",
+    "honor-source-terms",
+    "retain-source-reference-and-observation-time",
+    "do-not-bypass-authentication-or-access-controls"
+  ]
+}

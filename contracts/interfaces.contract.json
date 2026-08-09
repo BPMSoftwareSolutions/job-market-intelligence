@@ -1,0 +1,26 @@
+{
+  "contractType": "capability-interface-family.v1",
+  "capabilityId": "resolve-job-market-intelligence",
+  "interfaces": [
+    {
+      "interfaceId": "cli",
+      "projection": "cli-command"
+    },
+    {
+      "interfaceId": "http",
+      "projection": "http-endpoint"
+    },
+    {
+      "interfaceId": "mcp",
+      "projection": "mcp-tool"
+    },
+    {
+      "interfaceId": "scheduled-observation",
+      "projection": "scheduler-binding"
+    },
+    {
+      "interfaceId": "query",
+      "projection": "sql-query-surface"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "closureType": "consumer-experience-closure.v1",
+  "capabilityId": "resolve-job-market-intelligence",
+  "experienceId": "market-intelligence-is-inspectable",
+  "promise": "the analyst can inspect evidence-backed organizational investment and capability demand without a bounded observation being misrepresented as change over time",
+  "projectionTarget": "node",
+  "fixtures": [
+    {
+      "fixtureId": "adobe-public-market-intelligence",
+      "conditions": [
+        {
+          "conditionId": "organizational-investment-is-visible",
+          "statement": "organizational investment signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.organizationalInvestment.0.subject",
+              "operator": "contains",
+              "expected": "generative-ai",
+              "actual": "invest-in-generative-ai-capability",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "capability-demand-is-visible",
+          "statement": "capability demand signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.0.subject",
+              "operator": "contains",
+              "expected": "PyTorch",
+              "actual": "Python, PyTorch",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "supporting-lineage-is-inspectable",
+          "statement": "the analyst can inspect the facts supporting a market signal",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.0.evidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-adobe-001-technologies",
+              "actual": [
+                "fact-adobe-001-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "change-claim-is-bounded",
+          "statement": "the profile explicitly states when change over time is not established",
+          "observations": [
+            {
+              "path": "analystExperience.changeOverTime.disposition",
+              "operator": "equals",
+              "expected": "NOT_ESTABLISHED",
+              "actual": "NOT_ESTABLISHED",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "conditions": [
+        {
+          "conditionId": "organizational-investment-is-visible",
+          "statement": "organizational investment signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.organizationalInvestment.0.subject",
+              "operator": "contains",
+              "expected": "internal-platform",
+              "actual": "scale-internal-platform",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "capability-demand-is-visible",
+          "statement": "capability demand signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.0.subject",
+              "operator": "contains",
+              "expected": "Kubernetes",
+              "actual": "Go, Kubernetes",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "supporting-lineage-is-inspectable",
+          "statement": "the analyst can inspect the facts supporting a market signal",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.1.evidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-harbor-202-technologies",
+              "actual": [
+                "fact-harbor-202-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "change-claim-is-bounded",
+          "statement": "the profile explicitly states when change over time is not established",
+          "observations": [
+            {
+              "path": "analystExperience.changeOverTime.disposition",
+              "operator": "equals",
+              "expected": "NOT_ESTABLISHED",
+              "actual": "NOT_ESTABLISHED",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    }
+  ],
+  "disposition": "OBSERVABLY_TRUE"
+}

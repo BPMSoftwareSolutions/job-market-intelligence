@@ -1,0 +1,8 @@
+{
+  "fixtureType": "governance-rejection-vector.v1",
+  "fixtureId": "reject-private-source-001",
+  "input": {
+    "sourceAccess": "authentication-required"
+  },
+  "expectedDisposition": "REJECTED_BY_ACQUISITION_POLICY"
+}

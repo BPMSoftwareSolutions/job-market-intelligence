@@ -1,0 +1,16 @@
+{
+  "projectionProfileType": "sda-consumer-projection-profile.v1",
+  "profileId": "job-market-intelligence-node.v1",
+  "language": "node",
+  "sourceAuthority": "consumer-workspace",
+  "kernelBinding": "scenario-kernel-node",
+  "project": [
+    "contracts",
+    "scenario-bindings",
+    "interfaces",
+    "tests",
+    "runtime-entrypoints",
+    "telemetry-bindings"
+  ],
+  "forbidHandwrittenDomainCode": true
+}

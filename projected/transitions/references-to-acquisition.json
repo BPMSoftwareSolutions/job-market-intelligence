@@ -1,0 +1,14 @@
+{
+  "transitionId": "references-to-acquisition",
+  "from": {
+    "scenarioId": "discover-job-opportunity-references",
+    "outcomeId": "discovered-reference-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "acquire-job-posting",
+    "inputId": "discovered-reference-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

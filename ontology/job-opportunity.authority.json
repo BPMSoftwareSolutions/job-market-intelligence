@@ -1,0 +1,23 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "job-opportunity",
+  "semanticPurpose": "job opportunity",
+  "canonicalMembers": [
+    "opportunityId",
+    "organizationId",
+    "role",
+    "location",
+    "employmentType",
+    "seniority",
+    "compensation",
+    "responsibilities",
+    "competencies",
+    "technologies",
+    "businessProblems",
+    "productAreas",
+    "aiThemes",
+    "sourceEvidence",
+    "observedAt"
+  ],
+  "lineageRequired": true
+}

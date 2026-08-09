@@ -1,0 +1,13 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "market-inference",
+  "semanticPurpose": "market inference",
+  "canonicalMembers": [
+    "inferenceId",
+    "inferenceType",
+    "statement",
+    "supportingSignalIds",
+    "confidenceDisposition"
+  ],
+  "lineageRequired": true
+}

@@ -1,0 +1,24 @@
+{
+  "authorityType": "job-source-definition.v1",
+  "sourceId": "adobe",
+  "sourceKind": "public-careers-site",
+  "acquisition": {
+    "strategy": "html+structured-data",
+    "requiresPublicAccess": true,
+    "respectRobotsPolicy": true,
+    "respectSourceTerms": true,
+    "rateLimitPolicyId": "conservative-public-source-rate-limit.v1"
+  },
+  "discovery": {
+    "resultType": "job-opportunity-reference-set"
+  },
+  "normalization": {
+    "outputContractId": "observed-job-posting.v1"
+  },
+  "prohibited": [
+    "authentication-bypass",
+    "paywall-bypass",
+    "captcha-bypass",
+    "private-endpoint-use"
+  ]
+}

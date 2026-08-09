@@ -1,0 +1,20 @@
+{
+  "policyType": "market-inference-policy.v1",
+  "policyId": "bounded-market-inference.v1",
+  "requirements": [
+    "inference-statement",
+    "supporting-signal-ids",
+    "confidence-disposition"
+  ],
+  "confidenceDispositions": [
+    "OBSERVED_PATTERN",
+    "SUPPORTED_INFERENCE",
+    "WEAK_SIGNAL",
+    "INSUFFICIENT_EVIDENCE"
+  ],
+  "prohibited": [
+    "unsupported-causal-claim",
+    "source-fact-overwrite",
+    "untraceable-summary-claim"
+  ]
+}

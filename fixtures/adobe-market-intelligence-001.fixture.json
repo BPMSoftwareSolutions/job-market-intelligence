@@ -1,0 +1,24 @@
+{
+  "fixtureType": "scenario-conformance-vector.v1",
+  "fixtureId": "adobe-market-intelligence-001",
+  "scenarioId": "resolve-job-market-intelligence",
+  "input": {
+    "sourceIds": [
+      "adobe"
+    ],
+    "organizationIds": [
+      "adobe"
+    ],
+    "locationFilters": [],
+    "roleFilters": [],
+    "observedFrom": "2026-08-01T00:00:00Z",
+    "observedTo": "2026-08-31T23:59:59Z",
+    "maxResultsPerSource": 100
+  },
+  "expectations": [
+    "all-produced-signals-have-evidence-fact-ids",
+    "all-observed-opportunities-have-source-evidence",
+    "profile-conforms-to-job-market-intelligence-profile-schema",
+    "no-inference-exists-without-supporting-signal-ids"
+  ]
+}

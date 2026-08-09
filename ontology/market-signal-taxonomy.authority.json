@@ -1,0 +1,91 @@
+{
+  "authorityType": "market-signal-taxonomy.v1",
+  "taxonomyId": "job-market-signal-taxonomy.v1",
+  "signalTypes": [
+    {
+      "signalType": "compensation-investment",
+      "dimensions": [
+        "currency",
+        "minimum",
+        "maximum",
+        "period",
+        "seniority",
+        "location"
+      ]
+    },
+    {
+      "signalType": "competency-demand",
+      "dimensions": [
+        "competency",
+        "roleFamily",
+        "seniority",
+        "organization",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "technology-demand",
+      "dimensions": [
+        "technology",
+        "roleFamily",
+        "organization",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "business-problem-investment",
+      "dimensions": [
+        "businessProblem",
+        "productArea",
+        "organization",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "ai-theme-investment",
+      "dimensions": [
+        "aiTheme",
+        "businessProblem",
+        "organization",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "hiring-volume",
+      "dimensions": [
+        "organization",
+        "roleFamily",
+        "location",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "seniority-investment",
+      "dimensions": [
+        "seniority",
+        "organization",
+        "roleFamily",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "capability-co-occurrence",
+      "dimensions": [
+        "capabilityA",
+        "capabilityB",
+        "roleFamily",
+        "observationWindow"
+      ]
+    },
+    {
+      "signalType": "demand-momentum",
+      "dimensions": [
+        "subject",
+        "priorWindow",
+        "currentWindow",
+        "delta",
+        "direction"
+      ]
+    }
+  ]
+}

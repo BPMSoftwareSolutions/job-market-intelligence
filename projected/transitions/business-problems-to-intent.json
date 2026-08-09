@@ -1,0 +1,14 @@
+{
+  "transitionId": "business-problems-to-intent",
+  "from": {
+    "scenarioId": "resolve-business-problems",
+    "outcomeId": "business-problem-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "resolve-organizational-intent",
+    "inputId": "business-problem-fact-state",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

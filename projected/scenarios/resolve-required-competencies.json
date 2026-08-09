@@ -1,0 +1,37 @@
+{
+  "scenarioId": "resolve-required-competencies",
+  "input": {
+    "inputId": "compensation-fact-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "resolve-required-competencies",
+    "executionAuthorityId": "resolve-required-competencies.v1"
+  },
+  "outcome": {
+    "outcomeId": "competency-fact-state",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "competency facts retaining opportunity evidence are produced"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "resolve-required-competencies.given",
+      "text": "opportunities with admitted compensation facts"
+    },
+    "when": {
+      "semanticRef": "resolve-required-competencies.when",
+      "text": "required competencies are resolved"
+    },
+    "then": {
+      "semanticRef": "resolve-required-competencies.then",
+      "text": "competency facts retaining opportunity evidence are produced"
+    }
+  },
+  "name": "Resolve observed competency facts"
+}

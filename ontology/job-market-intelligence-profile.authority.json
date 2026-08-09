@@ -1,0 +1,15 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "job-market-intelligence-profile",
+  "semanticPurpose": "job market intelligence profile",
+  "canonicalMembers": [
+    "profileId",
+    "scope",
+    "organizations",
+    "signals",
+    "inferences",
+    "trends",
+    "generatedAt"
+  ],
+  "lineageRequired": true
+}

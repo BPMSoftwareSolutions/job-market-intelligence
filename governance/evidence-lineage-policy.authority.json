@@ -1,0 +1,11 @@
+{
+  "policyType": "market-intelligence-evidence-policy.v1",
+  "policyId": "evidence-lineage.v1",
+  "rules": [
+    "every-observed-fact-has-source-evidence",
+    "every-market-signal-has-observed-fact-evidence",
+    "every-market-inference-has-market-signal-evidence",
+    "source-facts-and-inferences-remain-distinct",
+    "historical-observations-are-not-overwritten"
+  ]
+}

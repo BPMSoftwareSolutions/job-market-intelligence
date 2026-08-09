@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/sda/job-market-intelligence/schemas/market-signal.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "signalId",
+    "signalType",
+    "subject",
+    "evidenceFactIds",
+    "dimensions"
+  ],
+  "properties": {
+    "signalId": {
+      "type": "string"
+    },
+    "signalType": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "evidenceFactIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "dimensions": {
+      "type": "object"
+    },
+    "observedWindow": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

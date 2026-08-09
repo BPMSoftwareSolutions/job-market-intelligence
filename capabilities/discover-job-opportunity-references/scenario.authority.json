@@ -1,0 +1,14 @@
+{
+  "scenarioType": "scenario.v1",
+  "scenarioId": "discover-job-opportunity-references",
+  "input": {
+    "contractId": "job-source-observation-scope.v1"
+  },
+  "event": {
+    "eventId": "discover-job-opportunity-references",
+    "executionAuthorityId": "discover-job-opportunity-references.v1"
+  },
+  "outcome": {
+    "contractId": "job-opportunity-reference-set.v1"
+  }
+}

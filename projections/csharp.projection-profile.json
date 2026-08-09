@@ -1,0 +1,16 @@
+{
+  "projectionProfileType": "sda-consumer-projection-profile.v1",
+  "profileId": "job-market-intelligence-csharp.v1",
+  "language": "csharp",
+  "sourceAuthority": "consumer-workspace",
+  "kernelBinding": "scenario-kernel-csharp",
+  "project": [
+    "contracts",
+    "scenario-bindings",
+    "interfaces",
+    "tests",
+    "runtime-entrypoints",
+    "telemetry-bindings"
+  ],
+  "forbidHandwrittenDomainCode": true
+}

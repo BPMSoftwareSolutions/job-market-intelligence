@@ -1,0 +1,18 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    { "id": "resolve-market-intelligence.v1", "owningScenarioId": "resolve-job-market-intelligence", "operations": [{ "kind": "invoke-port", "portId": "begin-market-observation" }] },
+    { "id": "discover-job-opportunity-references.v1", "owningScenarioId": "discover-job-opportunity-references", "operations": [{ "kind": "invoke-port", "portId": "public-reference-discovery" }] },
+    { "id": "acquire-job-posting.v1", "owningScenarioId": "acquire-job-posting", "operations": [{ "kind": "invoke-port", "portId": "public-posting-acquisition" }] },
+    { "id": "admit-job-opportunity.v1", "owningScenarioId": "admit-job-opportunity", "operations": [{ "kind": "invoke-port", "portId": "canonical-opportunity-admission" }] },
+    { "id": "resolve-compensation.v1", "owningScenarioId": "resolve-compensation", "operations": [{ "kind": "invoke-port", "portId": "compensation-fact-resolution" }] },
+    { "id": "resolve-required-competencies.v1", "owningScenarioId": "resolve-required-competencies", "operations": [{ "kind": "invoke-port", "portId": "competency-fact-resolution" }] },
+    { "id": "resolve-technologies.v1", "owningScenarioId": "resolve-technologies", "operations": [{ "kind": "invoke-port", "portId": "technology-fact-resolution" }] },
+    { "id": "resolve-business-problems.v1", "owningScenarioId": "resolve-business-problems", "operations": [{ "kind": "invoke-port", "portId": "business-problem-fact-resolution" }] },
+    { "id": "resolve-organizational-intent.v1", "owningScenarioId": "resolve-organizational-intent", "operations": [{ "kind": "invoke-port", "portId": "organizational-intent-resolution" }] },
+    { "id": "resolve-market-signals.v1", "owningScenarioId": "resolve-market-signals", "operations": [{ "kind": "invoke-port", "portId": "evidence-backed-signal-resolution" }] },
+    { "id": "aggregate-market-observations.v1", "owningScenarioId": "aggregate-market-observations", "operations": [{ "kind": "invoke-port", "portId": "longitudinal-observation-aggregation" }] },
+    { "id": "detect-market-patterns.v1", "owningScenarioId": "detect-market-patterns", "operations": [{ "kind": "invoke-port", "portId": "bounded-pattern-detection" }] },
+    { "id": "project-market-intelligence.v1", "owningScenarioId": "project-market-intelligence", "operations": [{ "kind": "invoke-port", "portId": "market-intelligence-projection" }] }
+  ]
+}

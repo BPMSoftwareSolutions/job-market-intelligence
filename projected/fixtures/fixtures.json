@@ -1,0 +1,251 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "adobe-public-market-intelligence",
+      "input": {
+        "sourceIds": [
+          "adobe"
+        ],
+        "organizationIds": [
+          "adobe"
+        ],
+        "observedFrom": "2026-08-01T00:00:00Z",
+        "observedTo": "2026-08-31T23:59:59Z",
+        "maxResultsPerSource": 100,
+        "publicSourceObservations": [
+          {
+            "opportunityId": "adobe-001",
+            "sourceId": "adobe",
+            "sourceUrl": "https://careers.adobe.com/us/en/job/adobe-001",
+            "organizationId": "adobe",
+            "role": "Senior Machine Learning Engineer",
+            "location": "San Jose, CA",
+            "seniority": "senior",
+            "compensation": {
+              "currency": "USD",
+              "minimum": 142700,
+              "maximum": 257600,
+              "period": "year"
+            },
+            "competencies": [
+              "machine learning",
+              "distributed systems"
+            ],
+            "technologies": [
+              "Python",
+              "PyTorch"
+            ],
+            "businessProblems": [
+              "generative content creation"
+            ],
+            "organizationalIntent": "invest-in-generative-ai-capability",
+            "observedAt": "2026-08-09T15:00:00Z",
+            "contentSha256": "1a11c16a367cd3f6350e95926c89970cc85f8707283863519a255501fb974104"
+          }
+        ]
+      },
+      "portOutcomes": {
+        "authority-driven": {
+          "authority": "../semantic-authority/transformations.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "project-market-intelligence",
+        "scenarioSequence": [
+          "resolve-job-market-intelligence",
+          "discover-job-opportunity-references",
+          "acquire-job-posting",
+          "admit-job-opportunity",
+          "resolve-compensation",
+          "resolve-required-competencies",
+          "resolve-technologies",
+          "resolve-business-problems",
+          "resolve-organizational-intent",
+          "resolve-market-signals",
+          "aggregate-market-observations",
+          "detect-market-patterns",
+          "project-market-intelligence"
+        ],
+        "outcomeAssertions": [
+          {
+            "conditionId": "organizational-investment-is-visible",
+            "path": "analystExperience.organizationalInvestment.0.subject",
+            "operator": "contains",
+            "value": "generative-ai"
+          },
+          {
+            "conditionId": "capability-demand-is-visible",
+            "path": "analystExperience.capabilityDemand.0.subject",
+            "operator": "contains",
+            "value": "PyTorch"
+          },
+          {
+            "conditionId": "supporting-lineage-is-inspectable",
+            "path": "analystExperience.capabilityDemand.0.evidenceFactIds",
+            "operator": "contains",
+            "value": "fact-adobe-001-technologies"
+          },
+          {
+            "conditionId": "change-claim-is-bounded",
+            "path": "analystExperience.changeOverTime.disposition",
+            "operator": "equals",
+            "value": "NOT_ESTABLISHED"
+          },
+          {
+            "path": "scope.organizationIds",
+            "operator": "contains",
+            "value": "adobe"
+          },
+          {
+            "path": "inferences.0.supportingSignalIds",
+            "operator": "contains",
+            "value": "signal-adobe-001-technology-demand"
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "input": {
+        "sourceIds": [
+          "greenhouse",
+          "lever"
+        ],
+        "organizationIds": [
+          "northstar",
+          "harbor"
+        ],
+        "observedFrom": "2026-07-01T00:00:00Z",
+        "observedTo": "2026-07-31T23:59:59Z",
+        "maxResultsPerSource": 50,
+        "publicSourceObservations": [
+          {
+            "opportunityId": "northstar-101",
+            "sourceId": "greenhouse",
+            "sourceUrl": "https://boards.greenhouse.io/northstar/jobs/101",
+            "organizationId": "northstar",
+            "role": "Platform Engineer",
+            "location": "Remote",
+            "seniority": "staff",
+            "compensation": {
+              "currency": "USD",
+              "minimum": 180000,
+              "maximum": 220000,
+              "period": "year"
+            },
+            "competencies": [
+              "platform engineering",
+              "reliability"
+            ],
+            "technologies": [
+              "Go",
+              "Kubernetes"
+            ],
+            "businessProblems": [
+              "developer productivity"
+            ],
+            "organizationalIntent": "scale-internal-platform",
+            "observedAt": "2026-07-15T12:00:00Z",
+            "contentSha256": "90868bde8c637c92422ca3c50e20f21cba20c483cbb380a260efb85c702f27db"
+          },
+          {
+            "opportunityId": "harbor-202",
+            "sourceId": "lever",
+            "sourceUrl": "https://jobs.lever.co/harbor/202",
+            "organizationId": "harbor",
+            "role": "Data Infrastructure Engineer",
+            "location": "New York, NY",
+            "seniority": "senior",
+            "compensation": {
+              "currency": "USD",
+              "minimum": 165000,
+              "maximum": 205000,
+              "period": "year"
+            },
+            "competencies": [
+              "data infrastructure",
+              "stream processing"
+            ],
+            "technologies": [
+              "Python",
+              "Kafka"
+            ],
+            "businessProblems": [
+              "real-time analytics"
+            ],
+            "organizationalIntent": "expand-streaming-data-capability",
+            "observedAt": "2026-07-20T12:00:00Z",
+            "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f"
+          }
+        ]
+      },
+      "portOutcomes": {
+        "authority-driven": {
+          "authority": "../semantic-authority/transformations.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "project-market-intelligence",
+        "scenarioSequence": [
+          "resolve-job-market-intelligence",
+          "discover-job-opportunity-references",
+          "acquire-job-posting",
+          "admit-job-opportunity",
+          "resolve-compensation",
+          "resolve-required-competencies",
+          "resolve-technologies",
+          "resolve-business-problems",
+          "resolve-organizational-intent",
+          "resolve-market-signals",
+          "aggregate-market-observations",
+          "detect-market-patterns",
+          "project-market-intelligence"
+        ],
+        "outcomeAssertions": [
+          {
+            "conditionId": "organizational-investment-is-visible",
+            "path": "analystExperience.organizationalInvestment.0.subject",
+            "operator": "contains",
+            "value": "internal-platform"
+          },
+          {
+            "conditionId": "capability-demand-is-visible",
+            "path": "analystExperience.capabilityDemand.0.subject",
+            "operator": "contains",
+            "value": "Kubernetes"
+          },
+          {
+            "conditionId": "supporting-lineage-is-inspectable",
+            "path": "analystExperience.capabilityDemand.1.evidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "conditionId": "change-claim-is-bounded",
+            "path": "analystExperience.changeOverTime.disposition",
+            "operator": "equals",
+            "value": "NOT_ESTABLISHED"
+          },
+          {
+            "path": "scope.organizationIds",
+            "operator": "contains",
+            "value": "harbor"
+          },
+          {
+            "path": "signals.1.subject",
+            "operator": "contains",
+            "value": "Kafka"
+          },
+          {
+            "path": "generatedAt",
+            "operator": "equals",
+            "value": "2026-07-31T23:59:59Z"
+          }
+        ]
+      }
+    }
+  ]
+}

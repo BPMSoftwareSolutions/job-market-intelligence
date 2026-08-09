@@ -1,0 +1,37 @@
+{
+  "authorityType": "semantic-execution-authority.v1",
+  "authorityId": "resolve-market-signals.v1",
+  "operations": [
+    {
+      "primitive": "bind",
+      "from": "opportunity.compensation",
+      "toSignal": "compensation-investment"
+    },
+    {
+      "primitive": "map",
+      "over": "opportunity.competencies",
+      "toSignal": "competency-demand"
+    },
+    {
+      "primitive": "map",
+      "over": "opportunity.technologies",
+      "toSignal": "technology-demand"
+    },
+    {
+      "primitive": "map",
+      "over": "opportunity.businessProblems",
+      "toSignal": "business-problem-investment"
+    },
+    {
+      "primitive": "map",
+      "over": "opportunity.aiThemes",
+      "toSignal": "ai-theme-investment"
+    },
+    {
+      "primitive": "bind",
+      "from": "opportunity.seniority",
+      "toSignal": "seniority-investment"
+    }
+  ],
+  "rule": "signals-reference-observed-fact-identities-not-free-text-conclusions"
+}
