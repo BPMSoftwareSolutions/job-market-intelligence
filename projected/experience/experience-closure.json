@@ -28,9 +28,9 @@
           "observations": [
             {
               "path": "analystExperience.capabilityDemand.0.subject",
-              "operator": "contains",
-              "expected": "PyTorch",
-              "actual": "Python, PyTorch",
+              "operator": "equals",
+              "expected": "Python",
+              "actual": "Python",
               "satisfied": true
             }
           ],
@@ -91,10 +91,10 @@
           "statement": "capability demand signals are visible to the analyst",
           "observations": [
             {
-              "path": "analystExperience.capabilityDemand.0.subject",
-              "operator": "contains",
+              "path": "analystExperience.capabilityDemand.1.subject",
+              "operator": "equals",
               "expected": "Kubernetes",
-              "actual": "Go, Kubernetes",
+              "actual": "Kubernetes",
               "satisfied": true
             }
           ],
@@ -105,7 +105,7 @@
           "statement": "the analyst can inspect the facts supporting a market signal",
           "observations": [
             {
-              "path": "analystExperience.capabilityDemand.1.evidenceFactIds",
+              "path": "analystExperience.capabilityDemand.3.evidenceFactIds",
               "operator": "contains",
               "expected": "fact-harbor-202-technologies",
               "actual": [
@@ -125,6 +125,70 @@
               "operator": "equals",
               "expected": "NOT_ESTABLISHED",
               "actual": "NOT_ESTABLISHED",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "established-change-across-observation-windows",
+      "conditions": [
+        {
+          "conditionId": "organizational-investment-is-visible",
+          "statement": "organizational investment signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.organizationalInvestment.0.subject",
+              "operator": "contains",
+              "expected": "core-infrastructure",
+              "actual": "modernize-core-infrastructure",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "capability-demand-is-visible",
+          "statement": "capability demand signals are visible to the analyst",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.0.subject",
+              "operator": "equals",
+              "expected": "Rust",
+              "actual": "Rust",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "supporting-lineage-is-inspectable",
+          "statement": "the analyst can inspect the facts supporting a market signal",
+          "observations": [
+            {
+              "path": "analystExperience.capabilityDemand.0.evidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-vector-301-technologies",
+              "actual": [
+                "fact-vector-301-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "change-claim-is-bounded",
+          "statement": "the profile explicitly states when change over time is not established",
+          "observations": [
+            {
+              "path": "analystExperience.changeOverTime.disposition",
+              "operator": "equals",
+              "expected": "ESTABLISHED",
+              "actual": "ESTABLISHED",
               "satisfied": true
             }
           ],

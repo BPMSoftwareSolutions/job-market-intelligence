@@ -1,0 +1,5 @@
+{
+  "transitions": [
+    { "transitionId": "hiring-activity-to-posting-evidence", "from": { "scenarioId": "collect-current-hiring-activity", "outcomeId": "current-hiring-activity-collected" }, "to": { "scenarioId": "acquire-and-admit-posting-evidence", "inputId": "current-hiring-activity-collected" }, "semanticProgress": "termination" }
+  ]
+}

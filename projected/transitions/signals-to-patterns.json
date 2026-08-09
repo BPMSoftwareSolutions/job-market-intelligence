@@ -1,0 +1,14 @@
+{
+  "transitionId": "signals-to-patterns",
+  "from": {
+    "scenarioId": "resolve-market-signals",
+    "outcomeId": "market-signals-resolved",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "detect-established-market-patterns",
+    "inputId": "market-signals-resolved",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

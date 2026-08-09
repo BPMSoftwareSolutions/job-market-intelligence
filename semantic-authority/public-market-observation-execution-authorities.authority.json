@@ -1,0 +1,15 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    { "id": "collect-current-hiring-activity.v1", "owningScenarioId": "collect-current-hiring-activity", "operations": [
+      { "kind": "invoke-port", "portId": "begin-public-market-observation" },
+      { "kind": "invoke-port", "portId": "public-source-resolution" },
+      { "kind": "invoke-port", "portId": "public-reference-discovery-observation" }
+    ] },
+    { "id": "acquire-and-admit-posting-evidence.v1", "owningScenarioId": "acquire-and-admit-posting-evidence", "operations": [
+      { "kind": "invoke-port", "portId": "acquisition-reference-resolution" },
+      { "kind": "invoke-port", "portId": "public-posting-acquisition-observation" },
+      { "kind": "invoke-port", "portId": "posting-evidence-admission" }
+    ] }
+  ]
+}

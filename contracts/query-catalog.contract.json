@@ -4,43 +4,123 @@
   "queries": [
     {
       "queryId": "company-investment-by-capability",
-      "question": "What capabilities is an organization funding through hiring?"
+      "question": "What capabilities is an organization funding through hiring?",
+      "status": "IMPLEMENTED",
+      "parameters": ["organizationId"],
+      "resultShape": "MarketSignal[]",
+      "expression": {
+        "op": "filter",
+        "from": { "op": "path", "from": "input", "path": "profile.signals" },
+        "as": "signal",
+        "where": {
+          "op": "includes",
+          "in": { "op": "path", "from": "signal", "path": "dimensions.organizationIds" },
+          "value": { "op": "path", "from": "input", "path": "params.organizationId" }
+        }
+      }
     },
     {
       "queryId": "highest-compensation-by-capability",
-      "question": "Which capabilities are associated with the highest compensation bands?"
+      "question": "Which capabilities are associated with the highest compensation bands?",
+      "status": "DECLARED"
     },
     {
       "queryId": "technology-demand-over-time",
-      "question": "Which technologies are increasing or decreasing in observed demand?"
+      "question": "Which technologies are increasing or decreasing in observed demand?",
+      "status": "DECLARED"
     },
     {
       "queryId": "competency-co-occurrence",
-      "question": "Which competencies commonly appear together?"
+      "question": "Which competencies commonly appear together?",
+      "status": "DECLARED"
     },
     {
       "queryId": "ai-theme-by-business-problem",
-      "question": "Which AI themes are tied to which business problems?"
+      "question": "Which AI themes are tied to which business problems?",
+      "status": "DECLARED"
     },
     {
       "queryId": "role-family-demand-momentum",
-      "question": "Which role families have increasing hiring activity?"
+      "question": "Which role families have increasing hiring activity?",
+      "status": "DECLARED"
     },
     {
       "queryId": "market-signal-evidence",
-      "question": "Which observed facts prove a selected market signal?"
+      "question": "Which observed facts prove a selected market signal?",
+      "status": "IMPLEMENTED",
+      "parameters": ["signalId"],
+      "resultShape": "{ signal: MarketSignal, evidenceFacts: ObservedJobFact[] }",
+      "expression": {
+        "op": "let",
+        "bindings": {
+          "signal": {
+            "op": "find",
+            "from": { "op": "path", "from": "input", "path": "profile.signals" },
+            "as": "candidate",
+            "where": { "op": "equals", "left": { "op": "path", "from": "candidate", "path": "signalId" }, "right": { "op": "path", "from": "input", "path": "params.signalId" } }
+          }
+        },
+        "value": {
+          "op": "object",
+          "fields": {
+            "signal": { "op": "path", "from": "signal" },
+            "evidenceFacts": {
+              "op": "filter",
+              "from": { "op": "path", "from": "input", "path": "profile.observedFacts.technologyFacts" },
+              "as": "fact",
+              "where": {
+                "op": "includes",
+                "in": { "op": "path", "from": "signal", "path": "evidenceFactIds" },
+                "value": { "op": "path", "from": "fact", "path": "factId" }
+              }
+            }
+          }
+        }
+      }
     },
     {
       "queryId": "market-inference-evidence",
-      "question": "Which signals prove a selected market inference?"
+      "question": "Which signals prove a selected market inference?",
+      "status": "IMPLEMENTED",
+      "parameters": ["inferenceId"],
+      "resultShape": "{ inference: MarketInference, supportingSignals: MarketSignal[] }",
+      "expression": {
+        "op": "let",
+        "bindings": {
+          "inference": {
+            "op": "find",
+            "from": { "op": "path", "from": "input", "path": "profile.inferences" },
+            "as": "candidate",
+            "where": { "op": "equals", "left": { "op": "path", "from": "candidate", "path": "inferenceId" }, "right": { "op": "path", "from": "input", "path": "params.inferenceId" } }
+          }
+        },
+        "value": {
+          "op": "object",
+          "fields": {
+            "inference": { "op": "path", "from": "inference" },
+            "supportingSignals": {
+              "op": "filter",
+              "from": { "op": "path", "from": "input", "path": "profile.signals" },
+              "as": "signal",
+              "where": {
+                "op": "includes",
+                "in": { "op": "path", "from": "inference", "path": "supportingSignalIds" },
+                "value": { "op": "path", "from": "signal", "path": "signalId" }
+              }
+            }
+          }
+        }
+      }
     },
     {
       "queryId": "career-adjacency",
-      "question": "Which high-demand opportunities are closest to a candidate evidence profile?"
+      "question": "Which high-demand opportunities are closest to a candidate evidence profile?",
+      "status": "DECLARED"
     },
     {
       "queryId": "gtm-whitespace",
-      "question": "Which recurring funded business problems indicate potential go-to-market whitespace?"
+      "question": "Which recurring funded business problems indicate potential go-to-market whitespace?",
+      "status": "DECLARED"
     }
   ]
 }

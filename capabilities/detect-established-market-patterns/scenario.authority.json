@@ -1,12 +1,12 @@
 {
   "scenarioType": "scenario.v1",
-  "scenarioId": "resolve-market-signals",
+  "scenarioId": "detect-established-market-patterns",
   "input": {
     "contractId": "job-market-intelligence-state.v1"
   },
   "event": {
-    "eventId": "resolve-market-signals",
-    "executionAuthorityId": "resolve-market-signals.v1"
+    "eventId": "detect-established-market-patterns",
+    "executionAuthorityId": "detect-established-market-patterns.v1"
   },
   "outcome": {
     "contractId": "job-market-intelligence-state.v1"

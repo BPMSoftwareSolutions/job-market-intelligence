@@ -1,0 +1,37 @@
+{
+  "scenarioId": "detect-established-market-patterns",
+  "input": {
+    "inputId": "market-signals-resolved",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "detect-established-market-patterns",
+    "executionAuthorityId": "detect-established-market-patterns.v1"
+  },
+  "outcome": {
+    "outcomeId": "market-patterns-determined",
+    "contract": {
+      "contractId": "job-market-intelligence-state.v1"
+    },
+    "experience": {
+      "statement": "I can see which demand patterns are established by the evidence, and which are not yet"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "detect-established-market-patterns.given",
+      "text": "evidence-backed market signals and any prior observation windows to compare them against"
+    },
+    "when": {
+      "semanticRef": "detect-established-market-patterns.when",
+      "text": "I compare demand across the available observation windows"
+    },
+    "then": {
+      "semanticRef": "detect-established-market-patterns.then",
+      "text": "I can see which demand patterns are established by the evidence, and which are not yet"
+    }
+  },
+  "name": "Determine whether market demand patterns are established"
+}

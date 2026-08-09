@@ -22,6 +22,7 @@
     "sda-authority-transformation-port.v1",
     "sda-authority-state-projection.v1",
     "sda-filesystem-artifact-store.v1",
+    "sda-external-observation-port.v1",
     "sda-fixture-contract-validator.v1",
     "sda-declarative-value-port.v1",
     "sda-declarative-state-projection.v1",
@@ -83,7 +84,7 @@
     {
       "path": "capability.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "3349651e6af0aa2d994975ccf3317f5acf34624dca8bfad2328ba5d79fe7672c"
+      "sha256": "b3bc4aa4fb22cd3f3c28bff9c73b0221b3c7a98af155df500b2df0ad76723b78"
     },
     {
       "path": "csharp/Directory.Build.props",
@@ -103,7 +104,7 @@
     {
       "path": "fixtures/fixtures.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "8de1a3fd39163c700d866a6b01a17d90cf2c3167882f0ed51c8ec37512e7b7f1"
+      "sha256": "1d1964e81f5cccd7e8d11063dd89d758c4264b930cf605e50df5fa391ba943f2"
     },
     {
       "path": "node/capability-runtime.generated.mjs",
@@ -138,22 +139,22 @@
     {
       "path": "query/conformance-query.csharp.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "a6959ad1589f53eaa6bbadc5691a3869271be220facab4d1f754c5e5c39c653a"
+      "sha256": "126e1b098dd57ad7a75424144777eadc3ee4dbb5c350764dfdec4598f2ad2b3f"
     },
     {
       "path": "query/conformance-query.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "61d4e853ac071341e376a6e101659d5707eb777cb84d79bf98a80c015e68e6c4"
+      "sha256": "d544f67233fc60307311d386e0faf1ad6619b0f60cfe6dd0c539307bda6473e8"
     },
     {
       "path": "query/conformance-query.node.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "61d4e853ac071341e376a6e101659d5707eb777cb84d79bf98a80c015e68e6c4"
+      "sha256": "d544f67233fc60307311d386e0faf1ad6619b0f60cfe6dd0c539307bda6473e8"
     },
     {
       "path": "query/conformance-query.python.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "a1b62b80922d28d5bde4391fe464382475cdcef0b1f0a1533ad6efff16dfded7"
+      "sha256": "ed1a7a433cf5d32abaee1840e04fbc1a18e442da3b6e0692983eaae8737b2a5e"
     },
     {
       "path": "query/platform-mechanic-resolution.csharp.json",
@@ -176,134 +177,44 @@
       "sha256": "1e95f4256e830fd3a49c97cabae3fed7048d3242625a9ab9cdbda8b62213c4e2"
     },
     {
-      "path": "scenarios/acquire-job-posting.json",
+      "path": "scenarios/detect-established-market-patterns.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "b88a41895ef5624b17f620fff7f3a411790b1bb75c8cbdb44692db1e49c14c48"
-    },
-    {
-      "path": "scenarios/admit-job-opportunity.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "7961e160b95b8b69f1c92c8cc2cfb282c1b0505cbcdf676b6bcca7e629a13581"
-    },
-    {
-      "path": "scenarios/aggregate-market-observations.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "5678dd59088275056bcc85b5f1e23f0ee63faa5cb2b0c31f48c5fbe322c801f2"
-    },
-    {
-      "path": "scenarios/detect-market-patterns.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "3c7098779adc4041052f5403d20e7c7e3b650dc500bdbba030b057a7bb068e61"
-    },
-    {
-      "path": "scenarios/discover-job-opportunity-references.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "0a56209a09b51a6f860c7ae084c03de93a527d1c031d6c424f7efbfcb512827b"
+      "sha256": "9b138c9e53335b05898537d0923bb12628fa34864a68605bfa4b844e42155cda"
     },
     {
       "path": "scenarios/project-market-intelligence.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "597ffd2c456636e7576b2cb7f4f29bfe99c32dac9a22d14e489d6757293564b5"
-    },
-    {
-      "path": "scenarios/resolve-business-problems.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "771ff37ffc482ed892d3c8596dee00a08ef35cfcf5c2a36403ee585bd769eb2a"
-    },
-    {
-      "path": "scenarios/resolve-compensation.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "d4df960d4c8a5ccb8a6d6da3e855ec022b64150d7d9c3ffcdc93e9d96238007d"
+      "sha256": "4cae165775a2df038278b6d4514aa93297d68341ea38c6fcbf1392395714f53e"
     },
     {
       "path": "scenarios/resolve-job-market-intelligence.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "855d0be7e52f64cd68783e85c851e67ee80d81f98a231f3ffbd413fb0c0e939a"
+      "sha256": "9b2091ccfb8fd0544af477d341f328917a952bf4b6b56274ca8dce9a4c6b94fa"
     },
     {
       "path": "scenarios/resolve-market-signals.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "af20447c4ddbbfa67d26a6158cce85c7dbecb62211697bc0124caa9e930608f3"
-    },
-    {
-      "path": "scenarios/resolve-organizational-intent.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "d0f4405b3fae647aaa6cbdc824033172bc1cf239b596f83ec412b7b4f82bd692"
-    },
-    {
-      "path": "scenarios/resolve-required-competencies.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "b5529ab5b4943ab2c68c8b04c373bf9432e5ebe78256770c59321e4d71954187"
-    },
-    {
-      "path": "scenarios/resolve-technologies.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "6f8f9ec27494e97d0cd640eb96067c472f4170b00f2ea7491b1faa299b7978ac"
+      "sha256": "aa23e9175a398258d678bce0c665c6708afd1e0ac21b58628d06cec75df2cee3"
     },
     {
       "path": "telemetry/expected-trace.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "43b5f7bb0230881cb44aa9a4804fca52b076015ab63a64a0a52794610907aa60"
+      "sha256": "90d5a129e5904fe7e97e78a71779dbb7af2f6eebac17c30d7f4a0dffd61b9801"
     },
     {
-      "path": "transitions/aggregates-to-patterns.json",
+      "path": "transitions/hiring-activity-to-signals.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "669c6ab41112763c212880a03874f6bbc2c54a50ffd3a2d2b99d34384d3581de"
-    },
-    {
-      "path": "transitions/business-problems-to-intent.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "2f167e486a91cd7b0afdf8045bb75e854b262939fc1216d963bffa03dcd18358"
-    },
-    {
-      "path": "transitions/compensation-to-competencies.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "81706a7ca5aad040990b4eca10134014dc72d54e6dd09054159a8549277f2f81"
-    },
-    {
-      "path": "transitions/competencies-to-technologies.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "0e9bbc64b3a87a0bf5ce9f1ca6c24d108c826509d457215ca7353097cf2a5f30"
-    },
-    {
-      "path": "transitions/intent-to-signals.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "e9be408d33eedd8decb7776f67983cabd2ab0f47eed6be10677009dc94c4d13d"
-    },
-    {
-      "path": "transitions/opportunities-to-compensation.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "06a520cb7d967b597c2fd9a439cd8dee5b60866f0d8eeb74924e1c39c93b1fbd"
+      "sha256": "8361e5ad3103fcacb92ec71efe29632b7ed8615662f2c49ff213be5eab881434"
     },
     {
       "path": "transitions/patterns-to-intelligence.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "542cae8ea5d5b375382e814542958fec280cb7c84c7c7576f755c44167f435f9"
+      "sha256": "98ecc1972554685725f1915d2b2de422160df0031d8767082235effd1037afa9"
     },
     {
-      "path": "transitions/postings-to-admission.json",
+      "path": "transitions/signals-to-patterns.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "efc6d33c2c6bc173c21ef5ffe9403671b09840639fca0c017d382b764010594c"
-    },
-    {
-      "path": "transitions/references-to-acquisition.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "0c1d4559f4129aad7157815ef926de476b3005f8956ee9997d6edeeb01f9b664"
-    },
-    {
-      "path": "transitions/scope-to-discovery.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "917b3f3e80953e44c25d3f1b3eca94b3f0881fbd894e517facf7c2382321961e"
-    },
-    {
-      "path": "transitions/signals-to-aggregation.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "4287e33013e2160518bfff4f9536a1f32d0b9675586eff542a97784bd690b055"
-    },
-    {
-      "path": "transitions/technologies-to-business-problems.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "58cb82d737528327ffb4755b7ca0d35a98b7dc7f06ed0af3038dbc63dbbdec11"
+      "sha256": "900141c7f6a50e6d3d6402ce89cee4464c26288ebedceab22a786d498938c297"
     }
   ]
 }

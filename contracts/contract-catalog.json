@@ -2,5 +2,8 @@
   "job-market-observation-scope.v1": "job-market-observation-scope.schema.json",
   "job-market-intelligence-state.v1": "job-market-intelligence-state.schema.json",
   "job-market-intelligence-profile.v1": "../schemas/job-market-intelligence-profile.schema.json",
-  "market-signal.v1": "../schemas/market-signal.schema.json"
+  "market-signal.v1": "../schemas/market-signal.schema.json",
+  "job-market-observation-request.v1": "job-market-observation-request.schema.json",
+  "public-job-market-observation-state.v1": "public-job-market-observation-state.schema.json",
+  "observed-job-posting-evidence.v1": "observed-job-posting-evidence.schema.json"
 }

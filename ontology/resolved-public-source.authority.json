@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "resolved-public-source",
+  "semanticPurpose": "resolved public job source",
+  "canonicalMembers": ["sourceId", "admitted"],
+  "lineageRequired": true
+}

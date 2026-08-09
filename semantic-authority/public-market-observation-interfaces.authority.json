@@ -1,0 +1,14 @@
+{
+  "authorityType": "consumer-interface-authority.v1",
+  "interfaces": [],
+  "projectionBindings": [],
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "portBindings": [
+    { "portId": "begin-public-market-observation", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/public-market-observation-transformations.authority.json", "transformationId": "begin-public-market-observation.v1" } },
+    { "portId": "public-source-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/public-market-observation-transformations.authority.json", "transformationId": "resolve-public-sources.v1" } },
+    { "portId": "public-reference-discovery-observation", "platformCapabilityId": "sda-external-observation-port.v1", "configuration": { "referencePath": "discoveryReference", "targetPath": "discoveredListing", "allowedHosts": ["boards-api.greenhouse.io"] } },
+    { "portId": "acquisition-reference-resolution", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/public-market-observation-transformations.authority.json", "transformationId": "resolve-acquisition-reference.v1" } },
+    { "portId": "public-posting-acquisition-observation", "platformCapabilityId": "sda-external-observation-port.v1", "configuration": { "referencePath": "acquisitionReference", "targetPath": "acquiredPosting", "allowedHosts": ["boards-api.greenhouse.io"] } },
+    { "portId": "posting-evidence-admission", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "semantic-authority/public-market-observation-transformations.authority.json", "transformationId": "admit-posting-evidence.v1" } }
+  ]
+}

@@ -2,7 +2,7 @@
   "scenarioType": "scenario.v1",
   "scenarioId": "project-market-intelligence",
   "input": {
-    "contractId": "market-pattern-set.v1"
+    "contractId": "job-market-intelligence-state.v1"
   },
   "event": {
     "eventId": "project-market-intelligence",

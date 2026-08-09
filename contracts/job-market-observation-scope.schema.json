@@ -2,13 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json",
   "type": "object",
-  "required": ["sourceIds", "organizationIds", "observedFrom", "observedTo", "maxResultsPerSource", "publicSourceObservations"],
+  "required": ["sourceIds", "organizationIds", "observedFrom", "observedTo", "maxResultsPerSource", "publicSourceObservations", "priorAggregates"],
   "properties": {
     "sourceIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "organizationIds": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "observedFrom": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$" },
     "observedTo": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$" },
     "maxResultsPerSource": { "type": "integer", "minimum": 1 },
+    "priorAggregates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["aggregateId", "subject", "count", "supportingSignalIds", "observedWindow"]
+      }
+    },
     "publicSourceObservations": {
       "type": "array",
       "minItems": 1,

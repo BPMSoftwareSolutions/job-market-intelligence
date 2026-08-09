@@ -41,6 +41,13 @@
         "type": "object"
       }
     },
+    "observedFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "technologyFacts": { "type": "array", "items": { "type": "object" } }
+      }
+    },
     "analystExperience": {
       "type": "object",
       "additionalProperties": false,

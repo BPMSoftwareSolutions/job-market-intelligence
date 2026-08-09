@@ -1,7 +1,7 @@
 {
   "scenarioId": "resolve-market-signals",
   "input": {
-    "inputId": "organizational-intent-fact-state",
+    "inputId": "company-hiring-activity-understood",
     "contract": {
       "contractId": "job-market-intelligence-state.v1"
     }
@@ -11,27 +11,27 @@
     "executionAuthorityId": "resolve-market-signals.v1"
   },
   "outcome": {
-    "outcomeId": "evidence-backed-signal-state",
+    "outcomeId": "market-signals-resolved",
     "contract": {
       "contractId": "job-market-intelligence-state.v1"
     },
     "experience": {
-      "statement": "evidence-backed market signals are produced"
+      "statement": "I can see signals for the capabilities and technologies represented across postings, each backed by the specific facts behind it"
     }
   },
   "gherkin": {
     "given": {
       "semanticRef": "resolve-market-signals.given",
-      "text": "admitted observed job facts"
+      "text": "a company's observed hiring activity, broken down into facts"
     },
     "when": {
       "semanticRef": "resolve-market-signals.when",
-      "text": "market signals are resolved"
+      "text": "I resolve market signals from that activity"
     },
     "then": {
       "semanticRef": "resolve-market-signals.then",
-      "text": "evidence-backed market signals are produced"
+      "text": "I can see signals for the capabilities and technologies represented across postings, each backed by the specific facts behind it"
     }
   },
-  "name": "Resolve market signals"
+  "name": "Resolve evidence-backed market signals"
 }

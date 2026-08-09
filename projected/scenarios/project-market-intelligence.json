@@ -1,7 +1,7 @@
 {
   "scenarioId": "project-market-intelligence",
   "input": {
-    "inputId": "evidence-backed-pattern-state",
+    "inputId": "market-patterns-determined",
     "contract": {
       "contractId": "job-market-intelligence-state.v1"
     }
@@ -23,7 +23,7 @@
   "gherkin": {
     "given": {
       "semanticRef": "project-market-intelligence.given",
-      "text": "evidence-backed market patterns"
+      "text": "evidence-backed market signals and patterns"
     },
     "when": {
       "semanticRef": "project-market-intelligence.when",

@@ -20,95 +20,7 @@
         "admit-outcome",
         "resolve-disposition"
       ],
-      "expectedTransitionId": "scope-to-discovery"
-    },
-    {
-      "scenarioId": "discover-job-opportunity-references",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "references-to-acquisition"
-    },
-    {
-      "scenarioId": "acquire-job-posting",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "postings-to-admission"
-    },
-    {
-      "scenarioId": "admit-job-opportunity",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "opportunities-to-compensation"
-    },
-    {
-      "scenarioId": "resolve-compensation",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "compensation-to-competencies"
-    },
-    {
-      "scenarioId": "resolve-required-competencies",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "competencies-to-technologies"
-    },
-    {
-      "scenarioId": "resolve-technologies",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "technologies-to-business-problems"
-    },
-    {
-      "scenarioId": "resolve-business-problems",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "business-problems-to-intent"
-    },
-    {
-      "scenarioId": "resolve-organizational-intent",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "intent-to-signals"
+      "expectedTransitionId": "hiring-activity-to-signals"
     },
     {
       "scenarioId": "resolve-market-signals",
@@ -119,21 +31,10 @@
         "admit-outcome",
         "resolve-disposition"
       ],
-      "expectedTransitionId": "signals-to-aggregation"
+      "expectedTransitionId": "signals-to-patterns"
     },
     {
-      "scenarioId": "aggregate-market-observations",
-      "steps": [
-        "admit-input",
-        "resolve-event-authority",
-        "execute-event-authority",
-        "admit-outcome",
-        "resolve-disposition"
-      ],
-      "expectedTransitionId": "aggregates-to-patterns"
-    },
-    {
-      "scenarioId": "detect-market-patterns",
+      "scenarioId": "detect-established-market-patterns",
       "steps": [
         "admit-input",
         "resolve-event-authority",

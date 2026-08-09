@@ -11,27 +11,27 @@
     "executionAuthorityId": "resolve-market-intelligence.v1"
   },
   "outcome": {
-    "outcomeId": "bounded-observation-state",
+    "outcomeId": "company-hiring-activity-understood",
     "contract": {
       "contractId": "job-market-intelligence-state.v1"
     },
     "experience": {
-      "statement": "one bounded observation state is produced"
+      "statement": "I can see the compensation, capabilities, technologies, business problems, and organizational intent represented in their observed hiring activity"
     }
   },
   "gherkin": {
     "given": {
       "semanticRef": "resolve-job-market-intelligence.given",
-      "text": "an admitted public-source observation scope"
+      "text": "the companies and hiring period I want to study"
     },
     "when": {
       "semanticRef": "resolve-job-market-intelligence.when",
-      "text": "market-intelligence resolution begins"
+      "text": "I analyze their public hiring activity"
     },
     "then": {
       "semanticRef": "resolve-job-market-intelligence.then",
-      "text": "one bounded observation state is produced"
+      "text": "I can see the compensation, capabilities, technologies, business problems, and organizational intent represented in their observed hiring activity"
     }
   },
-  "name": "Begin a bounded market observation"
+  "name": "Understand what a company is hiring for"
 }

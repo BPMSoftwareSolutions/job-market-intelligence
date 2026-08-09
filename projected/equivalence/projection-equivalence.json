@@ -11,24 +11,15 @@
   "fixtures": [
     {
       "fixtureId": "adobe-public-market-intelligence",
-      "canonicalOutcomeSha256": "d18ddc55ccc8c9a30cf1f9082f1b5d6e440ebbb63d794500eb32c24db429e1c5",
+      "canonicalOutcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
       "targets": [
         {
           "projectionTarget": "node",
-          "outcomeSha256": "d18ddc55ccc8c9a30cf1f9082f1b5d6e440ebbb63d794500eb32c24db429e1c5",
+          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",
@@ -39,20 +30,11 @@
         },
         {
           "projectionTarget": "csharp",
-          "outcomeSha256": "d18ddc55ccc8c9a30cf1f9082f1b5d6e440ebbb63d794500eb32c24db429e1c5",
+          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",
@@ -63,20 +45,11 @@
         },
         {
           "projectionTarget": "python",
-          "outcomeSha256": "d18ddc55ccc8c9a30cf1f9082f1b5d6e440ebbb63d794500eb32c24db429e1c5",
+          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",
@@ -90,24 +63,15 @@
     },
     {
       "fixtureId": "multi-company-input-dependent-intelligence",
-      "canonicalOutcomeSha256": "325c9e61ae12bc45b259672724a5e8cb9cd61d6b9b4d2fb8540d0df8d8c65e06",
+      "canonicalOutcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
       "targets": [
         {
           "projectionTarget": "node",
-          "outcomeSha256": "325c9e61ae12bc45b259672724a5e8cb9cd61d6b9b4d2fb8540d0df8d8c65e06",
+          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",
@@ -118,20 +82,11 @@
         },
         {
           "projectionTarget": "csharp",
-          "outcomeSha256": "325c9e61ae12bc45b259672724a5e8cb9cd61d6b9b4d2fb8540d0df8d8c65e06",
+          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",
@@ -142,20 +97,63 @@
         },
         {
           "projectionTarget": "python",
-          "outcomeSha256": "325c9e61ae12bc45b259672724a5e8cb9cd61d6b9b4d2fb8540d0df8d8c65e06",
+          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
-            "discover-job-opportunity-references",
-            "acquire-job-posting",
-            "admit-job-opportunity",
-            "resolve-compensation",
-            "resolve-required-competencies",
-            "resolve-technologies",
-            "resolve-business-problems",
-            "resolve-organizational-intent",
             "resolve-market-signals",
-            "aggregate-market-observations",
-            "detect-market-patterns",
+            "detect-established-market-patterns",
+            "project-market-intelligence"
+          ],
+          "runtimeDisposition": "terminated",
+          "mechanicResolution": "RESOLVED",
+          "executableOrigin": "PROJECTED_ONLY",
+          "outcomeEquivalent": true,
+          "lineageEquivalent": true
+        }
+      ],
+      "disposition": "EQUIVALENT"
+    },
+    {
+      "fixtureId": "established-change-across-observation-windows",
+      "canonicalOutcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+      "targets": [
+        {
+          "projectionTarget": "node",
+          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "scenarioSequence": [
+            "resolve-job-market-intelligence",
+            "resolve-market-signals",
+            "detect-established-market-patterns",
+            "project-market-intelligence"
+          ],
+          "runtimeDisposition": "terminated",
+          "mechanicResolution": "RESOLVED",
+          "executableOrigin": "PROJECTED_ONLY",
+          "outcomeEquivalent": true,
+          "lineageEquivalent": true
+        },
+        {
+          "projectionTarget": "csharp",
+          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "scenarioSequence": [
+            "resolve-job-market-intelligence",
+            "resolve-market-signals",
+            "detect-established-market-patterns",
+            "project-market-intelligence"
+          ],
+          "runtimeDisposition": "terminated",
+          "mechanicResolution": "RESOLVED",
+          "executableOrigin": "PROJECTED_ONLY",
+          "outcomeEquivalent": true,
+          "lineageEquivalent": true
+        },
+        {
+          "projectionTarget": "python",
+          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "scenarioSequence": [
+            "resolve-job-market-intelligence",
+            "resolve-market-signals",
+            "detect-established-market-patterns",
             "project-market-intelligence"
           ],
           "runtimeDisposition": "terminated",

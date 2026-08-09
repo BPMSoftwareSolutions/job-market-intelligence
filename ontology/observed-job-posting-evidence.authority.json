@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "observed-job-posting-evidence",
+  "semanticPurpose": "admitted observed public job posting evidence",
+  "canonicalMembers": ["opportunityId", "sourceId", "sourceUrl", "observedAt", "contentSha256", "status", "mediaType"],
+  "lineageRequired": true
+}

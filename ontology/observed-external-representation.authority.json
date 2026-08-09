@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "observed-external-representation",
+  "semanticPurpose": "observed external HTTP representation",
+  "canonicalMembers": ["sourceReference", "status", "mediaType", "observedAt", "content", "contentSha256"],
+  "lineageRequired": true
+}

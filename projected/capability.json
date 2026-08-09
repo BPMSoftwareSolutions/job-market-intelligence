@@ -20,330 +20,34 @@
         "executionAuthorityId": "resolve-market-intelligence.v1"
       },
       "outcome": {
-        "outcomeId": "bounded-observation-state",
+        "outcomeId": "company-hiring-activity-understood",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         },
         "experience": {
-          "statement": "one bounded observation state is produced"
+          "statement": "I can see the compensation, capabilities, technologies, business problems, and organizational intent represented in their observed hiring activity"
         }
       },
       "gherkin": {
         "given": {
           "semanticRef": "resolve-job-market-intelligence.given",
-          "text": "an admitted public-source observation scope"
+          "text": "the companies and hiring period I want to study"
         },
         "when": {
           "semanticRef": "resolve-job-market-intelligence.when",
-          "text": "market-intelligence resolution begins"
+          "text": "I analyze their public hiring activity"
         },
         "then": {
           "semanticRef": "resolve-job-market-intelligence.then",
-          "text": "one bounded observation state is produced"
+          "text": "I can see the compensation, capabilities, technologies, business problems, and organizational intent represented in their observed hiring activity"
         }
       },
-      "name": "Begin a bounded market observation"
-    },
-    {
-      "scenarioId": "discover-job-opportunity-references",
-      "input": {
-        "inputId": "bounded-observation-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "discover-job-opportunity-references",
-        "executionAuthorityId": "discover-job-opportunity-references.v1"
-      },
-      "outcome": {
-        "outcomeId": "discovered-reference-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "a bounded reference set with source lineage is produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "discover-job-opportunity-references.given",
-          "text": "one bounded observation state"
-        },
-        "when": {
-          "semanticRef": "discover-job-opportunity-references.when",
-          "text": "public job opportunity references are discovered"
-        },
-        "then": {
-          "semanticRef": "discover-job-opportunity-references.then",
-          "text": "a bounded reference set with source lineage is produced"
-        }
-      },
-      "name": "Discover public job opportunity references"
-    },
-    {
-      "scenarioId": "acquire-job-posting",
-      "input": {
-        "inputId": "discovered-reference-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "acquire-job-posting",
-        "executionAuthorityId": "acquire-job-posting.v1"
-      },
-      "outcome": {
-        "outcomeId": "observed-posting-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "observed postings with content identity are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "acquire-job-posting.given",
-          "text": "admitted public job opportunity references"
-        },
-        "when": {
-          "semanticRef": "acquire-job-posting.when",
-          "text": "their public posting documents are acquired"
-        },
-        "then": {
-          "semanticRef": "acquire-job-posting.then",
-          "text": "observed postings with content identity are produced"
-        }
-      },
-      "name": "Acquire public job postings"
-    },
-    {
-      "scenarioId": "admit-job-opportunity",
-      "input": {
-        "inputId": "observed-posting-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "admit-job-opportunity",
-        "executionAuthorityId": "admit-job-opportunity.v1"
-      },
-      "outcome": {
-        "outcomeId": "canonical-opportunity-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "normalized opportunities retaining source evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "admit-job-opportunity.given",
-          "text": "observed public job postings"
-        },
-        "when": {
-          "semanticRef": "admit-job-opportunity.when",
-          "text": "canonical job opportunities are admitted"
-        },
-        "then": {
-          "semanticRef": "admit-job-opportunity.then",
-          "text": "normalized opportunities retaining source evidence are produced"
-        }
-      },
-      "name": "Admit canonical job opportunities"
-    },
-    {
-      "scenarioId": "resolve-compensation",
-      "input": {
-        "inputId": "canonical-opportunity-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "resolve-compensation",
-        "executionAuthorityId": "resolve-compensation.v1"
-      },
-      "outcome": {
-        "outcomeId": "compensation-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "compensation facts retaining opportunity evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "resolve-compensation.given",
-          "text": "canonical job opportunities"
-        },
-        "when": {
-          "semanticRef": "resolve-compensation.when",
-          "text": "compensation evidence is resolved"
-        },
-        "then": {
-          "semanticRef": "resolve-compensation.then",
-          "text": "compensation facts retaining opportunity evidence are produced"
-        }
-      },
-      "name": "Resolve observed compensation facts"
-    },
-    {
-      "scenarioId": "resolve-required-competencies",
-      "input": {
-        "inputId": "compensation-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "resolve-required-competencies",
-        "executionAuthorityId": "resolve-required-competencies.v1"
-      },
-      "outcome": {
-        "outcomeId": "competency-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "competency facts retaining opportunity evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "resolve-required-competencies.given",
-          "text": "opportunities with admitted compensation facts"
-        },
-        "when": {
-          "semanticRef": "resolve-required-competencies.when",
-          "text": "required competencies are resolved"
-        },
-        "then": {
-          "semanticRef": "resolve-required-competencies.then",
-          "text": "competency facts retaining opportunity evidence are produced"
-        }
-      },
-      "name": "Resolve observed competency facts"
-    },
-    {
-      "scenarioId": "resolve-technologies",
-      "input": {
-        "inputId": "competency-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "resolve-technologies",
-        "executionAuthorityId": "resolve-technologies.v1"
-      },
-      "outcome": {
-        "outcomeId": "technology-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "technology facts retaining opportunity evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "resolve-technologies.given",
-          "text": "opportunities with admitted competency facts"
-        },
-        "when": {
-          "semanticRef": "resolve-technologies.when",
-          "text": "named technologies are resolved"
-        },
-        "then": {
-          "semanticRef": "resolve-technologies.then",
-          "text": "technology facts retaining opportunity evidence are produced"
-        }
-      },
-      "name": "Resolve observed technology facts"
-    },
-    {
-      "scenarioId": "resolve-business-problems",
-      "input": {
-        "inputId": "technology-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "resolve-business-problems",
-        "executionAuthorityId": "resolve-business-problems.v1"
-      },
-      "outcome": {
-        "outcomeId": "business-problem-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "business-problem facts retaining opportunity evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "resolve-business-problems.given",
-          "text": "opportunities with admitted technology facts"
-        },
-        "when": {
-          "semanticRef": "resolve-business-problems.when",
-          "text": "stated business problems are resolved"
-        },
-        "then": {
-          "semanticRef": "resolve-business-problems.then",
-          "text": "business-problem facts retaining opportunity evidence are produced"
-        }
-      },
-      "name": "Resolve observed business problem facts"
-    },
-    {
-      "scenarioId": "resolve-organizational-intent",
-      "input": {
-        "inputId": "business-problem-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "resolve-organizational-intent",
-        "executionAuthorityId": "resolve-organizational-intent.v1"
-      },
-      "outcome": {
-        "outcomeId": "organizational-intent-fact-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "bounded intent facts retaining opportunity evidence are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "resolve-organizational-intent.given",
-          "text": "admitted observed job facts"
-        },
-        "when": {
-          "semanticRef": "resolve-organizational-intent.when",
-          "text": "organizational intent is classified"
-        },
-        "then": {
-          "semanticRef": "resolve-organizational-intent.then",
-          "text": "bounded intent facts retaining opportunity evidence are produced"
-        }
-      },
-      "name": "Resolve bounded organizational intent"
+      "name": "Understand what a company is hiring for"
     },
     {
       "scenarioId": "resolve-market-signals",
       "input": {
-        "inputId": "organizational-intent-fact-state",
+        "inputId": "company-hiring-activity-understood",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         }
@@ -353,108 +57,71 @@
         "executionAuthorityId": "resolve-market-signals.v1"
       },
       "outcome": {
-        "outcomeId": "evidence-backed-signal-state",
+        "outcomeId": "market-signals-resolved",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         },
         "experience": {
-          "statement": "evidence-backed market signals are produced"
+          "statement": "I can see signals for the capabilities and technologies represented across postings, each backed by the specific facts behind it"
         }
       },
       "gherkin": {
         "given": {
           "semanticRef": "resolve-market-signals.given",
-          "text": "admitted observed job facts"
+          "text": "a company's observed hiring activity, broken down into facts"
         },
         "when": {
           "semanticRef": "resolve-market-signals.when",
-          "text": "market signals are resolved"
+          "text": "I resolve market signals from that activity"
         },
         "then": {
           "semanticRef": "resolve-market-signals.then",
-          "text": "evidence-backed market signals are produced"
+          "text": "I can see signals for the capabilities and technologies represented across postings, each backed by the specific facts behind it"
         }
       },
-      "name": "Resolve market signals"
+      "name": "Resolve evidence-backed market signals"
     },
     {
-      "scenarioId": "aggregate-market-observations",
+      "scenarioId": "detect-established-market-patterns",
       "input": {
-        "inputId": "evidence-backed-signal-state",
+        "inputId": "market-signals-resolved",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         }
       },
       "event": {
-        "eventId": "aggregate-market-observations",
-        "executionAuthorityId": "aggregate-market-observations.v1"
+        "eventId": "detect-established-market-patterns",
+        "executionAuthorityId": "detect-established-market-patterns.v1"
       },
       "outcome": {
-        "outcomeId": "longitudinal-aggregate-state",
+        "outcomeId": "market-patterns-determined",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         },
         "experience": {
-          "statement": "longitudinal aggregates preserving signal identities are produced"
+          "statement": "I can see which demand patterns are established by the evidence, and which are not yet"
         }
       },
       "gherkin": {
         "given": {
-          "semanticRef": "aggregate-market-observations.given",
-          "text": "evidence-backed market signals"
+          "semanticRef": "detect-established-market-patterns.given",
+          "text": "evidence-backed market signals and any prior observation windows to compare them against"
         },
         "when": {
-          "semanticRef": "aggregate-market-observations.when",
-          "text": "equivalent observation dimensions are aggregated"
+          "semanticRef": "detect-established-market-patterns.when",
+          "text": "I compare demand across the available observation windows"
         },
         "then": {
-          "semanticRef": "aggregate-market-observations.then",
-          "text": "longitudinal aggregates preserving signal identities are produced"
+          "semanticRef": "detect-established-market-patterns.then",
+          "text": "I can see which demand patterns are established by the evidence, and which are not yet"
         }
       },
-      "name": "Aggregate market observations"
-    },
-    {
-      "scenarioId": "detect-market-patterns",
-      "input": {
-        "inputId": "longitudinal-aggregate-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        }
-      },
-      "event": {
-        "eventId": "detect-market-patterns",
-        "executionAuthorityId": "detect-market-patterns.v1"
-      },
-      "outcome": {
-        "outcomeId": "evidence-backed-pattern-state",
-        "contract": {
-          "contractId": "job-market-intelligence-state.v1"
-        },
-        "experience": {
-          "statement": "patterns retaining supporting signal identities are produced"
-        }
-      },
-      "gherkin": {
-        "given": {
-          "semanticRef": "detect-market-patterns.given",
-          "text": "longitudinal market aggregates"
-        },
-        "when": {
-          "semanticRef": "detect-market-patterns.when",
-          "text": "comparable dimensions are classified"
-        },
-        "then": {
-          "semanticRef": "detect-market-patterns.then",
-          "text": "patterns retaining supporting signal identities are produced"
-        }
-      },
-      "name": "Detect bounded market patterns"
+      "name": "Determine whether market demand patterns are established"
     },
     {
       "scenarioId": "project-market-intelligence",
       "input": {
-        "inputId": "evidence-backed-pattern-state",
+        "inputId": "market-patterns-determined",
         "contract": {
           "contractId": "job-market-intelligence-state.v1"
         }
@@ -476,7 +143,7 @@
       "gherkin": {
         "given": {
           "semanticRef": "project-market-intelligence.given",
-          "text": "evidence-backed market patterns"
+          "text": "evidence-backed market signals and patterns"
         },
         "when": {
           "semanticRef": "project-market-intelligence.when",
@@ -492,155 +159,29 @@
   ],
   "transitions": [
     {
-      "transitionId": "scope-to-discovery",
+      "transitionId": "hiring-activity-to-signals",
       "from": {
         "scenarioId": "resolve-job-market-intelligence",
-        "outcomeId": "bounded-observation-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "discover-job-opportunity-references",
-        "inputId": "bounded-observation-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "references-to-acquisition",
-      "from": {
-        "scenarioId": "discover-job-opportunity-references",
-        "outcomeId": "discovered-reference-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "acquire-job-posting",
-        "inputId": "discovered-reference-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "postings-to-admission",
-      "from": {
-        "scenarioId": "acquire-job-posting",
-        "outcomeId": "observed-posting-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "admit-job-opportunity",
-        "inputId": "observed-posting-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "opportunities-to-compensation",
-      "from": {
-        "scenarioId": "admit-job-opportunity",
-        "outcomeId": "canonical-opportunity-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "resolve-compensation",
-        "inputId": "canonical-opportunity-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "compensation-to-competencies",
-      "from": {
-        "scenarioId": "resolve-compensation",
-        "outcomeId": "compensation-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "resolve-required-competencies",
-        "inputId": "compensation-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "competencies-to-technologies",
-      "from": {
-        "scenarioId": "resolve-required-competencies",
-        "outcomeId": "competency-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "resolve-technologies",
-        "inputId": "competency-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "technologies-to-business-problems",
-      "from": {
-        "scenarioId": "resolve-technologies",
-        "outcomeId": "technology-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "resolve-business-problems",
-        "inputId": "technology-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "business-problems-to-intent",
-      "from": {
-        "scenarioId": "resolve-business-problems",
-        "outcomeId": "business-problem-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "resolve-organizational-intent",
-        "inputId": "business-problem-fact-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "intent-to-signals",
-      "from": {
-        "scenarioId": "resolve-organizational-intent",
-        "outcomeId": "organizational-intent-fact-state",
+        "outcomeId": "company-hiring-activity-understood",
         "contractId": "job-market-intelligence-state.v1"
       },
       "to": {
         "scenarioId": "resolve-market-signals",
-        "inputId": "organizational-intent-fact-state",
+        "inputId": "company-hiring-activity-understood",
         "contractId": "job-market-intelligence-state.v1"
       },
       "semanticProgress": "narrowing"
     },
     {
-      "transitionId": "signals-to-aggregation",
+      "transitionId": "signals-to-patterns",
       "from": {
         "scenarioId": "resolve-market-signals",
-        "outcomeId": "evidence-backed-signal-state",
+        "outcomeId": "market-signals-resolved",
         "contractId": "job-market-intelligence-state.v1"
       },
       "to": {
-        "scenarioId": "aggregate-market-observations",
-        "inputId": "evidence-backed-signal-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "semanticProgress": "narrowing"
-    },
-    {
-      "transitionId": "aggregates-to-patterns",
-      "from": {
-        "scenarioId": "aggregate-market-observations",
-        "outcomeId": "longitudinal-aggregate-state",
-        "contractId": "job-market-intelligence-state.v1"
-      },
-      "to": {
-        "scenarioId": "detect-market-patterns",
-        "inputId": "longitudinal-aggregate-state",
+        "scenarioId": "detect-established-market-patterns",
+        "inputId": "market-signals-resolved",
         "contractId": "job-market-intelligence-state.v1"
       },
       "semanticProgress": "narrowing"
@@ -648,13 +189,13 @@
     {
       "transitionId": "patterns-to-intelligence",
       "from": {
-        "scenarioId": "detect-market-patterns",
-        "outcomeId": "evidence-backed-pattern-state",
+        "scenarioId": "detect-established-market-patterns",
+        "outcomeId": "market-patterns-determined",
         "contractId": "job-market-intelligence-state.v1"
       },
       "to": {
         "scenarioId": "project-market-intelligence",
-        "inputId": "evidence-backed-pattern-state",
+        "inputId": "market-patterns-determined",
         "contractId": "job-market-intelligence-state.v1"
       },
       "semanticProgress": "termination"

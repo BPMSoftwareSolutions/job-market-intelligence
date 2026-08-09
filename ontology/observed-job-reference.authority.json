@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-object.v1",
+  "objectId": "observed-job-reference",
+  "semanticPurpose": "observed public job reference",
+  "canonicalMembers": ["referenceId", "sourceId", "sourceUrl", "observedAt"],
+  "lineageRequired": true
+}

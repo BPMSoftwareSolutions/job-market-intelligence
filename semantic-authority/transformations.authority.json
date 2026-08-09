@@ -3,24 +3,59 @@
   "transformations": [
     {
       "id": "begin-market-observation.v1",
-      "expression": { "op": "path", "from": "input" }
+      "expression": {
+        "op": "path",
+        "from": "input"
+      }
     },
     {
       "id": "discover-public-references.v1",
       "expression": {
         "op": "merge",
         "values": [
-          { "op": "path", "from": "input" },
-          { "op": "object", "fields": {
-            "discoveredReferences": { "op": "map", "from": { "op": "path", "from": "input", "path": "publicSourceObservations" }, "as": "posting", "value": {
-              "op": "object", "fields": {
-                "opportunityId": { "op": "path", "from": "posting", "path": "opportunityId" },
-                "sourceId": { "op": "path", "from": "posting", "path": "sourceId" },
-                "sourceUrl": { "op": "path", "from": "posting", "path": "sourceUrl" },
-                "observedAt": { "op": "path", "from": "posting", "path": "observedAt" }
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "discoveredReferences": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "publicSourceObservations"
+                },
+                "as": "posting",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "opportunityId"
+                    },
+                    "sourceId": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "sourceId"
+                    },
+                    "sourceUrl": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "sourceUrl"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "observedAt"
+                    }
+                  }
+                }
               }
-            } }
-          } }
+            }
+          }
         ]
       }
     },
@@ -29,24 +64,68 @@
       "expression": {
         "op": "merge",
         "values": [
-          { "op": "path", "from": "input" },
-          { "op": "object", "fields": {
-            "observedPostings": { "op": "map", "from": { "op": "path", "from": "input", "path": "publicSourceObservations" }, "as": "posting", "value": {
-              "op": "merge", "values": [
-                { "op": "path", "from": "posting" },
-                { "op": "object", "fields": {
-                  "sourceEvidence": { "op": "array", "items": [
-                    { "op": "object", "fields": {
-                      "sourceId": { "op": "path", "from": "posting", "path": "sourceId" },
-                      "sourceUrl": { "op": "path", "from": "posting", "path": "sourceUrl" },
-                      "contentSha256": { "op": "path", "from": "posting", "path": "contentSha256" },
-                      "observedAt": { "op": "path", "from": "posting", "path": "observedAt" }
-                    } }
-                  ] }
-                } }
-              ]
-            } }
-          } }
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "observedPostings": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "publicSourceObservations"
+                },
+                "as": "posting",
+                "value": {
+                  "op": "merge",
+                  "values": [
+                    {
+                      "op": "path",
+                      "from": "posting"
+                    },
+                    {
+                      "op": "object",
+                      "fields": {
+                        "sourceEvidence": {
+                          "op": "array",
+                          "items": [
+                            {
+                              "op": "object",
+                              "fields": {
+                                "sourceId": {
+                                  "op": "path",
+                                  "from": "posting",
+                                  "path": "sourceId"
+                                },
+                                "sourceUrl": {
+                                  "op": "path",
+                                  "from": "posting",
+                                  "path": "sourceUrl"
+                                },
+                                "contentSha256": {
+                                  "op": "path",
+                                  "from": "posting",
+                                  "path": "contentSha256"
+                                },
+                                "observedAt": {
+                                  "op": "path",
+                                  "from": "posting",
+                                  "path": "observedAt"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
         ]
       }
     },
@@ -55,197 +134,1460 @@
       "expression": {
         "op": "merge",
         "values": [
-          { "op": "path", "from": "input" },
-          { "op": "object", "fields": {
-            "opportunities": { "op": "map", "from": { "op": "path", "from": "input", "path": "observedPostings" }, "as": "posting", "value": {
-              "op": "object", "fields": {
-                "opportunityId": { "op": "path", "from": "posting", "path": "opportunityId" },
-                "organizationId": { "op": "path", "from": "posting", "path": "organizationId" },
-                "role": { "op": "path", "from": "posting", "path": "role" },
-                "location": { "op": "path", "from": "posting", "path": "location" },
-                "seniority": { "op": "path", "from": "posting", "path": "seniority" },
-                "compensation": { "op": "path", "from": "posting", "path": "compensation" },
-                "competencies": { "op": "path", "from": "posting", "path": "competencies" },
-                "technologies": { "op": "path", "from": "posting", "path": "technologies" },
-                "businessProblems": { "op": "path", "from": "posting", "path": "businessProblems" },
-                "organizationalIntent": { "op": "path", "from": "posting", "path": "organizationalIntent" },
-                "sourceEvidence": { "op": "path", "from": "posting", "path": "sourceEvidence" },
-                "observedAt": { "op": "path", "from": "posting", "path": "observedAt" }
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "opportunities": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "observedPostings"
+                },
+                "as": "posting",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "opportunityId"
+                    },
+                    "organizationId": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "organizationId"
+                    },
+                    "role": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "role"
+                    },
+                    "location": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "location"
+                    },
+                    "seniority": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "seniority"
+                    },
+                    "compensation": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "compensation"
+                    },
+                    "competencies": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "competencies"
+                    },
+                    "technologies": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "technologies"
+                    },
+                    "businessProblems": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "businessProblems"
+                    },
+                    "organizationalIntent": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "organizationalIntent"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "posting",
+                      "path": "observedAt"
+                    }
+                  }
+                }
               }
-            } }
-          } }
+            }
+          }
         ]
       }
     },
     {
       "id": "resolve-compensation-facts.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "compensationFacts": { "op": "map", "from": { "op": "path", "from": "input", "path": "opportunities" }, "as": "opportunity", "value": {
-          "op": "object", "fields": {
-            "factId": { "op": "format", "template": "fact-{opportunityId}-compensation", "values": { "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" } } },
-            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
-            "factType": { "op": "literal", "value": "compensation" },
-            "value": { "op": "path", "from": "opportunity", "path": "compensation" },
-            "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" },
-            "observedAt": { "op": "path", "from": "opportunity", "path": "observedAt" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "compensationFacts": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "opportunities"
+                },
+                "as": "opportunity",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "factId": {
+                      "op": "format",
+                      "template": "fact-{opportunityId}-compensation",
+                      "values": {
+                        "opportunityId": {
+                          "op": "path",
+                          "from": "opportunity",
+                          "path": "opportunityId"
+                        }
+                      }
+                    },
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "opportunityId"
+                    },
+                    "factType": {
+                      "op": "literal",
+                      "value": "compensation"
+                    },
+                    "value": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "compensation"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "observedAt"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "resolve-competency-facts.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "competencyFacts": { "op": "map", "from": { "op": "path", "from": "input", "path": "opportunities" }, "as": "opportunity", "value": {
-          "op": "object", "fields": {
-            "factId": { "op": "format", "template": "fact-{opportunityId}-competencies", "values": { "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" } } },
-            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
-            "factType": { "op": "literal", "value": "required-competencies" },
-            "value": { "op": "path", "from": "opportunity", "path": "competencies" },
-            "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" },
-            "observedAt": { "op": "path", "from": "opportunity", "path": "observedAt" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "competencyFacts": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "opportunities"
+                },
+                "as": "opportunity",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "factId": {
+                      "op": "format",
+                      "template": "fact-{opportunityId}-competencies",
+                      "values": {
+                        "opportunityId": {
+                          "op": "path",
+                          "from": "opportunity",
+                          "path": "opportunityId"
+                        }
+                      }
+                    },
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "opportunityId"
+                    },
+                    "organizationId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "organizationId"
+                    },
+                    "role": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "role"
+                    },
+                    "factType": {
+                      "op": "literal",
+                      "value": "required-competencies"
+                    },
+                    "value": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "competencies"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "observedAt"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "resolve-technology-facts.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "technologyFacts": { "op": "map", "from": { "op": "path", "from": "input", "path": "opportunities" }, "as": "opportunity", "value": {
-          "op": "object", "fields": {
-            "factId": { "op": "format", "template": "fact-{opportunityId}-technologies", "values": { "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" } } },
-            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
-            "organizationId": { "op": "path", "from": "opportunity", "path": "organizationId" },
-            "role": { "op": "path", "from": "opportunity", "path": "role" },
-            "factType": { "op": "literal", "value": "technology" },
-            "value": { "op": "path", "from": "opportunity", "path": "technologies" },
-            "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" },
-            "observedAt": { "op": "path", "from": "opportunity", "path": "observedAt" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "technologyFacts": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "opportunities"
+                },
+                "as": "opportunity",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "factId": {
+                      "op": "format",
+                      "template": "fact-{opportunityId}-technologies",
+                      "values": {
+                        "opportunityId": {
+                          "op": "path",
+                          "from": "opportunity",
+                          "path": "opportunityId"
+                        }
+                      }
+                    },
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "opportunityId"
+                    },
+                    "organizationId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "organizationId"
+                    },
+                    "role": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "role"
+                    },
+                    "factType": {
+                      "op": "literal",
+                      "value": "technology"
+                    },
+                    "value": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "technologies"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "observedAt"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "resolve-business-problem-facts.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "businessProblemFacts": { "op": "map", "from": { "op": "path", "from": "input", "path": "opportunities" }, "as": "opportunity", "value": {
-          "op": "object", "fields": {
-            "factId": { "op": "format", "template": "fact-{opportunityId}-business-problems", "values": { "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" } } },
-            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
-            "factType": { "op": "literal", "value": "business-problem" },
-            "value": { "op": "path", "from": "opportunity", "path": "businessProblems" },
-            "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" },
-            "observedAt": { "op": "path", "from": "opportunity", "path": "observedAt" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "businessProblemFacts": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "opportunities"
+                },
+                "as": "opportunity",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "factId": {
+                      "op": "format",
+                      "template": "fact-{opportunityId}-business-problems",
+                      "values": {
+                        "opportunityId": {
+                          "op": "path",
+                          "from": "opportunity",
+                          "path": "opportunityId"
+                        }
+                      }
+                    },
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "opportunityId"
+                    },
+                    "organizationId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "organizationId"
+                    },
+                    "role": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "role"
+                    },
+                    "factType": {
+                      "op": "literal",
+                      "value": "business-problem"
+                    },
+                    "value": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "businessProblems"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "observedAt"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "resolve-organizational-intent-facts.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "organizationalIntentFacts": { "op": "map", "from": { "op": "path", "from": "input", "path": "opportunities" }, "as": "opportunity", "value": {
-          "op": "object", "fields": {
-            "factId": { "op": "format", "template": "fact-{opportunityId}-organizational-intent", "values": { "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" } } },
-            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
-            "factType": { "op": "literal", "value": "organizational-intent" },
-            "value": { "op": "path", "from": "opportunity", "path": "organizationalIntent" },
-            "organizationId": { "op": "path", "from": "opportunity", "path": "organizationId" },
-            "role": { "op": "path", "from": "opportunity", "path": "role" },
-            "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" },
-            "observedAt": { "op": "path", "from": "opportunity", "path": "observedAt" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "organizationalIntentFacts": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "opportunities"
+                },
+                "as": "opportunity",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "factId": {
+                      "op": "format",
+                      "template": "fact-{opportunityId}-organizational-intent",
+                      "values": {
+                        "opportunityId": {
+                          "op": "path",
+                          "from": "opportunity",
+                          "path": "opportunityId"
+                        }
+                      }
+                    },
+                    "opportunityId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "opportunityId"
+                    },
+                    "factType": {
+                      "op": "literal",
+                      "value": "organizational-intent"
+                    },
+                    "value": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "organizationalIntent"
+                    },
+                    "organizationId": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "organizationId"
+                    },
+                    "role": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "role"
+                    },
+                    "sourceEvidence": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "sourceEvidence"
+                    },
+                    "observedAt": {
+                      "op": "path",
+                      "from": "opportunity",
+                      "path": "observedAt"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "resolve-evidence-backed-signals.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "signals": { "op": "map", "from": { "op": "path", "from": "input", "path": "technologyFacts" }, "as": "fact", "value": {
-          "op": "object", "fields": {
-            "signalId": { "op": "format", "template": "signal-{opportunityId}-technology-demand", "values": { "opportunityId": { "op": "path", "from": "fact", "path": "opportunityId" } } },
-            "signalType": { "op": "literal", "value": "technology-demand" },
-            "subject": { "op": "join", "value": { "op": "path", "from": "fact", "path": "value" }, "separator": ", " },
-            "evidenceFactIds": { "op": "array", "items": [{ "op": "path", "from": "fact", "path": "factId" }] },
-            "dimensions": { "op": "object", "fields": {
-              "organizationId": { "op": "path", "from": "fact", "path": "organizationId" },
-              "role": { "op": "path", "from": "fact", "path": "role" }
-            } },
-            "observedWindow": { "op": "object", "fields": {
-              "from": { "op": "path", "from": "input", "path": "observedFrom" },
-              "to": { "op": "path", "from": "input", "path": "observedTo" }
-            } }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "let",
+            "bindings": {
+              "technologyMentions": {
+                "op": "flat-map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "technologyFacts"
+                },
+                "as": "fact",
+                "value": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "fact",
+                    "path": "value"
+                  },
+                  "as": "item",
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "value": {
+                        "op": "path",
+                        "from": "item"
+                      },
+                      "factId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "factId"
+                      },
+                      "opportunityId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "opportunityId"
+                      },
+                      "organizationId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "organizationId"
+                      }
+                    }
+                  }
+                }
+              },
+              "competencyMentions": {
+                "op": "flat-map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "competencyFacts"
+                },
+                "as": "fact",
+                "value": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "fact",
+                    "path": "value"
+                  },
+                  "as": "item",
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "value": {
+                        "op": "path",
+                        "from": "item"
+                      },
+                      "factId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "factId"
+                      },
+                      "opportunityId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "opportunityId"
+                      },
+                      "organizationId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "organizationId"
+                      }
+                    }
+                  }
+                }
+              },
+              "businessProblemMentions": {
+                "op": "flat-map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "businessProblemFacts"
+                },
+                "as": "fact",
+                "value": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "fact",
+                    "path": "value"
+                  },
+                  "as": "item",
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "value": {
+                        "op": "path",
+                        "from": "item"
+                      },
+                      "factId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "factId"
+                      },
+                      "opportunityId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "opportunityId"
+                      },
+                      "organizationId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "organizationId"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "value": {
+              "op": "let",
+              "bindings": {
+                "technologySignals": {
+                  "op": "map",
+                  "from": {
+                    "op": "unique",
+                    "value": {
+                      "op": "map",
+                      "from": {
+                        "op": "path",
+                        "from": "technologyMentions"
+                      },
+                      "as": "mention",
+                      "value": {
+                        "op": "path",
+                        "from": "mention",
+                        "path": "value"
+                      }
+                    }
+                  },
+                  "as": "value",
+                  "value": {
+                    "op": "let",
+                    "bindings": {
+                      "matches": {
+                        "op": "filter",
+                        "from": {
+                          "op": "path",
+                          "from": "technologyMentions"
+                        },
+                        "as": "mention",
+                        "where": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "mention",
+                            "path": "value"
+                          },
+                          "right": {
+                            "op": "path",
+                            "from": "value"
+                          }
+                        }
+                      }
+                    },
+                    "value": {
+                      "op": "object",
+                      "fields": {
+                        "signalId": {
+                          "op": "format",
+                          "template": "signal-technology-demand-{value}",
+                          "values": {
+                            "value": {
+                              "op": "path",
+                              "from": "value"
+                            }
+                          }
+                        },
+                        "signalType": {
+                          "op": "literal",
+                          "value": "technology-demand"
+                        },
+                        "subject": {
+                          "op": "path",
+                          "from": "value"
+                        },
+                        "evidenceFactIds": {
+                          "op": "unique",
+                          "value": {
+                            "op": "map",
+                            "from": {
+                              "op": "path",
+                              "from": "matches"
+                            },
+                            "as": "match",
+                            "value": {
+                              "op": "path",
+                              "from": "match",
+                              "path": "factId"
+                            }
+                          }
+                        },
+                        "dimensions": {
+                          "op": "object",
+                          "fields": {
+                            "organizationIds": {
+                              "op": "unique",
+                              "value": {
+                                "op": "map",
+                                "from": {
+                                  "op": "path",
+                                  "from": "matches"
+                                },
+                                "as": "match",
+                                "value": {
+                                  "op": "path",
+                                  "from": "match",
+                                  "path": "organizationId"
+                                }
+                              }
+                            },
+                            "opportunityCount": {
+                              "op": "length",
+                              "value": {
+                                "op": "unique",
+                                "value": {
+                                  "op": "map",
+                                  "from": {
+                                    "op": "path",
+                                    "from": "matches"
+                                  },
+                                  "as": "match",
+                                  "value": {
+                                    "op": "path",
+                                    "from": "match",
+                                    "path": "opportunityId"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "observedWindow": {
+                          "op": "object",
+                          "fields": {
+                            "from": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedFrom"
+                            },
+                            "to": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedTo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "competencySignals": {
+                  "op": "map",
+                  "from": {
+                    "op": "unique",
+                    "value": {
+                      "op": "map",
+                      "from": {
+                        "op": "path",
+                        "from": "competencyMentions"
+                      },
+                      "as": "mention",
+                      "value": {
+                        "op": "path",
+                        "from": "mention",
+                        "path": "value"
+                      }
+                    }
+                  },
+                  "as": "value",
+                  "value": {
+                    "op": "let",
+                    "bindings": {
+                      "matches": {
+                        "op": "filter",
+                        "from": {
+                          "op": "path",
+                          "from": "competencyMentions"
+                        },
+                        "as": "mention",
+                        "where": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "mention",
+                            "path": "value"
+                          },
+                          "right": {
+                            "op": "path",
+                            "from": "value"
+                          }
+                        }
+                      }
+                    },
+                    "value": {
+                      "op": "object",
+                      "fields": {
+                        "signalId": {
+                          "op": "format",
+                          "template": "signal-competency-demand-{value}",
+                          "values": {
+                            "value": {
+                              "op": "path",
+                              "from": "value"
+                            }
+                          }
+                        },
+                        "signalType": {
+                          "op": "literal",
+                          "value": "competency-demand"
+                        },
+                        "subject": {
+                          "op": "path",
+                          "from": "value"
+                        },
+                        "evidenceFactIds": {
+                          "op": "unique",
+                          "value": {
+                            "op": "map",
+                            "from": {
+                              "op": "path",
+                              "from": "matches"
+                            },
+                            "as": "match",
+                            "value": {
+                              "op": "path",
+                              "from": "match",
+                              "path": "factId"
+                            }
+                          }
+                        },
+                        "dimensions": {
+                          "op": "object",
+                          "fields": {
+                            "organizationIds": {
+                              "op": "unique",
+                              "value": {
+                                "op": "map",
+                                "from": {
+                                  "op": "path",
+                                  "from": "matches"
+                                },
+                                "as": "match",
+                                "value": {
+                                  "op": "path",
+                                  "from": "match",
+                                  "path": "organizationId"
+                                }
+                              }
+                            },
+                            "opportunityCount": {
+                              "op": "length",
+                              "value": {
+                                "op": "unique",
+                                "value": {
+                                  "op": "map",
+                                  "from": {
+                                    "op": "path",
+                                    "from": "matches"
+                                  },
+                                  "as": "match",
+                                  "value": {
+                                    "op": "path",
+                                    "from": "match",
+                                    "path": "opportunityId"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "observedWindow": {
+                          "op": "object",
+                          "fields": {
+                            "from": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedFrom"
+                            },
+                            "to": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedTo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "businessProblemSignals": {
+                  "op": "map",
+                  "from": {
+                    "op": "unique",
+                    "value": {
+                      "op": "map",
+                      "from": {
+                        "op": "path",
+                        "from": "businessProblemMentions"
+                      },
+                      "as": "mention",
+                      "value": {
+                        "op": "path",
+                        "from": "mention",
+                        "path": "value"
+                      }
+                    }
+                  },
+                  "as": "value",
+                  "value": {
+                    "op": "let",
+                    "bindings": {
+                      "matches": {
+                        "op": "filter",
+                        "from": {
+                          "op": "path",
+                          "from": "businessProblemMentions"
+                        },
+                        "as": "mention",
+                        "where": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "mention",
+                            "path": "value"
+                          },
+                          "right": {
+                            "op": "path",
+                            "from": "value"
+                          }
+                        }
+                      }
+                    },
+                    "value": {
+                      "op": "object",
+                      "fields": {
+                        "signalId": {
+                          "op": "format",
+                          "template": "signal-business-problem-demand-{value}",
+                          "values": {
+                            "value": {
+                              "op": "path",
+                              "from": "value"
+                            }
+                          }
+                        },
+                        "signalType": {
+                          "op": "literal",
+                          "value": "business-problem-demand"
+                        },
+                        "subject": {
+                          "op": "path",
+                          "from": "value"
+                        },
+                        "evidenceFactIds": {
+                          "op": "unique",
+                          "value": {
+                            "op": "map",
+                            "from": {
+                              "op": "path",
+                              "from": "matches"
+                            },
+                            "as": "match",
+                            "value": {
+                              "op": "path",
+                              "from": "match",
+                              "path": "factId"
+                            }
+                          }
+                        },
+                        "dimensions": {
+                          "op": "object",
+                          "fields": {
+                            "organizationIds": {
+                              "op": "unique",
+                              "value": {
+                                "op": "map",
+                                "from": {
+                                  "op": "path",
+                                  "from": "matches"
+                                },
+                                "as": "match",
+                                "value": {
+                                  "op": "path",
+                                  "from": "match",
+                                  "path": "organizationId"
+                                }
+                              }
+                            },
+                            "opportunityCount": {
+                              "op": "length",
+                              "value": {
+                                "op": "unique",
+                                "value": {
+                                  "op": "map",
+                                  "from": {
+                                    "op": "path",
+                                    "from": "matches"
+                                  },
+                                  "as": "match",
+                                  "value": {
+                                    "op": "path",
+                                    "from": "match",
+                                    "path": "opportunityId"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "observedWindow": {
+                          "op": "object",
+                          "fields": {
+                            "from": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedFrom"
+                            },
+                            "to": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "observedTo"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "value": {
+                "op": "object",
+                "fields": {
+                  "signals": {
+                    "op": "flat-map",
+                    "from": {
+                      "op": "array",
+                      "items": [
+                        {
+                          "op": "path",
+                          "from": "technologySignals"
+                        },
+                        {
+                          "op": "path",
+                          "from": "competencySignals"
+                        },
+                        {
+                          "op": "path",
+                          "from": "businessProblemSignals"
+                        }
+                      ]
+                    },
+                    "as": "group",
+                    "value": {
+                      "op": "path",
+                      "from": "group"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "aggregate-longitudinal-observations.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "aggregates": { "op": "map", "from": { "op": "path", "from": "input", "path": "signals" }, "as": "signal", "value": {
-          "op": "object", "fields": {
-            "aggregateId": { "op": "format", "template": "aggregate-{signalId}", "values": { "signalId": { "op": "path", "from": "signal", "path": "signalId" } } },
-            "subject": { "op": "path", "from": "signal", "path": "subject" },
-            "count": { "op": "literal", "value": 1 },
-            "supportingSignalIds": { "op": "array", "items": [{ "op": "path", "from": "signal", "path": "signalId" }] },
-            "observedWindow": { "op": "path", "from": "signal", "path": "observedWindow" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "aggregates": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "signals"
+                },
+                "as": "signal",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "aggregateId": {
+                      "op": "format",
+                      "template": "aggregate-{signalId}",
+                      "values": {
+                        "signalId": {
+                          "op": "path",
+                          "from": "signal",
+                          "path": "signalId"
+                        }
+                      }
+                    },
+                    "subject": {
+                      "op": "path",
+                      "from": "signal",
+                      "path": "subject"
+                    },
+                    "count": {
+                      "op": "path",
+                      "from": "signal",
+                      "path": "dimensions.opportunityCount"
+                    },
+                    "supportingSignalIds": {
+                      "op": "array",
+                      "items": [
+                        {
+                          "op": "path",
+                          "from": "signal",
+                          "path": "signalId"
+                        }
+                      ]
+                    },
+                    "observedWindow": {
+                      "op": "path",
+                      "from": "signal",
+                      "path": "observedWindow"
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "detect-bounded-patterns.v1",
-      "expression": { "op": "merge", "values": [
-        { "op": "path", "from": "input" },
-        { "op": "object", "fields": { "patterns": { "op": "map", "from": { "op": "path", "from": "input", "path": "aggregates" }, "as": "aggregate", "value": {
-          "op": "object", "fields": {
-            "inferenceId": { "op": "format", "template": "inference-{aggregateId}", "values": { "aggregateId": { "op": "path", "from": "aggregate", "path": "aggregateId" } } },
-            "inferenceType": { "op": "literal", "value": "observed-technology-demand" },
-            "statement": { "op": "format", "template": "Observed hiring demand references {subject}.", "values": { "subject": { "op": "path", "from": "aggregate", "path": "subject" } } },
-            "supportingSignalIds": { "op": "path", "from": "aggregate", "path": "supportingSignalIds" },
-            "confidenceDisposition": { "op": "literal", "value": "observed-single-window" }
+      "expression": {
+        "op": "merge",
+        "values": [
+          {
+            "op": "path",
+            "from": "input"
+          },
+          {
+            "op": "object",
+            "fields": {
+              "patterns": {
+                "op": "map",
+                "from": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "aggregates"
+                },
+                "as": "aggregate",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "inferenceId": {
+                      "op": "format",
+                      "template": "inference-{aggregateId}",
+                      "values": {
+                        "aggregateId": {
+                          "op": "path",
+                          "from": "aggregate",
+                          "path": "aggregateId"
+                        }
+                      }
+                    },
+                    "inferenceType": {
+                      "op": "literal",
+                      "value": "observed-technology-demand"
+                    },
+                    "statement": {
+                      "op": "format",
+                      "template": "Observed hiring demand references {subject}.",
+                      "values": {
+                        "subject": {
+                          "op": "path",
+                          "from": "aggregate",
+                          "path": "subject"
+                        }
+                      }
+                    },
+                    "supportingSignalIds": {
+                      "op": "path",
+                      "from": "aggregate",
+                      "path": "supportingSignalIds"
+                    },
+                    "disposition": {
+                      "op": "if",
+                      "when": {
+                        "op": "some",
+                        "from": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "priorAggregates"
+                        },
+                        "as": "prior",
+                        "where": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "prior",
+                            "path": "subject"
+                          },
+                          "right": {
+                            "op": "path",
+                            "from": "aggregate",
+                            "path": "subject"
+                          }
+                        }
+                      },
+                      "then": {
+                        "op": "literal",
+                        "value": "ESTABLISHED"
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "NOT_ESTABLISHED"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-        } } } }
-      ] }
+        ]
+      }
     },
     {
       "id": "project-market-intelligence-profile.v1",
       "expression": {
-        "op": "object",
-        "fields": {
-          "profileId": { "op": "format", "template": "job-market-intelligence-{generatedAt}", "values": { "generatedAt": { "op": "path", "from": "input", "path": "observedTo" } } },
-          "scope": { "op": "object", "fields": {
-            "sourceIds": { "op": "path", "from": "input", "path": "sourceIds" },
-            "organizationIds": { "op": "path", "from": "input", "path": "organizationIds" },
-            "observedFrom": { "op": "path", "from": "input", "path": "observedFrom" },
-            "observedTo": { "op": "path", "from": "input", "path": "observedTo" }
-          } },
-          "organizations": { "op": "map", "from": { "op": "path", "from": "input", "path": "organizationIds" }, "as": "organizationId", "value": { "op": "object", "fields": { "organizationId": { "op": "path", "from": "organizationId" } } } },
-          "signals": { "op": "path", "from": "input", "path": "signals" },
-          "inferences": { "op": "path", "from": "input", "path": "patterns" },
-          "trends": { "op": "path", "from": "input", "path": "aggregates" },
-          "analystExperience": { "op": "object", "fields": {
-            "organizationalInvestment": { "op": "map", "from": { "op": "path", "from": "input", "path": "organizationalIntentFacts" }, "as": "fact", "value": {
-              "op": "object", "fields": {
-                "organizationId": { "op": "path", "from": "fact", "path": "organizationId" },
-                "role": { "op": "path", "from": "fact", "path": "role" },
-                "subject": { "op": "path", "from": "fact", "path": "value" },
-                "evidenceFactIds": { "op": "array", "items": [{ "op": "path", "from": "fact", "path": "factId" }] },
-                "sourceEvidence": { "op": "path", "from": "fact", "path": "sourceEvidence" }
+        "op": "let",
+        "bindings": {
+          "establishedPatterns": {
+            "op": "filter",
+            "from": {
+              "op": "path",
+              "from": "input",
+              "path": "patterns"
+            },
+            "as": "pattern",
+            "where": {
+              "op": "equals",
+              "left": {
+                "op": "path",
+                "from": "pattern",
+                "path": "disposition"
+              },
+              "right": {
+                "op": "literal",
+                "value": "ESTABLISHED"
               }
-            } },
-            "capabilityDemand": { "op": "path", "from": "input", "path": "signals" },
-            "changeOverTime": { "op": "object", "fields": {
-              "disposition": { "op": "literal", "value": "NOT_ESTABLISHED" },
-              "reason": { "op": "literal", "value": "A single bounded observation window cannot establish change over time." }
-            } }
-          } },
-          "generatedAt": { "op": "path", "from": "input", "path": "observedTo" }
+            }
+          }
+        },
+        "value": {
+          "op": "object",
+          "fields": {
+            "profileId": {
+              "op": "format",
+              "template": "job-market-intelligence-{generatedAt}",
+              "values": {
+                "generatedAt": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "observedTo"
+                }
+              }
+            },
+            "scope": {
+              "op": "object",
+              "fields": {
+                "sourceIds": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "sourceIds"
+                },
+                "organizationIds": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "organizationIds"
+                },
+                "observedFrom": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "observedFrom"
+                },
+                "observedTo": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "observedTo"
+                }
+              }
+            },
+            "organizations": {
+              "op": "map",
+              "from": {
+                "op": "path",
+                "from": "input",
+                "path": "organizationIds"
+              },
+              "as": "organizationId",
+              "value": {
+                "op": "object",
+                "fields": {
+                  "organizationId": {
+                    "op": "path",
+                    "from": "organizationId"
+                  }
+                }
+              }
+            },
+            "signals": {
+              "op": "path",
+              "from": "input",
+              "path": "signals"
+            },
+            "inferences": {
+              "op": "path",
+              "from": "input",
+              "path": "patterns"
+            },
+            "trends": {
+              "op": "path",
+              "from": "input",
+              "path": "aggregates"
+            },
+            "observedFacts": {
+              "op": "object",
+              "fields": {
+                "technologyFacts": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "technologyFacts"
+                }
+              }
+            },
+            "analystExperience": {
+              "op": "object",
+              "fields": {
+                "organizationalInvestment": {
+                  "op": "map",
+                  "from": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "organizationalIntentFacts"
+                  },
+                  "as": "fact",
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "organizationId": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "organizationId"
+                      },
+                      "role": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "role"
+                      },
+                      "subject": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "value"
+                      },
+                      "evidenceFactIds": {
+                        "op": "array",
+                        "items": [
+                          {
+                            "op": "path",
+                            "from": "fact",
+                            "path": "factId"
+                          }
+                        ]
+                      },
+                      "sourceEvidence": {
+                        "op": "path",
+                        "from": "fact",
+                        "path": "sourceEvidence"
+                      }
+                    }
+                  }
+                },
+                "capabilityDemand": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "signals"
+                },
+                "changeOverTime": {
+                  "op": "object",
+                  "fields": {
+                    "disposition": {
+                      "op": "if",
+                      "when": {
+                        "op": "greater-than",
+                        "left": {
+                          "op": "length",
+                          "value": {
+                            "op": "path",
+                            "from": "establishedPatterns"
+                          }
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": 0
+                        }
+                      },
+                      "then": {
+                        "op": "literal",
+                        "value": "ESTABLISHED"
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "NOT_ESTABLISHED"
+                      }
+                    },
+                    "reason": {
+                      "op": "if",
+                      "when": {
+                        "op": "greater-than",
+                        "left": {
+                          "op": "length",
+                          "value": {
+                            "op": "path",
+                            "from": "establishedPatterns"
+                          }
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": 0
+                        }
+                      },
+                      "then": {
+                        "op": "format",
+                        "template": "{count} of {total} observed demand patterns are established across compared observation windows.",
+                        "values": {
+                          "count": {
+                            "op": "length",
+                            "value": {
+                              "op": "path",
+                              "from": "establishedPatterns"
+                            }
+                          },
+                          "total": {
+                            "op": "length",
+                            "value": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "patterns"
+                            }
+                          }
+                        }
+                      },
+                      "else": {
+                        "op": "literal",
+                        "value": "A single bounded observation window cannot establish change over time."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "generatedAt": {
+              "op": "path",
+              "from": "input",
+              "path": "observedTo"
+            }
+          }
         }
       }
     }

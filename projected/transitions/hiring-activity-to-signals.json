@@ -1,0 +1,14 @@
+{
+  "transitionId": "hiring-activity-to-signals",
+  "from": {
+    "scenarioId": "resolve-job-market-intelligence",
+    "outcomeId": "company-hiring-activity-understood",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "to": {
+    "scenarioId": "resolve-market-signals",
+    "inputId": "company-hiring-activity-understood",
+    "contractId": "job-market-intelligence-state.v1"
+  },
+  "semanticProgress": "narrowing"
+}

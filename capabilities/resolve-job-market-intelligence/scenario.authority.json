@@ -9,6 +9,6 @@
     "executionAuthorityId": "resolve-market-intelligence.v1"
   },
   "outcome": {
-    "contractId": "job-market-intelligence-profile.v1"
+    "contractId": "job-market-intelligence-state.v1"
   }
 }

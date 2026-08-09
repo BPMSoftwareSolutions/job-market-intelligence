@@ -33,9 +33,14 @@ Scenario = Input + Event + Outcome
 Data → Action → Experience
 ```
 
-The graph contains 13 scenarios and 12 explicit transitions. Market signals
+The graph contains 4 scenarios and 3 explicit transitions -- collapsed from an
+earlier 13-scenario shape whose Gherkin described internal pipeline states
+rather than analyst-observable outcomes; see docs/SCENARIO_CLASSIFICATION.md
+for the classification each scenario boundary was derived from. Market signals
 cite observed fact identities, and market inferences cite supporting signal
-identities.
+identities. Rankings, comparisons, and evidence drill-downs over an
+already-projected profile are queries (contracts/query-catalog.contract.json),
+not scenarios.
 
 ## Promised analyst experience
 
@@ -84,7 +89,7 @@ node tools\consumer-projection\observes-consumer-experience-closure.js C:\lab\re
 
 The generated suite proves:
 
-- all 13 scenarios execute through one root execution lineage;
+- all 4 scenarios execute through one root execution lineage;
 - all required platform mechanics resolve to admitted SDA capabilities;
 - the projected runtime passes mechanical-sterility inspection;
 - Adobe and multi-company inputs produce different, schema-admitted profiles;

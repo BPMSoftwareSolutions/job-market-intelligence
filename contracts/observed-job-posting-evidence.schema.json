@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
+  "type": "object",
+  "required": ["opportunityId", "sourceId", "sourceUrl", "observedAt", "contentSha256", "status", "mediaType"],
+  "properties": {
+    "opportunityId": { "type": "string", "minLength": 1 },
+    "sourceId": { "type": "string", "minLength": 1 },
+    "sourceUrl": { "type": "string", "minLength": 1 },
+    "observedAt": { "type": "string", "minLength": 1 },
+    "contentSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "status": { "type": "integer" },
+    "mediaType": { "type": ["string", "null"] }
+  }
+}
