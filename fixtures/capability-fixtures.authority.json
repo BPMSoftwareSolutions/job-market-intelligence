@@ -114,6 +114,91 @@
           { "path": "scope.organizationIds", "operator": "contains", "value": "harbor" },
           { "path": "signals.3.subject", "operator": "equals", "value": "Kafka" },
           { "path": "generatedAt", "operator": "equals", "value": "2026-07-31T23:59:59Z" }
+        ],
+        "queryAssertions": [
+          {
+            "queryId": "company-investment-by-capability",
+            "params": { "organizationId": "harbor" },
+            "resultAssertions": [
+              { "path": "1.subject", "operator": "equals", "value": "Kafka" },
+              { "path": "4.subject", "operator": "equals", "value": "real-time analytics" }
+            ]
+          },
+          {
+            "queryId": "highest-compensation-by-capability",
+            "params": {},
+            "resultAssertions": [
+              { "path": "0.capability", "operator": "equals", "value": "platform engineering" },
+              { "path": "0.compensation.maximum", "operator": "equals", "value": 220000 },
+              { "path": "0.highestObserved", "operator": "equals", "value": true },
+              { "path": "2.highestObserved", "operator": "equals", "value": false }
+            ]
+          },
+          {
+            "queryId": "technology-demand-over-time",
+            "params": {},
+            "resultAssertions": [
+              { "path": "3.technology", "operator": "equals", "value": "Kafka" },
+              { "path": "3.changeDisposition", "operator": "equals", "value": "NOT_ESTABLISHED" }
+            ]
+          },
+          {
+            "queryId": "competency-co-occurrence",
+            "params": {},
+            "resultAssertions": [
+              { "path": "0.left", "operator": "equals", "value": "platform engineering" },
+              { "path": "1.right", "operator": "equals", "value": "stream processing" }
+            ]
+          },
+          {
+            "queryId": "ai-theme-by-business-problem",
+            "params": { "aiThemes": ["Python", "Kafka"] },
+            "resultAssertions": [
+              { "path": "1.aiTheme", "operator": "equals", "value": "Kafka" },
+              { "path": "1.businessProblem", "operator": "equals", "value": "real-time analytics" }
+            ]
+          },
+          {
+            "queryId": "role-family-demand-momentum",
+            "params": {},
+            "resultAssertions": [
+              { "path": "1.roleFamily", "operator": "equals", "value": "Data Infrastructure Engineer" },
+              { "path": "1.momentumDisposition", "operator": "equals", "value": "NOT_ESTABLISHED" }
+            ]
+          },
+          {
+            "queryId": "market-signal-evidence",
+            "params": { "signalId": "signal-technology-demand-Kafka" },
+            "resultAssertions": [
+              { "path": "signal.subject", "operator": "equals", "value": "Kafka" },
+              { "path": "evidenceFacts.0.opportunityId", "operator": "equals", "value": "harbor-202" }
+            ]
+          },
+          {
+            "queryId": "market-inference-evidence",
+            "params": { "inferenceId": "inference-aggregate-signal-technology-demand-Kafka" },
+            "resultAssertions": [
+              { "path": "inference.disposition", "operator": "equals", "value": "NOT_ESTABLISHED" },
+              { "path": "supportingSignals.0.subject", "operator": "equals", "value": "Kafka" }
+            ]
+          },
+          {
+            "queryId": "career-adjacency",
+            "params": { "competencies": ["stream processing"], "technologies": ["Kafka"] },
+            "resultAssertions": [
+              { "path": "0.opportunityId", "operator": "equals", "value": "harbor-202" },
+              { "path": "0.matchedTechnologies", "operator": "contains", "value": "Kafka" }
+            ]
+          },
+          {
+            "queryId": "gtm-whitespace",
+            "params": {},
+            "resultAssertions": [
+              { "path": "1.businessProblem", "operator": "equals", "value": "real-time analytics" },
+              { "path": "1.fundedIntent", "operator": "equals", "value": "expand-streaming-data-capability" },
+              { "path": "1.whitespaceDisposition", "operator": "equals", "value": "NOT_ESTABLISHED" }
+            ]
+          }
         ]
       }
     },

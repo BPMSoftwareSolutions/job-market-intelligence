@@ -1,0 +1,37 @@
+{
+  "scenarioId": "collect-current-hiring-activity",
+  "input": {
+    "inputId": "job-market-observation-request",
+    "contract": {
+      "contractId": "job-market-observation-request.v1"
+    }
+  },
+  "event": {
+    "eventId": "collect-current-hiring-activity",
+    "executionAuthorityId": "collect-current-hiring-activity.v1"
+  },
+  "outcome": {
+    "outcomeId": "current-hiring-activity-collected",
+    "contract": {
+      "contractId": "public-job-market-observation-state.v1"
+    },
+    "experience": {
+      "statement": "I can review the public job openings found within my observation scope"
+    }
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "collect-current-hiring-activity.given",
+      "text": "the companies I want to observe"
+    },
+    "when": {
+      "semanticRef": "collect-current-hiring-activity.when",
+      "text": "their permitted public job sources are checked and current openings are observed"
+    },
+    "then": {
+      "semanticRef": "collect-current-hiring-activity.then",
+      "text": "I can review the public job openings found within my observation scope"
+    }
+  },
+  "name": "Collect current hiring activity for selected companies"
+}

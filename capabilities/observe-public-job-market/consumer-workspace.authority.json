@@ -1,0 +1,29 @@
+{
+  "workspaceType": "consumer-workspace-authority.v1",
+  "consumerId": "public-job-market-observer",
+  "kernel": {
+    "specificationId": "scenario-kernel.v1",
+    "version": "1.0.0",
+    "executionVector": "../../../scenario-driven-architecture/kernel/contracts/execution/scenario-kernel-execution-vector.json"
+  },
+  "governance": {
+    "authority": "../../governance/acquisition-policy.authority.json",
+    "conformancePolicy": "all-closures-must-conform"
+  },
+  "conformanceQuery": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+  "telemetryAuthority": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json",
+  "platformCapabilityCatalog": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/sda-platform-capabilities.semantic-authority.json",
+  "projectionTargets": ["node"],
+  "capabilities": [
+    {
+      "featureId": "public-job-market-observation.feature",
+      "feature": "../../features/public-job-market-observation.feature",
+      "capability": "capability.authority.json",
+      "semanticGraph": "../../semantic-authority/public-market-observation-scenario-graph.authority.json",
+      "executionAuthorities": "../../semantic-authority/public-market-observation-execution-authorities.authority.json",
+      "projectionAuthorities": "projection-authorities.authority.json",
+      "interfaces": "../../semantic-authority/public-market-observation-interfaces.authority.json",
+      "fixtures": "../../fixtures/public-market-observation-fixtures.authority.json"
+    }
+  ]
+}

@@ -1,0 +1,648 @@
+{
+  "conformanceType": "consumer-query-catalog-conformance.v1",
+  "catalogId": "job-market-intelligence-queries.v1",
+  "projectionTarget": "node",
+  "coverage": {
+    "declared": 10,
+    "implemented": 10,
+    "observed": 10
+  },
+  "queries": [
+    {
+      "queryId": "company-investment-by-capability",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {
+        "organizationId": "harbor"
+      },
+      "result": [
+        {
+          "signalId": "signal-technology-demand-Python",
+          "signalType": "technology-demand",
+          "subject": "Python",
+          "evidenceFactIds": [
+            "fact-harbor-202-technologies"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        },
+        {
+          "signalId": "signal-technology-demand-Kafka",
+          "signalType": "technology-demand",
+          "subject": "Kafka",
+          "evidenceFactIds": [
+            "fact-harbor-202-technologies"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        },
+        {
+          "signalId": "signal-competency-demand-data infrastructure",
+          "signalType": "competency-demand",
+          "subject": "data infrastructure",
+          "evidenceFactIds": [
+            "fact-harbor-202-competencies"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        },
+        {
+          "signalId": "signal-competency-demand-stream processing",
+          "signalType": "competency-demand",
+          "subject": "stream processing",
+          "evidenceFactIds": [
+            "fact-harbor-202-competencies"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        },
+        {
+          "signalId": "signal-business-problem-demand-real-time analytics",
+          "signalType": "business-problem-demand",
+          "subject": "real-time analytics",
+          "evidenceFactIds": [
+            "fact-harbor-202-business-problems"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        }
+      ],
+      "assertions": [
+        {
+          "path": "1.subject",
+          "operator": "equals",
+          "expected": "Kafka",
+          "actual": "Kafka",
+          "satisfied": true
+        },
+        {
+          "path": "4.subject",
+          "operator": "equals",
+          "expected": "real-time analytics",
+          "actual": "real-time analytics",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "highest-compensation-by-capability",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {},
+      "result": [
+        {
+          "capability": "platform engineering",
+          "opportunityId": "northstar-101",
+          "organizationId": "northstar",
+          "role": "Platform Engineer",
+          "compensation": {
+            "currency": "USD",
+            "minimum": 180000,
+            "maximum": 220000,
+            "period": "year"
+          },
+          "highestObserved": true
+        },
+        {
+          "capability": "reliability",
+          "opportunityId": "northstar-101",
+          "organizationId": "northstar",
+          "role": "Platform Engineer",
+          "compensation": {
+            "currency": "USD",
+            "minimum": 180000,
+            "maximum": 220000,
+            "period": "year"
+          },
+          "highestObserved": true
+        },
+        {
+          "capability": "data infrastructure",
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "role": "Data Infrastructure Engineer",
+          "compensation": {
+            "currency": "USD",
+            "minimum": 165000,
+            "maximum": 205000,
+            "period": "year"
+          },
+          "highestObserved": false
+        },
+        {
+          "capability": "stream processing",
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "role": "Data Infrastructure Engineer",
+          "compensation": {
+            "currency": "USD",
+            "minimum": 165000,
+            "maximum": 205000,
+            "period": "year"
+          },
+          "highestObserved": false
+        }
+      ],
+      "assertions": [
+        {
+          "path": "0.capability",
+          "operator": "equals",
+          "expected": "platform engineering",
+          "actual": "platform engineering",
+          "satisfied": true
+        },
+        {
+          "path": "0.compensation.maximum",
+          "operator": "equals",
+          "expected": 220000,
+          "actual": 220000,
+          "satisfied": true
+        },
+        {
+          "path": "0.highestObserved",
+          "operator": "equals",
+          "expected": true,
+          "actual": true,
+          "satisfied": true
+        },
+        {
+          "path": "2.highestObserved",
+          "operator": "equals",
+          "expected": false,
+          "actual": false,
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "technology-demand-over-time",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {},
+      "result": [
+        {
+          "technology": "Go",
+          "organizationIds": [
+            "northstar"
+          ],
+          "opportunityCount": 1,
+          "changeDisposition": "NOT_ESTABLISHED",
+          "supportingSignalId": "signal-technology-demand-Go"
+        },
+        {
+          "technology": "Kubernetes",
+          "organizationIds": [
+            "northstar"
+          ],
+          "opportunityCount": 1,
+          "changeDisposition": "NOT_ESTABLISHED",
+          "supportingSignalId": "signal-technology-demand-Kubernetes"
+        },
+        {
+          "technology": "Python",
+          "organizationIds": [
+            "harbor"
+          ],
+          "opportunityCount": 1,
+          "changeDisposition": "NOT_ESTABLISHED",
+          "supportingSignalId": "signal-technology-demand-Python"
+        },
+        {
+          "technology": "Kafka",
+          "organizationIds": [
+            "harbor"
+          ],
+          "opportunityCount": 1,
+          "changeDisposition": "NOT_ESTABLISHED",
+          "supportingSignalId": "signal-technology-demand-Kafka"
+        }
+      ],
+      "assertions": [
+        {
+          "path": "3.technology",
+          "operator": "equals",
+          "expected": "Kafka",
+          "actual": "Kafka",
+          "satisfied": true
+        },
+        {
+          "path": "3.changeDisposition",
+          "operator": "equals",
+          "expected": "NOT_ESTABLISHED",
+          "actual": "NOT_ESTABLISHED",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "competency-co-occurrence",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {},
+      "result": [
+        {
+          "left": "platform engineering",
+          "right": "reliability",
+          "opportunityId": "northstar-101",
+          "organizationId": "northstar",
+          "evidenceFactId": "fact-northstar-101-competencies"
+        },
+        {
+          "left": "data infrastructure",
+          "right": "stream processing",
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "evidenceFactId": "fact-harbor-202-competencies"
+        }
+      ],
+      "assertions": [
+        {
+          "path": "0.left",
+          "operator": "equals",
+          "expected": "platform engineering",
+          "actual": "platform engineering",
+          "satisfied": true
+        },
+        {
+          "path": "1.right",
+          "operator": "equals",
+          "expected": "stream processing",
+          "actual": "stream processing",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "ai-theme-by-business-problem",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {
+        "aiThemes": [
+          "Python",
+          "Kafka"
+        ]
+      },
+      "result": [
+        {
+          "aiTheme": "Python",
+          "businessProblem": "real-time analytics",
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "evidenceFactIds": [
+            "fact-harbor-202-technologies",
+            "fact-harbor-202-business-problems"
+          ]
+        },
+        {
+          "aiTheme": "Kafka",
+          "businessProblem": "real-time analytics",
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "evidenceFactIds": [
+            "fact-harbor-202-technologies",
+            "fact-harbor-202-business-problems"
+          ]
+        }
+      ],
+      "assertions": [
+        {
+          "path": "1.aiTheme",
+          "operator": "equals",
+          "expected": "Kafka",
+          "actual": "Kafka",
+          "satisfied": true
+        },
+        {
+          "path": "1.businessProblem",
+          "operator": "equals",
+          "expected": "real-time analytics",
+          "actual": "real-time analytics",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "role-family-demand-momentum",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {},
+      "result": [
+        {
+          "roleFamily": "Platform Engineer",
+          "organizationId": "northstar",
+          "opportunityId": "northstar-101",
+          "observedTechnologySignalCount": 2,
+          "momentumDisposition": "NOT_ESTABLISHED"
+        },
+        {
+          "roleFamily": "Data Infrastructure Engineer",
+          "organizationId": "harbor",
+          "opportunityId": "harbor-202",
+          "observedTechnologySignalCount": 2,
+          "momentumDisposition": "NOT_ESTABLISHED"
+        }
+      ],
+      "assertions": [
+        {
+          "path": "1.roleFamily",
+          "operator": "equals",
+          "expected": "Data Infrastructure Engineer",
+          "actual": "Data Infrastructure Engineer",
+          "satisfied": true
+        },
+        {
+          "path": "1.momentumDisposition",
+          "operator": "equals",
+          "expected": "NOT_ESTABLISHED",
+          "actual": "NOT_ESTABLISHED",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "market-signal-evidence",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {
+        "signalId": "signal-technology-demand-Kafka"
+      },
+      "result": {
+        "signal": {
+          "signalId": "signal-technology-demand-Kafka",
+          "signalType": "technology-demand",
+          "subject": "Kafka",
+          "evidenceFactIds": [
+            "fact-harbor-202-technologies"
+          ],
+          "dimensions": {
+            "organizationIds": [
+              "harbor"
+            ],
+            "opportunityCount": 1
+          },
+          "observedWindow": {
+            "from": "2026-07-01T00:00:00Z",
+            "to": "2026-07-31T23:59:59Z"
+          }
+        },
+        "evidenceFacts": [
+          {
+            "factId": "fact-harbor-202-technologies",
+            "opportunityId": "harbor-202",
+            "organizationId": "harbor",
+            "role": "Data Infrastructure Engineer",
+            "factType": "technology",
+            "value": [
+              "Python",
+              "Kafka"
+            ],
+            "sourceEvidence": [
+              {
+                "sourceId": "lever",
+                "sourceUrl": "https://jobs.lever.co/harbor/202",
+                "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f",
+                "observedAt": "2026-07-20T12:00:00Z"
+              }
+            ],
+            "observedAt": "2026-07-20T12:00:00Z"
+          }
+        ]
+      },
+      "assertions": [
+        {
+          "path": "signal.subject",
+          "operator": "equals",
+          "expected": "Kafka",
+          "actual": "Kafka",
+          "satisfied": true
+        },
+        {
+          "path": "evidenceFacts.0.opportunityId",
+          "operator": "equals",
+          "expected": "harbor-202",
+          "actual": "harbor-202",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "market-inference-evidence",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {
+        "inferenceId": "inference-aggregate-signal-technology-demand-Kafka"
+      },
+      "result": {
+        "inference": {
+          "inferenceId": "inference-aggregate-signal-technology-demand-Kafka",
+          "inferenceType": "observed-technology-demand",
+          "statement": "Observed hiring demand references Kafka.",
+          "supportingSignalIds": [
+            "signal-technology-demand-Kafka"
+          ],
+          "disposition": "NOT_ESTABLISHED"
+        },
+        "supportingSignals": [
+          {
+            "signalId": "signal-technology-demand-Kafka",
+            "signalType": "technology-demand",
+            "subject": "Kafka",
+            "evidenceFactIds": [
+              "fact-harbor-202-technologies"
+            ],
+            "dimensions": {
+              "organizationIds": [
+                "harbor"
+              ],
+              "opportunityCount": 1
+            },
+            "observedWindow": {
+              "from": "2026-07-01T00:00:00Z",
+              "to": "2026-07-31T23:59:59Z"
+            }
+          }
+        ]
+      },
+      "assertions": [
+        {
+          "path": "inference.disposition",
+          "operator": "equals",
+          "expected": "NOT_ESTABLISHED",
+          "actual": "NOT_ESTABLISHED",
+          "satisfied": true
+        },
+        {
+          "path": "supportingSignals.0.subject",
+          "operator": "equals",
+          "expected": "Kafka",
+          "actual": "Kafka",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "career-adjacency",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {
+        "competencies": [
+          "stream processing"
+        ],
+        "technologies": [
+          "Kafka"
+        ]
+      },
+      "result": [
+        {
+          "opportunityId": "harbor-202",
+          "organizationId": "harbor",
+          "role": "Data Infrastructure Engineer",
+          "matchedCompetencies": [
+            "stream processing"
+          ],
+          "matchedTechnologies": [
+            "Kafka"
+          ],
+          "compensation": {
+            "currency": "USD",
+            "minimum": 165000,
+            "maximum": 205000,
+            "period": "year"
+          },
+          "sourceEvidence": [
+            {
+              "sourceId": "lever",
+              "sourceUrl": "https://jobs.lever.co/harbor/202",
+              "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f",
+              "observedAt": "2026-07-20T12:00:00Z"
+            }
+          ]
+        }
+      ],
+      "assertions": [
+        {
+          "path": "0.opportunityId",
+          "operator": "equals",
+          "expected": "harbor-202",
+          "actual": "harbor-202",
+          "satisfied": true
+        },
+        {
+          "path": "0.matchedTechnologies",
+          "operator": "contains",
+          "expected": "Kafka",
+          "actual": [
+            "Kafka"
+          ],
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    },
+    {
+      "queryId": "gtm-whitespace",
+      "fixtureId": "multi-company-input-dependent-intelligence",
+      "params": {},
+      "result": [
+        {
+          "businessProblem": "developer productivity",
+          "organizationId": "northstar",
+          "role": "Platform Engineer",
+          "capabilities": [
+            "platform engineering",
+            "reliability"
+          ],
+          "fundedIntent": "scale-internal-platform",
+          "observedOpportunityCount": 1,
+          "whitespaceDisposition": "NOT_ESTABLISHED",
+          "evidenceFactIds": [
+            "fact-northstar-101-business-problems",
+            "fact-northstar-101-competencies",
+            "fact-northstar-101-organizational-intent"
+          ]
+        },
+        {
+          "businessProblem": "real-time analytics",
+          "organizationId": "harbor",
+          "role": "Data Infrastructure Engineer",
+          "capabilities": [
+            "data infrastructure",
+            "stream processing"
+          ],
+          "fundedIntent": "expand-streaming-data-capability",
+          "observedOpportunityCount": 1,
+          "whitespaceDisposition": "NOT_ESTABLISHED",
+          "evidenceFactIds": [
+            "fact-harbor-202-business-problems",
+            "fact-harbor-202-competencies",
+            "fact-harbor-202-organizational-intent"
+          ]
+        }
+      ],
+      "assertions": [
+        {
+          "path": "1.businessProblem",
+          "operator": "equals",
+          "expected": "real-time analytics",
+          "actual": "real-time analytics",
+          "satisfied": true
+        },
+        {
+          "path": "1.fundedIntent",
+          "operator": "equals",
+          "expected": "expand-streaming-data-capability",
+          "actual": "expand-streaming-data-capability",
+          "satisfied": true
+        },
+        {
+          "path": "1.whitespaceDisposition",
+          "operator": "equals",
+          "expected": "NOT_ESTABLISHED",
+          "actual": "NOT_ESTABLISHED",
+          "satisfied": true
+        }
+      ],
+      "disposition": "OBSERVED"
+    }
+  ],
+  "disposition": "ALL_IMPLEMENTED_QUERIES_OBSERVED"
+}

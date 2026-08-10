@@ -1794,6 +1794,11 @@
                       }
                     }
                   },
+                  "opportunities": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "opportunities"
+                  },
                   "signals": {
                     "op": "path",
                     "from": "input",
@@ -1812,10 +1817,30 @@
                   "observedFacts": {
                     "op": "object",
                     "fields": {
+                      "compensationFacts": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "compensationFacts"
+                      },
+                      "competencyFacts": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "competencyFacts"
+                      },
                       "technologyFacts": {
                         "op": "path",
                         "from": "input",
                         "path": "technologyFacts"
+                      },
+                      "businessProblemFacts": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "businessProblemFacts"
+                      },
+                      "organizationalIntentFacts": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "organizationalIntentFacts"
                       }
                     }
                   },
@@ -2097,7 +2122,7 @@
         "job-market-intelligence-profile.v1": {
           "schemaRef": "../schemas/job-market-intelligence-profile.schema.json",
           "schemaId": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
-          "schemaDigest": "b09581b26828907d0d8f35a6215604afe5f617a827d936b3e943075c763547cf",
+          "schemaDigest": "a4f9af8db8a4088ca27cd5a06b6e05765a0d900f32f212d9d01cdbb9134b5cb8",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
@@ -2118,6 +2143,12 @@
                 "type": "object"
               },
               "organizations": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "opportunities": {
                 "type": "array",
                 "items": {
                   "type": "object"
@@ -2145,7 +2176,31 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
+                  "compensationFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "competencyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
                   "technologyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "businessProblemFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "organizationalIntentFacts": {
                     "type": "array",
                     "items": {
                       "type": "object"
@@ -2260,7 +2315,7 @@
         "job-market-observation-request.v1": {
           "schemaRef": "job-market-observation-request.schema.json",
           "schemaId": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
-          "schemaDigest": "977c0b8ff02acbdde62988df65cad85b99d52ead44d1068ff4b02dabe38a9fe6",
+          "schemaDigest": "6ae09da8659939ff93289bb99ca6da85a15e595b15d1e833d9b0fbfa5fb21dce",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
@@ -2269,6 +2324,7 @@
               "observationId",
               "organizationIds",
               "sourceIds",
+              "targetOpportunityId",
               "observedFrom",
               "observedTo",
               "maxResultsPerSource"
@@ -2291,6 +2347,10 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "targetOpportunityId": {
+                "type": "integer",
+                "minimum": 1
               },
               "observedFrom": {
                 "type": "string",
@@ -2310,7 +2370,7 @@
         "public-job-market-observation-state.v1": {
           "schemaRef": "public-job-market-observation-state.schema.json",
           "schemaId": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
-          "schemaDigest": "392c4db03778900230edca90b06392b695c0ab8d29dbf421415ccb9957f10ade",
+          "schemaDigest": "b0e0244c86ccc0c2d790fa5e965fe672d989d82cfd5fa07c6385ad5603920c76",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
@@ -2319,6 +2379,7 @@
               "observationId",
               "organizationIds",
               "sourceIds",
+              "targetOpportunityId",
               "observedFrom",
               "observedTo",
               "maxResultsPerSource"
@@ -2342,6 +2403,10 @@
                   "type": "string"
                 }
               },
+              "targetOpportunityId": {
+                "type": "integer",
+                "minimum": 1
+              },
               "observedFrom": {
                 "type": "string"
               },
@@ -2358,7 +2423,7 @@
         "observed-job-posting-evidence.v1": {
           "schemaRef": "observed-job-posting-evidence.schema.json",
           "schemaId": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
-          "schemaDigest": "9f84fd1936193c8338519884b03c9a71139d5a22846fc9928b4f382b2204579f",
+          "schemaDigest": "13bf0baca1b1032d0f233aded8f89b89d72e89acd0bfbe4cfb6f15a125d022e9",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
@@ -2370,7 +2435,11 @@
               "observedAt",
               "contentSha256",
               "status",
-              "mediaType"
+              "mediaType",
+              "title",
+              "organization",
+              "location",
+              "descriptionHtml"
             ],
             "properties": {
               "opportunityId": {
@@ -2401,6 +2470,22 @@
                   "string",
                   "null"
                 ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "organization": {
+                "type": "string",
+                "minLength": 1
+              },
+              "location": {
+                "type": "string",
+                "minLength": 1
+              },
+              "descriptionHtml": {
+                "type": "string",
+                "minLength": 1
               }
             }
           }
@@ -2547,6 +2632,34 @@
         ],
         "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
         "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-projected-capability-invocation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocation",
+        "providesMechanics": [
+          "event-port-invocation",
+          "projected-capability-invocation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-json-query-cli.v1",
+        "kind": "interface-delivery",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonQueryCli",
+        "providesMechanics": [
+          "query-cli-delivery",
+          "declared-query-evaluation",
+          "json-reading",
+          "json-serialization"
+        ],
+        "implementationRef": "languages/node/platform/query-cli.mjs",
+        "conformanceRef": "languages/node/platform/query-cli.conformance.test.mjs"
       },
       {
         "capabilityId": "sda-fixture-contract-validator.v1",

@@ -1,0 +1,5 @@
+{
+  "job-market-observation-request.v1": "job-market-observation-request.schema.json",
+  "public-job-market-observation-state.v1": "public-job-market-observation-state.schema.json",
+  "observed-job-posting-evidence.v1": "observed-job-posting-evidence.schema.json"
+}

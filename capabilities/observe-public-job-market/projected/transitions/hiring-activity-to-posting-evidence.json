@@ -1,0 +1,14 @@
+{
+  "transitionId": "hiring-activity-to-posting-evidence",
+  "from": {
+    "scenarioId": "collect-current-hiring-activity",
+    "outcomeId": "current-hiring-activity-collected",
+    "contractId": "public-job-market-observation-state.v1"
+  },
+  "to": {
+    "scenarioId": "acquire-and-admit-posting-evidence",
+    "inputId": "current-hiring-activity-collected",
+    "contractId": "public-job-market-observation-state.v1"
+  },
+  "semanticProgress": "termination"
+}

@@ -85,6 +85,7 @@ $env:PYTHONPATH='C:\lab\repos\scenario-driven-architecture\languages\python\src'
 python C:\lab\repos\job-market-intelligence\projected\python\consumer.generated.py --test
 node tools\consumer-projection\observes-consumer-projection-equivalence.js C:\lab\repos\job-market-intelligence --targets=node,csharp,python
 node tools\consumer-projection\observes-consumer-experience-closure.js C:\lab\repos\job-market-intelligence --no-project
+node tools\consumer-projection\observes-consumer-query-catalog.js C:\lab\repos\job-market-intelligence contracts/query-catalog.contract.json --no-project
 ```
 
 The generated suite proves:
@@ -97,9 +98,12 @@ The generated suite proves:
 - inferences preserve supporting-signal lineage;
 - no handwritten consumer executable is present;
 - Node, C#, and Python produce canonical-equivalent terminal outcomes and preserve
-  identical scenario lineage for both fixtures.
+  identical scenario lineage for all canonical fixtures.
 - the promised analyst experience has disposition `OBSERVABLY_TRUE`, with every
   declared condition tied to actual runtime output.
+- all 10 inspectable queries execute over projected output, including the seven
+  previously missing orientations, with disposition
+  `ALL_IMPLEMENTED_QUERIES_OBSERVED`.
 
 The private-source rejection vector remains in
 `fixtures/rejection-private-source.fixture.json` as acquisition-governance

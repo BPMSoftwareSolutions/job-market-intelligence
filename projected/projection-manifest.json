@@ -23,6 +23,8 @@
     "sda-authority-state-projection.v1",
     "sda-filesystem-artifact-store.v1",
     "sda-external-observation-port.v1",
+    "sda-projected-capability-invocation-port.v1",
+    "sda-json-query-cli.v1",
     "sda-fixture-contract-validator.v1",
     "sda-declarative-value-port.v1",
     "sda-declarative-state-projection.v1",
@@ -104,7 +106,7 @@
     {
       "path": "fixtures/fixtures.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "1d1964e81f5cccd7e8d11063dd89d758c4264b930cf605e50df5fa391ba943f2"
+      "sha256": "605f98ae4820577cf33a174ceb5080268f16e790be41275129e0c400246ec5a1"
     },
     {
       "path": "node/capability-runtime.generated.mjs",
@@ -139,22 +141,22 @@
     {
       "path": "query/conformance-query.csharp.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "126e1b098dd57ad7a75424144777eadc3ee4dbb5c350764dfdec4598f2ad2b3f"
+      "sha256": "b7b5df706026ad6661ce88069378ffafb34e8df4636005634c2dc5fbbfd5ef1e"
     },
     {
       "path": "query/conformance-query.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "d544f67233fc60307311d386e0faf1ad6619b0f60cfe6dd0c539307bda6473e8"
+      "sha256": "2efb6cc95b295fab8c406c8b015edf8361a96bf4f8bafa477219a14341af205b"
     },
     {
       "path": "query/conformance-query.node.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "d544f67233fc60307311d386e0faf1ad6619b0f60cfe6dd0c539307bda6473e8"
+      "sha256": "2efb6cc95b295fab8c406c8b015edf8361a96bf4f8bafa477219a14341af205b"
     },
     {
       "path": "query/conformance-query.python.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "ed1a7a433cf5d32abaee1840e04fbc1a18e442da3b6e0692983eaae8737b2a5e"
+      "sha256": "54d8f925c5b99a7c0798be8a95d154a8503d5cba8917c3efc8139ad0931403c0"
     },
     {
       "path": "query/platform-mechanic-resolution.csharp.json",

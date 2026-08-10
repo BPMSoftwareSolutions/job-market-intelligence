@@ -1,0 +1,38 @@
+{
+  "scenarioId": "acquire-and-admit-posting-evidence",
+  "input": {
+    "inputId": "current-hiring-activity-collected",
+    "contract": {
+      "contractId": "public-job-market-observation-state.v1"
+    }
+  },
+  "event": {
+    "eventId": "acquire-and-admit-posting-evidence",
+    "executionAuthorityId": "acquire-and-admit-posting-evidence.v1"
+  },
+  "outcome": {
+    "outcomeId": "posting-evidence-admitted",
+    "contract": {
+      "contractId": "observed-job-posting-evidence.v1"
+    },
+    "experience": {
+      "statement": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "acquire-and-admit-posting-evidence.given",
+      "text": "an observed public job reference"
+    },
+    "when": {
+      "semanticRef": "acquire-and-admit-posting-evidence.when",
+      "text": "the referenced posting is retrieved and admitted as evidence"
+    },
+    "then": {
+      "semanticRef": "acquire-and-admit-posting-evidence.then",
+      "text": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+    }
+  },
+  "name": "Acquire and admit a public job posting as evidence"
+}

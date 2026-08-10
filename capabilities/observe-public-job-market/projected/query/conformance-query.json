@@ -1,0 +1,1251 @@
+{
+  "queryType": "projected-consumer-conformance-query.v1",
+  "queryId": "scenario-conformance-closure",
+  "capabilityId": "observe-public-job-market",
+  "subjects": [
+    "feature",
+    "scenario",
+    "contract",
+    "execution-authority",
+    "transition",
+    "interface",
+    "projection",
+    "telemetry",
+    "execution",
+    "behavior",
+    "platform-capability",
+    "executable-origin"
+  ],
+  "requiredClosures": [
+    "feature-to-scenario",
+    "scenario-to-contract",
+    "scenario-to-event-authority",
+    "outcome-to-transition",
+    "transition-to-next-input",
+    "scenario-to-interface",
+    "execution-to-telemetry",
+    "scenario-to-projection",
+    "expected-to-observed-execution",
+    "root-to-terminal-behavior",
+    "required-mechanic-to-platform-capability",
+    "consumer-executable-origin",
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "dispositionPolicy": "all-required-closures-conform",
+  "authorityGraph": {
+    "rootScenarioId": "collect-current-hiring-activity",
+    "scenarios": [
+      {
+        "scenarioId": "collect-current-hiring-activity",
+        "input": {
+          "inputId": "job-market-observation-request",
+          "contract": {
+            "contractId": "job-market-observation-request.v1"
+          }
+        },
+        "event": {
+          "eventId": "collect-current-hiring-activity",
+          "executionAuthorityId": "collect-current-hiring-activity.v1"
+        },
+        "outcome": {
+          "outcomeId": "current-hiring-activity-collected",
+          "contract": {
+            "contractId": "public-job-market-observation-state.v1"
+          },
+          "experience": {
+            "statement": "I can review the public job openings found within my observation scope"
+          }
+        },
+        "gherkin": {
+          "given": {
+            "semanticRef": "collect-current-hiring-activity.given",
+            "text": "the companies I want to observe"
+          },
+          "when": {
+            "semanticRef": "collect-current-hiring-activity.when",
+            "text": "their permitted public job sources are checked and current openings are observed"
+          },
+          "then": {
+            "semanticRef": "collect-current-hiring-activity.then",
+            "text": "I can review the public job openings found within my observation scope"
+          }
+        },
+        "name": "Collect current hiring activity for selected companies"
+      },
+      {
+        "scenarioId": "acquire-and-admit-posting-evidence",
+        "input": {
+          "inputId": "current-hiring-activity-collected",
+          "contract": {
+            "contractId": "public-job-market-observation-state.v1"
+          }
+        },
+        "event": {
+          "eventId": "acquire-and-admit-posting-evidence",
+          "executionAuthorityId": "acquire-and-admit-posting-evidence.v1"
+        },
+        "outcome": {
+          "outcomeId": "posting-evidence-admitted",
+          "contract": {
+            "contractId": "observed-job-posting-evidence.v1"
+          },
+          "experience": {
+            "statement": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+          },
+          "terminal": true
+        },
+        "gherkin": {
+          "given": {
+            "semanticRef": "acquire-and-admit-posting-evidence.given",
+            "text": "an observed public job reference"
+          },
+          "when": {
+            "semanticRef": "acquire-and-admit-posting-evidence.when",
+            "text": "the referenced posting is retrieved and admitted as evidence"
+          },
+          "then": {
+            "semanticRef": "acquire-and-admit-posting-evidence.then",
+            "text": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+          }
+        },
+        "name": "Acquire and admit a public job posting as evidence"
+      }
+    ],
+    "transitions": [
+      {
+        "transitionId": "hiring-activity-to-posting-evidence",
+        "from": {
+          "scenarioId": "collect-current-hiring-activity",
+          "outcomeId": "current-hiring-activity-collected",
+          "contractId": "public-job-market-observation-state.v1"
+        },
+        "to": {
+          "scenarioId": "acquire-and-admit-posting-evidence",
+          "inputId": "current-hiring-activity-collected",
+          "contractId": "public-job-market-observation-state.v1"
+        },
+        "semanticProgress": "termination"
+      }
+    ],
+    "executionAuthorities": [
+      {
+        "id": "collect-current-hiring-activity.v1",
+        "owningScenarioId": "collect-current-hiring-activity",
+        "operations": [
+          {
+            "kind": "invoke-port",
+            "portId": "begin-public-market-observation"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "public-source-resolution"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "public-reference-discovery-observation"
+          }
+        ]
+      },
+      {
+        "id": "acquire-and-admit-posting-evidence.v1",
+        "owningScenarioId": "acquire-and-admit-posting-evidence",
+        "operations": [
+          {
+            "kind": "invoke-port",
+            "portId": "acquisition-reference-resolution"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "public-posting-acquisition-observation"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "posting-evidence-admission"
+          }
+        ]
+      }
+    ],
+    "projectionAuthorities": [],
+    "interfaceAuthority": {
+      "interfaceAuthorityType": "consumer-interface-authority.v1",
+      "contractCatalog": "../../contracts/public-market-observation-contract-catalog.json",
+      "requiredPlatformObligations": [
+        "dynamic-semantic-execution",
+        "domain-contract-admission"
+      ],
+      "interfaces": [
+        {
+          "interfaceId": "public-job-market-observation-cli",
+          "kind": "cli",
+          "rootScenarioId": "collect-current-hiring-activity",
+          "platformCapabilityId": "sda-json-cli.v1"
+        }
+      ],
+      "projectionBindings": [],
+      "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+      "portBindings": [
+        {
+          "portId": "begin-public-market-observation",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "path",
+              "from": "input"
+            }
+          }
+        },
+        {
+          "portId": "public-source-resolution",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input"
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "resolvedSources": {
+                      "op": "filter",
+                      "from": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "sourceIds"
+                      },
+                      "as": "candidate",
+                      "where": {
+                        "op": "includes",
+                        "in": {
+                          "op": "literal",
+                          "value": [
+                            "adobe",
+                            "greenhouse",
+                            "lever",
+                            "workday"
+                          ]
+                        },
+                        "value": {
+                          "op": "path",
+                          "from": "candidate"
+                        }
+                      }
+                    },
+                    "unresolvedSourceIds": {
+                      "op": "filter",
+                      "from": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "sourceIds"
+                      },
+                      "as": "candidate",
+                      "where": {
+                        "op": "equals",
+                        "left": {
+                          "op": "includes",
+                          "in": {
+                            "op": "literal",
+                            "value": [
+                              "adobe",
+                              "greenhouse",
+                              "lever",
+                              "workday"
+                            ]
+                          },
+                          "value": {
+                            "op": "path",
+                            "from": "candidate"
+                          }
+                        },
+                        "right": {
+                          "op": "literal",
+                          "value": false
+                        }
+                      }
+                    },
+                    "discoveryReference": {
+                      "op": "object",
+                      "fields": {
+                        "url": {
+                          "op": "format",
+                          "template": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs",
+                          "values": {
+                            "board": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "organizationIds.0"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "discoveredListing": {
+                      "op": "object",
+                      "fields": {}
+                    },
+                    "acquiredPosting": {
+                      "op": "object",
+                      "fields": {}
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "portId": "public-reference-discovery-observation",
+          "platformCapabilityId": "sda-external-observation-port.v1",
+          "configuration": {
+            "referencePath": "discoveryReference",
+            "targetPath": "discoveredListing",
+            "allowedHosts": [
+              "boards-api.greenhouse.io"
+            ]
+          }
+        },
+        {
+          "portId": "acquisition-reference-resolution",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input"
+                },
+                {
+                  "op": "let",
+                  "bindings": {
+                    "listing": {
+                      "op": "parse-json",
+                      "value": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "discoveredListing.content"
+                      }
+                    },
+                    "selectedPosting": {
+                      "op": "find",
+                      "from": {
+                        "op": "path",
+                        "from": "listing",
+                        "path": "jobs"
+                      },
+                      "as": "candidate",
+                      "where": {
+                        "op": "equals",
+                        "left": {
+                          "op": "path",
+                          "from": "candidate",
+                          "path": "id"
+                        },
+                        "right": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "targetOpportunityId"
+                        }
+                      }
+                    }
+                  },
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "discoveredReferenceId": {
+                        "op": "format",
+                        "template": "{id}",
+                        "values": {
+                          "id": {
+                            "op": "path",
+                            "from": "selectedPosting",
+                            "path": "id"
+                          }
+                        }
+                      },
+                      "discoveredReferenceUrl": {
+                        "op": "path",
+                        "from": "selectedPosting",
+                        "path": "absolute_url"
+                      },
+                      "acquisitionReference": {
+                        "op": "object",
+                        "fields": {
+                          "url": {
+                            "op": "format",
+                            "template": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{id}?content=true",
+                            "values": {
+                              "board": {
+                                "op": "path",
+                                "from": "input",
+                                "path": "organizationIds.0"
+                              },
+                              "id": {
+                                "op": "path",
+                                "from": "selectedPosting",
+                                "path": "id"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "portId": "public-posting-acquisition-observation",
+          "platformCapabilityId": "sda-external-observation-port.v1",
+          "configuration": {
+            "referencePath": "acquisitionReference",
+            "targetPath": "acquiredPosting",
+            "allowedHosts": [
+              "boards-api.greenhouse.io"
+            ]
+          }
+        },
+        {
+          "portId": "posting-evidence-admission",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "let",
+              "bindings": {
+                "posting": {
+                  "op": "parse-json",
+                  "value": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "acquiredPosting.content"
+                  }
+                }
+              },
+              "value": {
+                "op": "object",
+                "fields": {
+                  "opportunityId": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "discoveredReferenceId"
+                  },
+                  "sourceId": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "sourceIds.0"
+                  },
+                  "sourceUrl": {
+                    "op": "path",
+                    "from": "posting",
+                    "path": "absolute_url"
+                  },
+                  "observedAt": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "acquiredPosting.observedAt"
+                  },
+                  "contentSha256": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "acquiredPosting.contentSha256"
+                  },
+                  "status": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "acquiredPosting.status"
+                  },
+                  "mediaType": {
+                    "op": "path",
+                    "from": "input",
+                    "path": "acquiredPosting.mediaType"
+                  },
+                  "title": {
+                    "op": "path",
+                    "from": "posting",
+                    "path": "title"
+                  },
+                  "organization": {
+                    "op": "path",
+                    "from": "posting",
+                    "path": "company_name"
+                  },
+                  "location": {
+                    "op": "path",
+                    "from": "posting",
+                    "path": "location.name"
+                  },
+                  "descriptionHtml": {
+                    "op": "path",
+                    "from": "posting",
+                    "path": "content"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "contractAuthorities": {
+      "authorityType": "consumer-contract-authorities.v1",
+      "contracts": {
+        "job-market-observation-request.v1": {
+          "schemaRef": "job-market-observation-request.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
+          "schemaDigest": "6ae09da8659939ff93289bb99ca6da85a15e595b15d1e833d9b0fbfa5fb21dce",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
+            "type": "object",
+            "required": [
+              "observationId",
+              "organizationIds",
+              "sourceIds",
+              "targetOpportunityId",
+              "observedFrom",
+              "observedTo",
+              "maxResultsPerSource"
+            ],
+            "properties": {
+              "observationId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "organizationIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sourceIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "targetOpportunityId": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "observedFrom": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "observedTo": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "maxResultsPerSource": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "public-job-market-observation-state.v1": {
+          "schemaRef": "public-job-market-observation-state.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
+          "schemaDigest": "b0e0244c86ccc0c2d790fa5e965fe672d989d82cfd5fa07c6385ad5603920c76",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
+            "type": "object",
+            "required": [
+              "observationId",
+              "organizationIds",
+              "sourceIds",
+              "targetOpportunityId",
+              "observedFrom",
+              "observedTo",
+              "maxResultsPerSource"
+            ],
+            "properties": {
+              "observationId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "organizationIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "sourceIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "targetOpportunityId": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "observedFrom": {
+                "type": "string"
+              },
+              "observedTo": {
+                "type": "string"
+              },
+              "maxResultsPerSource": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        "observed-job-posting-evidence.v1": {
+          "schemaRef": "observed-job-posting-evidence.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
+          "schemaDigest": "13bf0baca1b1032d0f233aded8f89b89d72e89acd0bfbe4cfb6f15a125d022e9",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
+            "type": "object",
+            "required": [
+              "opportunityId",
+              "sourceId",
+              "sourceUrl",
+              "observedAt",
+              "contentSha256",
+              "status",
+              "mediaType",
+              "title",
+              "organization",
+              "location",
+              "descriptionHtml"
+            ],
+            "properties": {
+              "opportunityId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "sourceUrl": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contentSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "status": {
+                "type": "integer"
+              },
+              "mediaType": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "organization": {
+                "type": "string",
+                "minLength": 1
+              },
+              "location": {
+                "type": "string",
+                "minLength": 1
+              },
+              "descriptionHtml": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "admittedPlatformCapabilities": [
+      {
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "kind": "consumer-runtime",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform",
+        "providesMechanics": [
+          "scenario-orchestration",
+          "contract-document-reading",
+          "canonicalization",
+          "schema-admission",
+          "authority-resolution",
+          "semantic-execution",
+          "telemetry-observation",
+          "scenario-invocation",
+          "transition-binding-projection",
+          "interface-delivery",
+          "runtime-projection",
+          "artifact-result-delivery",
+          "authority-driven-transformation",
+          "durable-artifact-materialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-json-cli.v1",
+        "kind": "interface-delivery",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "providesMechanics": [
+          "cli-delivery",
+          "json-reading",
+          "json-serialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-declarative-value-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.DeclarativeValuePort",
+        "providesMechanics": [
+          "event-port-invocation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-declarative-state-projection.v1",
+        "kind": "state-projection",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Projection.DeclarativeStateProjection",
+        "providesMechanics": [
+          "state-projection"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-fixture-contract-validator.v1",
+        "kind": "contract-validator",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Schema.FixtureContractValidator",
+        "providesMechanics": [
+          "contract-validation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-schema-contract-admission.v1",
+        "kind": "contract-validator",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+        "providesMechanics": [
+          "contract-validation",
+          "schema-admission"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "providesMechanics": [
+          "event-port-invocation",
+          "authority-driven-transformation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-authority-state-projection.v1",
+        "kind": "state-projection",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Projection.AuthorityTransformation",
+        "providesMechanics": [
+          "state-projection",
+          "transition-binding-projection"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-filesystem-artifact-store.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Delivery.AtomicFilesystemArtifactStore",
+        "providesMechanics": [
+          "event-port-invocation",
+          "durable-artifact-materialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-external-observation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
+        "providesMechanics": [
+          "event-port-invocation",
+          "external-representation-observation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-json-query-cli.v1",
+        "kind": "interface-delivery",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonQueryCli",
+        "providesMechanics": [
+          "query-cli-delivery",
+          "declared-query-evaluation",
+          "json-reading",
+          "json-serialization"
+        ],
+        "implementationRef": "languages/node/platform/query-cli.mjs",
+        "conformanceRef": "languages/node/platform/query-cli.conformance.test.mjs"
+      }
+    ]
+  },
+  "expectedTelemetry": {
+    "traceType": "projected-expected-consumer-trace.v1",
+    "telemetryId": "consumer-scenario-execution-telemetry",
+    "capabilityId": "observe-public-job-market",
+    "rootScenarioId": "collect-current-hiring-activity",
+    "observationType": "scenario-execution-observation.v1",
+    "lineageFields": [
+      "executionId",
+      "rootExecutionId",
+      "parentExecutionId",
+      "scenarioId"
+    ],
+    "scenarios": [
+      {
+        "scenarioId": "collect-current-hiring-activity",
+        "steps": [
+          "admit-input",
+          "resolve-event-authority",
+          "execute-event-authority",
+          "admit-outcome",
+          "resolve-disposition"
+        ],
+        "expectedTransitionId": "hiring-activity-to-posting-evidence"
+      },
+      {
+        "scenarioId": "acquire-and-admit-posting-evidence",
+        "steps": [
+          "admit-input",
+          "resolve-event-authority",
+          "execute-event-authority",
+          "admit-outcome",
+          "resolve-disposition"
+        ],
+        "expectedTransitionId": null
+      }
+    ]
+  },
+  "mechanicResolution": {
+    "resolutionType": "consumer-platform-mechanic-resolution.v1",
+    "projectionTarget": "node",
+    "requirements": [
+      {
+        "mechanicId": "contract-document-reading",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "canonicalization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "schema-admission",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "authority-resolution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "semantic-execution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "telemetry-observation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "scenario-invocation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "transition-binding-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "interface-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "runtime-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "artifact-result-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "authority-driven-transformation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "durable-artifact-materialization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "contract-validation",
+        "capabilityKind": "contract-validator",
+        "requiredBy": "scenario-contract-admission",
+        "requestedCapabilityId": "sda-schema-contract-admission.v1"
+      },
+      {
+        "mechanicId": "cli-delivery",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "json-reading",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "json-serialization",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:begin-public-market-observation",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-source-resolution",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-reference-discovery-observation",
+        "requestedCapabilityId": "sda-external-observation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:acquisition-reference-resolution",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-posting-acquisition-observation",
+        "requestedCapabilityId": "sda-external-observation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:posting-evidence-admission",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      }
+    ],
+    "resolutions": [
+      {
+        "mechanicId": "contract-document-reading",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "canonicalization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "schema-admission",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "authority-resolution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "semantic-execution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "telemetry-observation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "scenario-invocation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "transition-binding-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "interface-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "runtime-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "artifact-result-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "authority-driven-transformation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "durable-artifact-materialization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "contract-validation",
+        "capabilityKind": "contract-validator",
+        "requiredBy": "scenario-contract-admission",
+        "requestedCapabilityId": "sda-schema-contract-admission.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-schema-contract-admission.v1",
+        "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "cli-delivery",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "json-reading",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "json-serialization",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:public-job-market-observation-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:begin-public-market-observation",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-source-resolution",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-reference-discovery-observation",
+        "requestedCapabilityId": "sda-external-observation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-external-observation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:acquisition-reference-resolution",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:public-posting-acquisition-observation",
+        "requestedCapabilityId": "sda-external-observation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-external-observation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:posting-evidence-admission",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+      }
+    ],
+    "disposition": "RESOLVED"
+  },
+  "executableOrigin": {
+    "originType": "consumer-executable-origin.v1",
+    "disposition": "PROJECTED_ONLY",
+    "unauthorizedFiles": []
+  }
+}

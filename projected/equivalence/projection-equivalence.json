@@ -11,11 +11,11 @@
   "fixtures": [
     {
       "fixtureId": "adobe-public-market-intelligence",
-      "canonicalOutcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
+      "canonicalOutcomeSha256": "16d094de246a09c948c21b3d0ebfe87b32e14aba1fa1580c7db4d8234dfed601",
       "targets": [
         {
           "projectionTarget": "node",
-          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
+          "outcomeSha256": "16d094de246a09c948c21b3d0ebfe87b32e14aba1fa1580c7db4d8234dfed601",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -30,7 +30,7 @@
         },
         {
           "projectionTarget": "csharp",
-          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
+          "outcomeSha256": "16d094de246a09c948c21b3d0ebfe87b32e14aba1fa1580c7db4d8234dfed601",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -45,7 +45,7 @@
         },
         {
           "projectionTarget": "python",
-          "outcomeSha256": "37efca28b669100d7a69e2c59f3af7aa9ab8b29103be8d48bd15108a7344a337",
+          "outcomeSha256": "16d094de246a09c948c21b3d0ebfe87b32e14aba1fa1580c7db4d8234dfed601",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -63,11 +63,11 @@
     },
     {
       "fixtureId": "multi-company-input-dependent-intelligence",
-      "canonicalOutcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
+      "canonicalOutcomeSha256": "9125606adee0e244257c7fbb3cf49d2980b5ae9c6106087024e7754d2cf9fd2e",
       "targets": [
         {
           "projectionTarget": "node",
-          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
+          "outcomeSha256": "9125606adee0e244257c7fbb3cf49d2980b5ae9c6106087024e7754d2cf9fd2e",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -82,7 +82,7 @@
         },
         {
           "projectionTarget": "csharp",
-          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
+          "outcomeSha256": "9125606adee0e244257c7fbb3cf49d2980b5ae9c6106087024e7754d2cf9fd2e",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -97,7 +97,7 @@
         },
         {
           "projectionTarget": "python",
-          "outcomeSha256": "ce117ed3feb0b1c3dbc998e3f21d888e1ba8a0748bee79c9e4817c7c2c5bba90",
+          "outcomeSha256": "9125606adee0e244257c7fbb3cf49d2980b5ae9c6106087024e7754d2cf9fd2e",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -115,11 +115,11 @@
     },
     {
       "fixtureId": "established-change-across-observation-windows",
-      "canonicalOutcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+      "canonicalOutcomeSha256": "10a4569bf051236f7f9c1ef1acfc7c3da2ccfd295fbd0ff42b397128e7a5c033",
       "targets": [
         {
           "projectionTarget": "node",
-          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "outcomeSha256": "10a4569bf051236f7f9c1ef1acfc7c3da2ccfd295fbd0ff42b397128e7a5c033",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -134,7 +134,7 @@
         },
         {
           "projectionTarget": "csharp",
-          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "outcomeSha256": "10a4569bf051236f7f9c1ef1acfc7c3da2ccfd295fbd0ff42b397128e7a5c033",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",
@@ -149,7 +149,7 @@
         },
         {
           "projectionTarget": "python",
-          "outcomeSha256": "3ae831bab322cf85c08d5c691403043f87e440def77ea0619ea4f2d6219143e0",
+          "outcomeSha256": "10a4569bf051236f7f9c1ef1acfc7c3da2ccfd295fbd0ff42b397128e7a5c033",
           "scenarioSequence": [
             "resolve-job-market-intelligence",
             "resolve-market-signals",

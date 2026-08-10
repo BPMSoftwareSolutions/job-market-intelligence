@@ -1431,6 +1431,11 @@
                 }
               }
             },
+            "opportunities": {
+              "op": "path",
+              "from": "input",
+              "path": "opportunities"
+            },
             "signals": {
               "op": "path",
               "from": "input",
@@ -1449,10 +1454,30 @@
             "observedFacts": {
               "op": "object",
               "fields": {
+                "compensationFacts": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "compensationFacts"
+                },
+                "competencyFacts": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "competencyFacts"
+                },
                 "technologyFacts": {
                   "op": "path",
                   "from": "input",
                   "path": "technologyFacts"
+                },
+                "businessProblemFacts": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "businessProblemFacts"
+                },
+                "organizationalIntentFacts": {
+                  "op": "path",
+                  "from": "input",
+                  "path": "organizationalIntentFacts"
                 }
               }
             },

@@ -1,0 +1,11 @@
+{
+  "capabilityId": "observe-public-job-market",
+  "name": "Observe one public job posting",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a job-market consumer",
+    "intent": "retrieve an identified posting from an admitted public source",
+    "outcome": "inspect canonical posting content with source and content lineage"
+  },
+  "rootScenarioId": "collect-current-hiring-activity"
+}

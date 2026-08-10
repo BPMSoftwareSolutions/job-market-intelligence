@@ -1,5 +1,5 @@
 {
-  "authorityType": "transformations.v1",
+  "authorityType": "semantic-transformation-authority.v1",
   "transformations": [
     {
       "id": "begin-public-market-observation.v1",
@@ -39,15 +39,20 @@
           { "op": "path", "from": "input" },
           { "op": "let",
             "bindings": {
-              "listing": { "op": "parse-json", "value": { "op": "path", "from": "input", "path": "discoveredListing.content" } }
+              "listing": { "op": "parse-json", "value": { "op": "path", "from": "input", "path": "discoveredListing.content" } },
+              "selectedPosting": { "op": "find", "from": { "op": "path", "from": "listing", "path": "jobs" }, "as": "candidate", "where": {
+                "op": "equals",
+                "left": { "op": "path", "from": "candidate", "path": "id" },
+                "right": { "op": "path", "from": "input", "path": "targetOpportunityId" }
+              } }
             },
             "value": { "op": "object", "fields": {
-              "discoveredReferenceId": { "op": "format", "template": "{id}", "values": { "id": { "op": "path", "from": "listing", "path": "jobs.0.id" } } },
-              "discoveredReferenceUrl": { "op": "path", "from": "listing", "path": "jobs.0.absolute_url" },
+              "discoveredReferenceId": { "op": "format", "template": "{id}", "values": { "id": { "op": "path", "from": "selectedPosting", "path": "id" } } },
+              "discoveredReferenceUrl": { "op": "path", "from": "selectedPosting", "path": "absolute_url" },
               "acquisitionReference": { "op": "object", "fields": {
                 "url": { "op": "format", "template": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{id}?content=true", "values": {
                   "board": { "op": "path", "from": "input", "path": "organizationIds.0" },
-                  "id": { "op": "path", "from": "listing", "path": "jobs.0.id" }
+                  "id": { "op": "path", "from": "selectedPosting", "path": "id" }
                 } }
               } }
             } }
@@ -58,16 +63,23 @@
     {
       "id": "admit-posting-evidence.v1",
       "expression": {
-        "op": "object",
-        "fields": {
+        "op": "let",
+        "bindings": {
+          "posting": { "op": "parse-json", "value": { "op": "path", "from": "input", "path": "acquiredPosting.content" } }
+        },
+        "value": { "op": "object", "fields": {
           "opportunityId": { "op": "path", "from": "input", "path": "discoveredReferenceId" },
           "sourceId": { "op": "path", "from": "input", "path": "sourceIds.0" },
-          "sourceUrl": { "op": "path", "from": "input", "path": "acquiredPosting.sourceReference" },
+          "sourceUrl": { "op": "path", "from": "posting", "path": "absolute_url" },
           "observedAt": { "op": "path", "from": "input", "path": "acquiredPosting.observedAt" },
           "contentSha256": { "op": "path", "from": "input", "path": "acquiredPosting.contentSha256" },
           "status": { "op": "path", "from": "input", "path": "acquiredPosting.status" },
-          "mediaType": { "op": "path", "from": "input", "path": "acquiredPosting.mediaType" }
-        }
+          "mediaType": { "op": "path", "from": "input", "path": "acquiredPosting.mediaType" },
+          "title": { "op": "path", "from": "posting", "path": "title" },
+          "organization": { "op": "path", "from": "posting", "path": "company_name" },
+          "location": { "op": "path", "from": "posting", "path": "location.name" },
+          "descriptionHtml": { "op": "path", "from": "posting", "path": "content" }
+        } }
       }
     }
   ]

@@ -1,4 +1,4 @@
-﻿{
+{
     "manifestType":  "workspace-content-manifest.v1",
     "workspaceId":  "job-market-intelligence",
     "scope":  "authored-authority-excluding-disposable-projection",
@@ -10,48 +10,33 @@
                   },
                   {
                       "path":  "BUILDOUT.md",
-                      "sha256":  "ee807908c96e12c66009673a448d9181ae25830d6009041ded3dcf4b485adae8",
-                      "bytes":  4070
+                      "sha256":  "d493a753032d5741067a7ea26057e283ed11dc712904e010fe4c168eddc6680e",
+                      "bytes":  4513
                   },
                   {
-                      "path":  "capabilities/acquire-job-posting/scenario.authority.json",
-                      "sha256":  "a58ab87adee4c27b12d1e47f653d763073a28bdaf770a6489c54abcd5a3c1cb5",
-                      "bytes":  315
+                      "path":  "capabilities/detect-established-market-patterns/scenario.authority.json",
+                      "sha256":  "6c81b698bd50adf5b7147cf65c5f467d7e08afc500cdd13b2a7201c92942a1a2",
+                      "bytes":  373
                   },
                   {
-                      "path":  "capabilities/admit-job-opportunity/scenario.authority.json",
-                      "sha256":  "415ddcddcba4ee7d8f18baddc253edaee8322969b93d2b85ff671ccefb1fbbfd",
-                      "bytes":  311
+                      "path":  "capabilities/observe-public-job-market/capability.authority.json",
+                      "sha256":  "3232143cef18f9e14a19e7efc9db2c31dbca5ef96d4aafcf445d7a2fde79fa5e",
+                      "bytes":  408
                   },
                   {
-                      "path":  "capabilities/aggregate-market-observations/scenario.authority.json",
-                      "sha256":  "5fdb7455822d9132fac80ffb6c0bae6735fa96e19a74d348fa940c2551861fe7",
-                      "bytes":  337
+                      "path":  "capabilities/observe-public-job-market/consumer-workspace.authority.json",
+                      "sha256":  "b7e92e130737a64ff076cfa617659cc252edb7ae98439ddd2890683091a9769d",
+                      "bytes":  1652
                   },
                   {
-                      "path":  "capabilities/detect-market-patterns/scenario.authority.json",
-                      "sha256":  "192f0483003e0652c575207564b73f3cc6443f4689fac0cdc0441f0eb6ad6f62",
-                      "bytes":  317
-                  },
-                  {
-                      "path":  "capabilities/discover-job-opportunity-references/scenario.authority.json",
-                      "sha256":  "73d0b9ab4bf32c2084e92d98680cba14b8628a805aec7ce4975214555180e4d9",
-                      "bytes":  375
+                      "path":  "capabilities/observe-public-job-market/projection-authorities.authority.json",
+                      "sha256":  "b75f76d2be1d22e1c28a5f347290d8b344121a1984955aba84dd58040cb6bf24",
+                      "bytes":  82
                   },
                   {
                       "path":  "capabilities/project-market-intelligence/scenario.authority.json",
-                      "sha256":  "b3cb5805e982a631eb3447fcf01bdce0225b685464da6a6e3e17adbb129f936d",
-                      "bytes":  343
-                  },
-                  {
-                      "path":  "capabilities/resolve-business-problems/scenario.authority.json",
-                      "sha256":  "1dcfba16b9f9aa7261f6c38ee035b07e1310e3f91acd6e5c2bc024f4307bb7b6",
-                      "bytes":  323
-                  },
-                  {
-                      "path":  "capabilities/resolve-compensation/scenario.authority.json",
-                      "sha256":  "87cdba0a5fef4d83d4f7bce52c628ce406adbd80b03f7473d394e6ccb734c97d",
-                      "bytes":  308
+                      "sha256":  "61d17f6c12644a0a7d8805d44d8ea84b6ce8125dd9c446a0f33829aa5683920c",
+                      "bytes":  354
                   },
                   {
                       "path":  "capabilities/resolve-job-market-intelligence/capability.authority.json",
@@ -60,28 +45,13 @@
                   },
                   {
                       "path":  "capabilities/resolve-job-market-intelligence/scenario.authority.json",
-                      "sha256":  "56e50e824d307bbfb5c9cfc8e9e5173ceb90e078f27a58cc5751acc6a74d3c19",
-                      "bytes":  357
+                      "sha256":  "0293db034aeee07753ac95733903f18d7b49e4a9d18a52b876f281e5b12d9203",
+                      "bytes":  355
                   },
                   {
                       "path":  "capabilities/resolve-market-signals/scenario.authority.json",
-                      "sha256":  "e9dcc512286ceef4aa4d97bd8924b51dd34ba6b19493972791248e162a6ab043",
-                      "bytes":  315
-                  },
-                  {
-                      "path":  "capabilities/resolve-organizational-intent/scenario.authority.json",
-                      "sha256":  "31792ce4e46066c90e6c7adcd5c5a3f48a5b72d9c4a70a90a5854b92d45fc4be",
-                      "bytes":  344
-                  },
-                  {
-                      "path":  "capabilities/resolve-required-competencies/scenario.authority.json",
-                      "sha256":  "2459f4e74ed366efeb38c22384be2f75b2ef4a26c47b2830d9a211c1b16f71fb",
-                      "bytes":  329
-                  },
-                  {
-                      "path":  "capabilities/resolve-technologies/scenario.authority.json",
-                      "sha256":  "911f9426a2a66e0dd2df4f51693f7daae82713aa2dd0313f7389f66df38027fe",
-                      "bytes":  302
+                      "sha256":  "48199dc8e9fb1983163f8b00003919b3b7750a2bdd3437ebdfad9a50cdbbd2c5",
+                      "bytes":  337
                   },
                   {
                       "path":  "consumer-workspace.authority.json",
@@ -90,8 +60,8 @@
                   },
                   {
                       "path":  "contracts/contract-catalog.json",
-                      "sha256":  "62ae25ac7db099bba340f27dbd8cf480f73f8525b2ffe641a0d78791128dafa8",
-                      "bytes":  327
+                      "sha256":  "722c2cbab05aaa7ac7a0ada1cbce44e12e39f82155c894839d85d5695f5c1c93",
+                      "bytes":  590
                   },
                   {
                       "path":  "contracts/interfaces.contract.json",
@@ -104,14 +74,19 @@
                       "bytes":  846
                   },
                   {
+                      "path":  "contracts/job-market-observation-request.schema.json",
+                      "sha256":  "f16d5fb68540127a80300e55f2a0950121609a1592f17ad677083dbf82087bfb",
+                      "bytes":  914
+                  },
+                  {
                       "path":  "contracts/job-market-observation-scope.contract.json",
                       "sha256":  "a5450575b2ccbc0d5356bce7f380e40eab39b48b8cd15aeaa9f864ad59f77e97",
                       "bytes":  259
                   },
                   {
                       "path":  "contracts/job-market-observation-scope.schema.json",
-                      "sha256":  "d84b10305c754e4adc36c5aecbf2b5e9fbd1d0a1b2a1fb69736de7c36798cff3",
-                      "bytes":  1150
+                      "sha256":  "570683b088889266b884e54fa18ef6fb89a947018b8228f9c35ccbf44010a27e",
+                      "bytes":  1372
                   },
                   {
                       "path":  "contracts/market-analysis-projections.contract.json",
@@ -119,9 +94,24 @@
                       "bytes":  883
                   },
                   {
+                      "path":  "contracts/observed-job-posting-evidence.schema.json",
+                      "sha256":  "297aba6ef1d6a5a4c0141402e2cbeb2e349981d1df82786bfee212e32331feac",
+                      "bytes":  985
+                  },
+                  {
+                      "path":  "contracts/public-job-market-observation-state.schema.json",
+                      "sha256":  "f1c296a7eb58ea0b3a00436efd9c0b6d22ad5533f05e257103539bee88fd9b9d",
+                      "bytes":  801
+                  },
+                  {
+                      "path":  "contracts/public-market-observation-contract-catalog.json",
+                      "sha256":  "747fbc2c0265408c47c3c54ae68113a1ecd8ffc5bafa6c87071eed7a165eb828",
+                      "bytes":  266
+                  },
+                  {
                       "path":  "contracts/query-catalog.contract.json",
-                      "sha256":  "97302e33947e038ae6c56fcab298af80199b61a24b3a8a3167c76085c395886e",
-                      "bytes":  1529
+                      "sha256":  "dca36fd5b33f2c3d32f65cdd2bde7578b38ab3d055d46051fadc11e111d3678d",
+                      "bytes":  19918
                   },
                   {
                       "path":  "contracts/storage-projection.contract.json",
@@ -129,9 +119,49 @@
                       "bytes":  1061
                   },
                   {
+                      "path":  "docs/CAPABILITY_PLANES.md",
+                      "sha256":  "69ad68dbcf92450dd387d3b94874972eed7660aa36ad6f99585881b1e952de45",
+                      "bytes":  20351
+                  },
+                  {
+                      "path":  "docs/Engineering Market Intelligence Report.md",
+                      "sha256":  "1f1524d139e2098b1595f8c3f799a4a724a118b38fa939bb5400d184c8c4c865",
+                      "bytes":  21591
+                  },
+                  {
+                      "path":  "docs/ENGINEERING_MARKET_INTELLIGENCE_REPORT.template.md",
+                      "sha256":  "c2344eec97eea3bb43c407a0fca248ee137e4978713a0ff01593872b16bb14dc",
+                      "bytes":  20124
+                  },
+                  {
+                      "path":  "docs/EVIDENCE_LINEAGE_GUIDE.md",
+                      "sha256":  "22540617772bd64caed8f96bbc386448b315d3782b3ee0f1d6c3e5e60f764829",
+                      "bytes":  13287
+                  },
+                  {
+                      "path":  "docs/MARKET_ANALYSIS_GUIDE.md",
+                      "sha256":  "55e464aa9e9d75701e578f32b655c2cb101310844e7da503cd77c918847fcc5d",
+                      "bytes":  11401
+                  },
+                  {
+                      "path":  "docs/QUICK_START.md",
+                      "sha256":  "68780e0ed998b393a15c953dcfc6c57da7f9600fd4ceab5510e0c8db02f83ed0",
+                      "bytes":  10514
+                  },
+                  {
+                      "path":  "docs/SCENARIO_CLASSIFICATION.md",
+                      "sha256":  "9028c91138165322bee34529ea5013e882fd318e559d3701721d0dfa5a209d5b",
+                      "bytes":  11913
+                  },
+                  {
                       "path":  "features/job-market-intelligence.feature",
-                      "sha256":  "680cac907af7fef08d24fee88509072a1d02ea9f28ec6174611b817692a6b4c5",
-                      "bytes":  7004
+                      "sha256":  "026fe7f25023b1b7d8065f682395c082d61b856000fa1d392f147fcdbd125495",
+                      "bytes":  3187
+                  },
+                  {
+                      "path":  "features/public-job-market-observation.feature",
+                      "sha256":  "cf1bdb204ee933f79681d44225b59f8da4456c2c739741b26dd36a86ee87e67e",
+                      "bytes":  2210
                   },
                   {
                       "path":  "fixtures/adobe-market-intelligence-001.fixture.json",
@@ -140,13 +170,18 @@
                   },
                   {
                       "path":  "fixtures/capability-fixtures.authority.json",
-                      "sha256":  "6ff40dfd937ab777ebf76fa58de313e23da439d4f8ba6225b29210cb5a38d03f",
-                      "bytes":  6885
+                      "sha256":  "b6633dc4959ecb98d0059e1c0707f6135c191ae1e5d175bff0afc2318a2eacb4",
+                      "bytes":  13426
                   },
                   {
                       "path":  "fixtures/multi-company-trend-001.fixture.json",
                       "sha256":  "1912d51e22d859439c4e5e5053a3f3af9203e67a364284a8b1cbbce5b38c3f48",
                       "bytes":  566
+                  },
+                  {
+                      "path":  "fixtures/public-market-observation-fixtures.authority.json",
+                      "sha256":  "f821a62a079ae0317c4e3300260f4ff95eec7ee941abee0884b0a13fbc723b2e",
+                      "bytes":  922
                   },
                   {
                       "path":  "fixtures/rejection-private-source.fixture.json",
@@ -189,19 +224,34 @@
                       "bytes":  298
                   },
                   {
-                      "path":  "ontology/market-signal.authority.json",
-                      "sha256":  "404fa6cda5f41bb01d7be697e34bd6e2fed9c8a493255890019d1ac8c58a1678",
-                      "bytes":  291
-                  },
-                  {
                       "path":  "ontology/market-signal-taxonomy.authority.json",
                       "sha256":  "0bfb63654f2c68835be94bb67a9248e09f2639276aaf7ce7853ae8d1a9d4b674",
                       "bytes":  1819
                   },
                   {
+                      "path":  "ontology/market-signal.authority.json",
+                      "sha256":  "404fa6cda5f41bb01d7be697e34bd6e2fed9c8a493255890019d1ac8c58a1678",
+                      "bytes":  291
+                  },
+                  {
+                      "path":  "ontology/observed-external-representation.authority.json",
+                      "sha256":  "345882c3089732e56ed474928099bb299fe9827888de050fa1560659d309decf",
+                      "bytes":  302
+                  },
+                  {
                       "path":  "ontology/observed-job-fact.authority.json",
                       "sha256":  "525eeec70f3196676d3fde75730118f39d8cba7ccb2876f72d8f9daf65b824fd",
                       "bytes":  291
+                  },
+                  {
+                      "path":  "ontology/observed-job-posting-evidence.authority.json",
+                      "sha256":  "805a5edb0e0a44b169555d153ee6d51da3c9d2493777d82473c5eb5ce4f73c24",
+                      "bytes":  319
+                  },
+                  {
+                      "path":  "ontology/observed-job-reference.authority.json",
+                      "sha256":  "a93e01b2b119fbbb681376fab01260834128e2ec6b2de723c5276b1a959d9099",
+                      "bytes":  254
                   },
                   {
                       "path":  "ontology/organization.authority.json",
@@ -212,6 +262,11 @@
                       "path":  "ontology/relationships.authority.json",
                       "sha256":  "df6cceb7ddb6fbf52cd86265b398090404d9d562a5ae9490e0ae4123fc9721c4",
                       "bytes":  1185
+                  },
+                  {
+                      "path":  "ontology/resolved-public-source.authority.json",
+                      "sha256":  "46fb1c8a3f75928ecdc13e1fbdaa7fb87bbd9051d8e318f5250d63a1d1eee00c",
+                      "bytes":  221
                   },
                   {
                       "path":  "projections/csharp.projection-profile.json",
@@ -235,13 +290,13 @@
                   },
                   {
                       "path":  "README.md",
-                      "sha256":  "4e1a8e15afd8ec3e1e5ab0920497a8c2c3642ffdc532f329bff0a0a048e5b0b0",
-                      "bytes":  5297
+                      "sha256":  "e65fa817e3a6c87e44f46a3bbe96a57a389d6e2db1306d83975345e4d02965dd",
+                      "bytes":  6013
                   },
                   {
                       "path":  "schemas/job-market-intelligence-profile.schema.json",
-                      "sha256":  "6a44f4b7191534dde62e8824f25e06e1a4d6b14b2d6f02a9fd253b42e2cdba36",
-                      "bytes":  1949
+                      "sha256":  "2e1e231b3fa9e0645f2282b6cdeccb4b1a5b479a309d0041d32f62f668fb0bc7",
+                      "bytes":  2570
                   },
                   {
                       "path":  "schemas/job-opportunity.schema.json",
@@ -260,8 +315,8 @@
                   },
                   {
                       "path":  "semantic-authority/execution-authorities.authority.json",
-                      "sha256":  "dbdc5677f76fa0bee51fa64b32b139a3609d7bda250f6252923c22ff353e9f65",
-                      "bytes":  2437
+                      "sha256":  "f6a18fd4549819f63d14435f5f15f2807e49652a1c7fc185228e3a2698e6434f",
+                      "bytes":  1560
                   },
                   {
                       "path":  "semantic-authority/interfaces.authority.json",
@@ -272,6 +327,26 @@
                       "path":  "semantic-authority/projection-authorities.authority.json",
                       "sha256":  "b75f76d2be1d22e1c28a5f347290d8b344121a1984955aba84dd58040cb6bf24",
                       "bytes":  82
+                  },
+                  {
+                      "path":  "semantic-authority/public-market-observation-execution-authorities.authority.json",
+                      "sha256":  "17a81afc5403fc4760f8d30ab883caeb471c7bd5d49f3667c0deecade9fed471",
+                      "bytes":  817
+                  },
+                  {
+                      "path":  "semantic-authority/public-market-observation-interfaces.authority.json",
+                      "sha256":  "86d27bf167ebe3de782a9c3de96a912307d849a494a9dcde0332f6829dde0b19",
+                      "bytes":  2299
+                  },
+                  {
+                      "path":  "semantic-authority/public-market-observation-scenario-graph.authority.json",
+                      "sha256":  "0742fdf3dfbccd26e3ce9e9f419a68b9db6cab1e0a261e5c341c488b01920a2e",
+                      "bytes":  345
+                  },
+                  {
+                      "path":  "semantic-authority/public-market-observation-transformations.authority.json",
+                      "sha256":  "0fe46c4b68f1110509527fa63fd5023201b1d182a9f71178d339640baf3f9921",
+                      "bytes":  4428
                   },
                   {
                       "path":  "semantic-authority/resolve-market-intelligence.authority.json",
@@ -285,13 +360,13 @@
                   },
                   {
                       "path":  "semantic-authority/scenario-graph.authority.json",
-                      "sha256":  "d1a17d4ad4cd469b385296c72d93bb561991434f20313c10d6be859e1ff660f6",
-                      "bytes":  3352
+                      "sha256":  "e76d12d11bcccaa58b8715269f9ab3e0c7236e10149e84bfff5e49c195236efd",
+                      "bytes":  886
                   },
                   {
                       "path":  "semantic-authority/transformations.authority.json",
-                      "sha256":  "65609a47d36056dda7e066e79c045981ffb4fa0f4c012be9dc745129a987ff42",
-                      "bytes":  14975
+                      "sha256":  "c33e7f61f2cc5d602ae257c31887b08d025f4ff62499917ff7daee239bf6280e",
+                      "bytes":  53885
                   },
                   {
                       "path":  "sources/adobe.authority.json",

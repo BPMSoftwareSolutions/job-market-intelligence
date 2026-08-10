@@ -1,0 +1,108 @@
+{
+  "capabilityType": "scenario-driven-capability.v1",
+  "capabilityId": "observe-public-job-market",
+  "userStory": {
+    "actor": "a job-market consumer",
+    "intent": "retrieve an identified posting from an admitted public source",
+    "outcome": "inspect canonical posting content with source and content lineage"
+  },
+  "scenarios": [
+    {
+      "scenarioId": "collect-current-hiring-activity",
+      "input": {
+        "inputId": "job-market-observation-request",
+        "contract": {
+          "contractId": "job-market-observation-request.v1"
+        }
+      },
+      "event": {
+        "eventId": "collect-current-hiring-activity",
+        "executionAuthorityId": "collect-current-hiring-activity.v1"
+      },
+      "outcome": {
+        "outcomeId": "current-hiring-activity-collected",
+        "contract": {
+          "contractId": "public-job-market-observation-state.v1"
+        },
+        "experience": {
+          "statement": "I can review the public job openings found within my observation scope"
+        }
+      },
+      "gherkin": {
+        "given": {
+          "semanticRef": "collect-current-hiring-activity.given",
+          "text": "the companies I want to observe"
+        },
+        "when": {
+          "semanticRef": "collect-current-hiring-activity.when",
+          "text": "their permitted public job sources are checked and current openings are observed"
+        },
+        "then": {
+          "semanticRef": "collect-current-hiring-activity.then",
+          "text": "I can review the public job openings found within my observation scope"
+        }
+      },
+      "name": "Collect current hiring activity for selected companies"
+    },
+    {
+      "scenarioId": "acquire-and-admit-posting-evidence",
+      "input": {
+        "inputId": "current-hiring-activity-collected",
+        "contract": {
+          "contractId": "public-job-market-observation-state.v1"
+        }
+      },
+      "event": {
+        "eventId": "acquire-and-admit-posting-evidence",
+        "executionAuthorityId": "acquire-and-admit-posting-evidence.v1"
+      },
+      "outcome": {
+        "outcomeId": "posting-evidence-admitted",
+        "contract": {
+          "contractId": "observed-job-posting-evidence.v1"
+        },
+        "experience": {
+          "statement": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+        },
+        "terminal": true
+      },
+      "gherkin": {
+        "given": {
+          "semanticRef": "acquire-and-admit-posting-evidence.given",
+          "text": "an observed public job reference"
+        },
+        "when": {
+          "semanticRef": "acquire-and-admit-posting-evidence.when",
+          "text": "the referenced posting is retrieved and admitted as evidence"
+        },
+        "then": {
+          "semanticRef": "acquire-and-admit-posting-evidence.then",
+          "text": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+        }
+      },
+      "name": "Acquire and admit a public job posting as evidence"
+    }
+  ],
+  "transitions": [
+    {
+      "transitionId": "hiring-activity-to-posting-evidence",
+      "from": {
+        "scenarioId": "collect-current-hiring-activity",
+        "outcomeId": "current-hiring-activity-collected",
+        "contractId": "public-job-market-observation-state.v1"
+      },
+      "to": {
+        "scenarioId": "acquire-and-admit-posting-evidence",
+        "inputId": "current-hiring-activity-collected",
+        "contractId": "public-job-market-observation-state.v1"
+      },
+      "semanticProgress": "termination"
+    }
+  ],
+  "rootScenarioId": "collect-current-hiring-activity",
+  "name": "Observe one public job posting",
+  "mode": [
+    "feature",
+    "capability"
+  ]
+}

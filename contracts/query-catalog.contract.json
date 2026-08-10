@@ -22,27 +22,218 @@
     {
       "queryId": "highest-compensation-by-capability",
       "question": "Which capabilities are associated with the highest compensation bands?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": [],
+      "resultShape": "CompensationByCapability[]",
+      "expression": {
+        "op": "flat-map",
+        "from": { "op": "path", "from": "input", "path": "profile.observedFacts.competencyFacts" },
+        "as": "competencyFact",
+        "value": {
+          "op": "flat-map",
+          "from": { "op": "path", "from": "competencyFact", "path": "value" },
+          "as": "capability",
+          "value": {
+            "op": "let",
+            "bindings": {
+              "compensation": {
+                "op": "find",
+                "from": { "op": "path", "from": "input", "path": "profile.observedFacts.compensationFacts" },
+                "as": "fact",
+                "where": { "op": "equals", "left": { "op": "path", "from": "fact", "path": "opportunityId" }, "right": { "op": "path", "from": "competencyFact", "path": "opportunityId" } }
+              }
+            },
+            "value": {
+              "op": "array",
+              "items": [{
+                "op": "object",
+                "fields": {
+                  "capability": { "op": "path", "from": "capability" },
+                  "opportunityId": { "op": "path", "from": "competencyFact", "path": "opportunityId" },
+                  "organizationId": { "op": "path", "from": "competencyFact", "path": "organizationId" },
+                  "role": { "op": "path", "from": "competencyFact", "path": "role" },
+                  "compensation": { "op": "path", "from": "compensation", "path": "value" },
+                  "highestObserved": {
+                    "op": "if",
+                    "when": {
+                      "op": "find",
+                      "from": { "op": "path", "from": "input", "path": "profile.observedFacts.compensationFacts" },
+                      "as": "other",
+                      "where": { "op": "greater-than", "left": { "op": "path", "from": "other", "path": "value.maximum" }, "right": { "op": "path", "from": "compensation", "path": "value.maximum" } }
+                    },
+                    "then": { "op": "literal", "value": false },
+                    "else": { "op": "literal", "value": true }
+                  }
+                }
+              }]
+            }
+          }
+        }
+      }
     },
     {
       "queryId": "technology-demand-over-time",
       "question": "Which technologies are increasing or decreasing in observed demand?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": [],
+      "resultShape": "TechnologyDemandChange[]",
+      "expression": {
+        "op": "map",
+        "from": {
+          "op": "filter",
+          "from": { "op": "path", "from": "input", "path": "profile.signals" },
+          "as": "signal",
+          "where": { "op": "equals", "left": { "op": "path", "from": "signal", "path": "signalType" }, "right": { "op": "literal", "value": "technology-demand" } }
+        },
+        "as": "signal",
+        "value": {
+          "op": "let",
+          "bindings": {
+            "inference": {
+              "op": "find",
+              "from": { "op": "path", "from": "input", "path": "profile.inferences" },
+              "as": "inferenceCandidate",
+              "where": { "op": "includes", "in": { "op": "path", "from": "inferenceCandidate", "path": "supportingSignalIds" }, "value": { "op": "path", "from": "signal", "path": "signalId" } }
+            }
+          },
+          "value": {
+            "op": "object",
+            "fields": {
+              "technology": { "op": "path", "from": "signal", "path": "subject" },
+              "organizationIds": { "op": "path", "from": "signal", "path": "dimensions.organizationIds" },
+              "opportunityCount": { "op": "path", "from": "signal", "path": "dimensions.opportunityCount" },
+              "changeDisposition": { "op": "path", "from": "inference", "path": "disposition" },
+              "supportingSignalId": { "op": "path", "from": "signal", "path": "signalId" }
+            }
+          }
+        }
+      }
     },
     {
       "queryId": "competency-co-occurrence",
       "question": "Which competencies commonly appear together?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": [],
+      "resultShape": "CompetencyPair[]",
+      "expression": {
+        "op": "flat-map",
+        "from": { "op": "path", "from": "input", "path": "profile.observedFacts.competencyFacts" },
+        "as": "fact",
+        "value": {
+          "op": "flat-map",
+          "from": { "op": "path", "from": "fact", "path": "value" },
+          "as": "leftCompetency",
+          "value": {
+            "op": "flat-map",
+            "from": { "op": "path", "from": "fact", "path": "value" },
+            "as": "rightCompetency",
+            "value": {
+              "op": "if",
+              "when": { "op": "greater-than", "left": { "op": "path", "from": "rightCompetencyIndex" }, "right": { "op": "path", "from": "leftCompetencyIndex" } },
+              "then": { "op": "array", "items": [{ "op": "object", "fields": {
+                "left": { "op": "path", "from": "leftCompetency" },
+                "right": { "op": "path", "from": "rightCompetency" },
+                "opportunityId": { "op": "path", "from": "fact", "path": "opportunityId" },
+                "organizationId": { "op": "path", "from": "fact", "path": "organizationId" },
+                "evidenceFactId": { "op": "path", "from": "fact", "path": "factId" }
+              } }] },
+              "else": { "op": "array", "items": [] }
+            }
+          }
+        }
+      }
     },
     {
       "queryId": "ai-theme-by-business-problem",
       "question": "Which AI themes are tied to which business problems?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": ["aiThemes"],
+      "resultShape": "AiThemeBusinessProblem[]",
+      "expression": {
+        "op": "flat-map",
+        "from": { "op": "path", "from": "input", "path": "profile.observedFacts.technologyFacts" },
+        "as": "technologyFact",
+        "value": {
+          "op": "flat-map",
+          "from": { "op": "path", "from": "technologyFact", "path": "value" },
+          "as": "theme",
+          "value": {
+            "op": "if",
+            "when": { "op": "includes", "in": { "op": "path", "from": "input", "path": "params.aiThemes" }, "value": { "op": "path", "from": "theme" } },
+            "then": {
+              "op": "let",
+              "bindings": {
+                "problemFact": {
+                  "op": "find",
+                  "from": { "op": "path", "from": "input", "path": "profile.observedFacts.businessProblemFacts" },
+                  "as": "problemCandidate",
+                  "where": { "op": "equals", "left": { "op": "path", "from": "problemCandidate", "path": "opportunityId" }, "right": { "op": "path", "from": "technologyFact", "path": "opportunityId" } }
+                }
+              },
+              "value": {
+                "op": "map",
+                "from": { "op": "path", "from": "problemFact", "path": "value" },
+                "as": "problem",
+                "value": { "op": "object", "fields": {
+                  "aiTheme": { "op": "path", "from": "theme" },
+                  "businessProblem": { "op": "path", "from": "problem" },
+                  "opportunityId": { "op": "path", "from": "technologyFact", "path": "opportunityId" },
+                  "organizationId": { "op": "path", "from": "technologyFact", "path": "organizationId" },
+                  "evidenceFactIds": { "op": "array", "items": [{ "op": "path", "from": "technologyFact", "path": "factId" }, { "op": "path", "from": "problemFact", "path": "factId" }] }
+                } }
+              }
+            },
+            "else": { "op": "array", "items": [] }
+          }
+        }
+      }
     },
     {
       "queryId": "role-family-demand-momentum",
       "question": "Which role families have increasing hiring activity?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": [],
+      "resultShape": "RoleFamilyMomentum[]",
+      "expression": {
+        "op": "map",
+        "from": { "op": "path", "from": "input", "path": "profile.opportunities" },
+        "as": "opportunity",
+        "value": {
+          "op": "let",
+          "bindings": {
+            "technologyFact": {
+              "op": "find",
+              "from": { "op": "path", "from": "input", "path": "profile.observedFacts.technologyFacts" },
+              "as": "fact",
+              "where": { "op": "equals", "left": { "op": "path", "from": "fact", "path": "opportunityId" }, "right": { "op": "path", "from": "opportunity", "path": "opportunityId" } }
+            },
+            "roleSignals": {
+              "op": "filter",
+              "from": { "op": "path", "from": "input", "path": "profile.signals" },
+              "as": "signal",
+              "where": { "op": "includes", "in": { "op": "path", "from": "signal", "path": "evidenceFactIds" }, "value": { "op": "path", "from": "technologyFact", "path": "factId" } }
+            },
+            "establishedInference": {
+              "op": "find",
+              "from": { "op": "path", "from": "input", "path": "profile.inferences" },
+              "as": "inference",
+              "where": {
+                "op": "if",
+                "when": { "op": "equals", "left": { "op": "path", "from": "inference", "path": "disposition" }, "right": { "op": "literal", "value": "ESTABLISHED" } },
+                "then": { "op": "intersects", "left": { "op": "path", "from": "inference", "path": "supportingSignalIds" }, "right": { "op": "map", "from": { "op": "path", "from": "roleSignals" }, "as": "roleSignal", "value": { "op": "path", "from": "roleSignal", "path": "signalId" } } },
+                "else": { "op": "literal", "value": false }
+              }
+            }
+          },
+          "value": { "op": "object", "fields": {
+            "roleFamily": { "op": "path", "from": "opportunity", "path": "role" },
+            "organizationId": { "op": "path", "from": "opportunity", "path": "organizationId" },
+            "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
+            "observedTechnologySignalCount": { "op": "length", "value": { "op": "path", "from": "roleSignals" } },
+            "momentumDisposition": { "op": "if", "when": { "op": "path", "from": "establishedInference" }, "then": { "op": "literal", "value": "ESTABLISHED" }, "else": { "op": "literal", "value": "NOT_ESTABLISHED" } }
+          } }
+        }
+      }
     },
     {
       "queryId": "market-signal-evidence",
@@ -65,13 +256,24 @@
           "fields": {
             "signal": { "op": "path", "from": "signal" },
             "evidenceFacts": {
-              "op": "filter",
-              "from": { "op": "path", "from": "input", "path": "profile.observedFacts.technologyFacts" },
-              "as": "fact",
-              "where": {
-                "op": "includes",
-                "in": { "op": "path", "from": "signal", "path": "evidenceFactIds" },
-                "value": { "op": "path", "from": "fact", "path": "factId" }
+              "op": "flat-map",
+              "from": { "op": "array", "items": [
+                { "op": "path", "from": "input", "path": "profile.observedFacts.compensationFacts" },
+                { "op": "path", "from": "input", "path": "profile.observedFacts.competencyFacts" },
+                { "op": "path", "from": "input", "path": "profile.observedFacts.technologyFacts" },
+                { "op": "path", "from": "input", "path": "profile.observedFacts.businessProblemFacts" },
+                { "op": "path", "from": "input", "path": "profile.observedFacts.organizationalIntentFacts" }
+              ] },
+              "as": "factSet",
+              "value": {
+                "op": "filter",
+                "from": { "op": "path", "from": "factSet" },
+                "as": "fact",
+                "where": {
+                  "op": "includes",
+                  "in": { "op": "path", "from": "signal", "path": "evidenceFactIds" },
+                  "value": { "op": "path", "from": "fact", "path": "factId" }
+                }
               }
             }
           }
@@ -115,12 +317,82 @@
     {
       "queryId": "career-adjacency",
       "question": "Which high-demand opportunities are closest to a candidate evidence profile?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": ["competencies", "technologies"],
+      "resultShape": "CareerAdjacency[]",
+      "expression": {
+        "op": "map",
+        "from": {
+          "op": "filter",
+          "from": { "op": "path", "from": "input", "path": "profile.opportunities" },
+          "as": "opportunity",
+          "where": {
+            "op": "if",
+            "when": { "op": "intersects", "left": { "op": "path", "from": "opportunity", "path": "competencies" }, "right": { "op": "path", "from": "input", "path": "params.competencies" } },
+            "then": { "op": "literal", "value": true },
+            "else": { "op": "intersects", "left": { "op": "path", "from": "opportunity", "path": "technologies" }, "right": { "op": "path", "from": "input", "path": "params.technologies" } }
+          }
+        },
+        "as": "opportunity",
+        "value": { "op": "object", "fields": {
+          "opportunityId": { "op": "path", "from": "opportunity", "path": "opportunityId" },
+          "organizationId": { "op": "path", "from": "opportunity", "path": "organizationId" },
+          "role": { "op": "path", "from": "opportunity", "path": "role" },
+          "matchedCompetencies": { "op": "filter", "from": { "op": "path", "from": "opportunity", "path": "competencies" }, "as": "competency", "where": { "op": "includes", "in": { "op": "path", "from": "input", "path": "params.competencies" }, "value": { "op": "path", "from": "competency" } } },
+          "matchedTechnologies": { "op": "filter", "from": { "op": "path", "from": "opportunity", "path": "technologies" }, "as": "technology", "where": { "op": "includes", "in": { "op": "path", "from": "input", "path": "params.technologies" }, "value": { "op": "path", "from": "technology" } } },
+          "compensation": { "op": "path", "from": "opportunity", "path": "compensation" },
+          "sourceEvidence": { "op": "path", "from": "opportunity", "path": "sourceEvidence" }
+        } }
+      }
     },
     {
       "queryId": "gtm-whitespace",
       "question": "Which recurring funded business problems indicate potential go-to-market whitespace?",
-      "status": "DECLARED"
+      "status": "IMPLEMENTED",
+      "parameters": [],
+      "resultShape": "GtmWhitespace[]",
+      "expression": {
+        "op": "flat-map",
+        "from": { "op": "path", "from": "input", "path": "profile.observedFacts.businessProblemFacts" },
+        "as": "problemFact",
+        "value": {
+          "op": "let",
+          "bindings": {
+            "competencyFact": { "op": "find", "from": { "op": "path", "from": "input", "path": "profile.observedFacts.competencyFacts" }, "as": "fact", "where": { "op": "equals", "left": { "op": "path", "from": "fact", "path": "opportunityId" }, "right": { "op": "path", "from": "problemFact", "path": "opportunityId" } } },
+            "intentFact": { "op": "find", "from": { "op": "path", "from": "input", "path": "profile.observedFacts.organizationalIntentFacts" }, "as": "fact", "where": { "op": "equals", "left": { "op": "path", "from": "fact", "path": "opportunityId" }, "right": { "op": "path", "from": "problemFact", "path": "opportunityId" } } }
+          },
+          "value": {
+            "op": "map",
+            "from": { "op": "path", "from": "problemFact", "path": "value" },
+            "as": "problem",
+            "value": {
+              "op": "let",
+              "bindings": {
+                "problemSignal": {
+                  "op": "find",
+                  "from": { "op": "path", "from": "input", "path": "profile.signals" },
+                  "as": "signal",
+                  "where": {
+                    "op": "includes",
+                    "in": { "op": "path", "from": "signal", "path": "evidenceFactIds" },
+                    "value": { "op": "path", "from": "problemFact", "path": "factId" }
+                  }
+                }
+              },
+              "value": { "op": "object", "fields": {
+                "businessProblem": { "op": "path", "from": "problem" },
+                "organizationId": { "op": "path", "from": "problemFact", "path": "organizationId" },
+                "role": { "op": "path", "from": "problemFact", "path": "role" },
+                "capabilities": { "op": "path", "from": "competencyFact", "path": "value" },
+                "fundedIntent": { "op": "path", "from": "intentFact", "path": "value" },
+                "observedOpportunityCount": { "op": "path", "from": "problemSignal", "path": "dimensions.opportunityCount" },
+                "whitespaceDisposition": { "op": "if", "when": { "op": "greater-than", "left": { "op": "path", "from": "problemSignal", "path": "dimensions.opportunityCount" }, "right": { "op": "literal", "value": 1 } }, "then": { "op": "literal", "value": "RECURRING" }, "else": { "op": "literal", "value": "NOT_ESTABLISHED" } },
+                "evidenceFactIds": { "op": "array", "items": [{ "op": "path", "from": "problemFact", "path": "factId" }, { "op": "path", "from": "competencyFact", "path": "factId" }, { "op": "path", "from": "intentFact", "path": "factId" }] }
+              } }
+            }
+          }
+        }
+      }
     }
   ]
 }
