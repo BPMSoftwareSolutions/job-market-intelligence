@@ -1,0 +1,15 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    {
+      "id": "resolve-experience-gaps.v1",
+      "owningScenarioId": "resolve-experience-gaps",
+      "operations": [
+        { "kind": "invoke-port", "portId": "resolve-market-intelligence" },
+        { "kind": "invoke-port", "portId": "admit-candidate-evidence" },
+        { "kind": "invoke-port", "portId": "resolve-experience-alignment" },
+        { "kind": "invoke-port", "portId": "identify-experience-gaps" }
+      ]
+    }
+  ]
+}

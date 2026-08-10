@@ -1,0 +1,1525 @@
+{
+  "queryType": "projected-consumer-conformance-query.v1",
+  "queryId": "scenario-conformance-closure",
+  "capabilityId": "resolve-experience-gaps",
+  "subjects": [
+    "feature",
+    "scenario",
+    "contract",
+    "execution-authority",
+    "transition",
+    "interface",
+    "projection",
+    "telemetry",
+    "execution",
+    "behavior",
+    "platform-capability",
+    "executable-origin"
+  ],
+  "requiredClosures": [
+    "feature-to-scenario",
+    "scenario-to-contract",
+    "scenario-to-event-authority",
+    "outcome-to-transition",
+    "transition-to-next-input",
+    "scenario-to-interface",
+    "execution-to-telemetry",
+    "scenario-to-projection",
+    "expected-to-observed-execution",
+    "root-to-terminal-behavior",
+    "required-mechanic-to-platform-capability",
+    "consumer-executable-origin",
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "dispositionPolicy": "all-required-closures-conform",
+  "authorityGraph": {
+    "rootScenarioId": "resolve-experience-gaps",
+    "scenarios": [
+      {
+        "scenarioId": "resolve-experience-gaps",
+        "input": {
+          "inputId": "experience-gap-resolution-scope",
+          "contract": {
+            "contractId": "experience-gap-resolution-scope.v1"
+          }
+        },
+        "event": {
+          "eventId": "resolve-experience-gaps",
+          "executionAuthorityId": "resolve-experience-gaps.v1"
+        },
+        "outcome": {
+          "outcomeId": "experience-acquisition-opportunity-profile",
+          "contract": {
+            "contractId": "experience-acquisition-opportunity-profile.v1"
+          },
+          "experience": {
+            "statement": "I can see market-relevant experience I cannot yet demonstrate"
+          },
+          "terminal": true
+        },
+        "gherkin": {
+          "given": {
+            "semanticRef": "resolve-experience-gaps.given",
+            "text": "a declared market-intelligence request and candidate-experience authority"
+          },
+          "when": {
+            "semanticRef": "resolve-experience-gaps.when",
+            "text": "their independently admitted evidence is compared"
+          },
+          "then": {
+            "semanticRef": "resolve-experience-gaps.then",
+            "text": "I can see market-relevant experience I cannot yet demonstrate"
+          }
+        },
+        "name": "See market-relevant experience I cannot yet demonstrate"
+      }
+    ],
+    "transitions": [],
+    "executionAuthorities": [
+      {
+        "id": "resolve-experience-gaps.v1",
+        "owningScenarioId": "resolve-experience-gaps",
+        "operations": [
+          {
+            "kind": "invoke-port",
+            "portId": "resolve-market-intelligence"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "admit-candidate-evidence"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "resolve-experience-alignment"
+          },
+          {
+            "kind": "invoke-port",
+            "portId": "identify-experience-gaps"
+          }
+        ]
+      }
+    ],
+    "projectionAuthorities": [],
+    "interfaceAuthority": {
+      "interfaceAuthorityType": "consumer-interface-authority.v1",
+      "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+      "contractCatalog": "../../contracts/experience-gap-contract-catalog.json",
+      "requiredPlatformObligations": [
+        "dynamic-semantic-execution",
+        "domain-contract-admission"
+      ],
+      "interfaces": [
+        {
+          "interfaceId": "experience-gap-resolution-cli",
+          "kind": "cli",
+          "rootScenarioId": "resolve-experience-gaps",
+          "platformCapabilityId": "sda-json-cli.v1"
+        }
+      ],
+      "portBindings": [
+        {
+          "portId": "resolve-market-intelligence",
+          "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+          "configuration": {
+            "bindingRef": "../../../projected/application-binding.json",
+            "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+            "capabilityAuthorityDigest": "sha256:291ab32d0318ce639c4ebd1cea059a963e58c442d1460e30df3ec0c380a464c6",
+            "requestPath": "marketIntelligenceScope",
+            "resultPath": "marketIntelligenceProfile",
+            "lineageMode": "retain-nested-execution"
+          }
+        },
+        {
+          "portId": "admit-candidate-evidence",
+          "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+          "configuration": {
+            "bindingRef": "../../../../agentic-tailored-resume/capability/admit-candidate-evidence/projected/application-binding.json",
+            "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+            "capabilityAuthorityDigest": "sha256:9b7bfc42c29af33f8bda3c463f659f6604b0df8dcbab44d0d56ba1a007f792dd",
+            "requestPath": "candidateExperienceAuthority",
+            "resultPath": "candidateEvidence",
+            "lineageMode": "retain-nested-execution"
+          }
+        },
+        {
+          "portId": "resolve-experience-alignment",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input"
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "experienceAlignments": {
+                      "op": "map",
+                      "from": {
+                        "op": "path",
+                        "from": "input",
+                        "path": "marketIntelligenceProfile.signals"
+                      },
+                      "as": "signal",
+                      "value": {
+                        "op": "let",
+                        "bindings": {
+                          "matchingEvidence": {
+                            "op": "filter",
+                            "from": {
+                              "op": "path",
+                              "from": "input",
+                              "path": "candidateEvidence.evidence"
+                            },
+                            "as": "evidence",
+                            "where": {
+                              "op": "includes",
+                              "in": {
+                                "op": "path",
+                                "from": "evidence",
+                                "path": "skills"
+                              },
+                              "value": {
+                                "op": "path",
+                                "from": "signal",
+                                "path": "subject"
+                              }
+                            }
+                          }
+                        },
+                        "value": {
+                          "op": "object",
+                          "fields": {
+                            "signalId": {
+                              "op": "path",
+                              "from": "signal",
+                              "path": "signalId"
+                            },
+                            "targetCapability": {
+                              "op": "path",
+                              "from": "signal",
+                              "path": "subject"
+                            },
+                            "marketEvidenceFactIds": {
+                              "op": "path",
+                              "from": "signal",
+                              "path": "evidenceFactIds"
+                            },
+                            "status": {
+                              "op": "if",
+                              "when": {
+                                "op": "some",
+                                "from": {
+                                  "op": "path",
+                                  "from": "matchingEvidence"
+                                },
+                                "as": "evidence",
+                                "where": {
+                                  "op": "literal",
+                                  "value": true
+                                }
+                              },
+                              "then": {
+                                "op": "literal",
+                                "value": "SUPPORTED"
+                              },
+                              "else": {
+                                "op": "literal",
+                                "value": "UNSUPPORTED"
+                              }
+                            },
+                            "supportingEvidenceIds": {
+                              "op": "map",
+                              "from": {
+                                "op": "path",
+                                "from": "matchingEvidence"
+                              },
+                              "as": "evidence",
+                              "value": {
+                                "op": "path",
+                                "from": "evidence",
+                                "path": "evidenceId"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "portId": "identify-experience-gaps",
+          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "configuration": {
+            "expression": {
+              "op": "merge",
+              "values": [
+                {
+                  "op": "path",
+                  "from": "input"
+                },
+                {
+                  "op": "object",
+                  "fields": {
+                    "experienceAcquisitionOpportunities": {
+                      "op": "map",
+                      "from": {
+                        "op": "filter",
+                        "from": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "experienceAlignments"
+                        },
+                        "as": "alignment",
+                        "where": {
+                          "op": "equals",
+                          "left": {
+                            "op": "path",
+                            "from": "alignment",
+                            "path": "status"
+                          },
+                          "right": {
+                            "op": "literal",
+                            "value": "UNSUPPORTED"
+                          }
+                        }
+                      },
+                      "as": "alignment",
+                      "value": {
+                        "op": "object",
+                        "fields": {
+                          "opportunityId": {
+                            "op": "format",
+                            "template": "opportunity-{signalId}",
+                            "values": {
+                              "signalId": {
+                                "op": "path",
+                                "from": "alignment",
+                                "path": "signalId"
+                              }
+                            }
+                          },
+                          "targetCapability": {
+                            "op": "path",
+                            "from": "alignment",
+                            "path": "targetCapability"
+                          },
+                          "marketSignalId": {
+                            "op": "path",
+                            "from": "alignment",
+                            "path": "signalId"
+                          },
+                          "marketEvidenceFactIds": {
+                            "op": "path",
+                            "from": "alignment",
+                            "path": "marketEvidenceFactIds"
+                          },
+                          "reason": {
+                            "op": "literal",
+                            "value": "NO_ADMITTED_EVIDENCE"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "projectionBindings": []
+    },
+    "contractAuthorities": {
+      "authorityType": "consumer-contract-authorities.v1",
+      "contracts": {
+        "experience-gap-resolution-scope.v1": {
+          "schemaRef": "experience-gap-resolution-scope.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/experience-gap-resolution-scope.v1.schema.json",
+          "schemaDigest": "bc121056efef9b201881888732f60c3240d0c51d6afa91ed08f2a733120da0ce",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/experience-gap-resolution-scope.v1.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "marketIntelligenceScope",
+              "candidateExperienceAuthority"
+            ],
+            "properties": {
+              "marketIntelligenceScope": {
+                "$ref": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json"
+              },
+              "candidateExperienceAuthority": {
+                "$ref": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json"
+              }
+            }
+          }
+        },
+        "experience-acquisition-opportunity-profile.v1": {
+          "schemaRef": "experience-acquisition-opportunity-profile.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/experience-acquisition-opportunity-profile.v1.schema.json",
+          "schemaDigest": "b0aa5b2d9b6aef87fb4e0e2a1718c38d5f3c4dedb531bcc87db0aea1a412920f",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/experience-acquisition-opportunity-profile.v1.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "marketIntelligenceScope",
+              "candidateExperienceAuthority",
+              "marketIntelligenceProfile",
+              "candidateEvidence",
+              "experienceAlignments",
+              "experienceAcquisitionOpportunities"
+            ],
+            "properties": {
+              "marketIntelligenceScope": {
+                "$ref": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json"
+              },
+              "candidateExperienceAuthority": {
+                "$ref": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json"
+              },
+              "marketIntelligenceProfile": {
+                "$ref": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json"
+              },
+              "candidateEvidence": {
+                "$ref": "https://agentic-tailored-resume.local/contracts/candidate-evidence-catalog.v1.schema.json"
+              },
+              "experienceAlignments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "signalId",
+                    "targetCapability",
+                    "marketEvidenceFactIds",
+                    "status",
+                    "supportingEvidenceIds"
+                  ],
+                  "properties": {
+                    "signalId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "targetCapability": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "marketEvidenceFactIds": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "status": {
+                      "enum": [
+                        "SUPPORTED",
+                        "UNSUPPORTED"
+                      ]
+                    },
+                    "supportingEvidenceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "experienceAcquisitionOpportunities": {
+                "type": "array",
+                "items": {
+                  "$ref": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json"
+                }
+              }
+            }
+          }
+        },
+        "experience-acquisition-opportunity.v1": {
+          "schemaRef": "../schemas/experience-acquisition-opportunity.schema.json",
+          "schemaId": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json",
+          "schemaDigest": "718ec17233396c3903b5382f21fecee60db235666ea51fe138746dc80c27da31",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "opportunityId",
+              "targetCapability",
+              "marketSignalId",
+              "marketEvidenceFactIds",
+              "reason"
+            ],
+            "properties": {
+              "opportunityId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "targetCapability": {
+                "type": "string",
+                "minLength": 1
+              },
+              "marketSignalId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "marketEvidenceFactIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "reason": {
+                "const": "NO_ADMITTED_EVIDENCE"
+              }
+            }
+          }
+        },
+        "job-market-observation-scope.v1": {
+          "schemaRef": "job-market-observation-scope.schema.json",
+          "schemaId": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json",
+          "schemaDigest": "4284cc4884ff5176fabd3a621e1886f1afcb2ab45c26eaa247767ec51d2c07d2",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json",
+            "type": "object",
+            "required": [
+              "sourceIds",
+              "organizationIds",
+              "observedFrom",
+              "observedTo",
+              "maxResultsPerSource",
+              "publicSourceObservations",
+              "priorAggregates"
+            ],
+            "properties": {
+              "sourceIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "organizationIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "observedFrom": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "observedTo": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              },
+              "maxResultsPerSource": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "priorAggregates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "aggregateId",
+                    "subject",
+                    "count",
+                    "supportingSignalIds",
+                    "observedWindow"
+                  ]
+                }
+              },
+              "publicSourceObservations": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "opportunityId",
+                    "sourceId",
+                    "sourceUrl",
+                    "organizationId",
+                    "role",
+                    "location",
+                    "seniority",
+                    "compensation",
+                    "competencies",
+                    "technologies",
+                    "businessProblems",
+                    "organizationalIntent",
+                    "observedAt",
+                    "contentSha256"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "job-market-intelligence-profile.v1": {
+          "schemaRef": "../schemas/job-market-intelligence-profile.schema.json",
+          "schemaId": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
+          "schemaDigest": "b134a008f8129ef45827c742b77ecae1816472adeb8f7712208e8c701a40ffa7",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "profileId",
+              "scope",
+              "signals",
+              "analystExperience",
+              "generatedAt"
+            ],
+            "properties": {
+              "profileId": {
+                "type": "string"
+              },
+              "scope": {
+                "type": "object"
+              },
+              "organizations": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "opportunities": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "signals": {
+                "type": "array",
+                "items": {
+                  "$ref": "market-signal.schema.json"
+                }
+              },
+              "inferences": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "trends": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "observedFacts": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "compensationFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "competencyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "technologyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "businessProblemFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "organizationalIntentFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "analystExperience": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "organizationalInvestment",
+                  "capabilityDemand",
+                  "changeOverTime"
+                ],
+                "properties": {
+                  "organizationalInvestment": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "organizationId",
+                        "subject",
+                        "evidenceFactIds",
+                        "sourceEvidence"
+                      ]
+                    }
+                  },
+                  "capabilityDemand": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "market-signal.schema.json"
+                    }
+                  },
+                  "changeOverTime": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "disposition",
+                      "reason"
+                    ],
+                    "properties": {
+                      "disposition": {
+                        "type": "string",
+                        "enum": [
+                          "ESTABLISHED",
+                          "NOT_ESTABLISHED"
+                        ]
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "generatedAt": {
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+              }
+            }
+          }
+        },
+        "market-signal.v1": {
+          "schemaRef": "../schemas/market-signal.schema.json",
+          "schemaId": "https://example.org/sda/job-market-intelligence/schemas/market-signal.schema.json",
+          "schemaDigest": "8c0dea443f8de21bc2cee863b7aa2b8c762031eb29f82bfbf80c3078bfdabbfc",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://example.org/sda/job-market-intelligence/schemas/market-signal.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "signalId",
+              "signalType",
+              "subject",
+              "evidenceFactIds",
+              "dimensions"
+            ],
+            "properties": {
+              "signalId": {
+                "type": "string"
+              },
+              "signalType": {
+                "type": "string"
+              },
+              "subject": {
+                "type": "string"
+              },
+              "evidenceFactIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              },
+              "dimensions": {
+                "type": "object"
+              },
+              "observedWindow": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "candidate-experience-authority.v1": {
+          "schemaRef": "../../agentic-tailored-resume/capability/admit-candidate-evidence/data-contracts/candidate-experience-authority.schema.json",
+          "schemaId": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json",
+          "schemaDigest": "54170331f7881aa47624310097eeae34a910396b3d692ad5b0c10d312c98de60",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "candidate",
+              "source",
+              "experiences"
+            ],
+            "properties": {
+              "candidate": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "headline",
+                  "email"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "experiences": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidenceId",
+                    "organization",
+                    "role",
+                    "statement",
+                    "skills",
+                    "start",
+                    "end"
+                  ],
+                  "properties": {
+                    "evidenceId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "organization": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "role": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "skills": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "start": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "end": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "candidate-evidence-catalog.v1": {
+          "schemaRef": "../../agentic-tailored-resume/capability/admit-candidate-evidence/data-contracts/candidate-evidence-catalog.schema.json",
+          "schemaId": "https://agentic-tailored-resume.local/contracts/candidate-evidence-catalog.v1.schema.json",
+          "schemaDigest": "39b9d3895daf4f920553685f42cdee6d0e62ac1d38d9f5934a2d5bed556da189",
+          "schema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://agentic-tailored-resume.local/contracts/candidate-evidence-catalog.v1.schema.json",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "candidate",
+              "source",
+              "evidence"
+            ],
+            "properties": {
+              "candidate": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "name",
+                  "headline",
+                  "email"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "evidenceId",
+                    "organization",
+                    "role",
+                    "statement",
+                    "skills",
+                    "start",
+                    "end",
+                    "source"
+                  ],
+                  "properties": {
+                    "evidenceId": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "organization": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "role": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "statement": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "skills": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "start": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "end": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "admittedPlatformCapabilities": [
+      {
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "kind": "consumer-runtime",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform",
+        "providesMechanics": [
+          "scenario-orchestration",
+          "contract-document-reading",
+          "canonicalization",
+          "schema-admission",
+          "authority-resolution",
+          "semantic-execution",
+          "telemetry-observation",
+          "scenario-invocation",
+          "transition-binding-projection",
+          "interface-delivery",
+          "runtime-projection",
+          "artifact-result-delivery",
+          "authority-driven-transformation",
+          "durable-artifact-materialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-json-cli.v1",
+        "kind": "interface-delivery",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "providesMechanics": [
+          "cli-delivery",
+          "json-reading",
+          "json-serialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-declarative-value-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.DeclarativeValuePort",
+        "providesMechanics": [
+          "event-port-invocation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-declarative-state-projection.v1",
+        "kind": "state-projection",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Projection.DeclarativeStateProjection",
+        "providesMechanics": [
+          "state-projection"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-fixture-contract-validator.v1",
+        "kind": "contract-validator",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Schema.FixtureContractValidator",
+        "providesMechanics": [
+          "contract-validation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-schema-contract-admission.v1",
+        "kind": "contract-validator",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+        "providesMechanics": [
+          "contract-validation",
+          "schema-admission"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "providesMechanics": [
+          "event-port-invocation",
+          "authority-driven-transformation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-authority-state-projection.v1",
+        "kind": "state-projection",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Projection.AuthorityTransformation",
+        "providesMechanics": [
+          "state-projection",
+          "transition-binding-projection"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-filesystem-artifact-store.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Delivery.AtomicFilesystemArtifactStore",
+        "providesMechanics": [
+          "event-port-invocation",
+          "durable-artifact-materialization"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "capabilityId": "sda-external-observation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
+        "providesMechanics": [
+          "event-port-invocation",
+          "external-representation-observation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-projected-capability-invocation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocation",
+        "providesMechanics": [
+          "event-port-invocation",
+          "projected-capability-invocation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-projected-capability-invocation-port.v2",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocationAndBinding",
+        "providesMechanics": [
+          "event-port-invocation",
+          "projected-capability-invocation",
+          "parent-carrier-preservation",
+          "nested-execution-lineage",
+          "pinned-capability-binding"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-json-query-cli.v1",
+        "kind": "interface-delivery",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonQueryCli",
+        "providesMechanics": [
+          "query-cli-delivery",
+          "declared-query-evaluation",
+          "json-reading",
+          "json-serialization"
+        ],
+        "implementationRef": "languages/node/platform/query-cli.mjs",
+        "conformanceRef": "languages/node/platform/query-cli.conformance.test.mjs"
+      }
+    ]
+  },
+  "expectedTelemetry": {
+    "traceType": "projected-expected-consumer-trace.v1",
+    "telemetryId": "consumer-scenario-execution-telemetry",
+    "capabilityId": "resolve-experience-gaps",
+    "rootScenarioId": "resolve-experience-gaps",
+    "observationType": "scenario-execution-observation.v1",
+    "lineageFields": [
+      "executionId",
+      "rootExecutionId",
+      "parentExecutionId",
+      "scenarioId"
+    ],
+    "scenarios": [
+      {
+        "scenarioId": "resolve-experience-gaps",
+        "steps": [
+          "admit-input",
+          "resolve-event-authority",
+          "execute-event-authority",
+          "admit-outcome",
+          "resolve-disposition"
+        ],
+        "expectedTransitionId": null
+      }
+    ]
+  },
+  "mechanicResolution": {
+    "resolutionType": "consumer-platform-mechanic-resolution.v1",
+    "projectionTarget": "node",
+    "requirements": [
+      {
+        "mechanicId": "contract-document-reading",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "canonicalization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "schema-admission",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "authority-resolution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "semantic-execution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "telemetry-observation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "scenario-invocation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "transition-binding-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "interface-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "runtime-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "artifact-result-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "authority-driven-transformation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "durable-artifact-materialization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1"
+      },
+      {
+        "mechanicId": "contract-validation",
+        "capabilityKind": "contract-validator",
+        "requiredBy": "scenario-contract-admission",
+        "requestedCapabilityId": "sda-schema-contract-admission.v1"
+      },
+      {
+        "mechanicId": "cli-delivery",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "json-reading",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "json-serialization",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:resolve-market-intelligence",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v2"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:admit-candidate-evidence",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v2"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:resolve-experience-alignment",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:identify-experience-gaps",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+      }
+    ],
+    "resolutions": [
+      {
+        "mechanicId": "contract-document-reading",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "canonicalization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "schema-admission",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "authority-resolution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "semantic-execution",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "telemetry-observation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "scenario-invocation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "transition-binding-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "interface-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "runtime-projection",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "artifact-result-delivery",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "authority-driven-transformation",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "durable-artifact-materialization",
+        "capabilityKind": "consumer-runtime",
+        "requiredBy": "mandatory-profile:sda-consumer-mandatory-mechanics.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-node-consumer-runtime.v1",
+        "provider": "ScenarioKernel.NodePlatform",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "contract-validation",
+        "capabilityKind": "contract-validator",
+        "requiredBy": "scenario-contract-admission",
+        "requestedCapabilityId": "sda-schema-contract-admission.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-schema-contract-admission.v1",
+        "provider": "ScenarioKernel.NodePlatform.Schema.JsonSchemaContractAdmission",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "cli-delivery",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "json-reading",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "json-serialization",
+        "capabilityKind": "interface-delivery",
+        "requiredBy": "interface:experience-gap-resolution-cli",
+        "requestedCapabilityId": "sda-json-cli.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-json-cli.v1",
+        "provider": "ScenarioKernel.NodePlatform.Interface.JsonCli",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:resolve-market-intelligence",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v2",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-projected-capability-invocation-port.v2",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocationAndBinding",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:admit-candidate-evidence",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v2",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-projected-capability-invocation-port.v2",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocationAndBinding",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:resolve-experience-alignment",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:identify-experience-gaps",
+        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-authority-transformation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "tools/tests/consumer-projection/platform-capability-admission.test.js"
+      }
+    ],
+    "disposition": "RESOLVED"
+  },
+  "executableOrigin": {
+    "originType": "consumer-executable-origin.v1",
+    "disposition": "PROJECTED_ONLY",
+    "unauthorizedFiles": []
+  }
+}

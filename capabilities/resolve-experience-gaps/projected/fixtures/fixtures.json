@@ -1,0 +1,166 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "market-demand-is-compared-with-admitted-candidate-evidence",
+      "input": {
+        "marketIntelligenceScope": {
+          "sourceIds": [
+            "greenhouse",
+            "lever"
+          ],
+          "organizationIds": [
+            "northstar",
+            "harbor"
+          ],
+          "observedFrom": "2026-07-01T00:00:00Z",
+          "observedTo": "2026-07-31T23:59:59Z",
+          "maxResultsPerSource": 50,
+          "priorAggregates": [],
+          "publicSourceObservations": [
+            {
+              "opportunityId": "northstar-101",
+              "sourceId": "greenhouse",
+              "sourceUrl": "https://boards.greenhouse.io/northstar/jobs/101",
+              "organizationId": "northstar",
+              "role": "Platform Engineer",
+              "location": "Remote",
+              "seniority": "staff",
+              "compensation": {
+                "currency": "USD",
+                "minimum": 180000,
+                "maximum": 220000,
+                "period": "year"
+              },
+              "competencies": [
+                "platform engineering",
+                "reliability"
+              ],
+              "technologies": [
+                "Go",
+                "Kubernetes"
+              ],
+              "businessProblems": [
+                "developer productivity"
+              ],
+              "organizationalIntent": "scale-internal-platform",
+              "observedAt": "2026-07-15T12:00:00Z",
+              "contentSha256": "90868bde8c637c92422ca3c50e20f21cba20c483cbb380a260efb85c702f27db"
+            },
+            {
+              "opportunityId": "harbor-202",
+              "sourceId": "lever",
+              "sourceUrl": "https://jobs.lever.co/harbor/202",
+              "organizationId": "harbor",
+              "role": "Data Infrastructure Engineer",
+              "location": "New York, NY",
+              "seniority": "senior",
+              "compensation": {
+                "currency": "USD",
+                "minimum": 165000,
+                "maximum": 205000,
+                "period": "year"
+              },
+              "competencies": [
+                "data infrastructure",
+                "stream processing"
+              ],
+              "technologies": [
+                "Python",
+                "Kafka"
+              ],
+              "businessProblems": [
+                "real-time analytics"
+              ],
+              "organizationalIntent": "expand-streaming-data-capability",
+              "observedAt": "2026-07-20T12:00:00Z",
+              "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f"
+            }
+          ]
+        },
+        "candidateExperienceAuthority": {
+          "candidate": {
+            "name": "Alex Morgan",
+            "headline": "Software architect and platform engineer",
+            "email": "alex.morgan@example.test"
+          },
+          "source": "experience-log.v1",
+          "experiences": [
+            {
+              "evidenceId": "evidence-python-services",
+              "organization": "Northstar Labs",
+              "role": "Principal Engineer",
+              "statement": "Built Python services that processed high-volume workflow events with deterministic recovery.",
+              "skills": [
+                "Python",
+                "Event-Driven Architecture"
+              ],
+              "start": "2022-01",
+              "end": "present"
+            },
+            {
+              "evidenceId": "evidence-distributed-platform",
+              "organization": "Northstar Labs",
+              "role": "Principal Engineer",
+              "statement": "Designed a distributed platform that separated domain authority from runtime infrastructure.",
+              "skills": [
+                "Distributed Systems",
+                "Architecture"
+              ],
+              "start": "2022-01",
+              "end": "present"
+            }
+          ]
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-gap-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "resolve-experience-gaps",
+        "scenarioSequence": [
+          "resolve-experience-gaps"
+        ],
+        "outcomeAssertions": [
+          {
+            "conditionId": "admitted-evidence-boundary-is-visible",
+            "path": "experienceAlignments.2.status",
+            "operator": "equals",
+            "value": "SUPPORTED"
+          },
+          {
+            "conditionId": "admitted-evidence-boundary-is-visible",
+            "path": "experienceAlignments.2.supportingEvidenceIds",
+            "operator": "contains",
+            "value": "evidence-python-services"
+          },
+          {
+            "conditionId": "market-relevant-gaps-are-visible",
+            "path": "experienceAcquisitionOpportunities.2.targetCapability",
+            "operator": "equals",
+            "value": "Kafka"
+          },
+          {
+            "conditionId": "market-evidence-lineage-is-inspectable",
+            "path": "experienceAcquisitionOpportunities.2.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "path": "candidateEvidence.evidence.0.source",
+            "operator": "equals",
+            "value": "experience-log.v1"
+          },
+          {
+            "path": "marketIntelligenceProfile.signals.3.subject",
+            "operator": "equals",
+            "value": "Kafka"
+          }
+        ]
+      }
+    }
+  ]
+}

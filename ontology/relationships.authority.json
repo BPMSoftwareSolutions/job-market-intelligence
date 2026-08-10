@@ -50,6 +50,11 @@
       "subject": "organization",
       "predicate": "INVESTS_IN",
       "object": "capability"
+    },
+    {
+      "subject": "market-signal",
+      "predicate": "EXPOSES_GAP",
+      "object": "experience-acquisition-opportunity"
     }
   ]
 }

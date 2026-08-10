@@ -1,0 +1,31 @@
+{
+  "capabilityId": "resolve-experience-gaps",
+  "name": "Resolve demonstrable experience gaps against market evidence",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a professional planning how to build market-relevant experience",
+    "intent": "compare admitted candidate evidence with evidence-backed market signals",
+    "outcome": "inspect the market-relevant experience the candidate cannot yet demonstrate"
+  },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "market-relevant-experience-gaps-are-visible",
+    "actor": "a professional planning how to build market-relevant experience",
+    "promise": "I can see market-relevant experience I cannot yet demonstrate.",
+    "observableConditions": [
+      {
+        "conditionId": "market-relevant-gaps-are-visible",
+        "statement": "each unsupported market signal is visible as an experience acquisition opportunity"
+      },
+      {
+        "conditionId": "market-evidence-lineage-is-inspectable",
+        "statement": "each opportunity retains the market evidence facts supporting its demand signal"
+      },
+      {
+        "conditionId": "admitted-evidence-boundary-is-visible",
+        "statement": "supported signals identify the admitted candidate evidence that demonstrates them"
+      }
+    ]
+  },
+  "rootScenarioId": "resolve-experience-gaps"
+}

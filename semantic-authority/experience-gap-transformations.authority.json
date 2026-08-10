@@ -1,0 +1,108 @@
+{
+  "authorityType": "semantic-transformation-authority.v1",
+  "transformations": [
+    {
+      "id": "resolve-experience-alignment.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceAlignments": {
+                "op": "map",
+                "from": { "op": "path", "from": "input", "path": "marketIntelligenceProfile.signals" },
+                "as": "signal",
+                "value": {
+                  "op": "let",
+                  "bindings": {
+                    "matchingEvidence": {
+                      "op": "filter",
+                      "from": { "op": "path", "from": "input", "path": "candidateEvidence.evidence" },
+                      "as": "evidence",
+                      "where": {
+                        "op": "includes",
+                        "in": { "op": "path", "from": "evidence", "path": "skills" },
+                        "value": { "op": "path", "from": "signal", "path": "subject" }
+                      }
+                    }
+                  },
+                  "value": {
+                    "op": "object",
+                    "fields": {
+                      "signalId": { "op": "path", "from": "signal", "path": "signalId" },
+                      "targetCapability": { "op": "path", "from": "signal", "path": "subject" },
+                      "marketEvidenceFactIds": { "op": "path", "from": "signal", "path": "evidenceFactIds" },
+                      "status": {
+                        "op": "if",
+                        "when": {
+                          "op": "some",
+                          "from": { "op": "path", "from": "matchingEvidence" },
+                          "as": "evidence",
+                          "where": { "op": "literal", "value": true }
+                        },
+                        "then": { "op": "literal", "value": "SUPPORTED" },
+                        "else": { "op": "literal", "value": "UNSUPPORTED" }
+                      },
+                      "supportingEvidenceIds": {
+                        "op": "map",
+                        "from": { "op": "path", "from": "matchingEvidence" },
+                        "as": "evidence",
+                        "value": { "op": "path", "from": "evidence", "path": "evidenceId" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "identify-experience-gaps.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceAcquisitionOpportunities": {
+                "op": "map",
+                "from": {
+                  "op": "filter",
+                  "from": { "op": "path", "from": "input", "path": "experienceAlignments" },
+                  "as": "alignment",
+                  "where": {
+                    "op": "equals",
+                    "left": { "op": "path", "from": "alignment", "path": "status" },
+                    "right": { "op": "literal", "value": "UNSUPPORTED" }
+                  }
+                },
+                "as": "alignment",
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "opportunityId": {
+                      "op": "format",
+                      "template": "opportunity-{signalId}",
+                      "values": {
+                        "signalId": { "op": "path", "from": "alignment", "path": "signalId" }
+                      }
+                    },
+                    "targetCapability": { "op": "path", "from": "alignment", "path": "targetCapability" },
+                    "marketSignalId": { "op": "path", "from": "alignment", "path": "signalId" },
+                    "marketEvidenceFactIds": { "op": "path", "from": "alignment", "path": "marketEvidenceFactIds" },
+                    "reason": { "op": "literal", "value": "NO_ADMITTED_EVIDENCE" }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

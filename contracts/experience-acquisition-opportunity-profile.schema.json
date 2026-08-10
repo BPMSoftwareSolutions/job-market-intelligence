@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/experience-acquisition-opportunity-profile.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "marketIntelligenceScope",
+    "candidateExperienceAuthority",
+    "marketIntelligenceProfile",
+    "candidateEvidence",
+    "experienceAlignments",
+    "experienceAcquisitionOpportunities"
+  ],
+  "properties": {
+    "marketIntelligenceScope": {
+      "$ref": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json"
+    },
+    "candidateExperienceAuthority": {
+      "$ref": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json"
+    },
+    "marketIntelligenceProfile": {
+      "$ref": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json"
+    },
+    "candidateEvidence": {
+      "$ref": "https://agentic-tailored-resume.local/contracts/candidate-evidence-catalog.v1.schema.json"
+    },
+    "experienceAlignments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "signalId",
+          "targetCapability",
+          "marketEvidenceFactIds",
+          "status",
+          "supportingEvidenceIds"
+        ],
+        "properties": {
+          "signalId": { "type": "string", "minLength": 1 },
+          "targetCapability": { "type": "string", "minLength": 1 },
+          "marketEvidenceFactIds": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "status": { "enum": ["SUPPORTED", "UNSUPPORTED"] },
+          "supportingEvidenceIds": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "experienceAcquisitionOpportunities": {
+      "type": "array",
+      "items": {
+        "$ref": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json"
+      }
+    }
+  }
+}

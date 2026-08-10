@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-concept.v1",
+  "conceptId": "experience-acquisition-opportunity",
+  "name": "Experience acquisition opportunity",
+  "definition": "A market capability demand signal for which no admitted candidate evidence demonstrates the requested capability.",
+  "schemaRef": "../schemas/experience-acquisition-opportunity.schema.json"
+}

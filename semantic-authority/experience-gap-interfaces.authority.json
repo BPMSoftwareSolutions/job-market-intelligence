@@ -1,0 +1,60 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "contractCatalog": "../../contracts/experience-gap-contract-catalog.json",
+  "requiredPlatformObligations": [
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "interfaces": [
+    {
+      "interfaceId": "experience-gap-resolution-cli",
+      "kind": "cli",
+      "rootScenarioId": "resolve-experience-gaps",
+      "platformCapabilityId": "sda-json-cli.v1"
+    }
+  ],
+  "portBindings": [
+    {
+      "portId": "resolve-market-intelligence",
+      "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+      "configuration": {
+        "bindingRef": "../../../projected/application-binding.json",
+        "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+        "capabilityAuthorityDigest": "sha256:291ab32d0318ce639c4ebd1cea059a963e58c442d1460e30df3ec0c380a464c6",
+        "requestPath": "marketIntelligenceScope",
+        "resultPath": "marketIntelligenceProfile",
+        "lineageMode": "retain-nested-execution"
+      }
+    },
+    {
+      "portId": "admit-candidate-evidence",
+      "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+      "configuration": {
+        "bindingRef": "../../../../agentic-tailored-resume/capability/admit-candidate-evidence/projected/application-binding.json",
+        "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+        "capabilityAuthorityDigest": "sha256:9b7bfc42c29af33f8bda3c463f659f6604b0df8dcbab44d0d56ba1a007f792dd",
+        "requestPath": "candidateExperienceAuthority",
+        "resultPath": "candidateEvidence",
+        "lineageMode": "retain-nested-execution"
+      }
+    },
+    {
+      "portId": "resolve-experience-alignment",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/experience-gap-transformations.authority.json",
+        "transformationId": "resolve-experience-alignment.v1"
+      }
+    },
+    {
+      "portId": "identify-experience-gaps",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/experience-gap-transformations.authority.json",
+        "transformationId": "identify-experience-gaps.v1"
+      }
+    }
+  ],
+  "projectionBindings": []
+}

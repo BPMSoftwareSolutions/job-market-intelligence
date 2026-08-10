@@ -1,0 +1,38 @@
+{
+  "scenarioId": "resolve-experience-gaps",
+  "input": {
+    "inputId": "experience-gap-resolution-scope",
+    "contract": {
+      "contractId": "experience-gap-resolution-scope.v1"
+    }
+  },
+  "event": {
+    "eventId": "resolve-experience-gaps",
+    "executionAuthorityId": "resolve-experience-gaps.v1"
+  },
+  "outcome": {
+    "outcomeId": "experience-acquisition-opportunity-profile",
+    "contract": {
+      "contractId": "experience-acquisition-opportunity-profile.v1"
+    },
+    "experience": {
+      "statement": "I can see market-relevant experience I cannot yet demonstrate"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "resolve-experience-gaps.given",
+      "text": "a declared market-intelligence request and candidate-experience authority"
+    },
+    "when": {
+      "semanticRef": "resolve-experience-gaps.when",
+      "text": "their independently admitted evidence is compared"
+    },
+    "then": {
+      "semanticRef": "resolve-experience-gaps.then",
+      "text": "I can see market-relevant experience I cannot yet demonstrate"
+    }
+  },
+  "name": "See market-relevant experience I cannot yet demonstrate"
+}

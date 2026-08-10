@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/experience-gap-resolution-scope.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["marketIntelligenceScope", "candidateExperienceAuthority"],
+  "properties": {
+    "marketIntelligenceScope": {
+      "$ref": "https://job-market-intelligence.local/contracts/job-market-observation-scope.v1.schema.json"
+    },
+    "candidateExperienceAuthority": {
+      "$ref": "https://agentic-tailored-resume.local/contracts/candidate-experience-authority.v1.schema.json"
+    }
+  }
+}
