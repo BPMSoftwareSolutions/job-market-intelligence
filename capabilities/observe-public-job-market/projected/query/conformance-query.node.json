@@ -497,7 +497,7 @@
         "job-market-observation-request.v1": {
           "schemaRef": "job-market-observation-request.schema.json",
           "schemaId": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
-          "schemaDigest": "6ae09da8659939ff93289bb99ca6da85a15e595b15d1e833d9b0fbfa5fb21dce",
+          "schemaDigest": "66c1d357875a38a822debbf4a3a53389638128dd9385cb6b178cbf0ae0ef266c",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
@@ -509,7 +509,8 @@
               "targetOpportunityId",
               "observedFrom",
               "observedTo",
-              "maxResultsPerSource"
+              "maxResultsPerSource",
+              "priorAggregates"
             ],
             "properties": {
               "observationId": {
@@ -545,6 +546,19 @@
               "maxResultsPerSource": {
                 "type": "integer",
                 "minimum": 1
+              },
+              "priorAggregates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "aggregateId",
+                    "subject",
+                    "count",
+                    "supportingSignalIds",
+                    "observedWindow"
+                  ]
+                }
               }
             }
           }
@@ -814,6 +828,19 @@
         ],
         "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
         "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
+      },
+      {
+        "capabilityId": "sda-projected-capability-invocation-port.v1",
+        "kind": "event-port",
+        "status": "ADMITTED",
+        "projectionTarget": "node",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocation",
+        "providesMechanics": [
+          "event-port-invocation",
+          "projected-capability-invocation"
+        ],
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
       },
       {
         "capabilityId": "sda-json-query-cli.v1",

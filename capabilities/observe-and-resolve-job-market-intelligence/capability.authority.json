@@ -1,0 +1,31 @@
+{
+  "capabilityId": "observe-and-resolve-job-market-intelligence",
+  "name": "Observe and resolve job market intelligence from one live posting",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a market analyst",
+    "intent": "observe one live public job posting and project it through the market-intelligence pipeline",
+    "outcome": "inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted from its content"
+  },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "live-posting-is-projected-honestly",
+    "actor": "a market analyst",
+    "promise": "the analyst can inspect a market-intelligence profile derived from one live-observed public posting, with every not-yet-extracted fact explicitly absent rather than fabricated",
+    "observableConditions": [
+      {
+        "conditionId": "profile-reflects-live-evidence",
+        "statement": "the profile's lineage traces to the live-observed posting's real source and content identity"
+      },
+      {
+        "conditionId": "unextracted-facts-are-explicit-not-fabricated",
+        "statement": "capability demand and market signals are empty, not invented, when the posting's facts have not been extracted"
+      },
+      {
+        "conditionId": "change-claim-is-bounded",
+        "statement": "the profile explicitly states when change over time is not established"
+      }
+    ]
+  },
+  "rootScenarioId": "observe-and-resolve-job-market-intelligence"
+}

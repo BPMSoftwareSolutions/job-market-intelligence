@@ -1,0 +1,65 @@
+{
+  "closureType": "consumer-experience-closure.v1",
+  "capabilityId": "observe-and-resolve-job-market-intelligence",
+  "experienceId": "live-posting-is-projected-honestly",
+  "promise": "the analyst can inspect a market-intelligence profile derived from one live-observed public posting, with every not-yet-extracted fact explicitly absent rather than fabricated",
+  "projectionTarget": "node",
+  "fixtures": [
+    {
+      "fixtureId": "greenhouse-live-bridge-001",
+      "conditions": [
+        {
+          "conditionId": "profile-reflects-live-evidence",
+          "statement": "the profile's lineage traces to the live-observed posting's real source and content identity",
+          "observations": [
+            {
+              "path": "analystExperience.organizationalInvestment.0.sourceEvidence.0.sourceUrl",
+              "operator": "contains",
+              "expected": "greenhouse.io",
+              "actual": "https://job-boards.greenhouse.io/greenhouse/jobs/8017323?gh_jid=8017323",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "unextracted-facts-are-explicit-not-fabricated",
+          "statement": "capability demand and market signals are empty, not invented, when the posting's facts have not been extracted",
+          "observations": [
+            {
+              "path": "signals",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            },
+            {
+              "path": "analystExperience.capabilityDemand",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "change-claim-is-bounded",
+          "statement": "the profile explicitly states when change over time is not established",
+          "observations": [
+            {
+              "path": "analystExperience.changeOverTime.disposition",
+              "operator": "equals",
+              "expected": "NOT_ESTABLISHED",
+              "actual": "NOT_ESTABLISHED",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    }
+  ],
+  "disposition": "OBSERVABLY_TRUE"
+}

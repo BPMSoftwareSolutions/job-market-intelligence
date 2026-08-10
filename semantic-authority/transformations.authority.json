@@ -9,6 +9,38 @@
       }
     },
     {
+      "id": "wrap-observed-evidence-as-scope.v1",
+      "expression": {
+        "op": "object",
+        "fields": {
+          "sourceIds": { "op": "path", "from": "root", "path": "sourceIds" },
+          "organizationIds": { "op": "path", "from": "root", "path": "organizationIds" },
+          "observedFrom": { "op": "path", "from": "root", "path": "observedFrom" },
+          "observedTo": { "op": "path", "from": "root", "path": "observedTo" },
+          "maxResultsPerSource": { "op": "path", "from": "root", "path": "maxResultsPerSource" },
+          "priorAggregates": { "op": "path", "from": "root", "path": "priorAggregates" },
+          "publicSourceObservations": { "op": "array", "items": [
+            { "op": "object", "fields": {
+              "opportunityId": { "op": "path", "from": "input", "path": "opportunityId" },
+              "sourceId": { "op": "path", "from": "input", "path": "sourceId" },
+              "sourceUrl": { "op": "path", "from": "input", "path": "sourceUrl" },
+              "organizationId": { "op": "path", "from": "root", "path": "organizationIds.0" },
+              "role": { "op": "path", "from": "input", "path": "title" },
+              "location": { "op": "path", "from": "input", "path": "location" },
+              "seniority": { "op": "literal", "value": null },
+              "compensation": { "op": "literal", "value": null },
+              "competencies": { "op": "literal", "value": [] },
+              "technologies": { "op": "literal", "value": [] },
+              "businessProblems": { "op": "literal", "value": [] },
+              "organizationalIntent": { "op": "literal", "value": null },
+              "observedAt": { "op": "path", "from": "input", "path": "observedAt" },
+              "contentSha256": { "op": "path", "from": "input", "path": "contentSha256" }
+            } }
+          ] }
+        }
+      }
+    },
+    {
       "id": "discover-public-references.v1",
       "expression": {
         "op": "merge",

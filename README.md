@@ -7,24 +7,49 @@ formation, aggregation, bounded inference, and intelligence projection remain
 declarative authority; executable mechanics are supplied by admitted SDA
 platform capabilities.
 
-## Admitted circuit
+## Three admitted workspaces
+
+This directory holds three independently-compiled SDA consumer workspaces, each
+with its own root, fixtures, and promised experience:
 
 ```text
-JobMarketObservationScope
-  → discover-job-opportunity-references
-  → acquire-job-posting
-  → admit-job-opportunity
-  → resolve-compensation
-  → resolve-required-competencies
-  → resolve-technologies
-  → resolve-business-problems
-  → resolve-organizational-intent
-  → resolve-market-signals
-  → aggregate-market-observations
-  → detect-market-patterns
-  → project-market-intelligence
-  → JobMarketIntelligenceProfile
+job-market-intelligence/                          (this directory's own root capability)
+  resolve-job-market-intelligence
+    JobMarketObservationScope (caller-supplied publicSourceObservations)
+      → resolve-job-market-intelligence   (ingest + resolve compensation/competency/
+                                            technology/business-problem/intent facts)
+      → resolve-market-signals            (real cross-posting signal derivation)
+      → detect-established-market-patterns (real ESTABLISHED/NOT_ESTABLISHED vs.
+                                             caller-supplied priorAggregates)
+      → project-market-intelligence
+      → JobMarketIntelligenceProfile
+
+capabilities/observe-public-job-market/            (its own workspace, own compiler run)
+  observe-public-job-market
+    JobMarketObservationRequest (organizationIds, sourceIds, targetOpportunityId)
+      → collect-current-hiring-activity    (real HTTP: discover + resolve sources)
+      → acquire-and-admit-posting-evidence (real HTTP: acquire one live posting,
+                                             admit title/organization/location/
+                                             descriptionHtml as evidence)
+      → ObservedJobPostingEvidence
+
+capabilities/observe-and-resolve-job-market-intelligence/  (its own workspace)
+  observe-and-resolve-job-market-intelligence
+    JobMarketObservationRequest
+      → invokes observe-public-job-market live (sda-projected-capability-invocation-port.v1)
+      → wraps the real evidence into a JobMarketObservationScope -- facts this
+        circuit cannot yet extract from live posting content (compensation,
+        competencies, technologies, business problems, organizational intent)
+        are carried through as null/empty, never fabricated
+      → invokes resolve-job-market-intelligence live on that wrapped scope
+      → JobMarketIntelligenceProfile (honestly empty signals until extraction exists)
 ```
+
+The bridge is a fourth, thin orchestrating capability deliberately kept separate
+from the other two -- neither's own root or fixtures changed to make it possible,
+so both keep the exact conformance they had before the bridge existed. See
+`docs/SCENARIO_CLASSIFICATION.md` for why the graph looks like this instead of a
+literal transcription of the old 13-scenario pipeline.
 
 Each node conforms to the kernel law:
 

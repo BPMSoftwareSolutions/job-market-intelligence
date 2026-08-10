@@ -67,8 +67,13 @@ that obligation rather than making it addressable.
 ## Query surface (not scenarios)
 
 These read already-established meaning from Scenario D's output
-(`JobMarketIntelligenceProfile`) and belong on the existing, currently-unused
-`query` interface (`contracts/query-catalog.contract.json`), per your test:
+(`JobMarketIntelligenceProfile`) and belong on the `query` interface
+(`contracts/query-catalog.contract.json`), per your test. All 10 declared
+queries are now implemented and independently verified --
+`node tools/consumer-projection/observes-consumer-query-catalog.js
+<workspace> contracts/query-catalog.contract.json --no-project` reports
+`ALL_IMPLEMENTED_QUERIES_OBSERVED`, each with real assertions against a real
+projected profile.
 
 | Proposed query | Why it's a query, not a scenario |
 |---|---|
@@ -120,3 +125,24 @@ a distinct scenario step), and "Recognize changed postings" (content-hash-based
 change detection across multiple observations over time — no persistence
 mechanism exists yet for Circuit A the way `priorAggregates` now exists for
 Circuit B). Both are real, named gaps, not silently dropped.
+
+## The Circuit A → Circuit B bridge
+
+Implemented as a **third**, separate workspace —
+`capabilities/observe-and-resolve-job-market-intelligence` — rather than by
+replacing either existing circuit's root. It chains two
+`sda-projected-capability-invocation-port.v1` calls (a new, generic kernel
+capability): invoke Circuit A live, wrap its real evidence into a
+`JobMarketObservationScope` (facts it cannot yet extract — compensation,
+competencies, technologies, business problems, organizational intent — carried
+through as null/empty, never fabricated), then invoke Circuit B on that scope.
+
+This was deliberately *not* spliced into Circuit B's existing root, because
+doing so would have required either fabricating placeholder facts to satisfy
+`analystExperience.capabilityDemand`'s schema (`minItems: 1`) or breaking the
+3 fixtures that already proved Circuit B's real derivation logic. Instead,
+`capabilityDemand`'s `minItems: 1` was relaxed to allow the honest empty case,
+and both original circuits' roots and fixtures are untouched — verified by
+recompiling and re-running all three workspaces after the change. Live-verified
+end to end (real HTTP → real evidence → honestly-empty profile) with the
+experience-closure proof reporting `OBSERVABLY_TRUE`.

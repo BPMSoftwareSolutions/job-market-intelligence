@@ -1,7 +1,7 @@
 {
   "queryType": "projected-consumer-conformance-query.v1",
   "queryId": "scenario-conformance-closure",
-  "capabilityId": "observe-public-job-market",
+  "capabilityId": "observe-and-resolve-job-market-intelligence",
   "subjects": [
     "feature",
     "scenario",
@@ -34,134 +34,64 @@
   ],
   "dispositionPolicy": "all-required-closures-conform",
   "authorityGraph": {
-    "rootScenarioId": "collect-current-hiring-activity",
+    "rootScenarioId": "observe-and-resolve-job-market-intelligence",
     "scenarios": [
       {
-        "scenarioId": "collect-current-hiring-activity",
+        "scenarioId": "observe-and-resolve-job-market-intelligence",
         "input": {
-          "inputId": "job-market-observation-request",
+          "inputId": "live-market-observation-request",
           "contract": {
             "contractId": "job-market-observation-request.v1"
           }
         },
         "event": {
-          "eventId": "collect-current-hiring-activity",
-          "executionAuthorityId": "collect-current-hiring-activity.v1"
+          "eventId": "observe-and-resolve-job-market-intelligence",
+          "executionAuthorityId": "observe-and-resolve-job-market-intelligence.v1"
         },
         "outcome": {
-          "outcomeId": "current-hiring-activity-collected",
+          "outcomeId": "live-job-market-intelligence-profile",
           "contract": {
-            "contractId": "public-job-market-observation-state.v1"
+            "contractId": "job-market-intelligence-profile.v1"
           },
           "experience": {
-            "statement": "I can review the public job openings found within my observation scope"
-          }
-        },
-        "gherkin": {
-          "given": {
-            "semanticRef": "collect-current-hiring-activity.given",
-            "text": "the companies I want to observe"
-          },
-          "when": {
-            "semanticRef": "collect-current-hiring-activity.when",
-            "text": "their permitted public job sources are checked and current openings are observed"
-          },
-          "then": {
-            "semanticRef": "collect-current-hiring-activity.then",
-            "text": "I can review the public job openings found within my observation scope"
-          }
-        },
-        "name": "Collect current hiring activity for selected companies"
-      },
-      {
-        "scenarioId": "acquire-and-admit-posting-evidence",
-        "input": {
-          "inputId": "current-hiring-activity-collected",
-          "contract": {
-            "contractId": "public-job-market-observation-state.v1"
-          }
-        },
-        "event": {
-          "eventId": "acquire-and-admit-posting-evidence",
-          "executionAuthorityId": "acquire-and-admit-posting-evidence.v1"
-        },
-        "outcome": {
-          "outcomeId": "posting-evidence-admitted",
-          "contract": {
-            "contractId": "observed-job-posting-evidence.v1"
-          },
-          "experience": {
-            "statement": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+            "statement": "I can inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted"
           },
           "terminal": true
         },
         "gherkin": {
           "given": {
-            "semanticRef": "acquire-and-admit-posting-evidence.given",
-            "text": "an observed public job reference"
+            "semanticRef": "observe-and-resolve-job-market-intelligence.given",
+            "text": "the company and specific live posting I want analyzed"
           },
           "when": {
-            "semanticRef": "acquire-and-admit-posting-evidence.when",
-            "text": "the referenced posting is retrieved and admitted as evidence"
+            "semanticRef": "observe-and-resolve-job-market-intelligence.when",
+            "text": "the posting is observed and projected through the market-intelligence pipeline"
           },
           "then": {
-            "semanticRef": "acquire-and-admit-posting-evidence.then",
-            "text": "I can inspect one canonical, evidence-backed job posting, traceable to its source and content identity"
+            "semanticRef": "observe-and-resolve-job-market-intelligence.then",
+            "text": "I can inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted"
           }
         },
-        "name": "Acquire and admit a public job posting as evidence"
+        "name": "Observe one live posting and resolve it into market intelligence"
       }
     ],
-    "transitions": [
-      {
-        "transitionId": "hiring-activity-to-posting-evidence",
-        "from": {
-          "scenarioId": "collect-current-hiring-activity",
-          "outcomeId": "current-hiring-activity-collected",
-          "contractId": "public-job-market-observation-state.v1"
-        },
-        "to": {
-          "scenarioId": "acquire-and-admit-posting-evidence",
-          "inputId": "current-hiring-activity-collected",
-          "contractId": "public-job-market-observation-state.v1"
-        },
-        "semanticProgress": "termination"
-      }
-    ],
+    "transitions": [],
     "executionAuthorities": [
       {
-        "id": "collect-current-hiring-activity.v1",
-        "owningScenarioId": "collect-current-hiring-activity",
+        "id": "observe-and-resolve-job-market-intelligence.v1",
+        "owningScenarioId": "observe-and-resolve-job-market-intelligence",
         "operations": [
           {
             "kind": "invoke-port",
-            "portId": "begin-public-market-observation"
+            "portId": "observe-live-posting"
           },
           {
             "kind": "invoke-port",
-            "portId": "public-source-resolution"
+            "portId": "wrap-observed-evidence-as-scope"
           },
           {
             "kind": "invoke-port",
-            "portId": "public-reference-discovery-observation"
-          }
-        ]
-      },
-      {
-        "id": "acquire-and-admit-posting-evidence.v1",
-        "owningScenarioId": "acquire-and-admit-posting-evidence",
-        "operations": [
-          {
-            "kind": "invoke-port",
-            "portId": "acquisition-reference-resolution"
-          },
-          {
-            "kind": "invoke-port",
-            "portId": "public-posting-acquisition-observation"
-          },
-          {
-            "kind": "invoke-port",
-            "portId": "posting-evidence-admission"
+            "portId": "resolve-job-market-intelligence-from-scope"
           }
         ]
       }
@@ -169,16 +99,16 @@
     "projectionAuthorities": [],
     "interfaceAuthority": {
       "interfaceAuthorityType": "consumer-interface-authority.v1",
-      "contractCatalog": "../../contracts/public-market-observation-contract-catalog.json",
+      "contractCatalog": "../../contracts/observe-and-resolve-contract-catalog.json",
       "requiredPlatformObligations": [
         "dynamic-semantic-execution",
         "domain-contract-admission"
       ],
       "interfaces": [
         {
-          "interfaceId": "public-job-market-observation-cli",
+          "interfaceId": "observe-and-resolve-job-market-intelligence-cli",
           "kind": "cli",
-          "rootScenarioId": "collect-current-hiring-activity",
+          "rootScenarioId": "observe-and-resolve-job-market-intelligence",
           "platformCapabilityId": "sda-json-cli.v1"
         }
       ],
@@ -186,307 +116,132 @@
       "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
       "portBindings": [
         {
-          "portId": "begin-public-market-observation",
-          "platformCapabilityId": "sda-authority-transformation-port.v1",
+          "portId": "observe-live-posting",
+          "platformCapabilityId": "sda-projected-capability-invocation-port.v1",
           "configuration": {
-            "expression": {
-              "op": "path",
-              "from": "input"
-            }
+            "bindingRef": "../../observe-public-job-market/projected/application-binding.json"
           }
         },
         {
-          "portId": "public-source-resolution",
+          "portId": "wrap-observed-evidence-as-scope",
           "platformCapabilityId": "sda-authority-transformation-port.v1",
           "configuration": {
             "expression": {
-              "op": "merge",
-              "values": [
-                {
+              "op": "object",
+              "fields": {
+                "sourceIds": {
                   "op": "path",
-                  "from": "input"
+                  "from": "root",
+                  "path": "sourceIds"
                 },
-                {
-                  "op": "object",
-                  "fields": {
-                    "resolvedSources": {
-                      "op": "filter",
-                      "from": {
-                        "op": "path",
-                        "from": "input",
-                        "path": "sourceIds"
-                      },
-                      "as": "candidate",
-                      "where": {
-                        "op": "includes",
-                        "in": {
-                          "op": "literal",
-                          "value": [
-                            "adobe",
-                            "greenhouse",
-                            "lever",
-                            "workday"
-                          ]
-                        },
-                        "value": {
-                          "op": "path",
-                          "from": "candidate"
-                        }
-                      }
-                    },
-                    "unresolvedSourceIds": {
-                      "op": "filter",
-                      "from": {
-                        "op": "path",
-                        "from": "input",
-                        "path": "sourceIds"
-                      },
-                      "as": "candidate",
-                      "where": {
-                        "op": "equals",
-                        "left": {
-                          "op": "includes",
-                          "in": {
-                            "op": "literal",
-                            "value": [
-                              "adobe",
-                              "greenhouse",
-                              "lever",
-                              "workday"
-                            ]
-                          },
-                          "value": {
-                            "op": "path",
-                            "from": "candidate"
-                          }
-                        },
-                        "right": {
-                          "op": "literal",
-                          "value": false
-                        }
-                      }
-                    },
-                    "discoveryReference": {
+                "organizationIds": {
+                  "op": "path",
+                  "from": "root",
+                  "path": "organizationIds"
+                },
+                "observedFrom": {
+                  "op": "path",
+                  "from": "root",
+                  "path": "observedFrom"
+                },
+                "observedTo": {
+                  "op": "path",
+                  "from": "root",
+                  "path": "observedTo"
+                },
+                "maxResultsPerSource": {
+                  "op": "path",
+                  "from": "root",
+                  "path": "maxResultsPerSource"
+                },
+                "priorAggregates": {
+                  "op": "path",
+                  "from": "root",
+                  "path": "priorAggregates"
+                },
+                "publicSourceObservations": {
+                  "op": "array",
+                  "items": [
+                    {
                       "op": "object",
                       "fields": {
-                        "url": {
-                          "op": "format",
-                          "template": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs",
-                          "values": {
-                            "board": {
-                              "op": "path",
-                              "from": "input",
-                              "path": "organizationIds.0"
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "discoveredListing": {
-                      "op": "object",
-                      "fields": {}
-                    },
-                    "acquiredPosting": {
-                      "op": "object",
-                      "fields": {}
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "portId": "public-reference-discovery-observation",
-          "platformCapabilityId": "sda-external-observation-port.v1",
-          "configuration": {
-            "referencePath": "discoveryReference",
-            "targetPath": "discoveredListing",
-            "allowedHosts": [
-              "boards-api.greenhouse.io"
-            ]
-          }
-        },
-        {
-          "portId": "acquisition-reference-resolution",
-          "platformCapabilityId": "sda-authority-transformation-port.v1",
-          "configuration": {
-            "expression": {
-              "op": "merge",
-              "values": [
-                {
-                  "op": "path",
-                  "from": "input"
-                },
-                {
-                  "op": "let",
-                  "bindings": {
-                    "listing": {
-                      "op": "parse-json",
-                      "value": {
-                        "op": "path",
-                        "from": "input",
-                        "path": "discoveredListing.content"
-                      }
-                    },
-                    "selectedPosting": {
-                      "op": "find",
-                      "from": {
-                        "op": "path",
-                        "from": "listing",
-                        "path": "jobs"
-                      },
-                      "as": "candidate",
-                      "where": {
-                        "op": "equals",
-                        "left": {
-                          "op": "path",
-                          "from": "candidate",
-                          "path": "id"
-                        },
-                        "right": {
+                        "opportunityId": {
                           "op": "path",
                           "from": "input",
-                          "path": "targetOpportunityId"
+                          "path": "opportunityId"
+                        },
+                        "sourceId": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "sourceId"
+                        },
+                        "sourceUrl": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "sourceUrl"
+                        },
+                        "organizationId": {
+                          "op": "path",
+                          "from": "root",
+                          "path": "organizationIds.0"
+                        },
+                        "role": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "title"
+                        },
+                        "location": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "location"
+                        },
+                        "seniority": {
+                          "op": "literal",
+                          "value": null
+                        },
+                        "compensation": {
+                          "op": "literal",
+                          "value": null
+                        },
+                        "competencies": {
+                          "op": "literal",
+                          "value": []
+                        },
+                        "technologies": {
+                          "op": "literal",
+                          "value": []
+                        },
+                        "businessProblems": {
+                          "op": "literal",
+                          "value": []
+                        },
+                        "organizationalIntent": {
+                          "op": "literal",
+                          "value": null
+                        },
+                        "observedAt": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "observedAt"
+                        },
+                        "contentSha256": {
+                          "op": "path",
+                          "from": "input",
+                          "path": "contentSha256"
                         }
                       }
                     }
-                  },
-                  "value": {
-                    "op": "object",
-                    "fields": {
-                      "discoveredReferenceId": {
-                        "op": "format",
-                        "template": "{id}",
-                        "values": {
-                          "id": {
-                            "op": "path",
-                            "from": "selectedPosting",
-                            "path": "id"
-                          }
-                        }
-                      },
-                      "discoveredReferenceUrl": {
-                        "op": "path",
-                        "from": "selectedPosting",
-                        "path": "absolute_url"
-                      },
-                      "acquisitionReference": {
-                        "op": "object",
-                        "fields": {
-                          "url": {
-                            "op": "format",
-                            "template": "https://boards-api.greenhouse.io/v1/boards/{board}/jobs/{id}?content=true",
-                            "values": {
-                              "board": {
-                                "op": "path",
-                                "from": "input",
-                                "path": "organizationIds.0"
-                              },
-                              "id": {
-                                "op": "path",
-                                "from": "selectedPosting",
-                                "path": "id"
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        },
-        {
-          "portId": "public-posting-acquisition-observation",
-          "platformCapabilityId": "sda-external-observation-port.v1",
-          "configuration": {
-            "referencePath": "acquisitionReference",
-            "targetPath": "acquiredPosting",
-            "allowedHosts": [
-              "boards-api.greenhouse.io"
-            ]
-          }
-        },
-        {
-          "portId": "posting-evidence-admission",
-          "platformCapabilityId": "sda-authority-transformation-port.v1",
-          "configuration": {
-            "expression": {
-              "op": "let",
-              "bindings": {
-                "posting": {
-                  "op": "parse-json",
-                  "value": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "acquiredPosting.content"
-                  }
-                }
-              },
-              "value": {
-                "op": "object",
-                "fields": {
-                  "opportunityId": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "discoveredReferenceId"
-                  },
-                  "sourceId": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "sourceIds.0"
-                  },
-                  "sourceUrl": {
-                    "op": "path",
-                    "from": "posting",
-                    "path": "absolute_url"
-                  },
-                  "observedAt": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "acquiredPosting.observedAt"
-                  },
-                  "contentSha256": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "acquiredPosting.contentSha256"
-                  },
-                  "status": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "acquiredPosting.status"
-                  },
-                  "mediaType": {
-                    "op": "path",
-                    "from": "input",
-                    "path": "acquiredPosting.mediaType"
-                  },
-                  "title": {
-                    "op": "path",
-                    "from": "posting",
-                    "path": "title"
-                  },
-                  "organization": {
-                    "op": "path",
-                    "from": "posting",
-                    "path": "company_name"
-                  },
-                  "location": {
-                    "op": "path",
-                    "from": "posting",
-                    "path": "location.name"
-                  },
-                  "descriptionHtml": {
-                    "op": "path",
-                    "from": "posting",
-                    "path": "content"
-                  }
+                  ]
                 }
               }
             }
+          }
+        },
+        {
+          "portId": "resolve-job-market-intelligence-from-scope",
+          "platformCapabilityId": "sda-projected-capability-invocation-port.v1",
+          "configuration": {
+            "bindingRef": "../../../projected/application-binding.json"
           }
         }
       ]
@@ -563,125 +318,194 @@
             }
           }
         },
-        "public-job-market-observation-state.v1": {
-          "schemaRef": "public-job-market-observation-state.schema.json",
-          "schemaId": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
-          "schemaDigest": "b0e0244c86ccc0c2d790fa5e965fe672d989d82cfd5fa07c6385ad5603920c76",
+        "job-market-intelligence-profile.v1": {
+          "schemaRef": "../schemas/job-market-intelligence-profile.schema.json",
+          "schemaId": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
+          "schemaDigest": "b134a008f8129ef45827c742b77ecae1816472adeb8f7712208e8c701a40ffa7",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "$id": "https://job-market-intelligence.local/contracts/public-job-market-observation-state.v1.schema.json",
+            "$id": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
             "type": "object",
+            "additionalProperties": false,
             "required": [
-              "observationId",
-              "organizationIds",
-              "sourceIds",
-              "targetOpportunityId",
-              "observedFrom",
-              "observedTo",
-              "maxResultsPerSource"
+              "profileId",
+              "scope",
+              "signals",
+              "analystExperience",
+              "generatedAt"
             ],
             "properties": {
-              "observationId": {
+              "profileId": {
+                "type": "string"
+              },
+              "scope": {
+                "type": "object"
+              },
+              "organizations": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "opportunities": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "signals": {
+                "type": "array",
+                "items": {
+                  "$ref": "market-signal.schema.json"
+                }
+              },
+              "inferences": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "trends": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "observedFacts": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "compensationFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "competencyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "technologyFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "businessProblemFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "organizationalIntentFacts": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  }
+                }
+              },
+              "analystExperience": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "organizationalInvestment",
+                  "capabilityDemand",
+                  "changeOverTime"
+                ],
+                "properties": {
+                  "organizationalInvestment": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "organizationId",
+                        "subject",
+                        "evidenceFactIds",
+                        "sourceEvidence"
+                      ]
+                    }
+                  },
+                  "capabilityDemand": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "market-signal.schema.json"
+                    }
+                  },
+                  "changeOverTime": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "disposition",
+                      "reason"
+                    ],
+                    "properties": {
+                      "disposition": {
+                        "type": "string",
+                        "enum": [
+                          "ESTABLISHED",
+                          "NOT_ESTABLISHED"
+                        ]
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "generatedAt": {
                 "type": "string",
-                "minLength": 1
-              },
-              "organizationIds": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "string"
-                }
-              },
-              "sourceIds": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "string"
-                }
-              },
-              "targetOpportunityId": {
-                "type": "integer",
-                "minimum": 1
-              },
-              "observedFrom": {
-                "type": "string"
-              },
-              "observedTo": {
-                "type": "string"
-              },
-              "maxResultsPerSource": {
-                "type": "integer",
-                "minimum": 1
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
               }
             }
           }
         },
-        "observed-job-posting-evidence.v1": {
-          "schemaRef": "observed-job-posting-evidence.schema.json",
-          "schemaId": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
-          "schemaDigest": "13bf0baca1b1032d0f233aded8f89b89d72e89acd0bfbe4cfb6f15a125d022e9",
+        "market-signal.v1": {
+          "schemaRef": "../schemas/market-signal.schema.json",
+          "schemaId": "https://example.org/sda/job-market-intelligence/schemas/market-signal.schema.json",
+          "schemaDigest": "8c0dea443f8de21bc2cee863b7aa2b8c762031eb29f82bfbf80c3078bfdabbfc",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
-            "$id": "https://job-market-intelligence.local/contracts/observed-job-posting-evidence.v1.schema.json",
+            "$id": "https://example.org/sda/job-market-intelligence/schemas/market-signal.schema.json",
             "type": "object",
+            "additionalProperties": false,
             "required": [
-              "opportunityId",
-              "sourceId",
-              "sourceUrl",
-              "observedAt",
-              "contentSha256",
-              "status",
-              "mediaType",
-              "title",
-              "organization",
-              "location",
-              "descriptionHtml"
+              "signalId",
+              "signalType",
+              "subject",
+              "evidenceFactIds",
+              "dimensions"
             ],
             "properties": {
-              "opportunityId": {
-                "type": "string",
-                "minLength": 1
+              "signalId": {
+                "type": "string"
               },
-              "sourceId": {
-                "type": "string",
-                "minLength": 1
+              "signalType": {
+                "type": "string"
               },
-              "sourceUrl": {
-                "type": "string",
-                "minLength": 1
+              "subject": {
+                "type": "string"
               },
-              "observedAt": {
-                "type": "string",
-                "minLength": 1
+              "evidenceFactIds": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
               },
-              "contentSha256": {
-                "type": "string",
-                "pattern": "^[0-9a-f]{64}$"
+              "dimensions": {
+                "type": "object"
               },
-              "status": {
-                "type": "integer"
-              },
-              "mediaType": {
+              "observedWindow": {
                 "type": [
-                  "string",
+                  "object",
                   "null"
                 ]
-              },
-              "title": {
-                "type": "string",
-                "minLength": 1
-              },
-              "organization": {
-                "type": "string",
-                "minLength": 1
-              },
-              "location": {
-                "type": "string",
-                "minLength": 1
-              },
-              "descriptionHtml": {
-                "type": "string",
-                "minLength": 1
               }
             }
           }
@@ -862,8 +686,8 @@
   "expectedTelemetry": {
     "traceType": "projected-expected-consumer-trace.v1",
     "telemetryId": "consumer-scenario-execution-telemetry",
-    "capabilityId": "observe-public-job-market",
-    "rootScenarioId": "collect-current-hiring-activity",
+    "capabilityId": "observe-and-resolve-job-market-intelligence",
+    "rootScenarioId": "observe-and-resolve-job-market-intelligence",
     "observationType": "scenario-execution-observation.v1",
     "lineageFields": [
       "executionId",
@@ -873,18 +697,7 @@
     ],
     "scenarios": [
       {
-        "scenarioId": "collect-current-hiring-activity",
-        "steps": [
-          "admit-input",
-          "resolve-event-authority",
-          "execute-event-authority",
-          "admit-outcome",
-          "resolve-disposition"
-        ],
-        "expectedTransitionId": "hiring-activity-to-posting-evidence"
-      },
-      {
-        "scenarioId": "acquire-and-admit-posting-evidence",
+        "scenarioId": "observe-and-resolve-job-market-intelligence",
         "steps": [
           "admit-input",
           "resolve-event-authority",
@@ -974,56 +787,38 @@
       {
         "mechanicId": "cli-delivery",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1"
       },
       {
         "mechanicId": "json-reading",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1"
       },
       {
         "mechanicId": "json-serialization",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1"
       },
       {
         "mechanicId": "event-port-invocation",
         "capabilityKind": "event-port",
-        "requiredBy": "port:begin-public-market-observation",
+        "requiredBy": "port:observe-live-posting",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v1"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:wrap-observed-evidence-as-scope",
         "requestedCapabilityId": "sda-authority-transformation-port.v1"
       },
       {
         "mechanicId": "event-port-invocation",
         "capabilityKind": "event-port",
-        "requiredBy": "port:public-source-resolution",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:public-reference-discovery-observation",
-        "requestedCapabilityId": "sda-external-observation-port.v1"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:acquisition-reference-resolution",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:public-posting-acquisition-observation",
-        "requestedCapabilityId": "sda-external-observation-port.v1"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:posting-evidence-admission",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1"
+        "requiredBy": "port:resolve-job-market-intelligence-from-scope",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v1"
       }
     ],
     "resolutions": [
@@ -1171,7 +966,7 @@
       {
         "mechanicId": "cli-delivery",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1",
         "status": "AVAILABLE",
         "capabilityId": "sda-json-cli.v1",
@@ -1182,7 +977,7 @@
       {
         "mechanicId": "json-reading",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1",
         "status": "AVAILABLE",
         "capabilityId": "sda-json-cli.v1",
@@ -1193,7 +988,7 @@
       {
         "mechanicId": "json-serialization",
         "capabilityKind": "interface-delivery",
-        "requiredBy": "interface:public-job-market-observation-cli",
+        "requiredBy": "interface:observe-and-resolve-job-market-intelligence-cli",
         "requestedCapabilityId": "sda-json-cli.v1",
         "status": "AVAILABLE",
         "capabilityId": "sda-json-cli.v1",
@@ -1204,7 +999,18 @@
       {
         "mechanicId": "event-port-invocation",
         "capabilityKind": "event-port",
-        "requiredBy": "port:begin-public-market-observation",
+        "requiredBy": "port:observe-live-posting",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v1",
+        "status": "AVAILABLE",
+        "capabilityId": "sda-projected-capability-invocation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocation",
+        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
+      },
+      {
+        "mechanicId": "event-port-invocation",
+        "capabilityKind": "event-port",
+        "requiredBy": "port:wrap-observed-evidence-as-scope",
         "requestedCapabilityId": "sda-authority-transformation-port.v1",
         "status": "AVAILABLE",
         "capabilityId": "sda-authority-transformation-port.v1",
@@ -1215,57 +1021,13 @@
       {
         "mechanicId": "event-port-invocation",
         "capabilityKind": "event-port",
-        "requiredBy": "port:public-source-resolution",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1",
+        "requiredBy": "port:resolve-job-market-intelligence-from-scope",
+        "requestedCapabilityId": "sda-projected-capability-invocation-port.v1",
         "status": "AVAILABLE",
-        "capabilityId": "sda-authority-transformation-port.v1",
-        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
+        "capabilityId": "sda-projected-capability-invocation-port.v1",
+        "provider": "ScenarioKernel.NodePlatform.Execution.ProjectedCapabilityInvocation",
         "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
-        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:public-reference-discovery-observation",
-        "requestedCapabilityId": "sda-external-observation-port.v1",
-        "status": "AVAILABLE",
-        "capabilityId": "sda-external-observation-port.v1",
-        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
-        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
-        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:acquisition-reference-resolution",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1",
-        "status": "AVAILABLE",
-        "capabilityId": "sda-authority-transformation-port.v1",
-        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
-        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
-        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:public-posting-acquisition-observation",
-        "requestedCapabilityId": "sda-external-observation-port.v1",
-        "status": "AVAILABLE",
-        "capabilityId": "sda-external-observation-port.v1",
-        "provider": "ScenarioKernel.NodePlatform.Observation.HttpExternalObservationProvider",
-        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
-        "conformanceRef": "languages/node/platform/external-observation-port.conformance.test.mjs"
-      },
-      {
-        "mechanicId": "event-port-invocation",
-        "capabilityKind": "event-port",
-        "requiredBy": "port:posting-evidence-admission",
-        "requestedCapabilityId": "sda-authority-transformation-port.v1",
-        "status": "AVAILABLE",
-        "capabilityId": "sda-authority-transformation-port.v1",
-        "provider": "ScenarioKernel.NodePlatform.Execution.AuthorityTransformation",
-        "implementationRef": "languages/node/platform/admitted-consumer-platform.mjs",
-        "conformanceRef": "tools/consumer-projection/tests/platform-capability-admission.test.js"
+        "conformanceRef": "languages/node/platform/projected-capability-invocation-port.conformance.test.mjs"
       }
     ],
     "disposition": "RESOLVED"

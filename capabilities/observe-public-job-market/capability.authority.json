@@ -7,5 +7,21 @@
     "intent": "retrieve an identified posting from an admitted public source",
     "outcome": "inspect canonical posting content with source and content lineage"
   },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "public-posting-is-inspectable",
+    "actor": "a job-market consumer",
+    "promise": "the consumer can inspect one identified public job posting's content, admitted as evidence traceable to its source and content identity",
+    "observableConditions": [
+      {
+        "conditionId": "posting-content-is-inspectable",
+        "statement": "the posting's title, organization, and location are visible to the consumer"
+      },
+      {
+        "conditionId": "source-lineage-is-preserved",
+        "statement": "the admitted evidence retains its source reference and content identity"
+      }
+    ]
+  },
   "rootScenarioId": "collect-current-hiring-activity"
 }

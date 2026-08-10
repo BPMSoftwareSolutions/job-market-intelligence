@@ -1,0 +1,10 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    { "id": "observe-and-resolve-job-market-intelligence.v1", "owningScenarioId": "observe-and-resolve-job-market-intelligence", "operations": [
+      { "kind": "invoke-port", "portId": "observe-live-posting" },
+      { "kind": "invoke-port", "portId": "wrap-observed-evidence-as-scope" },
+      { "kind": "invoke-port", "portId": "resolve-job-market-intelligence-from-scope" }
+    ] }
+  ]
+}

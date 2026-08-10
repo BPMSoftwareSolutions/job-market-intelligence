@@ -1,0 +1,15 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractCatalog": "../../contracts/observe-and-resolve-contract-catalog.json",
+  "requiredPlatformObligations": ["dynamic-semantic-execution", "domain-contract-admission"],
+  "interfaces": [
+    { "interfaceId": "observe-and-resolve-job-market-intelligence-cli", "kind": "cli", "rootScenarioId": "observe-and-resolve-job-market-intelligence", "platformCapabilityId": "sda-json-cli.v1" }
+  ],
+  "projectionBindings": [],
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "portBindings": [
+    { "portId": "observe-live-posting", "platformCapabilityId": "sda-projected-capability-invocation-port.v1", "configuration": { "bindingRef": "../../observe-public-job-market/projected/application-binding.json" } },
+    { "portId": "wrap-observed-evidence-as-scope", "platformCapabilityId": "sda-authority-transformation-port.v1", "configuration": { "transformationAuthorityRef": "../../semantic-authority/transformations.authority.json", "transformationId": "wrap-observed-evidence-as-scope.v1" } },
+    { "portId": "resolve-job-market-intelligence-from-scope", "platformCapabilityId": "sda-projected-capability-invocation-port.v1", "configuration": { "bindingRef": "../../../projected/application-binding.json" } }
+  ]
+}

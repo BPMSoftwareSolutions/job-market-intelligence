@@ -71,7 +71,6 @@
         },
         "capabilityDemand": {
           "type": "array",
-          "minItems": 1,
           "items": { "$ref": "market-signal.schema.json" }
         },
         "changeOverTime": {

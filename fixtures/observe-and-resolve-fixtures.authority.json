@@ -1,0 +1,33 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "greenhouse-live-bridge-001",
+      "input": {
+        "observationId": "live-bridge-2026-08-10",
+        "organizationIds": ["greenhouse"],
+        "sourceIds": ["greenhouse"],
+        "targetOpportunityId": 8017323,
+        "observedFrom": "2026-08-01T00:00:00Z",
+        "observedTo": "2026-08-10T23:59:59Z",
+        "maxResultsPerSource": 1,
+        "priorAggregates": []
+      },
+      "portOutcomes": {
+        "authority-driven-and-live-observation": { "authority": "semantic-authority/observe-and-resolve-interfaces.authority.json" }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "observe-and-resolve-job-market-intelligence",
+        "scenarioSequence": ["observe-and-resolve-job-market-intelligence"],
+        "outcomeAssertions": [
+          { "path": "scope.organizationIds", "operator": "contains", "value": "greenhouse" },
+          { "conditionId": "profile-reflects-live-evidence", "path": "analystExperience.organizationalInvestment.0.sourceEvidence.0.sourceUrl", "operator": "contains", "value": "greenhouse.io" },
+          { "conditionId": "unextracted-facts-are-explicit-not-fabricated", "path": "signals", "operator": "equals", "value": [] },
+          { "conditionId": "unextracted-facts-are-explicit-not-fabricated", "path": "analystExperience.capabilityDemand", "operator": "equals", "value": [] },
+          { "conditionId": "change-claim-is-bounded", "path": "analystExperience.changeOverTime.disposition", "operator": "equals", "value": "NOT_ESTABLISHED" }
+        ]
+      }
+    }
+  ]
+}

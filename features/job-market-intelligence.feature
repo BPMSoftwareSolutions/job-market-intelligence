@@ -10,6 +10,17 @@ Feature: Resolve job market intelligence from public hiring activity
   not scenarios -- see docs/SCENARIO_CLASSIFICATION.md for the classification
   this feature was rebuilt from.
 
+  This circuit's root still accepts a pre-admitted job-market-observation-scope
+  (publicSourceObservations supplied by the caller) so its already-proven
+  derivation logic (real cross-posting signals, real ESTABLISHED/NOT_ESTABLISHED
+  comparison) stays fixture-testable without a live network call on every run.
+  The live bridge from real, single-posting observation
+  (features/public-job-market-observation.feature) into this circuit is a
+  separate, thin orchestrating capability --
+  capabilities/observe-and-resolve-job-market-intelligence -- that chains two
+  sda-projected-capability-invocation-port.v1 calls rather than replacing this
+  circuit's root.
+
   @scenario:resolve-job-market-intelligence
   @input:job-market-observation-scope
   @input-contract:job-market-observation-scope.v1

@@ -2122,7 +2122,7 @@
         "job-market-intelligence-profile.v1": {
           "schemaRef": "../schemas/job-market-intelligence-profile.schema.json",
           "schemaId": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
-          "schemaDigest": "a4f9af8db8a4088ca27cd5a06b6e05765a0d900f32f212d9d01cdbb9134b5cb8",
+          "schemaDigest": "b134a008f8129ef45827c742b77ecae1816472adeb8f7712208e8c701a40ffa7",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://example.org/sda/job-market-intelligence/schemas/job-market-intelligence-profile.schema.json",
@@ -2232,7 +2232,6 @@
                   },
                   "capabilityDemand": {
                     "type": "array",
-                    "minItems": 1,
                     "items": {
                       "$ref": "market-signal.schema.json"
                     }
@@ -2315,7 +2314,7 @@
         "job-market-observation-request.v1": {
           "schemaRef": "job-market-observation-request.schema.json",
           "schemaId": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
-          "schemaDigest": "6ae09da8659939ff93289bb99ca6da85a15e595b15d1e833d9b0fbfa5fb21dce",
+          "schemaDigest": "66c1d357875a38a822debbf4a3a53389638128dd9385cb6b178cbf0ae0ef266c",
           "schema": {
             "$schema": "https://json-schema.org/draft/2020-12/schema",
             "$id": "https://job-market-intelligence.local/contracts/job-market-observation-request.v1.schema.json",
@@ -2327,7 +2326,8 @@
               "targetOpportunityId",
               "observedFrom",
               "observedTo",
-              "maxResultsPerSource"
+              "maxResultsPerSource",
+              "priorAggregates"
             ],
             "properties": {
               "observationId": {
@@ -2363,6 +2363,19 @@
               "maxResultsPerSource": {
                 "type": "integer",
                 "minimum": 1
+              },
+              "priorAggregates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "aggregateId",
+                    "subject",
+                    "count",
+                    "supportingSignalIds",
+                    "observedWindow"
+                  ]
+                }
               }
             }
           }

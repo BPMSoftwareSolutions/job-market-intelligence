@@ -2,13 +2,13 @@
   "projectionManifestType": "consumer-capability-projection-manifest.v1",
   "generator": "scenario-driven-architecture/tools/consumer-projection",
   "authorityRefs": [
-    "../../features/public-job-market-observation.feature",
+    "../../features/observe-and-resolve-job-market-intelligence.feature",
     "capability.authority.json",
-    "../../semantic-authority/public-market-observation-scenario-graph.authority.json",
-    "../../semantic-authority/public-market-observation-execution-authorities.authority.json",
+    "../../semantic-authority/observe-and-resolve-scenario-graph.authority.json",
+    "../../semantic-authority/observe-and-resolve-execution-authorities.authority.json",
     "projection-authorities.authority.json",
-    "../../semantic-authority/public-market-observation-interfaces.authority.json",
-    "../../fixtures/public-market-observation-fixtures.authority.json",
+    "../../semantic-authority/observe-and-resolve-interfaces.authority.json",
+    "../../fixtures/observe-and-resolve-fixtures.authority.json",
     "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
     "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json"
   ],
@@ -40,12 +40,12 @@
     {
       "path": "capability.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "5ca4e6f2813a276d0d99636a4789bb40b09c57e78679dff9a85832157e1de057"
+      "sha256": "84783af2717ac089119c962a8d0aff4f06ac1db5ab766d0ff628dbf199a9a37f"
     },
     {
       "path": "fixtures/fixtures.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "7e2b6b927be155a020acb4022b78a6aef2bfa473ac8abc44b9bca7dc9e93cd00"
+      "sha256": "2fbe58132b6588030d19dfd45d10b856e2c5ab7d58f74e0c7e1a525dcb21e9ff"
     },
     {
       "path": "node/capability-runtime.generated.mjs",
@@ -63,7 +63,7 @@
       "sha256": "b30ee6f4682e5ec39e9d314430318ad5c3f1e235fda69e111a29b04dbe89a87f"
     },
     {
-      "path": "node/public-job-market-observation-cli.generated.mjs",
+      "path": "node/observe-and-resolve-job-market-intelligence-cli.generated.mjs",
       "executableOrigin": "PROJECTED",
       "sha256": "56b4c0df6e70645327f56b87d0cad4e52242d3077af6dd9b6e203cfc0388eebd"
     },
@@ -75,42 +75,32 @@
     {
       "path": "query/conformance-query.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "35ed115502764a06daac5fc41ce4c7ea5c33f27bf2d5ba8784bf3500cdcb38ac"
+      "sha256": "a8c5fa9da3fade3e5342d154d4e33f44b5f0f0ff79085aefdc065d7e20d808e2"
     },
     {
       "path": "query/conformance-query.node.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "35ed115502764a06daac5fc41ce4c7ea5c33f27bf2d5ba8784bf3500cdcb38ac"
+      "sha256": "a8c5fa9da3fade3e5342d154d4e33f44b5f0f0ff79085aefdc065d7e20d808e2"
     },
     {
       "path": "query/platform-mechanic-resolution.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "d0a5a9565733119cade7cf1abe665c5542c739085665e0ae554c68233bdff0dc"
+      "sha256": "02bd46e755fab4c3df809cdf8c14f032ec9a8c04f66d3a25b7b0931c3a800a67"
     },
     {
       "path": "query/platform-mechanic-resolution.node.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "d0a5a9565733119cade7cf1abe665c5542c739085665e0ae554c68233bdff0dc"
+      "sha256": "02bd46e755fab4c3df809cdf8c14f032ec9a8c04f66d3a25b7b0931c3a800a67"
     },
     {
-      "path": "scenarios/acquire-and-admit-posting-evidence.json",
+      "path": "scenarios/observe-and-resolve-job-market-intelligence.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "4ba29b07787c985a34e394aa6ad429dab19cc2549fd613ecb5e8648c81d318fc"
-    },
-    {
-      "path": "scenarios/collect-current-hiring-activity.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "d2ce2456d0f2edfed7e63438a7844a778190f93fad8ab358d5dd4e78031256b3"
+      "sha256": "eedbee109867e49b6fb0e987ce3784306bf146256e0f374df36ad3a112460150"
     },
     {
       "path": "telemetry/expected-trace.json",
       "executableOrigin": "PROJECTED",
-      "sha256": "4e9e46af70f923a2eebbae2e03fb45bdfa7a774a98f34e8f3fbbe3942e6bf50e"
-    },
-    {
-      "path": "transitions/hiring-activity-to-posting-evidence.json",
-      "executableOrigin": "PROJECTED",
-      "sha256": "839bdbb94588fc6af1bbcf231de0a3722a1935df93f23bfa38e229a867cbeedc"
+      "sha256": "27133ebaa3e78748e6371a93496b9a651d809a03fe3774a10587b5d36bd5cc67"
     }
   ]
 }

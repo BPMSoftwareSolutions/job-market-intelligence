@@ -1,0 +1,76 @@
+{
+  "capabilityType": "scenario-driven-capability.v1",
+  "capabilityId": "observe-and-resolve-job-market-intelligence",
+  "userStory": {
+    "actor": "a market analyst",
+    "intent": "observe one live public job posting and project it through the market-intelligence pipeline",
+    "outcome": "inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted from its content"
+  },
+  "scenarios": [
+    {
+      "scenarioId": "observe-and-resolve-job-market-intelligence",
+      "input": {
+        "inputId": "live-market-observation-request",
+        "contract": {
+          "contractId": "job-market-observation-request.v1"
+        }
+      },
+      "event": {
+        "eventId": "observe-and-resolve-job-market-intelligence",
+        "executionAuthorityId": "observe-and-resolve-job-market-intelligence.v1"
+      },
+      "outcome": {
+        "outcomeId": "live-job-market-intelligence-profile",
+        "contract": {
+          "contractId": "job-market-intelligence-profile.v1"
+        },
+        "experience": {
+          "statement": "I can inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted"
+        },
+        "terminal": true
+      },
+      "gherkin": {
+        "given": {
+          "semanticRef": "observe-and-resolve-job-market-intelligence.given",
+          "text": "the company and specific live posting I want analyzed"
+        },
+        "when": {
+          "semanticRef": "observe-and-resolve-job-market-intelligence.when",
+          "text": "the posting is observed and projected through the market-intelligence pipeline"
+        },
+        "then": {
+          "semanticRef": "observe-and-resolve-job-market-intelligence.then",
+          "text": "I can inspect an evidence-backed intelligence profile for that posting, honestly marked wherever facts have not yet been extracted"
+        }
+      },
+      "name": "Observe one live posting and resolve it into market intelligence"
+    }
+  ],
+  "transitions": [],
+  "rootScenarioId": "observe-and-resolve-job-market-intelligence",
+  "name": "Observe and resolve job market intelligence from one live posting",
+  "mode": [
+    "feature",
+    "capability"
+  ],
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "live-posting-is-projected-honestly",
+    "actor": "a market analyst",
+    "promise": "the analyst can inspect a market-intelligence profile derived from one live-observed public posting, with every not-yet-extracted fact explicitly absent rather than fabricated",
+    "observableConditions": [
+      {
+        "conditionId": "profile-reflects-live-evidence",
+        "statement": "the profile's lineage traces to the live-observed posting's real source and content identity"
+      },
+      {
+        "conditionId": "unextracted-facts-are-explicit-not-fabricated",
+        "statement": "capability demand and market signals are empty, not invented, when the posting's facts have not been extracted"
+      },
+      {
+        "conditionId": "change-claim-is-bounded",
+        "statement": "the profile explicitly states when change over time is not established"
+      }
+    ]
+  }
+}

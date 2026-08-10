@@ -1,0 +1,5 @@
+{
+  "job-market-observation-request.v1": "job-market-observation-request.schema.json",
+  "job-market-intelligence-profile.v1": "../schemas/job-market-intelligence-profile.schema.json",
+  "market-signal.v1": "../schemas/market-signal.schema.json"
+}

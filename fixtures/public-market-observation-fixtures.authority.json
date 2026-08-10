@@ -10,7 +10,8 @@
         "targetOpportunityId": 8052367,
         "observedFrom": "2026-08-01T00:00:00Z",
         "observedTo": "2026-08-09T23:59:59Z",
-        "maxResultsPerSource": 1
+        "maxResultsPerSource": 1,
+        "priorAggregates": []
       },
       "portOutcomes": {
         "authority-driven-and-live-observation": { "authority": "semantic-authority/public-market-observation-interfaces.authority.json" }
@@ -21,6 +22,15 @@
         "scenarioSequence": [
           "collect-current-hiring-activity",
           "acquire-and-admit-posting-evidence"
+        ],
+        "outcomeAssertions": [
+          { "path": "opportunityId", "operator": "equals", "value": "8052367" },
+          { "path": "sourceId", "operator": "equals", "value": "greenhouse" },
+          { "conditionId": "posting-content-is-inspectable", "path": "title", "operator": "equals", "value": "Senior Manager, Technical Consulting" },
+          { "conditionId": "posting-content-is-inspectable", "path": "organization", "operator": "equals", "value": "Greenhouse" },
+          { "conditionId": "posting-content-is-inspectable", "path": "location", "operator": "equals", "value": "Anywhere in the United States" },
+          { "conditionId": "source-lineage-is-preserved", "path": "sourceUrl", "operator": "contains", "value": "greenhouse.io" },
+          { "path": "status", "operator": "equals", "value": 200 }
         ]
       }
     }

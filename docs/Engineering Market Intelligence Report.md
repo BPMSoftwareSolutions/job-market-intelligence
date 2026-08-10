@@ -18,7 +18,7 @@
 
 Since the previous edition of this report, the derivation pipeline stopped being a stub. Signal resolution, aggregation, and pattern detection now compute real results instead of hardcoded literals — see `docs/SCENARIO_CLASSIFICATION.md`. This edition reflects that: 10 evidence-backed signals (4 technology, 4 competency, 2 business-problem) were genuinely derived from 2 admitted opportunities, each traceable to its source posting and content hash.
 
-What this edition is **not**: a live multi-company market scan. The observation/acquisition circuit (`features/public-job-market-observation.feature`) and the analysis circuit below remain unbridged — this run's input is fixture-shaped (`fixtures/capability-fixtures.authority.json`, `multi-company-input-dependent-intelligence`), not fetched live. That bridge is still the open item noted in the build report.
+What this specific dataset is **not**: a live multi-company market scan — this run's input is fixture-shaped (`fixtures/capability-fixtures.authority.json`, `multi-company-input-dependent-intelligence`), not fetched live. That's a statement about *this dataset*, not a capability gap: the observation/acquisition circuit and the analysis circuit below are now bridged for real (`capabilities/observe-and-resolve-job-market-intelligence`, live-verified end to end). A live-bridged run of that bridge produces a single real opportunity per call with honestly empty facts (extraction from unstructured posting content still doesn't exist) — richer than this fixture-driven multi-signal dataset in *provenance*, thinner in *content*. Both are real; neither is the whole picture yet.
 
 With only 2 observed opportunities, capability *ranking* is not yet meaningful — every signal here has identical support (1 opportunity, 1 fact). The value in this edition is that the mechanism is now real and auditable, not that the sample is large enough to rank.
 
@@ -425,11 +425,10 @@ disposition: ESTABLISHED | NOT_ESTABLISHED
 
 This edition's specific limitations, in addition to the general list below:
 
-* Two opportunities total. Every ranking, trend, and comparison section above that would normally rank or compare is marked "not populated" or "not ranked" rather than computed on a sample too small to support it.
-* The observation/acquisition circuit and this analysis circuit are not yet bridged — this report's input is fixture-shaped, not fetched live.
-* Compensation is not yet correlated to capability/technology signals (§6).
-* Only technology, competency, and business-problem facts feed signal derivation. Compensation and organizational-intent facts do not yet produce their own signals.
-* 7 of 10 declared queries (`contracts/query-catalog.contract.json`) are not implemented.
+* Two opportunities total in the primary dataset below. Every ranking, trend, and comparison section above that would normally rank or compare is marked "not populated" or "not ranked" rather than computed on a sample too small to support it. (This is a sample-size limitation, not a capability gap — the underlying pipeline is exercised at larger scale by the query catalog's own conformance run.)
+* **Update since first edition:** the observation/acquisition circuit and this analysis circuit are now bridged for real — `capabilities/observe-and-resolve-job-market-intelligence`, live-verified end to end (real HTTP fetch through to a schema-valid profile). §6's compensation-by-capability figures above predate this and are still fixture-sourced; a live-bridged run currently produces an honestly *empty* `capabilityDemand` for the same reason as always — the bridge does not yet extract structured facts from unstructured posting content, so it correctly reports nothing rather than fabricating it.
+* **Update since first edition:** all 10 declared queries (`contracts/query-catalog.contract.json`), including `highest-compensation-by-capability`, are now implemented and independently verified (`ALL_IMPLEMENTED_QUERIES_OBSERVED`). §6.1's "not populated" reflects this specific report not having re-run that query against this dataset, not a missing capability.
+* Only technology, competency, and business-problem facts feed the base signal-derivation step. Compensation and organizational-intent facts do not produce their own *signals* directly, though `highest-compensation-by-capability` now correlates compensation to capability signals at query time.
 
 General limitations:
 
@@ -495,17 +494,17 @@ Market inferences resolved: 10
 ## Evidence Lineage
 
 ```text
-External Public Source                    proven live (separate circuit; not yet bridged into this report)
+External Public Source                    proven live, AND now bridged for real (capabilities/observe-and-resolve-job-market-intelligence)
         ↓
-Observed Representation                   proven live (separate circuit)
+Observed Representation                   proven live
         ↓
-Job Opportunity                           real, fixture-shaped input this edition
+Job Opportunity                           real; this dataset is fixture-sourced, but a live-bridged opportunity is now equally real, just currently fact-empty
         ↓
-Observed Job Fact                         real -- 10 facts, 5 types
+Observed Job Fact                         real -- 10 facts, 5 types (this dataset); a live-bridged opportunity's facts are honestly null/empty, not fabricated
         ↓
 Market Signal                             real -- cross-posting grouping, not 1:1 relabeling
         ↓
 Market Inference                          real -- ESTABLISHED/NOT_ESTABLISHED computed against priorAggregates
         ↓
-Query Interface                           real -- sda-json-query-cli.v1, 3 of 10 declared queries implemented
+Query Interface                           real -- 10 of 10 declared queries implemented, ALL_IMPLEMENTED_QUERIES_OBSERVED
 ```
