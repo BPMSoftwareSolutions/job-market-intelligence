@@ -1,0 +1,38 @@
+{
+  "scenarioId": "acquire-market-driven-experience",
+  "input": {
+    "inputId": "market-driven-experience-acquisition-scope",
+    "contract": {
+      "contractId": "market-driven-experience-acquisition-scope.v1"
+    }
+  },
+  "event": {
+    "eventId": "acquire-market-driven-experience",
+    "executionAuthorityId": "acquire-market-driven-experience.v1"
+  },
+  "outcome": {
+    "outcomeId": "market-driven-experience-acquisition-profile",
+    "contract": {
+      "contractId": "market-driven-experience-acquisition-profile.v1"
+    },
+    "experience": {
+      "statement": "I can inspect the full lineage from market signal to admitted experience evidence and a log entry ready to close the loop"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "acquire-market-driven-experience.given",
+      "text": "market intelligence, admitted candidate evidence, a chosen target capability, and execution testimony for it"
+    },
+    "when": {
+      "semanticRef": "acquire-market-driven-experience.when",
+      "text": "the gap is resolved, a mission is projected for the chosen capability, and the testimony is admitted against that mission"
+    },
+    "then": {
+      "semanticRef": "acquire-market-driven-experience.then",
+      "text": "I can inspect the full lineage from market signal to admitted experience evidence and a log entry ready to close the loop"
+    }
+  },
+  "name": "Close a chosen market-relevant experience gap end to end"
+}

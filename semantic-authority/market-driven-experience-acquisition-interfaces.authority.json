@@ -1,0 +1,80 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "contractCatalog": "../../contracts/market-driven-experience-acquisition-contract-catalog.json",
+  "requiredPlatformObligations": [
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "interfaces": [
+    {
+      "interfaceId": "acquire-market-driven-experience-cli",
+      "kind": "cli",
+      "rootScenarioId": "acquire-market-driven-experience",
+      "platformCapabilityId": "sda-json-cli.v1"
+    }
+  ],
+  "portBindings": [
+    {
+      "portId": "resolve-gaps",
+      "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+      "configuration": {
+        "bindingRef": "../../resolve-experience-gaps/projected/application-binding.json",
+        "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+        "capabilityAuthorityDigest": "sha256:dcc6e212edd28334266af746b4624e44aefa8253191826b53eb462b84bd934e7",
+        "requestPath": "experienceGapResolutionScope",
+        "resultPath": "experienceGapResult",
+        "lineageMode": "retain-nested-execution"
+      }
+    },
+    {
+      "portId": "compose-mission-request",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/market-driven-experience-acquisition-transformations.authority.json",
+        "transformationId": "compose-mission-request.v1"
+      }
+    },
+    {
+      "portId": "project-mission",
+      "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+      "configuration": {
+        "bindingRef": "../../project-experience-mission/projected/application-binding.json",
+        "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+        "capabilityAuthorityDigest": "sha256:cb2b7bbbb04183d6e89096e70c1da8665a547b47b7369f9be28a312b56261307",
+        "requestPath": "experienceMissionPlanningScope",
+        "resultPath": "experienceMissionResult",
+        "lineageMode": "retain-nested-execution"
+      }
+    },
+    {
+      "portId": "compose-admission-request",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/market-driven-experience-acquisition-transformations.authority.json",
+        "transformationId": "compose-admission-request.v1"
+      }
+    },
+    {
+      "portId": "admit-evidence",
+      "platformCapabilityId": "sda-projected-capability-invocation-port.v2",
+      "configuration": {
+        "bindingRef": "../../admit-acquired-experience/projected/application-binding.json",
+        "bindingDigest": "sha256:c2f1395e5a2f43270e7b1181fe7a85e0d351d8f0b9aad1bde382c70715c25111",
+        "capabilityAuthorityDigest": "sha256:da8dd89235e554f4c912b27a12bda01f14aa1c7c9fb710103c5db2de7c66e842",
+        "requestPath": "experienceAdmissionScope",
+        "resultPath": "experienceAdmissionResult",
+        "lineageMode": "retain-nested-execution"
+      }
+    },
+    {
+      "portId": "project-log-entry",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/market-driven-experience-acquisition-transformations.authority.json",
+        "transformationId": "project-experience-log-entry.v1"
+      }
+    }
+  ],
+  "projectionBindings": []
+}

@@ -1,0 +1,17 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    {
+      "id": "acquire-market-driven-experience.v1",
+      "owningScenarioId": "acquire-market-driven-experience",
+      "operations": [
+        { "kind": "invoke-port", "portId": "resolve-gaps" },
+        { "kind": "invoke-port", "portId": "compose-mission-request" },
+        { "kind": "invoke-port", "portId": "project-mission" },
+        { "kind": "invoke-port", "portId": "compose-admission-request" },
+        { "kind": "invoke-port", "portId": "admit-evidence" },
+        { "kind": "invoke-port", "portId": "project-log-entry" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "workspaceType": "consumer-workspace-authority.v1",
+  "consumerId": "acquire-market-driven-experience",
+  "kernel": {
+    "specificationId": "scenario-kernel.v1",
+    "version": "1.0.0",
+    "executionVector": "../../../scenario-driven-architecture/kernel/contracts/execution/scenario-kernel-execution-vector.json"
+  },
+  "governance": {
+    "authority": "../../governance/acquisition-policy.authority.json",
+    "conformancePolicy": "all-closures-must-conform"
+  },
+  "conformanceQuery": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+  "telemetryAuthority": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json",
+  "platformCapabilityCatalog": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/sda-platform-capabilities.semantic-authority.json",
+  "projectionTargets": ["node"],
+  "capabilities": [
+    {
+      "featureId": "acquire-market-driven-experience.feature",
+      "feature": "../../features/acquire-market-driven-experience.feature",
+      "capability": "capability.authority.json",
+      "semanticGraph": "../../semantic-authority/market-driven-experience-acquisition-scenario-graph.authority.json",
+      "executionAuthorities": "../../semantic-authority/market-driven-experience-acquisition-execution-authorities.authority.json",
+      "projectionAuthorities": "projection-authorities.authority.json",
+      "interfaces": "../../semantic-authority/market-driven-experience-acquisition-interfaces.authority.json",
+      "fixtures": "../../fixtures/market-driven-experience-acquisition-fixtures.authority.json"
+    }
+  ]
+}

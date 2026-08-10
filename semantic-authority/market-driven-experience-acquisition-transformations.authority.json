@@ -1,0 +1,112 @@
+{
+  "authorityType": "semantic-transformation-authority.v1",
+  "transformations": [
+    {
+      "id": "compose-mission-request.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceMissionPlanningScope": {
+                "op": "object",
+                "fields": {
+                  "experienceAcquisitionOpportunity": {
+                    "op": "find",
+                    "from": { "op": "path", "from": "input", "path": "experienceGapResult.experienceAcquisitionOpportunities" },
+                    "as": "opportunity",
+                    "where": {
+                      "op": "equals",
+                      "left": { "op": "path", "from": "opportunity", "path": "targetCapability" },
+                      "right": { "op": "path", "from": "input", "path": "selectedTargetCapability" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "compose-admission-request.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceAdmissionScope": {
+                "op": "object",
+                "fields": {
+                  "experienceMission": { "op": "path", "from": "input", "path": "experienceMissionResult.experienceMission" },
+                  "executionTestimony": { "op": "path", "from": "input", "path": "executionTestimony" }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "project-experience-log-entry.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "projectedExperienceLogEntry": {
+                "op": "if",
+                "when": {
+                  "op": "equals",
+                  "left": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.admissionStatus" },
+                  "right": { "op": "literal", "value": "ADMITTED" }
+                },
+                "then": {
+                  "op": "object",
+                  "fields": {
+                    "evidenceId": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.evidenceId" },
+                    "organization": { "op": "literal", "value": "Independent (SDA-projected experience mission)" },
+                    "role": {
+                      "op": "format",
+                      "template": "Experience Mission - {targetCapability}",
+                      "values": {
+                        "targetCapability": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.targetCapability" }
+                      }
+                    },
+                    "statement": {
+                      "op": "format",
+                      "template": "Completed a scenario-driven experience mission demonstrating {targetCapability} through {obligationCount} proven scenario obligations. Evidence: {repository}.",
+                      "values": {
+                        "targetCapability": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.targetCapability" },
+                        "obligationCount": {
+                          "op": "length",
+                          "value": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.demonstratedObligationIds" }
+                        },
+                        "repository": { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.repository" }
+                      }
+                    },
+                    "skills": {
+                      "op": "array",
+                      "items": [
+                        { "op": "path", "from": "input", "path": "experienceAdmissionResult.experienceEvidence.targetCapability" }
+                      ]
+                    },
+                    "start": { "op": "path", "from": "input", "path": "experienceWindow.start" },
+                    "end": { "op": "path", "from": "input", "path": "experienceWindow.end" }
+                  }
+                },
+                "else": { "op": "literal", "value": null }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

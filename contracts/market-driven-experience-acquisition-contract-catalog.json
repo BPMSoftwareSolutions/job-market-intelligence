@@ -1,0 +1,18 @@
+{
+  "market-driven-experience-acquisition-scope.v1": "market-driven-experience-acquisition-scope.schema.json",
+  "market-driven-experience-acquisition-profile.v1": "market-driven-experience-acquisition-profile.schema.json",
+  "experience-gap-resolution-scope.v1": "experience-gap-resolution-scope.schema.json",
+  "experience-acquisition-opportunity-profile.v1": "experience-acquisition-opportunity-profile.schema.json",
+  "experience-acquisition-opportunity.v1": "../schemas/experience-acquisition-opportunity.schema.json",
+  "experience-mission-planning-scope.v1": "experience-mission-planning-scope.schema.json",
+  "experience-mission-profile.v1": "experience-mission-profile.schema.json",
+  "experience-mission.v1": "../schemas/experience-mission.schema.json",
+  "experience-admission-scope.v1": "experience-admission-scope.schema.json",
+  "experience-admission-profile.v1": "experience-admission-profile.schema.json",
+  "experience-evidence.v1": "../schemas/experience-evidence.schema.json",
+  "job-market-observation-scope.v1": "job-market-observation-scope.schema.json",
+  "job-market-intelligence-profile.v1": "../schemas/job-market-intelligence-profile.schema.json",
+  "market-signal.v1": "../schemas/market-signal.schema.json",
+  "candidate-experience-authority.v1": "../../agentic-tailored-resume/capability/admit-candidate-evidence/data-contracts/candidate-experience-authority.schema.json",
+  "candidate-evidence-catalog.v1": "../../agentic-tailored-resume/capability/admit-candidate-evidence/data-contracts/candidate-evidence-catalog.schema.json"
+}

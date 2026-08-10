@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/market-driven-experience-acquisition-profile.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experienceGapResolutionScope",
+    "selectedTargetCapability",
+    "experienceWindow",
+    "executionTestimony",
+    "experienceGapResult",
+    "experienceMissionPlanningScope",
+    "experienceMissionResult",
+    "experienceAdmissionScope",
+    "experienceAdmissionResult",
+    "projectedExperienceLogEntry"
+  ],
+  "properties": {
+    "experienceGapResolutionScope": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-gap-resolution-scope.v1.schema.json"
+    },
+    "selectedTargetCapability": { "type": "string", "minLength": 1 },
+    "experienceWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "string", "minLength": 1 },
+        "end": { "type": "string", "minLength": 1 }
+      }
+    },
+    "executionTestimony": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "demonstratedObligationIds", "proof"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "demonstratedObligationIds": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "proof": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tests", "executionClosure"],
+          "properties": {
+            "tests": { "enum": ["PASS", "FAIL"] },
+            "executionClosure": { "enum": ["PASS", "FAIL"] }
+          }
+        }
+      }
+    },
+    "experienceGapResult": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-acquisition-opportunity-profile.v1.schema.json"
+    },
+    "experienceMissionPlanningScope": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-mission-planning-scope.v1.schema.json"
+    },
+    "experienceMissionResult": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-mission-profile.v1.schema.json"
+    },
+    "experienceAdmissionScope": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-admission-scope.v1.schema.json"
+    },
+    "experienceAdmissionResult": {
+      "$ref": "https://job-market-intelligence.local/contracts/experience-admission-profile.v1.schema.json"
+    },
+    "projectedExperienceLogEntry": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["evidenceId", "organization", "role", "statement", "skills", "start", "end"],
+      "properties": {
+        "evidenceId": { "type": "string", "minLength": 1 },
+        "organization": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "statement": { "type": "string", "minLength": 1 },
+        "skills": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "start": { "type": "string", "minLength": 1 },
+        "end": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

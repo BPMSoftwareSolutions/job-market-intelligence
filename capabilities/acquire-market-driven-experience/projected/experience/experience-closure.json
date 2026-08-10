@@ -1,0 +1,188 @@
+{
+  "closureType": "consumer-experience-closure.v1",
+  "capabilityId": "acquire-market-driven-experience",
+  "experienceId": "market-driven-experience-is-acquired-end-to-end",
+  "promise": "I can inspect the full lineage from an unsupported market signal to admitted experience evidence, and a candidate-experience-authority-compatible log entry ready to close the loop, in one composed circuit.",
+  "projectionTarget": "node",
+  "fixtures": [
+    {
+      "fixtureId": "kafka-gap-is-closed-end-to-end",
+      "conditions": [
+        {
+          "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+          "statement": "the admitted evidence retains the same market signal and evidence fact ids as the originally resolved gap",
+          "observations": [
+            {
+              "path": "experienceMissionResult.experienceMission.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-technology-demand-Kafka",
+              "actual": "signal-technology-demand-Kafka",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-technology-demand-Kafka",
+              "actual": "signal-technology-demand-Kafka",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "each-capability-receives-only-its-declared-request",
+          "statement": "the composed request handed to each nested capability contains exactly its declared request branch, not the whole carrier",
+          "observations": [
+            {
+              "path": "experienceMissionPlanningScope.experienceAcquisitionOpportunity.targetCapability",
+              "operator": "equals",
+              "expected": "Kafka",
+              "actual": "Kafka",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionScope.experienceMission.missionId",
+              "operator": "equals",
+              "expected": "mission-opportunity-signal-technology-demand-Kafka",
+              "actual": "mission-opportunity-signal-technology-demand-Kafka",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "evidence-is-admitted-only-when-fully-proven",
+          "statement": "the terminal admission status reflects genuine end-to-end obligation coverage and proof, not an assumed success",
+          "observations": [
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "ADMITTED",
+              "actual": "ADMITTED",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.missingObligationIds",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+          "statement": "a candidate-experience-authority-compatible log entry is projected only when the admission status is ADMITTED, and is null otherwise",
+          "observations": [
+            {
+              "path": "projectedExperienceLogEntry.evidenceId",
+              "operator": "equals",
+              "expected": "evidence-mission-opportunity-signal-technology-demand-Kafka",
+              "actual": "evidence-mission-opportunity-signal-technology-demand-Kafka",
+              "satisfied": true
+            },
+            {
+              "path": "projectedExperienceLogEntry.skills",
+              "operator": "contains",
+              "expected": "Kafka",
+              "actual": [
+                "Kafka"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "under-demonstrated-kubernetes-mission-projects-no-log-entry",
+      "conditions": [
+        {
+          "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+          "statement": "the admitted evidence retains the same market signal and evidence fact ids as the originally resolved gap",
+          "observations": [
+            {
+              "path": "experienceMissionResult.experienceMission.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-technology-demand-Kubernetes",
+              "actual": "signal-technology-demand-Kubernetes",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-technology-demand-Kubernetes",
+              "actual": "signal-technology-demand-Kubernetes",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "each-capability-receives-only-its-declared-request",
+          "statement": "the composed request handed to each nested capability contains exactly its declared request branch, not the whole carrier",
+          "observations": [
+            {
+              "path": "experienceMissionPlanningScope.experienceAcquisitionOpportunity.targetCapability",
+              "operator": "equals",
+              "expected": "Kubernetes",
+              "actual": "Kubernetes",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionScope.experienceMission.missionId",
+              "operator": "equals",
+              "expected": "mission-opportunity-signal-technology-demand-Kubernetes",
+              "actual": "mission-opportunity-signal-technology-demand-Kubernetes",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "evidence-is-admitted-only-when-fully-proven",
+          "statement": "the terminal admission status reflects genuine end-to-end obligation coverage and proof, not an assumed success",
+          "observations": [
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "REJECTED_INCOMPLETE",
+              "actual": "REJECTED_INCOMPLETE",
+              "satisfied": true
+            },
+            {
+              "path": "experienceAdmissionResult.experienceEvidence.missingObligationIds",
+              "operator": "contains",
+              "expected": "recover-after-reconciler-restart",
+              "actual": [
+                "observe-resource-status",
+                "recover-after-reconciler-restart"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+          "statement": "a candidate-experience-authority-compatible log entry is projected only when the admission status is ADMITTED, and is null otherwise",
+          "observations": [
+            {
+              "path": "projectedExperienceLogEntry",
+              "operator": "equals",
+              "expected": null,
+              "actual": null,
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    }
+  ],
+  "disposition": "OBSERVABLY_TRUE"
+}

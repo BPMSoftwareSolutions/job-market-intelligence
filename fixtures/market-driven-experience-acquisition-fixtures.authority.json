@@ -1,0 +1,323 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "kafka-gap-is-closed-end-to-end",
+      "input": {
+        "experienceGapResolutionScope": {
+          "marketIntelligenceScope": {
+            "sourceIds": ["greenhouse", "lever"],
+            "organizationIds": ["northstar", "harbor"],
+            "observedFrom": "2026-07-01T00:00:00Z",
+            "observedTo": "2026-07-31T23:59:59Z",
+            "maxResultsPerSource": 50,
+            "priorAggregates": [],
+            "publicSourceObservations": [
+              {
+                "opportunityId": "northstar-101",
+                "sourceId": "greenhouse",
+                "sourceUrl": "https://boards.greenhouse.io/northstar/jobs/101",
+                "organizationId": "northstar",
+                "role": "Platform Engineer",
+                "location": "Remote",
+                "seniority": "staff",
+                "compensation": { "currency": "USD", "minimum": 180000, "maximum": 220000, "period": "year" },
+                "competencies": ["platform engineering", "reliability"],
+                "technologies": ["Go", "Kubernetes"],
+                "businessProblems": ["developer productivity"],
+                "organizationalIntent": "scale-internal-platform",
+                "observedAt": "2026-07-15T12:00:00Z",
+                "contentSha256": "90868bde8c637c92422ca3c50e20f21cba20c483cbb380a260efb85c702f27db"
+              },
+              {
+                "opportunityId": "harbor-202",
+                "sourceId": "lever",
+                "sourceUrl": "https://jobs.lever.co/harbor/202",
+                "organizationId": "harbor",
+                "role": "Data Infrastructure Engineer",
+                "location": "New York, NY",
+                "seniority": "senior",
+                "compensation": { "currency": "USD", "minimum": 165000, "maximum": 205000, "period": "year" },
+                "competencies": ["data infrastructure", "stream processing"],
+                "technologies": ["Python", "Kafka"],
+                "businessProblems": ["real-time analytics"],
+                "organizationalIntent": "expand-streaming-data-capability",
+                "observedAt": "2026-07-20T12:00:00Z",
+                "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f"
+              }
+            ]
+          },
+          "candidateExperienceAuthority": {
+            "candidate": {
+              "name": "Alex Morgan",
+              "headline": "Software architect and platform engineer",
+              "email": "alex.morgan@example.test"
+            },
+            "source": "experience-log.v1",
+            "experiences": [
+              {
+                "evidenceId": "evidence-python-services",
+                "organization": "Northstar Labs",
+                "role": "Principal Engineer",
+                "statement": "Built Python services that processed high-volume workflow events with deterministic recovery.",
+                "skills": ["Python", "Event-Driven Architecture"],
+                "start": "2022-01",
+                "end": "present"
+              },
+              {
+                "evidenceId": "evidence-distributed-platform",
+                "organization": "Northstar Labs",
+                "role": "Principal Engineer",
+                "statement": "Designed a distributed platform that separated domain authority from runtime infrastructure.",
+                "skills": ["Distributed Systems", "Architecture"],
+                "start": "2022-01",
+                "end": "present"
+              }
+            ]
+          }
+        },
+        "selectedTargetCapability": "Kafka",
+        "experienceWindow": { "start": "2026-07-01", "end": "2026-08-05" },
+        "executionTestimony": {
+          "repository": "https://github.com/example/kafka-event-processing",
+          "demonstratedObligationIds": [
+            "publish-admitted-event",
+            "consume-event-idempotently",
+            "prevent-duplicate-effects",
+            "recover-after-interruption",
+            "observe-processing-lineage"
+          ],
+          "proof": { "tests": "PASS", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/market-driven-experience-acquisition-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "acquire-market-driven-experience",
+        "scenarioSequence": ["acquire-market-driven-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+            "path": "experienceMissionResult.experienceMission.marketSignalId",
+            "operator": "equals",
+            "value": "signal-technology-demand-Kafka"
+          },
+          {
+            "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+            "path": "experienceAdmissionResult.experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-technology-demand-Kafka"
+          },
+          {
+            "conditionId": "each-capability-receives-only-its-declared-request",
+            "path": "experienceMissionPlanningScope.experienceAcquisitionOpportunity.targetCapability",
+            "operator": "equals",
+            "value": "Kafka"
+          },
+          {
+            "conditionId": "each-capability-receives-only-its-declared-request",
+            "path": "experienceAdmissionScope.experienceMission.missionId",
+            "operator": "equals",
+            "value": "mission-opportunity-signal-technology-demand-Kafka"
+          },
+          {
+            "conditionId": "evidence-is-admitted-only-when-fully-proven",
+            "path": "experienceAdmissionResult.experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "ADMITTED"
+          },
+          {
+            "conditionId": "evidence-is-admitted-only-when-fully-proven",
+            "path": "experienceAdmissionResult.experienceEvidence.missingObligationIds",
+            "operator": "equals",
+            "value": []
+          },
+          {
+            "path": "experienceMissionResult.experienceMission.preferredEmbodiment",
+            "operator": "equals",
+            "value": "java"
+          },
+          {
+            "path": "experienceAdmissionResult.experienceEvidence.evidenceId",
+            "operator": "equals",
+            "value": "evidence-mission-opportunity-signal-technology-demand-Kafka"
+          },
+          {
+            "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+            "path": "projectedExperienceLogEntry.evidenceId",
+            "operator": "equals",
+            "value": "evidence-mission-opportunity-signal-technology-demand-Kafka"
+          },
+          {
+            "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+            "path": "projectedExperienceLogEntry.skills",
+            "operator": "contains",
+            "value": "Kafka"
+          },
+          {
+            "path": "projectedExperienceLogEntry.start",
+            "operator": "equals",
+            "value": "2026-07-01"
+          },
+          {
+            "path": "projectedExperienceLogEntry.end",
+            "operator": "equals",
+            "value": "2026-08-05"
+          },
+          {
+            "path": "projectedExperienceLogEntry.statement",
+            "operator": "contains",
+            "value": "5 proven scenario obligations"
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "under-demonstrated-kubernetes-mission-projects-no-log-entry",
+      "input": {
+        "experienceGapResolutionScope": {
+          "marketIntelligenceScope": {
+            "sourceIds": ["greenhouse", "lever"],
+            "organizationIds": ["northstar", "harbor"],
+            "observedFrom": "2026-07-01T00:00:00Z",
+            "observedTo": "2026-07-31T23:59:59Z",
+            "maxResultsPerSource": 50,
+            "priorAggregates": [],
+            "publicSourceObservations": [
+              {
+                "opportunityId": "northstar-101",
+                "sourceId": "greenhouse",
+                "sourceUrl": "https://boards.greenhouse.io/northstar/jobs/101",
+                "organizationId": "northstar",
+                "role": "Platform Engineer",
+                "location": "Remote",
+                "seniority": "staff",
+                "compensation": { "currency": "USD", "minimum": 180000, "maximum": 220000, "period": "year" },
+                "competencies": ["platform engineering", "reliability"],
+                "technologies": ["Go", "Kubernetes"],
+                "businessProblems": ["developer productivity"],
+                "organizationalIntent": "scale-internal-platform",
+                "observedAt": "2026-07-15T12:00:00Z",
+                "contentSha256": "90868bde8c637c92422ca3c50e20f21cba20c483cbb380a260efb85c702f27db"
+              },
+              {
+                "opportunityId": "harbor-202",
+                "sourceId": "lever",
+                "sourceUrl": "https://jobs.lever.co/harbor/202",
+                "organizationId": "harbor",
+                "role": "Data Infrastructure Engineer",
+                "location": "New York, NY",
+                "seniority": "senior",
+                "compensation": { "currency": "USD", "minimum": 165000, "maximum": 205000, "period": "year" },
+                "competencies": ["data infrastructure", "stream processing"],
+                "technologies": ["Python", "Kafka"],
+                "businessProblems": ["real-time analytics"],
+                "organizationalIntent": "expand-streaming-data-capability",
+                "observedAt": "2026-07-20T12:00:00Z",
+                "contentSha256": "042b0d223355422b9206089784d3302113b8d22f672d8835716773972d47146f"
+              }
+            ]
+          },
+          "candidateExperienceAuthority": {
+            "candidate": {
+              "name": "Alex Morgan",
+              "headline": "Software architect and platform engineer",
+              "email": "alex.morgan@example.test"
+            },
+            "source": "experience-log.v1",
+            "experiences": [
+              {
+                "evidenceId": "evidence-python-services",
+                "organization": "Northstar Labs",
+                "role": "Principal Engineer",
+                "statement": "Built Python services that processed high-volume workflow events with deterministic recovery.",
+                "skills": ["Python", "Event-Driven Architecture"],
+                "start": "2022-01",
+                "end": "present"
+              },
+              {
+                "evidenceId": "evidence-distributed-platform",
+                "organization": "Northstar Labs",
+                "role": "Principal Engineer",
+                "statement": "Designed a distributed platform that separated domain authority from runtime infrastructure.",
+                "skills": ["Distributed Systems", "Architecture"],
+                "start": "2022-01",
+                "end": "present"
+              }
+            ]
+          }
+        },
+        "selectedTargetCapability": "Kubernetes",
+        "experienceWindow": { "start": "2026-08-01", "end": "2026-08-03" },
+        "executionTestimony": {
+          "repository": "https://github.com/example/k8s-reconciler",
+          "demonstratedObligationIds": ["reconcile-declared-state"],
+          "proof": { "tests": "PASS", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/market-driven-experience-acquisition-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "acquire-market-driven-experience",
+        "scenarioSequence": ["acquire-market-driven-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+            "path": "experienceMissionResult.experienceMission.marketSignalId",
+            "operator": "equals",
+            "value": "signal-technology-demand-Kubernetes"
+          },
+          {
+            "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+            "path": "experienceAdmissionResult.experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-technology-demand-Kubernetes"
+          },
+          {
+            "conditionId": "each-capability-receives-only-its-declared-request",
+            "path": "experienceMissionPlanningScope.experienceAcquisitionOpportunity.targetCapability",
+            "operator": "equals",
+            "value": "Kubernetes"
+          },
+          {
+            "conditionId": "each-capability-receives-only-its-declared-request",
+            "path": "experienceAdmissionScope.experienceMission.missionId",
+            "operator": "equals",
+            "value": "mission-opportunity-signal-technology-demand-Kubernetes"
+          },
+          {
+            "conditionId": "evidence-is-admitted-only-when-fully-proven",
+            "path": "experienceAdmissionResult.experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "REJECTED_INCOMPLETE"
+          },
+          {
+            "conditionId": "evidence-is-admitted-only-when-fully-proven",
+            "path": "experienceAdmissionResult.experienceEvidence.missingObligationIds",
+            "operator": "contains",
+            "value": "recover-after-reconciler-restart"
+          },
+          {
+            "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+            "path": "projectedExperienceLogEntry",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceAdmissionResult.experienceEvidence.evidenceId",
+            "operator": "equals",
+            "value": null
+          }
+        ]
+      }
+    }
+  ]
+}

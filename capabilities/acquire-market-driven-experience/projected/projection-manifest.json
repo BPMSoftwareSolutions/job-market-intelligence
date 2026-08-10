@@ -1,0 +1,112 @@
+{
+  "projectionManifestType": "consumer-capability-projection-manifest.v1",
+  "generator": "scenario-driven-architecture/tools/src/consumer-projection",
+  "authorityRefs": [
+    "../../features/acquire-market-driven-experience.feature",
+    "capability.authority.json",
+    "../../semantic-authority/market-driven-experience-acquisition-scenario-graph.authority.json",
+    "../../semantic-authority/market-driven-experience-acquisition-execution-authorities.authority.json",
+    "projection-authorities.authority.json",
+    "../../semantic-authority/market-driven-experience-acquisition-interfaces.authority.json",
+    "../../fixtures/market-driven-experience-acquisition-fixtures.authority.json",
+    "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+    "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json"
+  ],
+  "admittedPlatformCapabilities": [
+    "sda-authority-state-projection.v1",
+    "sda-authority-transformation-port.v1",
+    "sda-declarative-state-projection.v1",
+    "sda-declarative-value-port.v1",
+    "sda-external-observation-port.v1",
+    "sda-filesystem-artifact-store.v1",
+    "sda-fixture-contract-validator.v1",
+    "sda-json-cli.v1",
+    "sda-json-query-cli.v1",
+    "sda-node-consumer-runtime.v1",
+    "sda-projected-capability-invocation-port.v1",
+    "sda-projected-capability-invocation-port.v2",
+    "sda-schema-contract-admission.v1"
+  ],
+  "files": [
+    {
+      "path": "application-binding.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7a320ad1eae5c14cb39513b93faa34147e0414485170e0496851d167160a7558"
+    },
+    {
+      "path": "application-binding.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "6513ebd734f912c8e05032b0cf46cff6b87794c84060f4f34f61a6a727ecaffb"
+    },
+    {
+      "path": "capability.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7a37d6521f268931e934eec6d9425649e787b422c61618eeceed6ff6041d4140"
+    },
+    {
+      "path": "experience/experience-closure.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "f08a2c93ca5cfdeb170566762ce2873f78534a622b27756c32a451d92df8fdd8"
+    },
+    {
+      "path": "fixtures/fixtures.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "17865725c4c87489d07e5b1ef3ee9c02edbde8008e6dac33729d335a15ee055e"
+    },
+    {
+      "path": "node/acquire-market-driven-experience-cli.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "56b4c0df6e70645327f56b87d0cad4e52242d3077af6dd9b6e203cfc0388eebd"
+    },
+    {
+      "path": "node/capability-runtime.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "47566904e9382e6ec4e771bb5431815d0aca256b6805b14ddbdf2703ea22392a"
+    },
+    {
+      "path": "node/capability.projected.test.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "cf7632f1aa1682d053448ec5eb59d914b6b5614ad755bdb1fea9e53282bcad60"
+    },
+    {
+      "path": "node/conformance-query.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "b30ee6f4682e5ec39e9d314430318ad5c3f1e235fda69e111a29b04dbe89a87f"
+    },
+    {
+      "path": "projection-conformance.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed"
+    },
+    {
+      "path": "query/conformance-query.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "f498439d2041e577f5ad74d24230036bd5ee46e38e44a71eb751decbb2f1f93f"
+    },
+    {
+      "path": "query/conformance-query.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "f498439d2041e577f5ad74d24230036bd5ee46e38e44a71eb751decbb2f1f93f"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "84c5205d1f43994f77dbd591e6ab53ff2d8fbbc6eafd0ec310739b0f8ea25f9d"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "84c5205d1f43994f77dbd591e6ab53ff2d8fbbc6eafd0ec310739b0f8ea25f9d"
+    },
+    {
+      "path": "scenarios/acquire-market-driven-experience.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "9e674d3dcf870976c0d7c07b7e0f391ca67322ffe72afed6c2638fe9dc279d91"
+    },
+    {
+      "path": "telemetry/expected-trace.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "628bd63933a9c0efbb32686d23351ffbfcafdab8e4b388923621999917e934d9"
+    }
+  ]
+}

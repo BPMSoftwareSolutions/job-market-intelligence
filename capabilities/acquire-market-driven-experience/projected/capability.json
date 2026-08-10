@@ -1,0 +1,76 @@
+{
+  "capabilityType": "scenario-driven-capability.v1",
+  "capabilityId": "acquire-market-driven-experience",
+  "userStory": {
+    "actor": "a professional closing a chosen market-relevant experience gap",
+    "intent": "resolve the gap, project a mission for it, and admit testimony proving the mission was completed, in one composed circuit",
+    "outcome": "inspect the full lineage from market signal to admitted experience evidence, and a ready-to-append experience-log entry, without re-deriving any of the three capabilities by hand"
+  },
+  "scenarios": [
+    {
+      "scenarioId": "acquire-market-driven-experience",
+      "input": {
+        "inputId": "market-driven-experience-acquisition-scope",
+        "contract": {
+          "contractId": "market-driven-experience-acquisition-scope.v1"
+        }
+      },
+      "event": {
+        "eventId": "acquire-market-driven-experience",
+        "executionAuthorityId": "acquire-market-driven-experience.v1"
+      },
+      "outcome": {
+        "outcomeId": "market-driven-experience-acquisition-profile",
+        "contract": {
+          "contractId": "market-driven-experience-acquisition-profile.v1"
+        },
+        "experience": {
+          "statement": "I can inspect the full lineage from market signal to admitted experience evidence and a log entry ready to close the loop"
+        },
+        "terminal": true
+      },
+      "gherkin": {
+        "given": {
+          "semanticRef": "acquire-market-driven-experience.given",
+          "text": "market intelligence, admitted candidate evidence, a chosen target capability, and execution testimony for it"
+        },
+        "when": {
+          "semanticRef": "acquire-market-driven-experience.when",
+          "text": "the gap is resolved, a mission is projected for the chosen capability, and the testimony is admitted against that mission"
+        },
+        "then": {
+          "semanticRef": "acquire-market-driven-experience.then",
+          "text": "I can inspect the full lineage from market signal to admitted experience evidence and a log entry ready to close the loop"
+        }
+      },
+      "name": "Close a chosen market-relevant experience gap end to end"
+    }
+  ],
+  "transitions": [],
+  "rootScenarioId": "acquire-market-driven-experience",
+  "name": "Acquire market-driven experience end to end",
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "market-driven-experience-is-acquired-end-to-end",
+    "actor": "a professional closing a chosen market-relevant experience gap",
+    "promise": "I can inspect the full lineage from an unsupported market signal to admitted experience evidence, and a candidate-experience-authority-compatible log entry ready to close the loop, in one composed circuit.",
+    "observableConditions": [
+      {
+        "conditionId": "lineage-traces-market-signal-to-admitted-evidence",
+        "statement": "the admitted evidence retains the same market signal and evidence fact ids as the originally resolved gap"
+      },
+      {
+        "conditionId": "each-capability-receives-only-its-declared-request",
+        "statement": "the composed request handed to each nested capability contains exactly its declared request branch, not the whole carrier"
+      },
+      {
+        "conditionId": "evidence-is-admitted-only-when-fully-proven",
+        "statement": "the terminal admission status reflects genuine end-to-end obligation coverage and proof, not an assumed success"
+      },
+      {
+        "conditionId": "experience-log-entry-is-projected-only-when-admitted",
+        "statement": "a candidate-experience-authority-compatible log entry is projected only when the admission status is ADMITTED, and is null otherwise"
+      }
+    ]
+  }
+}
