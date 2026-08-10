@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/schemas/experience-mission.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "missionId",
+    "opportunityId",
+    "targetCapability",
+    "marketSignalId",
+    "marketEvidenceFactIds",
+    "missionStatus",
+    "preferredEmbodiment",
+    "targetEvidenceMaturity",
+    "scenarioObligations"
+  ],
+  "properties": {
+    "missionId": { "type": "string", "minLength": 1 },
+    "opportunityId": { "type": "string", "minLength": 1 },
+    "targetCapability": { "type": "string", "minLength": 1 },
+    "marketSignalId": { "type": "string", "minLength": 1 },
+    "marketEvidenceFactIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "missionStatus": { "enum": ["MISSION_PROJECTED", "NO_DECLARED_MISSION_TEMPLATE"] },
+    "preferredEmbodiment": { "type": ["string", "null"] },
+    "targetEvidenceMaturity": {
+      "enum": ["EXPOSURE", "IMPLEMENTATION", "INTEGRATION", "OPERATION", "PRODUCTION", "MASTERY", null]
+    },
+    "scenarioObligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["obligationId", "statement"],
+        "properties": {
+          "obligationId": { "type": "string", "minLength": 1 },
+          "statement": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

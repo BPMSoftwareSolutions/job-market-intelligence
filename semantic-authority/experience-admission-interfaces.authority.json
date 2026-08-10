@@ -1,0 +1,28 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "contractCatalog": "../../contracts/experience-admission-contract-catalog.json",
+  "requiredPlatformObligations": [
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "interfaces": [
+    {
+      "interfaceId": "experience-admission-cli",
+      "kind": "cli",
+      "rootScenarioId": "admit-acquired-experience",
+      "platformCapabilityId": "sda-json-cli.v1"
+    }
+  ],
+  "portBindings": [
+    {
+      "portId": "admit-experience-evidence",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/experience-admission-transformations.authority.json",
+        "transformationId": "admit-acquired-experience.v1"
+      }
+    }
+  ],
+  "projectionBindings": []
+}

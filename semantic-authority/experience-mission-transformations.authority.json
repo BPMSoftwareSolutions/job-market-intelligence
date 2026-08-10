@@ -1,0 +1,111 @@
+{
+  "authorityType": "semantic-transformation-authority.v1",
+  "transformations": [
+    {
+      "id": "project-experience-mission.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceMission": {
+                "op": "let",
+                "bindings": {
+                  "missionCatalog": {
+                    "op": "literal",
+                    "value": [
+                      {
+                        "targetCapability": "Kafka",
+                        "preferredEmbodiment": "java",
+                        "targetEvidenceMaturity": "IMPLEMENTATION",
+                        "scenarioObligations": [
+                          { "obligationId": "publish-admitted-event", "statement": "Publish an admitted business event" },
+                          { "obligationId": "consume-event-idempotently", "statement": "Consume the event idempotently" },
+                          { "obligationId": "prevent-duplicate-effects", "statement": "Prevent duplicate effects from a redelivered event" },
+                          { "obligationId": "recover-after-interruption", "statement": "Recover processing after consumer interruption" },
+                          { "obligationId": "observe-processing-lineage", "statement": "Observe processing lineage across the pipeline" }
+                        ]
+                      },
+                      {
+                        "targetCapability": "Kubernetes",
+                        "preferredEmbodiment": "go",
+                        "targetEvidenceMaturity": "IMPLEMENTATION",
+                        "scenarioObligations": [
+                          { "obligationId": "reconcile-declared-state", "statement": "Reconcile observed cluster state with declared state" },
+                          { "obligationId": "observe-resource-status", "statement": "Observe managed resource status" },
+                          { "obligationId": "recover-after-reconciler-restart", "statement": "Recover reconciliation after restart" }
+                        ]
+                      }
+                    ]
+                  },
+                  "hasTemplate": {
+                    "op": "some",
+                    "from": { "op": "path", "from": "missionCatalog" },
+                    "as": "template",
+                    "where": {
+                      "op": "equals",
+                      "left": { "op": "path", "from": "template", "path": "targetCapability" },
+                      "right": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.targetCapability" }
+                    }
+                  },
+                  "matchedTemplate": {
+                    "op": "find",
+                    "from": { "op": "path", "from": "missionCatalog" },
+                    "as": "template",
+                    "where": {
+                      "op": "equals",
+                      "left": { "op": "path", "from": "template", "path": "targetCapability" },
+                      "right": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.targetCapability" }
+                    }
+                  }
+                },
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "missionId": {
+                      "op": "format",
+                      "template": "mission-{opportunityId}",
+                      "values": {
+                        "opportunityId": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.opportunityId" }
+                      }
+                    },
+                    "opportunityId": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.opportunityId" },
+                    "targetCapability": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.targetCapability" },
+                    "marketSignalId": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.marketSignalId" },
+                    "marketEvidenceFactIds": { "op": "path", "from": "input", "path": "experienceAcquisitionOpportunity.marketEvidenceFactIds" },
+                    "missionStatus": {
+                      "op": "if",
+                      "when": { "op": "path", "from": "hasTemplate" },
+                      "then": { "op": "literal", "value": "MISSION_PROJECTED" },
+                      "else": { "op": "literal", "value": "NO_DECLARED_MISSION_TEMPLATE" }
+                    },
+                    "preferredEmbodiment": {
+                      "op": "if",
+                      "when": { "op": "path", "from": "hasTemplate" },
+                      "then": { "op": "path", "from": "matchedTemplate", "path": "preferredEmbodiment" },
+                      "else": { "op": "literal", "value": null }
+                    },
+                    "targetEvidenceMaturity": {
+                      "op": "if",
+                      "when": { "op": "path", "from": "hasTemplate" },
+                      "then": { "op": "path", "from": "matchedTemplate", "path": "targetEvidenceMaturity" },
+                      "else": { "op": "literal", "value": null }
+                    },
+                    "scenarioObligations": {
+                      "op": "if",
+                      "when": { "op": "path", "from": "hasTemplate" },
+                      "then": { "op": "path", "from": "matchedTemplate", "path": "scenarioObligations" },
+                      "else": { "op": "array", "items": [] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

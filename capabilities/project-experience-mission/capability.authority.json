@@ -1,0 +1,31 @@
+{
+  "capabilityId": "project-experience-mission",
+  "name": "Project a scenario-driven mission to close an experience gap",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a professional who has chosen a valuable experience gap to close",
+    "intent": "turn a market-relevant experience acquisition opportunity into a bounded, scenario-obligated mission",
+    "outcome": "see exactly which scenario obligations, in which language embodiment, at which evidence maturity, would close the gap"
+  },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "a-scenario-driven-mission-is-visible-for-the-chosen-gap",
+    "actor": "a professional who has chosen a valuable experience gap to close",
+    "promise": "I can see the scenario-driven mission that would close my chosen experience gap.",
+    "observableConditions": [
+      {
+        "conditionId": "mission-obligations-are-visible",
+        "statement": "a cataloged target capability projects the scenario obligations required to close the gap"
+      },
+      {
+        "conditionId": "mission-lineage-is-inspectable",
+        "statement": "the projected mission retains the market signal and evidence fact ids that justified it"
+      },
+      {
+        "conditionId": "uncataloged-capabilities-are-never-fabricated",
+        "statement": "the preferred embodiment is populated exactly when a mission template is declared for the target capability, and null otherwise"
+      }
+    ]
+  },
+  "rootScenarioId": "project-experience-mission"
+}

@@ -1,0 +1,269 @@
+{
+  "closureType": "consumer-experience-closure.v1",
+  "capabilityId": "admit-acquired-experience",
+  "experienceId": "acquired-experience-is-admitted-only-when-fully-proven",
+  "promise": "I can see whether my execution testimony was admitted as experience evidence, and exactly why not when it wasn't.",
+  "projectionTarget": "node",
+  "fixtures": [
+    {
+      "fixtureId": "evidence-is-admitted-when-fully-demonstrated-and-proven",
+      "conditions": [
+        {
+          "conditionId": "admission-requires-full-obligation-coverage",
+          "statement": "evidence is admitted only when every scenario obligation the mission required has been demonstrated and its proof passed",
+          "observations": [
+            {
+              "path": "experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "ADMITTED",
+              "actual": "ADMITTED",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.missingObligationIds",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "admitted-evidence-lineage-is-inspectable",
+          "statement": "the admission outcome retains the market signal and evidence facts that justified the underlying mission, regardless of disposition",
+          "observations": [
+            {
+              "path": "experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-kafka-001",
+              "actual": "signal-kafka-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-harbor-202-technologies",
+              "actual": [
+                "fact-harbor-202-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+          "statement": "evidence identity, maturity, and repository stay null unless the admission status is ADMITTED",
+          "observations": [
+            {
+              "path": "experienceEvidence.evidenceId",
+              "operator": "equals",
+              "expected": "evidence-mission-opportunity-signal-kafka-001",
+              "actual": "evidence-mission-opportunity-signal-kafka-001",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "evidence-is-rejected-when-obligations-are-incomplete",
+      "conditions": [
+        {
+          "conditionId": "admission-requires-full-obligation-coverage",
+          "statement": "evidence is admitted only when every scenario obligation the mission required has been demonstrated and its proof passed",
+          "observations": [
+            {
+              "path": "experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "REJECTED_INCOMPLETE",
+              "actual": "REJECTED_INCOMPLETE",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.missingObligationIds",
+              "operator": "contains",
+              "expected": "recover-after-interruption",
+              "actual": [
+                "recover-after-interruption",
+                "observe-processing-lineage"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "admitted-evidence-lineage-is-inspectable",
+          "statement": "the admission outcome retains the market signal and evidence facts that justified the underlying mission, regardless of disposition",
+          "observations": [
+            {
+              "path": "experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-kafka-001",
+              "actual": "signal-kafka-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-harbor-202-technologies",
+              "actual": [
+                "fact-harbor-202-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+          "statement": "evidence identity, maturity, and repository stay null unless the admission status is ADMITTED",
+          "observations": [
+            {
+              "path": "experienceEvidence.evidenceId",
+              "operator": "equals",
+              "expected": null,
+              "actual": null,
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "evidence-is-rejected-when-unproven",
+      "conditions": [
+        {
+          "conditionId": "admission-requires-full-obligation-coverage",
+          "statement": "evidence is admitted only when every scenario obligation the mission required has been demonstrated and its proof passed",
+          "observations": [
+            {
+              "path": "experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "REJECTED_UNPROVEN",
+              "actual": "REJECTED_UNPROVEN",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.missingObligationIds",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "admitted-evidence-lineage-is-inspectable",
+          "statement": "the admission outcome retains the market signal and evidence facts that justified the underlying mission, regardless of disposition",
+          "observations": [
+            {
+              "path": "experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-kafka-001",
+              "actual": "signal-kafka-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-harbor-202-technologies",
+              "actual": [
+                "fact-harbor-202-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+          "statement": "evidence identity, maturity, and repository stay null unless the admission status is ADMITTED",
+          "observations": [
+            {
+              "path": "experienceEvidence.evidenceMaturity",
+              "operator": "equals",
+              "expected": null,
+              "actual": null,
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "no-evidence-is-admitted-without-a-projected-mission",
+      "conditions": [
+        {
+          "conditionId": "admission-requires-full-obligation-coverage",
+          "statement": "evidence is admitted only when every scenario obligation the mission required has been demonstrated and its proof passed",
+          "observations": [
+            {
+              "path": "experienceEvidence.admissionStatus",
+              "operator": "equals",
+              "expected": "NO_MISSION_TO_ADMIT",
+              "actual": "NO_MISSION_TO_ADMIT",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.missingObligationIds",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "admitted-evidence-lineage-is-inspectable",
+          "statement": "the admission outcome retains the market signal and evidence facts that justified the underlying mission, regardless of disposition",
+          "observations": [
+            {
+              "path": "experienceEvidence.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-rust-001",
+              "actual": "signal-rust-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceEvidence.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-northstar-101-technologies",
+              "actual": [
+                "fact-northstar-101-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+          "statement": "evidence identity, maturity, and repository stay null unless the admission status is ADMITTED",
+          "observations": [
+            {
+              "path": "experienceEvidence.evidenceId",
+              "operator": "equals",
+              "expected": null,
+              "actual": null,
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    }
+  ],
+  "disposition": "OBSERVABLY_TRUE"
+}

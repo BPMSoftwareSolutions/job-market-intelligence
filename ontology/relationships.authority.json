@@ -55,6 +55,16 @@
       "subject": "market-signal",
       "predicate": "EXPOSES_GAP",
       "object": "experience-acquisition-opportunity"
+    },
+    {
+      "subject": "experience-acquisition-opportunity",
+      "predicate": "PROJECTS",
+      "object": "experience-mission"
+    },
+    {
+      "subject": "experience-mission",
+      "predicate": "YIELDS",
+      "object": "experience-evidence"
     }
   ]
 }

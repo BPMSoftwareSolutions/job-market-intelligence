@@ -1,0 +1,28 @@
+{
+  "interfaceAuthorityType": "consumer-interface-authority.v1",
+  "contractValidatorCapabilityId": "sda-schema-contract-admission.v1",
+  "contractCatalog": "../../contracts/experience-mission-contract-catalog.json",
+  "requiredPlatformObligations": [
+    "dynamic-semantic-execution",
+    "domain-contract-admission"
+  ],
+  "interfaces": [
+    {
+      "interfaceId": "experience-mission-projection-cli",
+      "kind": "cli",
+      "rootScenarioId": "project-experience-mission",
+      "platformCapabilityId": "sda-json-cli.v1"
+    }
+  ],
+  "portBindings": [
+    {
+      "portId": "project-mission",
+      "platformCapabilityId": "sda-authority-transformation-port.v1",
+      "configuration": {
+        "transformationAuthorityRef": "../../semantic-authority/experience-mission-transformations.authority.json",
+        "transformationId": "project-experience-mission.v1"
+      }
+    }
+  ],
+  "projectionBindings": []
+}

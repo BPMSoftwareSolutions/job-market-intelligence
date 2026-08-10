@@ -1,0 +1,31 @@
+{
+  "capabilityId": "admit-acquired-experience",
+  "name": "Admit acquired experience evidence into the candidate's experience log",
+  "mode": ["feature", "capability"],
+  "userStory": {
+    "actor": "a professional who has completed a projected experience mission",
+    "intent": "have execution testimony checked against every scenario obligation the mission required",
+    "outcome": "gain admitted experience evidence, never fabricated evidence for incomplete or unproven work"
+  },
+  "experience": {
+    "experienceType": "promised-experience.v1",
+    "experienceId": "acquired-experience-is-admitted-only-when-fully-proven",
+    "actor": "a professional who has completed a projected experience mission",
+    "promise": "I can see whether my execution testimony was admitted as experience evidence, and exactly why not when it wasn't.",
+    "observableConditions": [
+      {
+        "conditionId": "admission-requires-full-obligation-coverage",
+        "statement": "evidence is admitted only when every scenario obligation the mission required has been demonstrated and its proof passed"
+      },
+      {
+        "conditionId": "admitted-evidence-lineage-is-inspectable",
+        "statement": "the admission outcome retains the market signal and evidence facts that justified the underlying mission, regardless of disposition"
+      },
+      {
+        "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+        "statement": "evidence identity, maturity, and repository stay null unless the admission status is ADMITTED"
+      }
+    ]
+  },
+  "rootScenarioId": "admit-acquired-experience"
+}

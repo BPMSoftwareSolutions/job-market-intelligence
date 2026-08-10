@@ -1,0 +1,321 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "evidence-is-admitted-when-fully-demonstrated-and-proven",
+      "input": {
+        "experienceMission": {
+          "missionId": "mission-opportunity-signal-kafka-001",
+          "opportunityId": "opportunity-signal-kafka-001",
+          "targetCapability": "Kafka",
+          "marketSignalId": "signal-kafka-001",
+          "marketEvidenceFactIds": ["fact-harbor-202-technologies"],
+          "missionStatus": "MISSION_PROJECTED",
+          "preferredEmbodiment": "java",
+          "targetEvidenceMaturity": "IMPLEMENTATION",
+          "scenarioObligations": [
+            { "obligationId": "publish-admitted-event", "statement": "Publish an admitted business event" },
+            { "obligationId": "consume-event-idempotently", "statement": "Consume the event idempotently" },
+            { "obligationId": "prevent-duplicate-effects", "statement": "Prevent duplicate effects from a redelivered event" },
+            { "obligationId": "recover-after-interruption", "statement": "Recover processing after consumer interruption" },
+            { "obligationId": "observe-processing-lineage", "statement": "Observe processing lineage across the pipeline" }
+          ]
+        },
+        "executionTestimony": {
+          "repository": "https://github.com/example/kafka-event-processing",
+          "demonstratedObligationIds": [
+            "publish-admitted-event",
+            "consume-event-idempotently",
+            "prevent-duplicate-effects",
+            "recover-after-interruption",
+            "observe-processing-lineage"
+          ],
+          "proof": { "tests": "PASS", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-admission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "admit-acquired-experience",
+        "scenarioSequence": ["admit-acquired-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "ADMITTED"
+          },
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.missingObligationIds",
+            "operator": "equals",
+            "value": []
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-kafka-001"
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+            "path": "experienceEvidence.evidenceId",
+            "operator": "equals",
+            "value": "evidence-mission-opportunity-signal-kafka-001"
+          },
+          {
+            "path": "experienceEvidence.repository",
+            "operator": "equals",
+            "value": "https://github.com/example/kafka-event-processing"
+          },
+          {
+            "path": "experienceEvidence.evidenceMaturity",
+            "operator": "equals",
+            "value": "IMPLEMENTATION"
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "evidence-is-rejected-when-obligations-are-incomplete",
+      "input": {
+        "experienceMission": {
+          "missionId": "mission-opportunity-signal-kafka-001",
+          "opportunityId": "opportunity-signal-kafka-001",
+          "targetCapability": "Kafka",
+          "marketSignalId": "signal-kafka-001",
+          "marketEvidenceFactIds": ["fact-harbor-202-technologies"],
+          "missionStatus": "MISSION_PROJECTED",
+          "preferredEmbodiment": "java",
+          "targetEvidenceMaturity": "IMPLEMENTATION",
+          "scenarioObligations": [
+            { "obligationId": "publish-admitted-event", "statement": "Publish an admitted business event" },
+            { "obligationId": "consume-event-idempotently", "statement": "Consume the event idempotently" },
+            { "obligationId": "prevent-duplicate-effects", "statement": "Prevent duplicate effects from a redelivered event" },
+            { "obligationId": "recover-after-interruption", "statement": "Recover processing after consumer interruption" },
+            { "obligationId": "observe-processing-lineage", "statement": "Observe processing lineage across the pipeline" }
+          ]
+        },
+        "executionTestimony": {
+          "repository": "https://github.com/example/kafka-event-processing",
+          "demonstratedObligationIds": [
+            "publish-admitted-event",
+            "consume-event-idempotently",
+            "prevent-duplicate-effects"
+          ],
+          "proof": { "tests": "PASS", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-admission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "admit-acquired-experience",
+        "scenarioSequence": ["admit-acquired-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "REJECTED_INCOMPLETE"
+          },
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.missingObligationIds",
+            "operator": "contains",
+            "value": "recover-after-interruption"
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-kafka-001"
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+            "path": "experienceEvidence.evidenceId",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceEvidence.repository",
+            "operator": "equals",
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "evidence-is-rejected-when-unproven",
+      "input": {
+        "experienceMission": {
+          "missionId": "mission-opportunity-signal-kafka-001",
+          "opportunityId": "opportunity-signal-kafka-001",
+          "targetCapability": "Kafka",
+          "marketSignalId": "signal-kafka-001",
+          "marketEvidenceFactIds": ["fact-harbor-202-technologies"],
+          "missionStatus": "MISSION_PROJECTED",
+          "preferredEmbodiment": "java",
+          "targetEvidenceMaturity": "IMPLEMENTATION",
+          "scenarioObligations": [
+            { "obligationId": "publish-admitted-event", "statement": "Publish an admitted business event" },
+            { "obligationId": "consume-event-idempotently", "statement": "Consume the event idempotently" },
+            { "obligationId": "prevent-duplicate-effects", "statement": "Prevent duplicate effects from a redelivered event" },
+            { "obligationId": "recover-after-interruption", "statement": "Recover processing after consumer interruption" },
+            { "obligationId": "observe-processing-lineage", "statement": "Observe processing lineage across the pipeline" }
+          ]
+        },
+        "executionTestimony": {
+          "repository": "https://github.com/example/kafka-event-processing",
+          "demonstratedObligationIds": [
+            "publish-admitted-event",
+            "consume-event-idempotently",
+            "prevent-duplicate-effects",
+            "recover-after-interruption",
+            "observe-processing-lineage"
+          ],
+          "proof": { "tests": "FAIL", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-admission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "admit-acquired-experience",
+        "scenarioSequence": ["admit-acquired-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "REJECTED_UNPROVEN"
+          },
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.missingObligationIds",
+            "operator": "equals",
+            "value": []
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-kafka-001"
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+            "path": "experienceEvidence.evidenceMaturity",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceEvidence.repository",
+            "operator": "equals",
+            "value": null
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "no-evidence-is-admitted-without-a-projected-mission",
+      "input": {
+        "experienceMission": {
+          "missionId": "mission-opportunity-signal-rust-001",
+          "opportunityId": "opportunity-signal-rust-001",
+          "targetCapability": "Rust",
+          "marketSignalId": "signal-rust-001",
+          "marketEvidenceFactIds": ["fact-northstar-101-technologies"],
+          "missionStatus": "NO_DECLARED_MISSION_TEMPLATE",
+          "preferredEmbodiment": null,
+          "targetEvidenceMaturity": null,
+          "scenarioObligations": []
+        },
+        "executionTestimony": {
+          "repository": "https://github.com/example/rust-experiment",
+          "demonstratedObligationIds": [],
+          "proof": { "tests": "PASS", "executionClosure": "PASS" }
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-admission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "admit-acquired-experience",
+        "scenarioSequence": ["admit-acquired-experience"],
+        "outcomeAssertions": [
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.admissionStatus",
+            "operator": "equals",
+            "value": "NO_MISSION_TO_ADMIT"
+          },
+          {
+            "conditionId": "admission-requires-full-obligation-coverage",
+            "path": "experienceEvidence.missingObligationIds",
+            "operator": "equals",
+            "value": []
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketSignalId",
+            "operator": "equals",
+            "value": "signal-rust-001"
+          },
+          {
+            "conditionId": "admitted-evidence-lineage-is-inspectable",
+            "path": "experienceEvidence.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-northstar-101-technologies"
+          },
+          {
+            "conditionId": "unproven-or-incomplete-work-is-never-admitted",
+            "path": "experienceEvidence.evidenceId",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceEvidence.evidenceMaturity",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceEvidence.repository",
+            "operator": "equals",
+            "value": null
+          }
+        ]
+      }
+    }
+  ]
+}

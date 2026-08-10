@@ -1,0 +1,38 @@
+{
+  "scenarioId": "project-experience-mission",
+  "input": {
+    "inputId": "experience-mission-planning-scope",
+    "contract": {
+      "contractId": "experience-mission-planning-scope.v1"
+    }
+  },
+  "event": {
+    "eventId": "project-experience-mission",
+    "executionAuthorityId": "project-experience-mission.v1"
+  },
+  "outcome": {
+    "outcomeId": "experience-mission-profile",
+    "contract": {
+      "contractId": "experience-mission-profile.v1"
+    },
+    "experience": {
+      "statement": "I can see the scenario obligations, preferred embodiment, and target evidence maturity required to close it"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "project-experience-mission.given",
+      "text": "an experience acquisition opportunity I am prepared to close"
+    },
+    "when": {
+      "semanticRef": "project-experience-mission.when",
+      "text": "a scenario-driven mission is projected for that opportunity"
+    },
+    "then": {
+      "semanticRef": "project-experience-mission.then",
+      "text": "I can see the scenario obligations, preferred embodiment, and target evidence maturity required to close it"
+    }
+  },
+  "name": "See the mission that would close my chosen experience gap"
+}

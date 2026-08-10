@@ -1,0 +1,12 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    {
+      "id": "project-experience-mission.v1",
+      "owningScenarioId": "project-experience-mission",
+      "operations": [
+        { "kind": "invoke-port", "portId": "project-mission" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "fixtureType": "consumer-capability-fixtures.v1",
+  "fixtures": [
+    {
+      "fixtureId": "a-cataloged-capability-projects-a-real-mission",
+      "input": {
+        "experienceAcquisitionOpportunity": {
+          "opportunityId": "opportunity-signal-kafka-001",
+          "targetCapability": "Kafka",
+          "marketSignalId": "signal-kafka-001",
+          "marketEvidenceFactIds": [
+            "fact-harbor-202-technologies"
+          ],
+          "reason": "NO_ADMITTED_EVIDENCE"
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-mission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "project-experience-mission",
+        "scenarioSequence": [
+          "project-experience-mission"
+        ],
+        "outcomeAssertions": [
+          {
+            "conditionId": "mission-obligations-are-visible",
+            "path": "experienceMission.scenarioObligations.0.obligationId",
+            "operator": "equals",
+            "value": "publish-admitted-event"
+          },
+          {
+            "conditionId": "mission-obligations-are-visible",
+            "path": "experienceMission.missionStatus",
+            "operator": "equals",
+            "value": "MISSION_PROJECTED"
+          },
+          {
+            "conditionId": "mission-lineage-is-inspectable",
+            "path": "experienceMission.marketSignalId",
+            "operator": "equals",
+            "value": "signal-kafka-001"
+          },
+          {
+            "conditionId": "mission-lineage-is-inspectable",
+            "path": "experienceMission.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-harbor-202-technologies"
+          },
+          {
+            "conditionId": "uncataloged-capabilities-are-never-fabricated",
+            "path": "experienceMission.preferredEmbodiment",
+            "operator": "equals",
+            "value": "java"
+          },
+          {
+            "path": "experienceMission.targetEvidenceMaturity",
+            "operator": "equals",
+            "value": "IMPLEMENTATION"
+          }
+        ]
+      }
+    },
+    {
+      "fixtureId": "an-uncataloged-capability-projects-no-fabricated-mission",
+      "input": {
+        "experienceAcquisitionOpportunity": {
+          "opportunityId": "opportunity-signal-rust-001",
+          "targetCapability": "Rust",
+          "marketSignalId": "signal-rust-001",
+          "marketEvidenceFactIds": [
+            "fact-northstar-101-technologies"
+          ],
+          "reason": "NO_ADMITTED_EVIDENCE"
+        }
+      },
+      "portOutcomes": {
+        "authority-driven-composition": {
+          "authority": "semantic-authority/experience-mission-interfaces.authority.json"
+        }
+      },
+      "expected": {
+        "disposition": "terminated",
+        "terminalScenarioId": "project-experience-mission",
+        "scenarioSequence": [
+          "project-experience-mission"
+        ],
+        "outcomeAssertions": [
+          {
+            "conditionId": "mission-obligations-are-visible",
+            "path": "experienceMission.missionStatus",
+            "operator": "equals",
+            "value": "NO_DECLARED_MISSION_TEMPLATE"
+          },
+          {
+            "conditionId": "mission-obligations-are-visible",
+            "path": "experienceMission.scenarioObligations",
+            "operator": "equals",
+            "value": []
+          },
+          {
+            "conditionId": "mission-lineage-is-inspectable",
+            "path": "experienceMission.marketSignalId",
+            "operator": "equals",
+            "value": "signal-rust-001"
+          },
+          {
+            "conditionId": "mission-lineage-is-inspectable",
+            "path": "experienceMission.marketEvidenceFactIds",
+            "operator": "contains",
+            "value": "fact-northstar-101-technologies"
+          },
+          {
+            "conditionId": "uncataloged-capabilities-are-never-fabricated",
+            "path": "experienceMission.preferredEmbodiment",
+            "operator": "equals",
+            "value": null
+          },
+          {
+            "path": "experienceMission.targetEvidenceMaturity",
+            "operator": "equals",
+            "value": null
+          }
+        ]
+      }
+    }
+  ]
+}

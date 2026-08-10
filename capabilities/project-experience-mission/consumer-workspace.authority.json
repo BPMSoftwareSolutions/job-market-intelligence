@@ -1,0 +1,29 @@
+{
+  "workspaceType": "consumer-workspace-authority.v1",
+  "consumerId": "project-experience-mission",
+  "kernel": {
+    "specificationId": "scenario-kernel.v1",
+    "version": "1.0.0",
+    "executionVector": "../../../scenario-driven-architecture/kernel/contracts/execution/scenario-kernel-execution-vector.json"
+  },
+  "governance": {
+    "authority": "../../governance/acquisition-policy.authority.json",
+    "conformancePolicy": "all-closures-must-conform"
+  },
+  "conformanceQuery": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+  "telemetryAuthority": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json",
+  "platformCapabilityCatalog": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/sda-platform-capabilities.semantic-authority.json",
+  "projectionTargets": ["node"],
+  "capabilities": [
+    {
+      "featureId": "project-experience-mission.feature",
+      "feature": "../../features/project-experience-mission.feature",
+      "capability": "capability.authority.json",
+      "semanticGraph": "../../semantic-authority/experience-mission-scenario-graph.authority.json",
+      "executionAuthorities": "../../semantic-authority/experience-mission-execution-authorities.authority.json",
+      "projectionAuthorities": "projection-authorities.authority.json",
+      "interfaces": "../../semantic-authority/experience-mission-interfaces.authority.json",
+      "fixtures": "../../fixtures/experience-mission-fixtures.authority.json"
+    }
+  ]
+}

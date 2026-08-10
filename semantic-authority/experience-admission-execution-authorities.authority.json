@@ -1,0 +1,12 @@
+{
+  "authorityType": "execution-authorities.v1",
+  "executionAuthorities": [
+    {
+      "id": "admit-acquired-experience.v1",
+      "owningScenarioId": "admit-acquired-experience",
+      "operations": [
+        { "kind": "invoke-port", "portId": "admit-experience-evidence" }
+      ]
+    }
+  ]
+}

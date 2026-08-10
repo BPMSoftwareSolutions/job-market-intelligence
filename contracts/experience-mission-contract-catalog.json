@@ -1,0 +1,6 @@
+{
+  "experience-mission-planning-scope.v1": "experience-mission-planning-scope.schema.json",
+  "experience-mission-profile.v1": "experience-mission-profile.schema.json",
+  "experience-mission.v1": "../schemas/experience-mission.schema.json",
+  "experience-acquisition-opportunity.v1": "../schemas/experience-acquisition-opportunity.schema.json"
+}

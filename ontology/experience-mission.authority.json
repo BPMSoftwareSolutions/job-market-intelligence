@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-concept.v1",
+  "conceptId": "experience-mission",
+  "name": "Experience mission",
+  "definition": "A bounded, scenario-obligated mission projected for an experience acquisition opportunity from the declared mission catalog, naming the scenario obligations, preferred language embodiment, and target evidence maturity required to close the gap. A target capability absent from the catalog projects no fabricated obligations.",
+  "schemaRef": "../schemas/experience-mission.schema.json"
+}

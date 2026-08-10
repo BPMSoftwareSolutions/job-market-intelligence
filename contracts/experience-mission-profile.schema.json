@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/experience-mission-profile.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["experienceAcquisitionOpportunity", "experienceMission"],
+  "properties": {
+    "experienceAcquisitionOpportunity": {
+      "$ref": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json"
+    },
+    "experienceMission": {
+      "$ref": "https://job-market-intelligence.local/schemas/experience-mission.v1.schema.json"
+    }
+  }
+}

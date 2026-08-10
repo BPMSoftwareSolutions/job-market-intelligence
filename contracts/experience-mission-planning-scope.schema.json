@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/experience-mission-planning-scope.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["experienceAcquisitionOpportunity"],
+  "properties": {
+    "experienceAcquisitionOpportunity": {
+      "$ref": "https://job-market-intelligence.local/schemas/experience-acquisition-opportunity.v1.schema.json"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "authorityType": "sda-domain-ontology-concept.v1",
+  "conceptId": "experience-evidence",
+  "name": "Experience evidence",
+  "definition": "An admission decision over execution testimony for a projected experience mission. Evidence is admitted, carrying evidence maturity and repository lineage, only when every scenario obligation the mission required was demonstrated and its proof passed; otherwise it is rejected and no evidence identity, maturity, or repository is fabricated.",
+  "schemaRef": "../schemas/experience-evidence.schema.json"
+}

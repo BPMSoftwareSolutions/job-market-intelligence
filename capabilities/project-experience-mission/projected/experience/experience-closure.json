@@ -1,0 +1,138 @@
+{
+  "closureType": "consumer-experience-closure.v1",
+  "capabilityId": "project-experience-mission",
+  "experienceId": "a-scenario-driven-mission-is-visible-for-the-chosen-gap",
+  "promise": "I can see the scenario-driven mission that would close my chosen experience gap.",
+  "projectionTarget": "node",
+  "fixtures": [
+    {
+      "fixtureId": "a-cataloged-capability-projects-a-real-mission",
+      "conditions": [
+        {
+          "conditionId": "mission-obligations-are-visible",
+          "statement": "a cataloged target capability projects the scenario obligations required to close the gap",
+          "observations": [
+            {
+              "path": "experienceMission.scenarioObligations.0.obligationId",
+              "operator": "equals",
+              "expected": "publish-admitted-event",
+              "actual": "publish-admitted-event",
+              "satisfied": true
+            },
+            {
+              "path": "experienceMission.missionStatus",
+              "operator": "equals",
+              "expected": "MISSION_PROJECTED",
+              "actual": "MISSION_PROJECTED",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "mission-lineage-is-inspectable",
+          "statement": "the projected mission retains the market signal and evidence fact ids that justified it",
+          "observations": [
+            {
+              "path": "experienceMission.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-kafka-001",
+              "actual": "signal-kafka-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceMission.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-harbor-202-technologies",
+              "actual": [
+                "fact-harbor-202-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "uncataloged-capabilities-are-never-fabricated",
+          "statement": "the preferred embodiment is populated exactly when a mission template is declared for the target capability, and null otherwise",
+          "observations": [
+            {
+              "path": "experienceMission.preferredEmbodiment",
+              "operator": "equals",
+              "expected": "java",
+              "actual": "java",
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    },
+    {
+      "fixtureId": "an-uncataloged-capability-projects-no-fabricated-mission",
+      "conditions": [
+        {
+          "conditionId": "mission-obligations-are-visible",
+          "statement": "a cataloged target capability projects the scenario obligations required to close the gap",
+          "observations": [
+            {
+              "path": "experienceMission.missionStatus",
+              "operator": "equals",
+              "expected": "NO_DECLARED_MISSION_TEMPLATE",
+              "actual": "NO_DECLARED_MISSION_TEMPLATE",
+              "satisfied": true
+            },
+            {
+              "path": "experienceMission.scenarioObligations",
+              "operator": "equals",
+              "expected": [],
+              "actual": [],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "mission-lineage-is-inspectable",
+          "statement": "the projected mission retains the market signal and evidence fact ids that justified it",
+          "observations": [
+            {
+              "path": "experienceMission.marketSignalId",
+              "operator": "equals",
+              "expected": "signal-rust-001",
+              "actual": "signal-rust-001",
+              "satisfied": true
+            },
+            {
+              "path": "experienceMission.marketEvidenceFactIds",
+              "operator": "contains",
+              "expected": "fact-northstar-101-technologies",
+              "actual": [
+                "fact-northstar-101-technologies"
+              ],
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        },
+        {
+          "conditionId": "uncataloged-capabilities-are-never-fabricated",
+          "statement": "the preferred embodiment is populated exactly when a mission template is declared for the target capability, and null otherwise",
+          "observations": [
+            {
+              "path": "experienceMission.preferredEmbodiment",
+              "operator": "equals",
+              "expected": null,
+              "actual": null,
+              "satisfied": true
+            }
+          ],
+          "disposition": "OBSERVED"
+        }
+      ],
+      "disposition": "EXPERIENCE_REALIZED"
+    }
+  ],
+  "disposition": "OBSERVABLY_TRUE"
+}

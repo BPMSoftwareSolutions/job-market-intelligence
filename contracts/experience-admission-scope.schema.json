@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://job-market-intelligence.local/contracts/experience-admission-scope.v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["experienceMission", "executionTestimony"],
+  "properties": {
+    "experienceMission": {
+      "$ref": "https://job-market-intelligence.local/schemas/experience-mission.v1.schema.json"
+    },
+    "executionTestimony": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "demonstratedObligationIds", "proof"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "demonstratedObligationIds": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "proof": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["tests", "executionClosure"],
+          "properties": {
+            "tests": { "enum": ["PASS", "FAIL"] },
+            "executionClosure": { "enum": ["PASS", "FAIL"] }
+          }
+        }
+      }
+    }
+  }
+}

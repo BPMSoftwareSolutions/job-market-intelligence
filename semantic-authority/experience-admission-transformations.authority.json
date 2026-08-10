@@ -1,0 +1,136 @@
+{
+  "authorityType": "semantic-transformation-authority.v1",
+  "transformations": [
+    {
+      "id": "admit-acquired-experience.v1",
+      "expression": {
+        "op": "merge",
+        "values": [
+          { "op": "path", "from": "input" },
+          {
+            "op": "object",
+            "fields": {
+              "experienceEvidence": {
+                "op": "let",
+                "bindings": {
+                  "requiredObligationIds": {
+                    "op": "map",
+                    "from": { "op": "path", "from": "input", "path": "experienceMission.scenarioObligations" },
+                    "as": "obligation",
+                    "value": { "op": "path", "from": "obligation", "path": "obligationId" }
+                  },
+                  "demonstratedObligationIds": {
+                    "op": "path", "from": "input", "path": "executionTestimony.demonstratedObligationIds"
+                  },
+                  "missingObligationIds": {
+                    "op": "filter",
+                    "from": { "op": "path", "from": "requiredObligationIds" },
+                    "as": "obligationId",
+                    "where": {
+                      "op": "equals",
+                      "left": {
+                        "op": "includes",
+                        "in": { "op": "path", "from": "demonstratedObligationIds" },
+                        "value": { "op": "path", "from": "obligationId" }
+                      },
+                      "right": { "op": "literal", "value": false }
+                    }
+                  },
+                  "hasMission": {
+                    "op": "equals",
+                    "left": { "op": "path", "from": "input", "path": "experienceMission.missionStatus" },
+                    "right": { "op": "literal", "value": "MISSION_PROJECTED" }
+                  },
+                  "isProven": {
+                    "op": "if",
+                    "when": {
+                      "op": "equals",
+                      "left": { "op": "path", "from": "input", "path": "executionTestimony.proof.tests" },
+                      "right": { "op": "literal", "value": "PASS" }
+                    },
+                    "then": {
+                      "op": "equals",
+                      "left": { "op": "path", "from": "input", "path": "executionTestimony.proof.executionClosure" },
+                      "right": { "op": "literal", "value": "PASS" }
+                    },
+                    "else": { "op": "literal", "value": false }
+                  },
+                  "isComplete": {
+                    "op": "equals",
+                    "left": { "op": "length", "value": { "op": "path", "from": "missingObligationIds" } },
+                    "right": { "op": "literal", "value": 0 }
+                  },
+                  "admissionStatus": {
+                    "op": "if",
+                    "when": { "op": "path", "from": "hasMission" },
+                    "then": {
+                      "op": "if",
+                      "when": { "op": "path", "from": "isProven" },
+                      "then": {
+                        "op": "if",
+                        "when": { "op": "path", "from": "isComplete" },
+                        "then": { "op": "literal", "value": "ADMITTED" },
+                        "else": { "op": "literal", "value": "REJECTED_INCOMPLETE" }
+                      },
+                      "else": { "op": "literal", "value": "REJECTED_UNPROVEN" }
+                    },
+                    "else": { "op": "literal", "value": "NO_MISSION_TO_ADMIT" }
+                  }
+                },
+                "value": {
+                  "op": "object",
+                  "fields": {
+                    "evidenceId": {
+                      "op": "if",
+                      "when": {
+                        "op": "equals",
+                        "left": { "op": "path", "from": "admissionStatus" },
+                        "right": { "op": "literal", "value": "ADMITTED" }
+                      },
+                      "then": {
+                        "op": "format",
+                        "template": "evidence-{missionId}",
+                        "values": {
+                          "missionId": { "op": "path", "from": "input", "path": "experienceMission.missionId" }
+                        }
+                      },
+                      "else": { "op": "literal", "value": null }
+                    },
+                    "missionId": { "op": "path", "from": "input", "path": "experienceMission.missionId" },
+                    "opportunityId": { "op": "path", "from": "input", "path": "experienceMission.opportunityId" },
+                    "targetCapability": { "op": "path", "from": "input", "path": "experienceMission.targetCapability" },
+                    "marketSignalId": { "op": "path", "from": "input", "path": "experienceMission.marketSignalId" },
+                    "marketEvidenceFactIds": { "op": "path", "from": "input", "path": "experienceMission.marketEvidenceFactIds" },
+                    "demonstratedObligationIds": { "op": "path", "from": "demonstratedObligationIds" },
+                    "missingObligationIds": { "op": "path", "from": "missingObligationIds" },
+                    "evidenceMaturity": {
+                      "op": "if",
+                      "when": {
+                        "op": "equals",
+                        "left": { "op": "path", "from": "admissionStatus" },
+                        "right": { "op": "literal", "value": "ADMITTED" }
+                      },
+                      "then": { "op": "path", "from": "input", "path": "experienceMission.targetEvidenceMaturity" },
+                      "else": { "op": "literal", "value": null }
+                    },
+                    "repository": {
+                      "op": "if",
+                      "when": {
+                        "op": "equals",
+                        "left": { "op": "path", "from": "admissionStatus" },
+                        "right": { "op": "literal", "value": "ADMITTED" }
+                      },
+                      "then": { "op": "path", "from": "input", "path": "executionTestimony.repository" },
+                      "else": { "op": "literal", "value": null }
+                    },
+                    "admissionStatus": { "op": "path", "from": "admissionStatus" }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

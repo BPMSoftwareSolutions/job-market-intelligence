@@ -1,0 +1,29 @@
+{
+  "workspaceType": "consumer-workspace-authority.v1",
+  "consumerId": "admit-acquired-experience",
+  "kernel": {
+    "specificationId": "scenario-kernel.v1",
+    "version": "1.0.0",
+    "executionVector": "../../../scenario-driven-architecture/kernel/contracts/execution/scenario-kernel-execution-vector.json"
+  },
+  "governance": {
+    "authority": "../../governance/acquisition-policy.authority.json",
+    "conformancePolicy": "all-closures-must-conform"
+  },
+  "conformanceQuery": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+  "telemetryAuthority": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json",
+  "platformCapabilityCatalog": "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/sda-platform-capabilities.semantic-authority.json",
+  "projectionTargets": ["node"],
+  "capabilities": [
+    {
+      "featureId": "admit-acquired-experience.feature",
+      "feature": "../../features/admit-acquired-experience.feature",
+      "capability": "capability.authority.json",
+      "semanticGraph": "../../semantic-authority/experience-admission-scenario-graph.authority.json",
+      "executionAuthorities": "../../semantic-authority/experience-admission-execution-authorities.authority.json",
+      "projectionAuthorities": "projection-authorities.authority.json",
+      "interfaces": "../../semantic-authority/experience-admission-interfaces.authority.json",
+      "fixtures": "../../fixtures/experience-admission-fixtures.authority.json"
+    }
+  ]
+}

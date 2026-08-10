@@ -1,0 +1,6 @@
+{
+  "experience-admission-scope.v1": "experience-admission-scope.schema.json",
+  "experience-admission-profile.v1": "experience-admission-profile.schema.json",
+  "experience-evidence.v1": "../schemas/experience-evidence.schema.json",
+  "experience-mission.v1": "../schemas/experience-mission.schema.json"
+}

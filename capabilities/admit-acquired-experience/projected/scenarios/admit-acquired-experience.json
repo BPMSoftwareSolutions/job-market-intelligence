@@ -1,0 +1,38 @@
+{
+  "scenarioId": "admit-acquired-experience",
+  "input": {
+    "inputId": "experience-admission-scope",
+    "contract": {
+      "contractId": "experience-admission-scope.v1"
+    }
+  },
+  "event": {
+    "eventId": "admit-acquired-experience",
+    "executionAuthorityId": "admit-acquired-experience.v1"
+  },
+  "outcome": {
+    "outcomeId": "experience-admission-profile",
+    "contract": {
+      "contractId": "experience-admission-profile.v1"
+    },
+    "experience": {
+      "statement": "I have new inspectable experience evidence only when every obligation was demonstrated and proven"
+    },
+    "terminal": true
+  },
+  "gherkin": {
+    "given": {
+      "semanticRef": "admit-acquired-experience.given",
+      "text": "a projected experience mission and execution testimony for it"
+    },
+    "when": {
+      "semanticRef": "admit-acquired-experience.when",
+      "text": "the testimony is checked against every scenario obligation the mission required"
+    },
+    "then": {
+      "semanticRef": "admit-acquired-experience.then",
+      "text": "I have new inspectable experience evidence only when every obligation was demonstrated and proven"
+    }
+  },
+  "name": "Admit evidence only for a fully demonstrated, proven mission"
+}

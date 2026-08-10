@@ -1,0 +1,107 @@
+{
+  "projectionManifestType": "consumer-capability-projection-manifest.v1",
+  "generator": "scenario-driven-architecture/tools/src/consumer-projection",
+  "authorityRefs": [
+    "../../features/admit-acquired-experience.feature",
+    "capability.authority.json",
+    "../../semantic-authority/experience-admission-scenario-graph.authority.json",
+    "../../semantic-authority/experience-admission-execution-authorities.authority.json",
+    "projection-authorities.authority.json",
+    "../../semantic-authority/experience-admission-interfaces.authority.json",
+    "../../fixtures/experience-admission-fixtures.authority.json",
+    "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-conformance-closure.query-authority.json",
+    "../../../scenario-driven-architecture/kernel/semantic-authority/consumer/scenario-execution.telemetry-authority.json"
+  ],
+  "admittedPlatformCapabilities": [
+    "sda-authority-state-projection.v1",
+    "sda-authority-transformation-port.v1",
+    "sda-declarative-state-projection.v1",
+    "sda-declarative-value-port.v1",
+    "sda-external-observation-port.v1",
+    "sda-filesystem-artifact-store.v1",
+    "sda-fixture-contract-validator.v1",
+    "sda-json-cli.v1",
+    "sda-json-query-cli.v1",
+    "sda-node-consumer-runtime.v1",
+    "sda-projected-capability-invocation-port.v1",
+    "sda-projected-capability-invocation-port.v2",
+    "sda-schema-contract-admission.v1"
+  ],
+  "files": [
+    {
+      "path": "application-binding.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7a320ad1eae5c14cb39513b93faa34147e0414485170e0496851d167160a7558"
+    },
+    {
+      "path": "application-binding.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "6513ebd734f912c8e05032b0cf46cff6b87794c84060f4f34f61a6a727ecaffb"
+    },
+    {
+      "path": "capability.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "c486b6144d6e0feedc221e6fc410dc0c2805121b4cb9676e1b63eb8753456e3e"
+    },
+    {
+      "path": "fixtures/fixtures.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "774be7f21ec3dd128b948dcfe857c4372fe116f9d88fb85ef124d9a6018b587d"
+    },
+    {
+      "path": "node/capability-runtime.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "47566904e9382e6ec4e771bb5431815d0aca256b6805b14ddbdf2703ea22392a"
+    },
+    {
+      "path": "node/capability.projected.test.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "cf7632f1aa1682d053448ec5eb59d914b6b5614ad755bdb1fea9e53282bcad60"
+    },
+    {
+      "path": "node/conformance-query.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "b30ee6f4682e5ec39e9d314430318ad5c3f1e235fda69e111a29b04dbe89a87f"
+    },
+    {
+      "path": "node/experience-admission-cli.generated.mjs",
+      "executableOrigin": "PROJECTED",
+      "sha256": "56b4c0df6e70645327f56b87d0cad4e52242d3077af6dd9b6e203cfc0388eebd"
+    },
+    {
+      "path": "projection-conformance.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "eff29d9d763919b405a021fc126f66b5b0c552c3cbe74d8ddb85f9781e4b2eed"
+    },
+    {
+      "path": "query/conformance-query.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "30d98acfcf935bc62405d13fb5aad47d035b67960c9e47355a729fa901320d20"
+    },
+    {
+      "path": "query/conformance-query.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "30d98acfcf935bc62405d13fb5aad47d035b67960c9e47355a729fa901320d20"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7d5e4c622c5e74982730735d7837db779aa04c5aaa27d804874bb2b0eeb4ebe5"
+    },
+    {
+      "path": "query/platform-mechanic-resolution.node.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "7d5e4c622c5e74982730735d7837db779aa04c5aaa27d804874bb2b0eeb4ebe5"
+    },
+    {
+      "path": "scenarios/admit-acquired-experience.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "09cdfa8fc2e729b400320e3b7caaa8437d724671f851054d246d93f6b69d8db6"
+    },
+    {
+      "path": "telemetry/expected-trace.json",
+      "executableOrigin": "PROJECTED",
+      "sha256": "ccf34d50dfb3645c41e924963763630da5dd6ba47cc7f64e433ccd538abed39c"
+    }
+  ]
+}
